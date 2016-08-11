@@ -14,6 +14,10 @@ This guide assumes that `python3`, `pip`, and virtual environments are installed
 `./manage.py runserver`
 
 
+## Testing
+TBD
+
+
 ## Deploying
 TBD
 
