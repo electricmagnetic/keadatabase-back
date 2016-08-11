@@ -1,0 +1,16 @@
+*.pyc
+*.pyo
+*~
+*#*#
+*.orig
+.DS_Store
+
+node_modules/
+.vagrant/
+static/
+bower_components/
+.sass-cache/
+media/
+__pycache__/
+
+db.sqlite3
