@@ -7,7 +7,7 @@ This guide assumes that `python3`, `pip`, and virtual environments are installed
 1. Setup virtual environment with python3
 2. `pip install -r requirements.txt` (install relevant dependencies)
 3. `./manage.py migrate` (database setup and migration)
-4. `./manage.py createsuperuser` (superuser creation) 
+4. `./manage.py createsuperuser` (superuser creation)
 
 
 ## Running
@@ -15,7 +15,7 @@ This guide assumes that `python3`, `pip`, and virtual environments are installed
 
 
 ## Testing
-TBD
+`./manage.py test`
 
 
 ## Deploying
