@@ -11,8 +11,8 @@ class BirdAdmin(admin.GeoModelAdmin):
 
     list_display = ('get_identifier', 'status', 'life_stage', 'get_location', 'get_id_band',
                     'get_colour_band', 'date_updated',)
-
     list_filter = ('status', 'sex', 'life_stage',)
+    search_fields = ['name']
 
     fieldsets = [
         (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
