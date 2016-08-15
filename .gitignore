@@ -5,9 +5,10 @@
 *.orig
 .DS_Store
 
+/static/
+
 node_modules/
 .vagrant/
-static/
 bower_components/
 .sass-cache/
 media/

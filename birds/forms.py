@@ -12,9 +12,7 @@ class BirdForm(forms.ModelForm):
         model = Bird
         fields = ('__all__')
 
-        # TODO
-        # (1) clear secondary location if primary location changed
-        # (2) disallow creation/editing of new locations without some sort of checking
+        # TODO: disallow creation/editing of new locations without some sort of checking
 
         widgets = {
             'primary_location':
@@ -27,3 +25,6 @@ class BirdForm(forms.ModelForm):
                     forward=['primary_location'],
                 ),
         }
+
+    class Media:
+        js = ('js/autocomplete-forward.js',)
