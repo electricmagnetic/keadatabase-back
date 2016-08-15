@@ -1,5 +1,7 @@
 from django.db import models
 
+from locations.models import PrimaryLocation, SecondaryLocation
+
 
 class Bird(models.Model):
     """ Information on existing banded birds """
@@ -61,8 +63,8 @@ class Bird(models.Model):
 
 
     ## Location details
-    primary_location = models.CharField(max_length=200, blank=True)
-    secondary_location = models.CharField(max_length=200, blank=True)
+    primary_location = models.ForeignKey(PrimaryLocation, blank=True, null=True)
+    secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
 
 
     ## Catch details
@@ -120,7 +122,7 @@ class Bird(models.Model):
         if self.primary_location and self.secondary_location:
             return '%s (%s)' % (self.primary_location, self.secondary_location)
         else:
-            return self.primary_location or self.secondary_location
+            return '%s' % (self.primary_location or self.secondary_location or '')
     get_location.short_description = 'Location'
 
 

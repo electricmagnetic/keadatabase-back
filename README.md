@@ -19,6 +19,8 @@ This guide assumes that `python3`, `pip`, and virtual environments are installed
 
 
 ## Deploying
+1. `./manage.py test` - Test to make sure everything is compliant
+2. `./manage.py check --deploy` - Check deploy settings for security
 TBD
 
 

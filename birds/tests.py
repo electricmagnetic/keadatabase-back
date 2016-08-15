@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from .models import Bird
+from locations.models import PrimaryLocation, SecondaryLocation
 
 
 #class BirdObjectTests(TestCase):
@@ -36,17 +37,20 @@ class BirdMethodTests(TestCase):
 
     def test_location_method(self):
         """ The get_location method should return an appropriate location """
+        primary_location_example = PrimaryLocation.objects.create(name='Craigieburn Forest Park')
+        secondary_location_example = SecondaryLocation.objects.create(name='Broken River Ski Area',
+                                                                      primary_location=primary_location_example)
 
-        bird_primary = Bird(id_band='V-12345', primary_location='Broken River Ski Area')
-        self.assertEqual(bird_primary.get_location(), 'Broken River Ski Area')
+        bird_primary = Bird(id_band='V-12345', primary_location=primary_location_example)
+        self.assertEqual(bird_primary.get_location(), 'Craigieburn Forest Park')
 
-        bird_secondary = Bird(id_band='V-12345', secondary_location='Craigieburn Forest Park')
-        self.assertEqual(bird_secondary.get_location(), 'Craigieburn Forest Park')
+        bird_secondary = Bird(id_band='V-12345', secondary_location=secondary_location_example)
+        self.assertEqual(bird_secondary.get_location(), 'Broken River Ski Area')
 
-        bird_both = Bird(id_band='V-12345', primary_location='Broken River Ski Area',
-                         secondary_location='Craigieburn Forest Park')
+        bird_both = Bird(id_band='V-12345', primary_location=primary_location_example,
+                         secondary_location=secondary_location_example)
         self.assertEqual(bird_both.get_location(),
-                         'Broken River Ski Area (Craigieburn Forest Park)')
+                         'Craigieburn Forest Park (Broken River Ski Area)')
 
         bird_none = Bird(id_band='V-12345')
         self.assertEqual(bird_none.get_location(), '')

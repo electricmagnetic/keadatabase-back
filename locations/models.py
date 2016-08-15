@@ -6,15 +6,22 @@ class Location(models.Model):
 
     name = models.CharField(max_length=200)
 
-    class Meta: # pylint: disable=W0232,R0903,C1001
+    class Meta:
         abstract = True
+
+    def __str__(self):
+        return self.name
 
 
 class PrimaryLocation(Location):
     """ Primary location (wider regions) """
 
-    class Meta: # pylint: disable=W0232,R0903,C1001
-        abstract = False
+    class Meta:
+        abstract=False
+
+    # TODO tidy up and test
+    #def get_secondary_locations(self):
+    #    return ", ".join(str(secondary_location) for secondary_location in self.secondarylocation_set.all())
 
 
 class SecondaryLocation(Location):
