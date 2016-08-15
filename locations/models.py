@@ -17,7 +17,7 @@ class PrimaryLocation(Location):
     """ Primary location (wider regions) """
 
     class Meta:
-        abstract=False
+        abstract = False
 
     # TODO tidy up and test
     #def get_secondary_locations(self):
