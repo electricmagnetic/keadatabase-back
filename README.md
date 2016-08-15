@@ -31,6 +31,19 @@ For instructions on setting up `postgres` with postgis:
 TBD
 
 
+## Loading data
+### Sample data
+`./manage.py loaddata sample_data/locations.json`
+`./manage.py loaddata sample_data/birds.json`
+
+
+### DOC boundary data
+1. Download WGS84 SHP of <https://koordinates.com/layer/754-doc-public-conservation-areas/>
+2. Unzip and place into `locations/data/`
+3. `./manage.py shell` - Invoke shell
+4. `from locations import load_data; load_data.run()`
+
+
 ## Contributing
 Please use `pylint` to check your code before submitting a pull request. A `.pylintrc` file has been
 supplied.
