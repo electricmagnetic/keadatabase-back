@@ -1,4 +1,5 @@
 from django.contrib.gis import admin
+from django.conf import settings
 
 from .models import Bird
 from .forms import BirdForm
@@ -23,9 +24,9 @@ class BirdAdmin(admin.GeoModelAdmin):
         ('Notes', {'fields':['health', 'notes']}),
     ]
 
-    default_lon = 171.56669
-    default_lat = -42.94366
-    default_zoom = 6
+    default_lon = settings.GEO_DEFAULT_LON
+    default_lat = settings.GEO_DEFAULT_LAT
+    default_zoom = settings.GEO_DEFAULT_ZOOM
 
 
 admin.site.register(Bird, BirdAdmin)

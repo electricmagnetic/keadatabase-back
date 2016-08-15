@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 
 class Location(models.Model):
@@ -16,8 +16,7 @@ class Location(models.Model):
 class PrimaryLocation(Location):
     """ Primary location (wider regions) """
 
-    class Meta:
-        abstract = False
+    mpoly = models.MultiPolygonField(null=True, blank=True)
 
     # TODO tidy up and test
     #def get_secondary_locations(self):

@@ -1,12 +1,17 @@
-from django.contrib import admin
+from django.contrib.gis import admin
+from django.conf import settings
 
 from .models import PrimaryLocation, SecondaryLocation
 
 
-class PrimaryLocationAdmin(admin.ModelAdmin):
+class PrimaryLocationAdmin(admin.GeoModelAdmin):
     """ Defines the table layout for primary locations """
 
     list_display = ('name',)
+
+    default_lon = settings.GEO_DEFAULT_LON
+    default_lat = settings.GEO_DEFAULT_LAT
+    default_zoom = settings.GEO_DEFAULT_ZOOM
 
 
 class SecondaryLocationAdmin(admin.ModelAdmin):

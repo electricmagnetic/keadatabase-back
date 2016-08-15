@@ -132,3 +132,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# GeoDjango defaults
+GEO_DEFAULT_LON = 171.56669
+GEO_DEFAULT_LAT = -42.94366
+GEO_DEFAULT_ZOOM = 6
