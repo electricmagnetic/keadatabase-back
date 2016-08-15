@@ -2,6 +2,13 @@
 An online database designed to track kea sightings and information for the Kea Conservation Trust
 
 
+## Layout
+* 'locations' - models and admin for primary and secondary locations
+* 'birds' - models and admin for banded birds
+* 'sightings' - models and admin for sightings of kea
+* 'portal' - public facing portal for adding sightings and searching kea
+
+
 ## Setup
 This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual environments are
 installed.
