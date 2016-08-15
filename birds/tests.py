@@ -7,11 +7,12 @@ from locations.models import PrimaryLocation, SecondaryLocation
 #class BirdObjectTests(TestCase):
     #""" Tests for create/edit/delete functions of Bird objects """
 
+    # TODO
     #def test_blank(self):
         #""" The model should not submit if all fields are left blank """
         #self.assertRaises(OperationalError, Bird, transmitter=False)
 
-
+    # TODO
     #def test_longitude_latitude_fields(self):
         #""" The model should accept all valid latitude and longitudes (assuming EPSG:4326) """
         #bird_positive_lat_long = Bird(id_band='V-12345', caught_longitude='179.987654321',

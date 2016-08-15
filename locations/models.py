@@ -27,4 +27,4 @@ class PrimaryLocation(Location):
 class SecondaryLocation(Location):
     """ Secondary location (more specific sub-regions) """
 
-    primary_location = models.ForeignKey(PrimaryLocation)
+    primary_location = models.ForeignKey(PrimaryLocation, on_delete=models.CASCADE)

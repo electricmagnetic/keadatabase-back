@@ -6,12 +6,14 @@ from .models import Bird
 
 
 class BirdForm(forms.ModelForm):
+    """ Principle bird form, allows for autocomplete """
+
     class Meta:
         model = Bird
         fields = ('__all__')
-        
+
         # TODO
-        # (1) clear secondary location if primary location changed (
+        # (1) clear secondary location if primary location changed
         # (2) disallow creation/editing of new locations without some sort of checking
 
         widgets = {
