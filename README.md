@@ -22,5 +22,10 @@ This guide assumes that `python3`, `pip`, and virtual environments are installed
 TBD
 
 
+## Contributing
+Please use `pylint` to check your code before submitting a pull request. A `.pylintrc` file has been
+supplied.
+
+
 ## Licence
 TBD
