@@ -45,7 +45,8 @@ class BirdMethodTests(TestCase):
 
         bird_both = Bird(id_band='V-12345', primary_location='Broken River Ski Area',
                          secondary_location='Craigieburn Forest Park')
-        self.assertEqual(bird_both.get_location(), 'Broken River Ski Area (Craigieburn Forest Park)')
+        self.assertEqual(bird_both.get_location(),
+                         'Broken River Ski Area (Craigieburn Forest Park)')
 
         bird_none = Bird(id_band='V-12345')
         self.assertEqual(bird_none.get_location(), '')

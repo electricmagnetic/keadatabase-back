@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'birds',
     'sightings',
+    'locations',
 ]
 
 MIDDLEWARE = [

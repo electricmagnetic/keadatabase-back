@@ -12,7 +12,7 @@ class BirdAdmin(admin.ModelAdmin):
     list_filter = ('status', 'sex', 'life_stage',)
 
     fieldsets = [
-        (None,  {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
+        (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
         ('Location', {'fields':['primary_location', 'secondary_location']}),
         ('Catch', {'fields':['date_caught', 'caught_by', 'banded_by', 'caught_longitude',
                              'caught_latitude']}),
