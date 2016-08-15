@@ -1,4 +1,4 @@
-from django.db import models
+from django.contrib.gis.db import models
 
 from locations.models import PrimaryLocation, SecondaryLocation
 
@@ -73,8 +73,7 @@ class Bird(models.Model):
     caught_by = models.CharField(max_length=200, blank=True)
     banded_by = models.CharField(max_length=200, blank=True)
 
-    caught_longitude = models.DecimalField(max_digits=12, decimal_places=8, blank=True, null=True)
-    caught_latitude = models.DecimalField(max_digits=12, decimal_places=8, blank=True, null=True)
+    caught_location = models.PointField(null=True, blank=True)
 
 
     ## Band details
