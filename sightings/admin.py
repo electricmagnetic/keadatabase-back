@@ -18,8 +18,7 @@ class BirdSightingInline(admin.TabularInline):
 class SightingAdmin(admin.GeoModelAdmin):
     """ Defines the fieldsets for the Sighting model admin """
 
-    list_display = ('date_sighted', 'time_sighted', 'primary_location', 'secondary_location',
-                    'number_sighted',)
+    list_display = ('date_sighted', 'time_sighted', 'primary_location', 'secondary_location',)
 
     fieldsets = [
         (None, {'fields':[('date_sighted', 'time_sighted')]}),
@@ -29,7 +28,6 @@ class SightingAdmin(admin.GeoModelAdmin):
         ('Notes', {'fields':['notes']}),
         ('Contributor details', {'fields':[('first_name', 'last_name'), ('email', 'newsletter'),
                                            'phone', 'category']}),
-        ('Kea details', {'fields':['number_sighted']}),
     ]
 
     inlines = (BirdSightingInline,)

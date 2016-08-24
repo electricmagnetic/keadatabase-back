@@ -66,10 +66,6 @@ class Sighting(SightingBase):
     # TODO sighting_type
 
 
-    ## Birds details
-    number_sighted = models.IntegerField(blank=True) # TODO verify is greater than zero
-
-
     ## Location details
     secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
     point_location = models.PointField(null=True, blank=True)
