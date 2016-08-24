@@ -1,7 +1,7 @@
 from django.contrib.gis import admin
 from django.conf import settings
 
-from .models import Bird
+from .models import Bird, BirdSighting
 from .forms import BirdForm
 
 
@@ -16,10 +16,10 @@ class BirdAdmin(admin.GeoModelAdmin):
 
     fieldsets = [
         (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
-        ('Location', {'fields':['primary_location', 'secondary_location']}),
-        ('Catch', {'fields':['date_caught', 'caught_by', 'banded_by', 'caught_location']}),
-        ('Band', {'fields':['id_band_type', 'id_band_leg', 'id_band', 'colour_band_colour',
-                            'colour_band_symbol', 'colour_band_symbol_colour']}),
+        ('Location', {'fields':[('primary_location', 'secondary_location')]}),
+        ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
+        ('Band', {'fields':[('id_band', 'id_band_leg'), 'colour_band_type', 'colour_band_colour',
+                            ('colour_band_symbol', 'colour_band_symbol_colour')]}),
         ('Transmitter', {'fields':['transmitter', 'transmitter_channel']}),
         ('Notes', {'fields':['health', 'notes']}),
     ]
@@ -30,3 +30,21 @@ class BirdAdmin(admin.GeoModelAdmin):
 
 
 admin.site.register(Bird, BirdAdmin)
+
+
+class BirdSightingAdmin(admin.GeoModelAdmin):
+    """ Defines the fieldsets for the BirdSighting model admin """
+    list_display = ('sighting', 'verification', 'bird',)
+    list_filter = ('verification',)
+
+    fieldsets = [
+        (None, {'fields':['sighting']}),
+        ('Kea details', {'fields':['status', 'sex', 'life_stage']}),
+        ('Band details', {'fields':['banded', 'colour_band_type', 'colour_band_colour',
+                                    'colour_band_symbol', 'colour_band_symbol_colour']}),
+        ('Verification', {'fields':['verification']}),
+        ('Kea match', {'fields':['bird']}),
+    ]
+
+
+admin.site.register(BirdSighting, BirdSightingAdmin)

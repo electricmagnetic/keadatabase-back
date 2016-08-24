@@ -1,56 +1,71 @@
 from django.contrib.gis.db import models
 
 from locations.models import PrimaryLocation, SecondaryLocation
+from sightings.models import Sighting
 
 
+# Choices
+BAND_CHOICES = (
+    ('', 'Couldn\'t tell'),
+    ('U', 'Banded, unreadable'),
+    ('B', 'Banded, readable'),
+    ('N', 'Not banded'),
+)
+
+VERIFICATION_CHOICES = (
+    ('', 'Unverified'),
+    ('Q', 'Questionable'),
+    ('G', 'Good'),
+    ('C', 'Confirmed'),
+)
+
+SEX_CHOICES = (
+    ('', 'Unknown'),
+    ('F', 'Female'),
+    ('M', 'Male'),
+)
+
+LIFE_STAGE_CHOICES = (
+    ('', 'Unknown'),
+    ('A', 'Adult'),
+    ('S', 'Sub-adult'),
+    ('J', 'Juvenile'),
+    ('F', 'Fledgling'),
+)
+
+STATUS_CHOICES = (
+    ('A', 'Alive'),
+    ('D', 'Dead'),
+)
+
+LEG_CHOICES = (
+    ('', 'Unknown'),
+    ('L', 'Left'),
+    ('R', 'Right'),
+)
+
+COLOUR_CHOICES = (
+    ('', 'Unknown'),
+    ('BLACK', 'Black'),
+    ('WHITE', 'White'),
+    ('RED', 'Red'),
+    ('ORANGE', 'Orange'),
+    ('YELLOW', 'Yellow'),
+    ('GREEN', 'Green'),
+    ('BLUE', 'Blue'),
+    ('PURPLE', 'Purple'),
+    ('GREY', 'Grey'),
+)
+
+BAND_TYPE_CHOICES = (
+    ('', 'Unknown'),
+    ('P', 'Plastic (modern)'),
+    ('M', 'Metal (historic)'),
+)
+
+# Models
 class Bird(models.Model):
     """ Information on existing banded birds """
-
-    # Choices
-    SEX_CHOICES = (
-        ('', 'Unknown'),
-        ('F', 'Female'),
-        ('M', 'Male'),
-    )
-
-    LIFE_STAGE_CHOICES = (
-        ('', 'Unknown'),
-        ('A', 'Adult'),
-        ('S', 'Sub-adult'),
-        ('J', 'Juvenile'),
-        ('F', 'Fledgling'),
-    )
-
-    STATUS_CHOICES = (
-        ('A', 'Alive'),
-        ('D', 'Dead'),
-    )
-
-    LEG_CHOICES = (
-        ('', 'Unknown'),
-        ('L', 'Left'),
-        ('R', 'Right'),
-    )
-
-    COLOUR_CHOICES = (
-        ('', 'Unknown'),
-        ('BLACK', 'Black'),
-        ('WHITE', 'White'),
-        ('RED', 'Red'),
-        ('ORANGE', 'Orange'),
-        ('YELLOW', 'Yellow'),
-        ('GREEN', 'Green'),
-        ('BLUE', 'Blue'),
-        ('PURPLE', 'Purple'),
-        ('GREY', 'Grey'),
-    )
-
-    BAND_CHOICES = (
-        ('', 'Unknown'),
-        ('P', 'Plastic (modern)'),
-        ('M', 'Metal (historic)'),
-    )
-
 
     # Fields
     ## Basic details
@@ -77,12 +92,12 @@ class Bird(models.Model):
 
 
     ## Band details
-    id_band_type = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES,
-                                    verbose_name='ID band type', default='')
     id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
                                    verbose_name='ID band leg (primary)', default='')
     id_band = models.CharField(max_length=200, verbose_name='ID band (V-band)')
 
+    colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
+                                        verbose_name='Colour band type', default='')
     colour_band_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
                                           default='')
     colour_band_symbol = models.CharField(max_length=1, blank=True)
@@ -98,6 +113,10 @@ class Bird(models.Model):
     ## Notes
     health = models.TextField(blank=True)
     notes = models.TextField(blank=True)
+
+
+    ## Media
+    # TODO photo
 
 
     ## Metadata
@@ -139,13 +158,52 @@ class Bird(models.Model):
         """ Creates string containing colour band information """
 
         if self.colour_band_colour or self.colour_band_symbol_colour or self.colour_band_symbol:
-            return '%s band; %s "%s"' % (self.get_colour_band_colour_display(),
-                                         self.get_colour_band_symbol_colour_display(),
-                                         self.colour_band_symbol)
+            return '%s "%s" on %s' % (self.get_colour_band_symbol_colour_display(),
+                                         self.colour_band_symbol(),
+                                         self.get_colour_band_colour_display)
         else:
             return ''
     get_colour_band.short_description = 'Colour band'
 
 
+    # TODO validate bands are unique to one bird
+    # TODO verify secondary location is in primary location (and elsewhere)
+
+
     def __str__(self):
         return self.get_identifier()
+
+
+class BirdSighting(models.Model):
+    """ Foreign key of Sighting, able to be verified and tagged to a particular Bird """
+
+    # Fields
+    ## Foreign key
+    sighting = models.ForeignKey(Sighting)
+
+
+    ## Basic details
+    status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES, default='A')
+    sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES, default='')
+    life_stage = models.CharField(max_length=1, blank=True, choices=LIFE_STAGE_CHOICES, default='')
+
+
+    ## Band details
+    banded = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES, default='N')
+
+    colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
+                                    verbose_name='Colour band type', default='')
+    colour_band_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
+                                          default='')
+    colour_band_symbol = models.CharField(max_length=1, blank=True)
+    colour_band_symbol_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
+                                                 default='')
+
+
+    ## Verification details (admin only)
+    verification = models.CharField(max_length=1, blank=True, choices=VERIFICATION_CHOICES,
+                                    default='')
+
+
+    ## Bird details (admin only)
+    bird = models.ForeignKey(Bird, blank=True, null=True)
