@@ -139,3 +139,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 GEO_DEFAULT_LON = 171.56669
 GEO_DEFAULT_LAT = -42.94366
 GEO_DEFAULT_ZOOM = 6
+
+GEO_API_KEY = ''
+GEO_WMS_URL = 'https://data.linz.govt.nz/services;key=%s/wms/' % (GEO_API_KEY)
+GEO_WMS_LAYER = 'layer-798'
+GEO_WMS_NAME = 'LINZ Topo250'
+GEO_WMS_OPTIONS = {'format': 'image/png'}

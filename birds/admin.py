@@ -18,7 +18,7 @@ class BirdAdmin(admin.GeoModelAdmin):
         (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
         ('Location', {'fields':[('primary_location', 'secondary_location')]}),
         ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
-        ('Band', {'fields':[('id_band', 'id_band_leg'), 'colour_band_type', 'colour_band_colour',
+        ('Band', {'fields':[('id_band', 'id_band_leg'), ('colour_band_type', 'colour_band_colour'),
                             ('colour_band_symbol', 'colour_band_symbol_colour')]}),
         ('Transmitter', {'fields':['transmitter', 'transmitter_channel']}),
         ('Notes', {'fields':['health', 'notes']}),
@@ -27,6 +27,14 @@ class BirdAdmin(admin.GeoModelAdmin):
     default_lon = settings.GEO_DEFAULT_LON
     default_lat = settings.GEO_DEFAULT_LAT
     default_zoom = settings.GEO_DEFAULT_ZOOM
+
+    wms_url = settings.GEO_WMS_URL
+    wms_layer = settings.GEO_WMS_LAYER
+    wms_name = settings.GEO_WMS_NAME
+    wms_options = settings.GEO_WMS_OPTIONS
+
+    # TODO change to EPSG:2193 to fix map render issues
+    # TODO use local openlayers (instead of external URL for JS library)
 
 
 admin.site.register(Bird, BirdAdmin)

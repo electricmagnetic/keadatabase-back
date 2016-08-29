@@ -44,7 +44,7 @@ LEG_CHOICES = (
     ('R', 'Right'),
 )
 
-COLOUR_CHOICES = (
+BAND_COLOUR_CHOICES = (
     ('', 'Unknown'),
     ('BLACK', 'Black'),
     ('WHITE', 'White'),
@@ -53,8 +53,17 @@ COLOUR_CHOICES = (
     ('YELLOW', 'Yellow'),
     ('GREEN', 'Green'),
     ('BLUE', 'Blue'),
-    ('PURPLE', 'Purple'),
     ('GREY', 'Grey'),
+    ('O', 'Other'),
+)
+
+BAND_SYMBOL_COLOUR_CHOICES = (
+    ('', 'Unknown'),
+    ('BLACK', 'Black'),
+    ('WHITE', 'White'),
+    ('RED', 'Red'),
+    ('YELLOW', 'Yellow'),
+    ('O', 'Other'),
 )
 
 BAND_TYPE_CHOICES = (
@@ -98,11 +107,11 @@ class Bird(models.Model):
 
     colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
                                         verbose_name='Colour band type', default='')
-    colour_band_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
+    colour_band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
                                           default='')
     colour_band_symbol = models.CharField(max_length=1, blank=True)
-    colour_band_symbol_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
-                                                 default='')
+    colour_band_symbol_colour = models.CharField(max_length=8, blank=True,
+                                                 choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
 
 
     ## Transmitter details
@@ -159,15 +168,22 @@ class Bird(models.Model):
 
         if self.colour_band_colour or self.colour_band_symbol_colour or self.colour_band_symbol:
             return '%s "%s" on %s' % (self.get_colour_band_symbol_colour_display(),
-                                         self.colour_band_symbol(),
-                                         self.get_colour_band_colour_display)
+                                      self.colour_band_symbol,
+                                      self.get_colour_band_colour_display())
         else:
             return ''
     get_colour_band.short_description = 'Colour band'
 
 
-    # TODO validate bands are unique to one bird
-    # TODO verify secondary location is in primary location (and elsewhere)
+    # TODO validate colour band is unique to one bird
+    # TODO validate v-band is unique to one bird
+    # TODO validate secondary location is a child of the primary location
+    # TODO validate date is not from the future
+    # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?)
+    # TODO transform symbol to uppercase letter (if letter)
+    # TODO change PointField to allow manual point entry
+    # TODO change PointField to use Topo250 maps
+    # TODO test all of the above
 
 
     def __str__(self):
@@ -192,12 +208,12 @@ class BirdSighting(models.Model):
     banded = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES, default='N')
 
     colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
-                                    verbose_name='Colour band type', default='')
-    colour_band_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
+                                        verbose_name='Colour band type', default='')
+    colour_band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
                                           default='')
     colour_band_symbol = models.CharField(max_length=1, blank=True)
-    colour_band_symbol_colour = models.CharField(max_length=8, blank=True, choices=COLOUR_CHOICES,
-                                                 default='')
+    colour_band_symbol_colour = models.CharField(max_length=8, blank=True,
+                                                 choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
 
 
     ## Verification details (admin only)
