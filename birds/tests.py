@@ -1,3 +1,5 @@
+from unittest import skip
+
 from django.test import TestCase
 from django.db.utils import IntegrityError
 from django.core.exceptions import ValidationError
@@ -22,6 +24,49 @@ class BirdObjectTests(TestCase):
         with self.assertRaises(ValidationError):
             bird.save()
             bird.full_clean()
+
+
+    @skip
+    def test_validate_unique_colour_band(self):
+        """ Check only unique colour band combinations can be added (in one location?) """
+        self.fail('TODO')
+
+
+    @skip
+    def test_validate_unique_id_band(self):
+        """ Check only unique id bands can be added (in one location?) """
+        self.fail('TODO')
+
+
+    @skip
+    def test_validate_child_secondary_location(self):
+        """ Check that a secondary_location can only be added if it is a child of the
+            primary_location """
+        self.fail('TODO')
+
+
+    @skip
+    def test_validate_date_caught(self):
+        """ Check that date_caught can only be today or from the past """
+        self.fail('TODO')
+
+
+    @skip
+    def test_transform_id_band(self):
+        """ Check that id bands are consistently transformed """
+        self.fail('TODO')
+
+
+    @skip
+    def test_transform_colour_band_symbol(self):
+        """ Check that colour band symbols are consistently transformed """
+        self.fail('TODO')
+
+
+    @skip
+    def test_validate_caught_location(self):
+        """ Check that only valid point locations are accepted """
+        self.fail('TODO')
 
 
 class BirdMethodTests(TestCase):
@@ -64,7 +109,6 @@ class BirdMethodTests(TestCase):
 
         bird_known_leg = Bird(id_band='V-12345', id_band_leg='R')
         self.assertEqual(bird_known_leg.get_id_band(), 'V-12345 [Right]')
-
 
 
     def test_colour_band_method(self):

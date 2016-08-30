@@ -182,9 +182,8 @@ class Bird(models.Model):
     # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?)
     # TODO transform symbol to uppercase letter (if letter)
     # TODO change PointField to allow manual point entry
-    # TODO validate PointField input
-    # TODO change PointField to use Topo250 maps
-    # TODO test all of the above
+    # TODO validate PointField input (is a valid lat/long, is valid EPSG, is in New Zealand bounds)
+    # TODO change PointField to use non-distored Topo250 maps
 
 
     def __str__(self):
