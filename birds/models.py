@@ -157,7 +157,7 @@ class Bird(models.Model):
         """ Creates string containing ID band information """
 
         if self.id_band_leg:
-            return '%s [%s]' % (self.id_band, self.id_band_leg)
+            return '%s [%s]' % (self.id_band, self.get_id_band_leg_display())
         else:
             return self.id_band
     get_id_band.short_description = 'ID band'
@@ -182,6 +182,7 @@ class Bird(models.Model):
     # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?)
     # TODO transform symbol to uppercase letter (if letter)
     # TODO change PointField to allow manual point entry
+    # TODO validate PointField input
     # TODO change PointField to use Topo250 maps
     # TODO test all of the above
 

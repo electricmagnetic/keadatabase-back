@@ -1,26 +1,27 @@
 from django.test import TestCase
+from django.db.utils import IntegrityError
+from django.core.exceptions import ValidationError
 
 from .models import Bird
 from locations.models import PrimaryLocation, SecondaryLocation
 
 
-#class BirdObjectTests(TestCase):
-    #""" Tests for create/edit/delete functions of Bird objects """
+class BirdObjectTests(TestCase):
+    """ Tests for create/edit/delete functions of Bird objects """
 
-    # TODO
-    #def test_blank(self):
-        #""" The model should not submit if all fields are left blank """
-        #self.assertRaises(OperationalError, Bird, transmitter=False)
+    def test_blank(self):
+        """ The model should not submit if all fields are left blank """
+        with self.assertRaises(IntegrityError):
+            Bird.objects.create()
 
-    # TODO
-    #def test_longitude_latitude_fields(self):
-        #""" The model should accept all valid latitude and longitudes (assuming EPSG:4326) """
-        #bird_positive_lat_long = Bird(id_band='V-12345', caught_longitude='179.987654321',
-        #                              caught_latitude='89.987654321')
-        #bird_negative_lat_long = Bird(id_band='V-12345', caught_longitude='-179.987654321',
-        #                              caught_latitude='-89.987654321')
 
-        #self.assertIs(True, True)
+    def test_blank_id_band(self):
+        """ The model should not submit if the compulsory id_band field is blank """
+        bird = Bird(transmitter=False)
+
+        with self.assertRaises(ValidationError):
+            bird.save()
+            bird.full_clean()
 
 
 class BirdMethodTests(TestCase):
@@ -28,7 +29,6 @@ class BirdMethodTests(TestCase):
 
     def test_identifier_method(self):
         """ The get_identifier method should return an appropriate name """
-
         bird_id_only = Bird(id_band='V-12345')
         self.assertEqual(bird_id_only.get_identifier(), 'V-12345')
 
@@ -38,18 +38,18 @@ class BirdMethodTests(TestCase):
 
     def test_location_method(self):
         """ The get_location method should return an appropriate location """
-        primary_location_example = PrimaryLocation.objects.create(name='Craigieburn Forest Park')
-        secondary_location_example = SecondaryLocation.objects.create(name='Broken River Ski Area',
-                                                                      primary_location=primary_location_example)
+        primary_location = PrimaryLocation.objects.create(name='Craigieburn Forest Park')
+        secondary_location = SecondaryLocation.objects.create(name='Broken River Ski Area',
+                                                              primary_location=primary_location)
 
-        bird_primary = Bird(id_band='V-12345', primary_location=primary_location_example)
+        bird_primary = Bird(id_band='V-12345', primary_location=primary_location)
         self.assertEqual(bird_primary.get_location(), 'Craigieburn Forest Park')
 
-        bird_secondary = Bird(id_band='V-12345', secondary_location=secondary_location_example)
+        bird_secondary = Bird(id_band='V-12345', secondary_location=secondary_location)
         self.assertEqual(bird_secondary.get_location(), 'Broken River Ski Area')
 
-        bird_both = Bird(id_band='V-12345', primary_location=primary_location_example,
-                         secondary_location=secondary_location_example)
+        bird_both = Bird(id_band='V-12345', primary_location=primary_location,
+                         secondary_location=secondary_location)
         self.assertEqual(bird_both.get_location(),
                          'Craigieburn Forest Park (Broken River Ski Area)')
 
@@ -59,11 +59,19 @@ class BirdMethodTests(TestCase):
 
     def test_id_band_method(self):
         """ The get_id_band method should return an appropriately formatted ID band """
+        bird_unknown_leg = Bird(id_band='V-12345')
+        self.assertEqual(bird_unknown_leg.get_id_band(), 'V-12345')
 
-        self.assertEqual(True, True)
+        bird_known_leg = Bird(id_band='V-12345', id_band_leg='R')
+        self.assertEqual(bird_known_leg.get_id_band(), 'V-12345 [Right]')
+
 
 
     def test_colour_band_method(self):
         """ The get_colour_band method should return an appropriately formatted colour band """
+        bird_blank_colour_band = Bird(id_band='V-12345')
+        self.assertEqual(bird_blank_colour_band.get_colour_band(), '')
 
-        self.assertEqual(True, True)
+        bird_colour_band = Bird(id_band='V-12345', colour_band_colour='BLACK',
+                                colour_band_symbol='A', colour_band_symbol_colour='WHITE')
+        self.assertEqual(bird_colour_band.get_colour_band(), 'White "A" on Black')
