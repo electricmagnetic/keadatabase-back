@@ -1,4 +1,7 @@
+from datetime import date
+
 from django.contrib.gis.db import models
+from django.core.exceptions import ValidationError
 
 from locations.models import PrimaryLocation, SecondaryLocation
 from sightings.models import Sighting
@@ -103,7 +106,7 @@ class Bird(models.Model):
     ## Band details
     id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
                                    verbose_name='ID band leg (primary)', default='')
-    id_band = models.CharField(max_length=200, verbose_name='ID band (V-band)')
+    id_band = models.CharField(max_length=200, verbose_name='ID band (v-band)', unique=True)
 
     colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
                                         verbose_name='Colour band type', default='')
@@ -115,7 +118,6 @@ class Bird(models.Model):
 
 
     ## Transmitter details
-    transmitter = models.BooleanField()
     transmitter_channel = models.CharField(max_length=10, blank=True)
 
 
@@ -175,19 +177,40 @@ class Bird(models.Model):
     get_colour_band.short_description = 'Colour band'
 
 
-    # TODO validate colour band is unique to one bird
-    # TODO validate v-band is unique to one bird
+    def __str__(self):
+        return self.get_identifier()
+
+
+    # Transformation
+    def save(self, *args, **kwargs):
+        """ Transform various model fields for consistency """
+        ## Transform characters to lowercase in id_band
+        self.id_band = self.id_band.lower()
+
+        ## Transform characters to uppercase in colour_band_symbol
+        self.colour_band_symbol = self.colour_band_symbol.upper()
+
+        super(Bird, self).save(*args, **kwargs)
+
+
+    # Validation
+    def clean(self):
+        """ Validate various model fields to ensure uniqueness and consistency """
+        ## Validate date_caught is not from the future
+        current_date = date.today()
+        if self.date_caught:
+            if self.date_caught > current_date:
+                raise ValidationError({'date_caught': ('Date cannot be from the future.')})
+
+
+    # TODO validate colour band is unique to one bird (in one primary location)
     # TODO validate secondary location is a child of the primary location
-    # TODO validate date is not from the future
-    # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?)
+    # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?) test this
+    # TODO validate v-band uniqueness after transform
     # TODO transform symbol to uppercase letter (if letter)
     # TODO change PointField to allow manual point entry
     # TODO validate PointField input (is a valid lat/long, is valid EPSG, is in New Zealand bounds)
-    # TODO change PointField to use non-distored Topo250 maps
-
-
-    def __str__(self):
-        return self.get_identifier()
+    # TODO change PointField to use non-distorted Topo250 maps
 
 
 class BirdSighting(models.Model):
