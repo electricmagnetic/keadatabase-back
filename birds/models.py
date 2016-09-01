@@ -2,6 +2,7 @@ from datetime import date
 
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 
 from locations.models import PrimaryLocation, SecondaryLocation
 from sightings.models import Sighting
@@ -106,7 +107,13 @@ class Bird(models.Model):
     ## Band details
     id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
                                    verbose_name='ID band leg (primary)', default='')
-    id_band = models.CharField(max_length=200, verbose_name='ID band (v-band)', unique=True)
+    id_band = models.CharField(max_length=200, verbose_name='ID band (v-band)', unique=True,
+                               validators=[
+                                   RegexValidator(regex='^[a-z0-9]{1,2}-[0-9]+$',
+                                                  message='ID band must be a lowercase series of ' \
+                                                  'letters or numbers followed by a dash then a ' \
+                                                  'series of numbers. No spaces.')
+                               ])
 
     colour_band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
                                         verbose_name='Colour band type', default='')
@@ -150,8 +157,10 @@ class Bird(models.Model):
 
         if self.primary_location and self.secondary_location:
             return '%s (%s)' % (self.primary_location, self.secondary_location)
+        elif self.primary_location:
+            return '%s' % (self.primary_location)
         else:
-            return '%s' % (self.primary_location or self.secondary_location or '')
+            return ''
     get_location.short_description = 'Location'
 
 
@@ -177,6 +186,15 @@ class Bird(models.Model):
     get_colour_band.short_description = 'Colour band'
 
 
+    def get_colour_band_code(self):
+        """ Creates unique code for colour band combination """
+        if self.colour_band_colour or self.colour_band_symbol_colour or self.colour_band_symbol:
+            return '%s-%s_%s' % (self.colour_band_symbol_colour, self.colour_band_symbol,
+                                 self.colour_band_colour)
+        else:
+            return ''
+
+
     def __str__(self):
         return self.get_identifier()
 
@@ -184,9 +202,6 @@ class Bird(models.Model):
     # Transformation
     def save(self, *args, **kwargs):
         """ Transform various model fields for consistency """
-        ## Transform characters to lowercase in id_band
-        self.id_band = self.id_band.lower()
-
         ## Transform characters to uppercase in colour_band_symbol
         self.colour_band_symbol = self.colour_band_symbol.upper()
 
@@ -196,17 +211,44 @@ class Bird(models.Model):
     # Validation
     def clean(self):
         """ Validate various model fields to ensure uniqueness and consistency """
+        errors = {}
+
         ## Validate date_caught is not from the future
         current_date = date.today()
         if self.date_caught:
             if self.date_caught > current_date:
-                raise ValidationError({'date_caught': ('Date cannot be from the future.')})
+                errors.update({'date_caught': ('Date cannot be from the future.')})
+
+
+        ## Validate secondary_location is paired with/is a child of primary_location
+        if self.primary_location and self.secondary_location:
+            if self.secondary_location.primary_location != self.primary_location:
+                errors.update({'secondary_location': ('Secondary location must be in ' \
+                                                              'primary location.')})
+        elif self.secondary_location:
+            errors.update({'primary_location': ('Must have primary location if secondary ' \
+                                                        'location is specified.')})
+
+
+        ## Validate that only fully completed colour bands are entered (i.e. no partial bands)
+        if self.colour_band_colour or self.colour_band_symbol_colour or self.colour_band_symbol:
+            if not self.colour_band_colour:
+                errors.update({'colour_band_colour': 'Cannot leave colour band partially ' \
+                                                     'complete. Please fill out remainder.'})
+            if not self.colour_band_symbol_colour:
+                errors.update({'colour_band_symbol_colour': 'Cannot leave colour band partially ' \
+                                                            'complete. Please fill out remainder.'})
+            if not self.colour_band_symbol:
+                errors.update({'colour_band_symbol': 'Cannot leave colour band partially ' \
+                                                     'complete. Please fill out remainder.'})
+
+
+        ## If any errors occur, raise them
+        if errors:
+            raise ValidationError(errors)
 
 
     # TODO validate colour band is unique to one bird (in one primary location)
-    # TODO validate secondary location is a child of the primary location
-    # TODO validate v-band conforms (e.g. uppercase/lowercase, with/without dash, prefix?) test this
-    # TODO validate v-band uniqueness after transform
     # TODO transform symbol to uppercase letter (if letter)
     # TODO change PointField to allow manual point entry
     # TODO validate PointField input (is a valid lat/long, is valid EPSG, is in New Zealand bounds)
