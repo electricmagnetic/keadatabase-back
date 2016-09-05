@@ -1,0 +1,38 @@
+{% load static compress %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="_ruaCnGdeKikK8qlg4mOhzrSDNr_tjv-juM-5GZjyd8" />
+
+    <title>Kea Database</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&subset=latin-ext" rel="stylesheet">
+
+    <!-- Styles -->
+    {% compress css %}
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/bootstrap.scss' %}" />
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/custom.scss' %}" />
+    {% endcompress %}
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      {% compress js %}
+        <script src="{% static 'html5shiv/dist/html5shiv.js' %}"></script>
+        <script src="{% static 'respond/dest/respond.src.js' %}"></script>
+      {% endcompress %}
+    <![endif]-->
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+
+    {% compress js %}
+      <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+      <script src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
+      <script src="{% static 'js/ga.js' %}"></script>
+    {% endcompress %}
+  </body>
+</html>
