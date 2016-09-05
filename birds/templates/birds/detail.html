@@ -3,11 +3,15 @@
 {% block content %}
   <div class="container">
     <h1>{{ object.get_identifier }}</h1>
-    <ul>
-      <li>{{ object.get_location }}</li>
-      <li>{{ object.id_band }}</li>
-      <li>{{ object.get_colour_band }}</li>
-    </ul>
+    <dl>
+      <dt>Location</dt>
+      <dd>{{ object.get_location }}</dd>
+      <dt>Colour band</dt>
+      <dd>{{ object.get_colour_band }}</dd>
+      <dt>ID band</dt>
+      <dd>{{ object.id_band }}</dd>
+    </dl>
+    <h2>Sightings</h2>
     <ul>
       {% for birdsighting in object.birdsighting_set.all %}
         <li>{{ birdsighting.sighting }} at {{ birdsighting.sighting.point_location }}</li>
