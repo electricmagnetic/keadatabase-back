@@ -1,20 +1,29 @@
+{% load static compress %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="google-site-verification" content="_ruaCnGdeKikK8qlg4mOhzrSDNr_tjv-juM-5GZjyd8" />
+
     <title>Kea Conservation Trust database</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&subset=latin-ext" rel="stylesheet">
+
+    <!-- Styles -->
+    {% compress css %}
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/bootstrap.scss' %}" />
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/custom.scss' %}" />
+    {% endcompress %}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      {% compress js %}
+        <script src="{% static 'html5shiv/dist/html5shiv.js' %}"></script>
+        <script src="{% static 'respond/dest/respond.src.js' %}"></script>
+      {% endcompress %}
     <![endif]-->
   </head>
   <body>
@@ -22,23 +31,21 @@
       <h1>Kea Conservation Trust database</h1>
       <p>You've reached the Kea Conservation Trust database. It is still in alpha stage, please follow the links below:</p>
       <h2>Links</h2>
-      <p>
-        <ul>
-          <li><a href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a href="{% url 'birds:index' %}">Birds</a></li>
-          <li><a href="{% url 'sightings:index' %}">Sightings</a></li>
-        </ul>
-        <ul>
-          <li><a href="https://gitlab.com/greenstone/keadatabase">Code on GitLab</a></li>
-          <li><a href="http://www.keaconservation.co.nz/">Kea Conservation Trust</a></li>
-        </ul>
-      </p>
+      <ul>
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        <li><a href="{% url 'birds:index' %}">Birds</a></li>
+        <li><a href="{% url 'sightings:index' %}">Sightings</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://gitlab.com/greenstone/keadatabase">Code on GitLab</a></li>
+        <li><a href="http://www.keaconservation.co.nz/">Kea Conservation Trust</a></li>
+      </ul>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% compress js %}
+      <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+      <script src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
+      <script src="{% static 'js/ga.js' %}"></script>
+    {% endcompress %}
   </body>
 </html>

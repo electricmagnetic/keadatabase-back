@@ -4,3 +4,5 @@ djangorestframework==3.4.3
 Markdown==2.6.6
 django-autocomplete-light==3.1.8
 psycopg2==2.6.2
+django-compressor==2.1
+django-libsass==0.7

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'rest_framework',
+    'compressor',
 
     'locations',
     'birds',
@@ -134,6 +135,16 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'bower_components')
+]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 
 # GeoDjango defaults
 GEO_DEFAULT_LON = 171.56669
@@ -145,3 +156,8 @@ GEO_WMS_URL = 'https://data.linz.govt.nz/services;key=%s/wms/' % (GEO_API_KEY)
 GEO_WMS_LAYER = 'layer-798'
 GEO_WMS_NAME = 'LINZ Topo250'
 GEO_WMS_OPTIONS = {'format': 'image/png'}
+
+# django-compressor
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
