@@ -5,12 +5,8 @@
     <h1>Kea Database</h1>
     <p>You've reached the alpha version of the Kea Conservation Trust kea database.</p>
     <p>
-      <a href="#" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Report sighting</a>
-      <a href="#" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search kea</a>
+      <a href="#" class="btn btn-lg btn-primary" role="button"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Report sighting</a>
+      <a href="{% url 'birds:index' %}" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search kea</a>
     </p>
-    <ul>
-      <li><a href="https://gitlab.com/greenstone/keadatabase">Code on GitLab</a></li>
-      <li><a href="http://www.keaconservation.co.nz/">Kea Conservation Trust</a></li>
-    </ul>
   </div>
 {% endblock %}

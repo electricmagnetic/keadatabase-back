@@ -1,1 +1,9 @@
 @import "variables_custom";
+
+footer {
+  margin-top: $line-height-computed;
+  
+  .catalyst-cloud {
+    height: 50px;
+  }
+}

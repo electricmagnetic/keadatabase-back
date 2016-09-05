@@ -27,9 +27,13 @@
     <![endif]-->
   </head>
   <body>
-    {% include 'includes/header.html' %}
+    {% include 'includes/nav.html' %}
 
-    {% block content %}{% endblock %}
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include 'includes/footer.html' %}
 
     {% compress js %}
       <script src="{% static 'jquery/dist/jquery.js' %}"></script>
