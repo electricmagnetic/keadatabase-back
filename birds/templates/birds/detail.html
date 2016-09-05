@@ -1,0 +1,11 @@
+<h1>{{ object.get_identifier }}</h1>
+<ul>
+  <li>{{ object.get_location }}</li>
+  <li>{{ object.id_band }}</li>
+  <li>{{ object.get_colour_band }}</li>
+</ul>
+<ul>
+  {% for birdsighting in object.birdsighting_set.all %}
+    <li>{{ birdsighting.sighting }} at {{ birdsighting.sighting.point_location }}</li>
+  {% endfor %}
+</ul>

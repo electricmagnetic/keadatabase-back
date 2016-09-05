@@ -249,6 +249,7 @@ class Bird(models.Model):
 
 
     # TODO validate colour band is unique to one bird (in one primary location)
+    # TODO enable search by coloud band
     # TODO transform symbol to uppercase letter (if letter)
     # TODO change PointField to allow manual point entry
     # TODO validate PointField input (is a valid lat/long, is valid EPSG, is in New Zealand bounds)

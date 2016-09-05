@@ -24,21 +24,15 @@
       <h2>Links</h2>
       <p>
         <ul>
-          <li><a href="{% url 'admin:index' %}">Admin login</a></li>
+          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a href="{% url 'birds:index' %}">Birds</a></li>
+          <li><a href="{% url 'sightings:index' %}">Sightings</a></li>
+        </ul>
+        <ul>
           <li><a href="https://gitlab.com/greenstone/keadatabase">Code on GitLab</a></li>
           <li><a href="http://www.keaconservation.co.nz/">Kea Conservation Trust</a></li>
         </ul>
       </p>
-      {% if object_list %}
-        <h2>Birds ({{ object_list.count }})</h2>
-        <p>
-          <ul>
-            {% for bird in object_list %}
-              <li>{{ bird }}</li>
-            {% endfor %}
-          </ul>
-        </p>
-      {% endif %}
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^sightings/', include('sightings.urls', namespace='sightings')),
+    url(r'^birds/', include('birds.urls', namespace='birds')),
     url(r'^locations/', include('locations.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^admin/', admin.site.urls),

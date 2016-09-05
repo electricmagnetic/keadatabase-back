@@ -1,0 +1,9 @@
+<ul>
+  <li>{{ object.date_sighted }}</li>
+  <li>{{ object.time_sighted }}</li>
+</ul>
+<ul>
+  {% for birdsighting in object.birdsighting_set.all %}
+    <li>{{ birdsighting }}</li>
+  {% endfor %}
+</ul>

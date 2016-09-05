@@ -1,0 +1,10 @@
+{% if object_list %}
+  <h2>Birds ({{ object_list.count }})</h2>
+  <p>
+    <ul>
+      {% for bird in object_list %}
+        <li><a href="{% url 'birds:detail' bird.id %}">{{ bird }}</a></li>
+      {% endfor %}
+    </ul>
+  </p>
+{% endif %}

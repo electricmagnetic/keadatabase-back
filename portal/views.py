@@ -1,7 +1,3 @@
-from django.views.generic.list import ListView
+from django.shortcuts import render
 
-from birds.models import Bird
-
-
-class BirdListView(ListView):
-    model = Bird
+# Create your views here.
