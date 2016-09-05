@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <ul>
-    <li>{{ object.date_sighted }}</li>
-    <li>{{ object.time_sighted }}</li>
-  </ul>
-  <ul>
-    {% for birdsighting in object.birdsighting_set.all %}
-      <li>{{ birdsighting }}</li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <ul>
+      <li>{{ object.date_sighted }}</li>
+      <li>{{ object.time_sighted }}</li>
+    </ul>
+    <ul>
+      {% for birdsighting in object.birdsighting_set.all %}
+        <li>{{ birdsighting }}</li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
