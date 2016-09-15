@@ -4,7 +4,8 @@ from .models import Sighting
 
 
 class SightingSerializer(serializers.HyperlinkedModelSerializer):
-    birds = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    birds = serializers.HyperlinkedRelatedField(many=True, read_only=True,
+                                                view_name='birdsighting-detail')
 
     class Meta:
         model = Sighting
