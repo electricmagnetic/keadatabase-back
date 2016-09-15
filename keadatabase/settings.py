@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'rest_framework',
+    'rest_framework_gis',
     'compressor',
 
     'locations',
     'birds',
     'sightings',
     'portal',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -157,7 +159,17 @@ GEO_WMS_LAYER = 'layer-798'
 GEO_WMS_NAME = 'LINZ Topo250'
 GEO_WMS_OPTIONS = {'format': 'image/png'}
 
+
 # django-compressor
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+
+# djangorestframework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'PAGE_SIZE': 50
+}

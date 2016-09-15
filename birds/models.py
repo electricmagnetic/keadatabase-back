@@ -256,7 +256,7 @@ class BirdSighting(models.Model):
     """ Foreign key of Sighting, able to be verified and tagged to a particular Bird """
     # Fields
     ## Foreign key
-    sighting = models.ForeignKey(Sighting)
+    sighting = models.ForeignKey(Sighting, related_name='birds')
 
 
     ## Basic details
@@ -283,4 +283,4 @@ class BirdSighting(models.Model):
 
 
     ## Bird details (admin only)
-    bird = models.ForeignKey(Bird, blank=True, null=True)
+    bird = models.ForeignKey(Bird, blank=True, null=True, related_name='sightings')

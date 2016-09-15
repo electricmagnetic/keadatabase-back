@@ -1,6 +1,8 @@
 from dal import autocomplete
+from rest_framework import viewsets
 
 from .models import PrimaryLocation, SecondaryLocation
+from .serializers import PrimaryLocationSerializer, SecondaryLocationSerializer
 
 
 class PrimaryLocationAutocomplete(autocomplete.Select2QuerySetView):
@@ -31,3 +33,13 @@ class SecondaryLocationAutocomplete(autocomplete.Select2QuerySetView):
             qs = qs.filter(name__istartswith=self.q)
 
         return qs
+
+
+class PrimaryLocationViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = PrimaryLocation.objects.all()
+    serializer_class = PrimaryLocationSerializer
+
+
+class SecondaryLocationViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = SecondaryLocation.objects.all()
+    serializer_class = SecondaryLocationSerializer
