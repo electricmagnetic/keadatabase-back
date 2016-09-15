@@ -76,10 +76,10 @@ BAND_TYPE_CHOICES = (
     ('M', 'Metal (historic)'),
 )
 
+
 # Models
 class Bird(models.Model):
     """ Information on existing banded birds """
-
     # Fields
     ## Basic details
     name = models.CharField(max_length=200, blank=True)
@@ -217,17 +217,17 @@ class Bird(models.Model):
         current_date = date.today()
         if self.date_caught:
             if self.date_caught > current_date:
-                errors.update({'date_caught': ('Date cannot be from the future.')})
+                errors.update({'date_caught': 'Date cannot be from the future.'})
 
 
         ## Validate secondary_location is paired with/is a child of primary_location
         if self.primary_location and self.secondary_location:
             if self.secondary_location.primary_location != self.primary_location:
-                errors.update({'secondary_location': ('Secondary location must be in ' \
-                                                              'primary location.')})
+                errors.update({'secondary_location': 'Secondary location must be in ' \
+                                                              'primary location.'})
         elif self.secondary_location:
-            errors.update({'primary_location': ('Must have primary location if secondary ' \
-                                                        'location is specified.')})
+            errors.update({'primary_location': 'Must have primary location if secondary ' \
+                                                        'location is specified.'})
 
 
         ## Validate that only fully completed colour bands are entered (i.e. no partial bands)
@@ -248,17 +248,12 @@ class Bird(models.Model):
             raise ValidationError(errors)
 
 
-    # TODO validate colour band is unique to one bird (in one primary location)
-    # TODO enable search by coloud band
-    # TODO transform symbol to uppercase letter (if letter)
-    # TODO change PointField to allow manual point entry
-    # TODO validate PointField input (is a valid lat/long, is valid EPSG, is in New Zealand bounds)
-    # TODO change PointField to use non-distorted Topo250 maps
+    # TODO validate colour band is unique alive bird (in one primary location) (unique together?)
+    # TODO enable search by colour band (index together?)
 
 
 class BirdSighting(models.Model):
     """ Foreign key of Sighting, able to be verified and tagged to a particular Bird """
-
     # Fields
     ## Foreign key
     sighting = models.ForeignKey(Sighting)

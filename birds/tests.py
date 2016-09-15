@@ -89,10 +89,19 @@ class BirdObjectTests(TestCase):
             bird_future.save()
 
 
-    @skip
     def test_transform_colour_band_symbol(self):
         """ Check that colour band symbols are consistently transformed """
-        self.fail('TODO')
+        bird_uppercase = Bird(id_band='v-12345', colour_band_symbol='A', colour_band_colour='WHITE',
+                              colour_band_symbol_colour='BLACK')
+        bird_uppercase.full_clean()
+        bird_uppercase.save()
+        self.assertEqual(bird_uppercase.colour_band_symbol, 'A')
+
+        bird_lowercase = Bird(id_band='v-54321', colour_band_symbol='z', colour_band_colour='BLACK',
+                              colour_band_symbol_colour='WHITE')
+        bird_lowercase.full_clean()
+        bird_lowercase.save()
+        self.assertEqual(bird_lowercase.colour_band_symbol, 'Z')
 
 
     def test_complete_colour_band(self):
@@ -101,12 +110,6 @@ class BirdObjectTests(TestCase):
             bird_partial_colour_band = Bird(id_band='v-12345', colour_band_symbol='*')
             bird_partial_colour_band.full_clean()
             bird_partial_colour_band.save()
-
-
-    @skip
-    def test_validate_caught_location(self):
-        """ Check that only valid point locations are accepted """
-        self.fail('TODO')
 
 
 class BirdMethodTests(TestCase):

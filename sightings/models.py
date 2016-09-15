@@ -1,4 +1,7 @@
+from datetime import date
+
 from django.contrib.gis.db import models
+from django.core.exceptions import ValidationError
 
 from locations.models import PrimaryLocation, SecondaryLocation
 
@@ -28,7 +31,6 @@ ACCURACY_CHOICES = (
 # Models
 class SightingBase(models.Model):
     """ Base abstract class for sightings """
-
     class Meta:
         abstract = True
 
@@ -58,7 +60,6 @@ class SightingBase(models.Model):
 
 class Sighting(SightingBase):
     """ Information on actual sightings, associated with BirdSighting """
-
     # Fields
     ## Basic details
     date_sighted = models.DateField()
@@ -79,10 +80,35 @@ class Sighting(SightingBase):
 
     # Functions
     def __str__(self):
-        return "%s, %s" % (self.date_sighted, self.primary_location)
+        return "%s in %s" % (self.date_sighted, self.primary_location)
 
+
+    # Validation
+    def clean(self):
+        """ Validate various model fields to ensure uniqueness and consistency """
+        errors = {}
+
+        ## Validate date_caught is not from the future
+        current_date = date.today()
+        if self.date_sighted:
+            if self.date_sighted > current_date:
+                errors.update({'date_sighted': 'Date cannot be from the future.'})
+
+
+        ## Validate secondary_location is paired with/is a child of primary_location
+        if self.primary_location and self.secondary_location:
+            if self.secondary_location.primary_location != self.primary_location:
+                errors.update({'secondary_location': 'Secondary location must be in ' \
+                                                              'primary location.'})
+        elif self.secondary_location:
+            errors.update({'primary_location': 'Must have primary location if secondary ' \
+                                                        'location is specified.'})
+
+
+        ## If any errors occur, raise them
+        if errors:
+            raise ValidationError(errors)
 
 
 #class NonSighting(SightingBase):
     #""" Information on non-sightings """
-    #bar

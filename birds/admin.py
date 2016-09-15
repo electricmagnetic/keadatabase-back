@@ -36,6 +36,7 @@ class BirdAdmin(admin.GeoModelAdmin):
 
     # TODO change to EPSG:2193 to fix map render issues
     # TODO use local openlayers (instead of external URL for JS library)
+    # TODO change PointField to allow manual point entry
 
 
 admin.site.register(Bird, BirdAdmin)
