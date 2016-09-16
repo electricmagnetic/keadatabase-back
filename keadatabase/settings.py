@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
 
+    'api',
+
     'rest_framework',
     'rest_framework_gis',
     'compressor',
@@ -50,7 +52,6 @@ INSTALLED_APPS = [
     'birds',
     'sightings',
     'portal',
-    'api',
 ]
 
 MIDDLEWARE = [

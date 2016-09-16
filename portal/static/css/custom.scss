@@ -1,9 +1,46 @@
 @import "variables_custom";
 
 footer {
+  background-color: $gray;
   margin-top: $line-height-computed;
-  
-  .catalyst-cloud {
+  padding-top: $line-height-computed*2;
+  padding-bottom: $line-height-computed*2;
+
+  .footer-left img {
     height: 50px;
+  }
+
+  .footer-right img {
+    height: 100px;
+  }
+
+  .footer-links {
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: $screen-sm) {
+  footer {
+    .footer-right {
+      text-align: right;
+    }
+
+    ul, p {
+      margin-bottom: 0;
+    }
+
+    .footer-links {
+      height: 50px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  footer {
+    text-align: center;
+    ul {
+      padding-bottom: $line-height-computed;
+    }
   }
 }
