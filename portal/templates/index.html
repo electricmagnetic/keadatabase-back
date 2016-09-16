@@ -1,20 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container">
-    <h1>Kea Database</h1>
-    <p>You've reached the alpha version of the Kea Conservation Trust kea database.</p>
-    <p>
-      <a href="#" class="btn btn-lg btn-primary" role="button"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Report sighting</a>
-      <a href="{% url 'birds:index' %}" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search kea</a>
-    </p>
-    <div class="row">
-      <div class="col-md-8">
-        <h2>Latest sightings</h2>
-      </div>
-      <div class="col-md-4">
-        <h2>Sponsors</h2>
+  <section class="no-padding">
+    <div class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <h1>Welcome to the Kea Database</h1>
+          <p>
+            <a href="#" class="btn btn-lg btn-primary" role="button"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Report sighting</a>
+            <a href="{% url 'birds:index' %}" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search kea</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>What is it?</h2>
+          <p>The kea database is a citizen science initiative from the Kea Conservation Trust to help us keep track of New Zealand's alpine parrot.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>How can I help?</h2>
+          <p>If you see kea (banded or unbanded) out and about on your travels, make a note of the details (such as where, when and how many) and report them on the website.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Who's behind this?</h2>
+          <p>A team of dedicated volunteers working for the Kea Conservation Trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="highlight">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Latest sightings</h2>
+        </div>
+        <div class="col-md-6">
+          <h2>News</h2>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
