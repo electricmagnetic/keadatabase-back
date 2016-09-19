@@ -50,7 +50,7 @@ class SightingBase(models.Model):
     last_name = models.CharField(max_length=200)
     phone = models.CharField(max_length=200, blank=True)
     email = models.EmailField(max_length=200)
-    newsletter = models.BooleanField()
+    newsletter = models.BooleanField(default=False)
     category = models.CharField(max_length=2, blank=True, choices=CONTRIBUTOR_CHOICES, default='')
 
 

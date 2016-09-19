@@ -23,7 +23,7 @@ class SightingObjectTests(TestCase):
             time_now = datetime.now().time()
             date_future = date.today() + timedelta(days=1)
             sighting_future = Sighting(date_sighted=date_future, time_sighted=time_now,
-                                       first_name='John', last_name='Smith', newsletter=False,
+                                       first_name='John', last_name='Smith',
                                        email='test@example.org')
             sighting_future.full_clean()
             sighting_future.save()
@@ -43,7 +43,7 @@ class SightingObjectTests(TestCase):
         with self.assertRaises(ValidationError):
             sighting_secondary_only = Sighting(date_sighted=date_now, time_sighted=time_now,
                                                first_name='John', last_name='Smith',
-                                               newsletter=False, email='test@example.org',
+                                               email='test@example.org',
                                                secondary_location=secondary)
             sighting_secondary_only.full_clean()
             sighting_secondary_only.save()
@@ -51,7 +51,7 @@ class SightingObjectTests(TestCase):
         with self.assertRaises(ValidationError):
             sighting_alternative_primary = Sighting(date_sighted=date_now, time_sighted=time_now,
                                                     first_name='John', last_name='Smith',
-                                                    newsletter=False, email='test@example.org',
+                                                    email='test@example.org',
                                                     primary_location=alternative_primary,
                                                     secondary_location=secondary)
             sighting_alternative_primary.full_clean()
