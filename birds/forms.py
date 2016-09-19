@@ -24,6 +24,10 @@ class BirdForm(forms.ModelForm):
                     url='locations:secondary_location_autocomplete',
                     forward=['primary_location'],
                 ),
+            'band':
+                autocomplete.ModelSelect2(
+                    url='bands:band_autocomplete',
+                ),
         }
 
     class Media:

@@ -20,6 +20,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^sightings/', include('sightings.urls', namespace='sightings')),
     url(r'^birds/', include('birds.urls', namespace='birds')),
+    url(r'^bands/', include('bands.urls', namespace='bands')),
     url(r'^locations/', include('locations.urls', namespace='locations')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
