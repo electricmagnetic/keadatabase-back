@@ -17,11 +17,11 @@ class BirdForm(forms.ModelForm):
         widgets = {
             'primary_location':
                 autocomplete.ModelSelect2(
-                    url='primary_location_autocomplete',
+                    url='locations:primary_location_autocomplete',
                 ),
             'secondary_location':
                 autocomplete.ModelSelect2(
-                    url='secondary_location_autocomplete',
+                    url='locations:secondary_location_autocomplete',
                     forward=['primary_location'],
                 ),
         }

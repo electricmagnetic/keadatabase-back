@@ -4,9 +4,11 @@ An online database designed to track kea sightings and information for the Kea C
 
 ## Layout
 * 'locations' - models and admin for primary and secondary locations
-* 'birds' - models and admin for banded birds
+* 'birds' - models and admin for known birds
 * 'sightings' - models and admin for sightings of kea
 * 'portal' - public facing portal for adding sightings and searching kea
+* 'api' - contains urls for API
+* 'bands' - models and admin for band combinations
 
 
 ## Setup

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'compressor',
 
     'locations',
+    'bands',
     'birds',
     'sightings',
     'portal',

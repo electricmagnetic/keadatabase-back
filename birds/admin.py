@@ -18,9 +18,7 @@ class BirdAdmin(admin.GeoModelAdmin):
         (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
         ('Location', {'fields':[('primary_location', 'secondary_location')]}),
         ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
-        ('Band', {'fields':[('id_band', 'id_band_leg'), 'colour_band_type',
-                            ('colour_band_symbol_colour', 'colour_band_symbol', 'colour_band_colour'
-                            )]}),
+        ('Band', {'fields':['band']}),
         ('Transmitter', {'fields':['transmitter_channel']}),
         ('Notes', {'fields':['health', 'notes']}),
     ]
