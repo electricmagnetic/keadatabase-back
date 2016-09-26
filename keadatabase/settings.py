@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'api',
+    'portal',
 
     'corsheaders',
     'rest_framework',
@@ -53,7 +54,6 @@ INSTALLED_APPS = [
     'bands',
     'birds',
     'sightings',
-    'portal',
 ]
 
 MIDDLEWARE = [

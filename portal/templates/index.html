@@ -1,47 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'rest_framework/api.html' %}
 
-{% block content %}
-  <section class="no-padding">
-    <div class="hero">
-      <div class="container">
-        <div class="hero-text">
-          <h1>Welcome to the Kea Database</h1>
-          <p>
-            <a href="#" class="btn btn-lg btn-primary" role="button"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Report sighting</a>
-            <a href="{% url 'birds:index' %}" class="btn btn-lg btn-default" role="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search kea</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+{% block body %}
+  {% block navbar %}
+    {{ block.super }}
+  {% endblock %}
+
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>What is it?</h2>
-          <p>The kea database is a citizen science initiative from the Kea Conservation Trust to help us keep track of New Zealand's alpine parrot.</p>
-        </div>
-        <div class="col-md-4">
-          <h2>How can I help?</h2>
-          <p>If you see kea (banded or unbanded) out and about on your travels, make a note of the details (such as where, when and how many) and report them on the website.</p>
-        </div>
-        <div class="col-md-4">
-          <h2>Who's behind this?</h2>
-          <p>A team of dedicated volunteers working for the Kea Conservation Trust.</p>
-        </div>
-      </div>
+      <h1>Kea Database</h1>
+      <p>You've reached the landing page for the alpha version of the Kea Conservation Trust kea database API.</p>
+      <p>Please email any feedback you might have to <a href="mailto:keasightings@gmail.com">keasightings@gmail.com</a>.</p>
+
+      <h2>Sponsors</h2>
+      <p>This database is supported by:</p>
+      <ul>
+        <li><a href="http://greenstone.org.nz/">Greenstone</a> &mdash; database design and implementation.</li>
+        <li><a href="https://www.catalyst.net.nz/catalyst-cloud/">Catalyst Cloud</a> &mdash; ongoing web hosting infrastructure.</li>
+      </ul>
+
+      <h2>Source code</h2>
+      <p>The source code for this database has been made freely available on GitLab (<a href="https://gitlab.com/greenstone/keadatabase">greenstone/keadatabase</a>) under the AGPL licence.</p>
+      <p>This database only uses free and open source software, including GeoDjango, PostGIS, Bootstrap and SCSS.</p>
+
+      <h2>Content re-use</h2>
+      <p>TBD</p>
+
+      <h2>API</h2>
+      <p>A read-only REST API is available at /api/.</p>
+      <p>More details and specifications will be made available at a future time.</p>
     </div>
   </section>
   <section class="highlight">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Latest sightings</h2>
-        </div>
-        <div class="col-md-6">
-          <h2>News</h2>
-        </div>
-      </div>
+      <h2>Privacy</h2>
+      <p>We may collect personal information from you, including:</p>
+      <ul>
+        <li>volunteered name and contact information</li>
+        <li>computer or network information</li>
+        <li>your interactions with us</li>
+      </ul>
+      <p>We collect your information in order to:</p>
+      <ul>
+        <li>inform us of kea sightings and who is contributing them</li>
+        <li>inform us on how the kea database website is used</li>
+      </ul>
+      <p>You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you’d like to ask for a copy of your information, or to have it corrected, please contact us at keasightings@gmail.com.</p>
+
+      <h3>Analytics</h3>
+      <p>Like most websites, our website uses automatic data collection technology (Google Analytics) when you visit our website or use the services. This is so we can see how the website is being used in order to make improvements.</p>
+      <p>We may collect information such as your IP address, internet service provider, browser type and language, referring and exit pages and URLs, date and time, amount of time spent on particular pages, what sections of the website you visit, number of links you click while on the website, search terms, operating system, website traffic and related statistics, keywords and/or other data.</p>
+      <p>The privacy policy of Google Analytics is available at https://www.google.co.nz/analytics/learn/privacy.html</p>
+      <p>Where your browser sends information to third parties (i.e. Google) as part of accessing this website, the Kea Conservation Trust and the database team do not accept responsibility for those third parties. The third parties may not be bound by New Zealand privacy law.</p>
+
+      <h3>Cookies</h3>
+      <p>This site uses cookies, but you can choose to disable them in your browser.</p>
     </div>
   </section>
+
+  {% block script %}
+    {{ block.super }}
+  {% endblock %}
 {% endblock %}

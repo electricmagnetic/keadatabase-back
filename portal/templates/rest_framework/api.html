@@ -1,0 +1,46 @@
+{% extends 'rest_framework/base.html' %}
+{% load static compress %}
+
+{% block meta %}
+  {{ block.super }}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block bootstrap_theme %}
+  {% include 'includes/header_includes.html' %}
+{% endblock %}
+
+{% block bootstrap_navbar_variant %}navbar-default{% endblock %}
+
+{% block title %}{% if name %}{{ name }} – {% endif %}Kea Database API{% endblock %}
+
+{% block branding %}
+  <a class="navbar-brand" href="#">
+      Kea Database API
+  </a>
+{% endblock %}
+
+{% block script %}
+  {% include 'includes/footer.html' %}
+
+  {% compress js %}
+    <script>
+      window.drf = {
+        csrfCookieName: "{{ csrf_cookie_name|default:'csrftoken' }}"
+      };
+    </script>
+    <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>
+    <script src="{% static "rest_framework/js/csrf.js" %}"></script>
+    <script src="{% static 'bootstrap-sass/assets/javascripts/bootstrap.js' %}"></script>
+    <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>
+    <script src="{% static "rest_framework/js/default.js" %}"></script>
+    <script src="{% static 'js/ga.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        $('form').ajaxForm();
+      });
+    </script>
+  {% endcompress %}
+{% endblock %}

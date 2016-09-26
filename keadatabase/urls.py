@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
+
 
 
 urlpatterns = [
-    url(r'^sightings/', include('sightings.urls', namespace='sightings')),
-    url(r'^birds/', include('birds.urls', namespace='birds')),
     url(r'^bands/', include('bands.urls', namespace='bands')),
     url(r'^locations/', include('locations.urls', namespace='locations')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
-    url(r'^', include('portal.urls', namespace='portal')),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
 ]
