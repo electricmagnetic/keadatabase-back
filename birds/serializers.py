@@ -4,6 +4,7 @@ from .models import Bird, BirdSighting
 
 
 class BirdSerializer(serializers.HyperlinkedModelSerializer):
+    #id = serializers.ReadOnlyField()
     sightings = serializers.HyperlinkedRelatedField(many=True, read_only=True,
                                                     view_name='birdsighting-detail')
 
