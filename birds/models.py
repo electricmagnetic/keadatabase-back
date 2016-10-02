@@ -56,6 +56,7 @@ class Bird(models.Model):
     life_stage = models.CharField(max_length=1, blank=True, choices=LIFE_STAGE_CHOICES, default='')
     age = models.IntegerField(blank=True, null=True, verbose_name='Approximate age (years)')
     family = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
 
 
     ## Location details

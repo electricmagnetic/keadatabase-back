@@ -7,11 +7,13 @@ class BirdSerializer(serializers.HyperlinkedModelSerializer):
     #id = serializers.ReadOnlyField()
     sightings = serializers.HyperlinkedRelatedField(many=True, read_only=True,
                                                     view_name='birdsighting-detail')
+    get_identifier = serializers.ReadOnlyField()
+
 
     class Meta:
         model = Bird
         exclude = ('date_caught', 'caught_by', 'banded_by', 'caught_location',
-                   'transmitter_channel', 'health', 'notes',)
+                   'transmitter_channel', 'notes',)
 
 
 class BirdSightingSerializer(serializers.HyperlinkedModelSerializer):

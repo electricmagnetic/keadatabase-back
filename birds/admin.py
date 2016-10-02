@@ -15,7 +15,7 @@ class BirdAdmin(admin.GeoModelAdmin):
     search_fields = ['name']
 
     fieldsets = [
-        (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family']}),
+        (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family', 'description']}),
         ('Location', {'fields':[('primary_location', 'secondary_location')]}),
         ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
         ('Band', {'fields':['band']}),
