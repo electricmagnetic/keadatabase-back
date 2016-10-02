@@ -18,7 +18,7 @@ class BirdAdmin(admin.GeoModelAdmin):
         (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family', 'description']}),
         ('Location', {'fields':[('primary_location', 'secondary_location')]}),
         ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
-        ('Band', {'fields':['band']}),
+        ('Band', {'fields':['id_band_leg', 'band']}),
         ('Transmitter', {'fields':['transmitter_channel']}),
         ('Notes', {'fields':['health', 'notes']}),
     ]

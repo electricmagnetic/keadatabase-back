@@ -34,12 +34,6 @@ BAND_TYPE_CHOICES = (
     ('M', 'Metal (historic)'),
 )
 
-LEG_CHOICES = (
-    ('', 'Unknown'),
-    ('L', 'Left'),
-    ('R', 'Right'),
-)
-
 
 # Models
 class Band(models.Model):
@@ -50,8 +44,6 @@ class Band(models.Model):
 
 
     ## ID band
-    id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
-                                   verbose_name='ID band leg (primary)', default='')
     id_band = models.CharField(max_length=200, verbose_name='ID band (v-band)', unique=True,
                                validators=[
                                    RegexValidator(regex='^[a-z0-9]{1,2}-[0-9]+$',

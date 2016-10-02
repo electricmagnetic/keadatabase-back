@@ -9,7 +9,7 @@ class BandAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Location', {'fields':[('primary_location',)]}),
-        ('Band', {'fields':[('id_band', 'id_band_leg'), 'colour_band_type',
+        ('Band', {'fields':['id_band', 'colour_band_type',
                             ('colour_band_symbol_colour', 'colour_band_symbol', 'colour_band_colour'
                             )]}),
     ]

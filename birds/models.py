@@ -44,6 +44,12 @@ STATUS_CHOICES = (
     ('D', 'Dead'),
 )
 
+LEG_CHOICES = (
+    ('', 'Unknown'),
+    ('L', 'Left'),
+    ('R', 'Right'),
+)
+
 
 # Models
 class Bird(models.Model):
@@ -74,8 +80,10 @@ class Bird(models.Model):
 
 
     ## Band details
+    id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
+                                   verbose_name='ID band leg (primary)', default='')
     band = models.OneToOneField(Band)
-
+    
 
     ## Transmitter details
     transmitter_channel = models.CharField(max_length=10, blank=True)
