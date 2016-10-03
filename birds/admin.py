@@ -15,12 +15,24 @@ class BirdAdmin(admin.GeoModelAdmin):
     search_fields = ['name']
 
     fieldsets = [
-        (None, {'fields':['name', 'status', 'sex', 'life_stage', 'age', 'family', 'description']}),
-        ('Location', {'fields':[('primary_location', 'secondary_location')]}),
-        ('Catch', {'fields':['date_caught', ('caught_by', 'banded_by'), 'caught_location']}),
-        ('Band', {'fields':['id_band_leg', 'band']}),
-        ('Transmitter', {'fields':['transmitter_channel']}),
-        ('Notes', {'fields':['health', 'notes']}),
+        (None, {'fields':[
+            'name', 'status', 'sex', 'life_stage', 'age', 'family', 'description'
+        ]}),
+        ('Location', {'fields':[
+            ('primary_location', 'secondary_location')
+        ]}),
+        ('Catch', {'fields':[
+            'date_caught', ('caught_by', 'banded_by'), 'caught_location'
+        ]}),
+        ('Band', {'fields':[
+            'id_band_leg', 'band'
+        ]}),
+        ('Transmitter', {'fields':[
+            'transmitter_channel'
+        ]}),
+        ('Notes', {'fields':[
+            'health', 'notes'
+        ]}),
     ]
 
     default_lon = settings.GEO_DEFAULT_LON
@@ -46,12 +58,22 @@ class BirdSightingAdmin(admin.GeoModelAdmin):
     list_filter = ('verification',)
 
     fieldsets = [
-        (None, {'fields':['sighting']}),
-        ('Kea details', {'fields':['status', 'sex', 'life_stage']}),
-        ('Band details', {'fields':['banded', 'colour_band_type', 'colour_band_colour',
-                                    'colour_band_symbol', 'colour_band_symbol_colour']}),
-        ('Verification', {'fields':['verification']}),
-        ('Kea match', {'fields':['bird']}),
+        (None, {'fields':[
+            'sighting'
+        ]}),
+        ('Kea details', {'fields':[
+            'status', 'sex', 'life_stage'
+        ]}),
+        ('Band details', {'fields':[
+            'banded', 'colour_band_type', 'colour_band_colour', 'colour_band_symbol',
+            'colour_band_symbol_colour'
+        ]}),
+        ('Verification', {'fields':[
+            'verification'
+        ]}),
+        ('Kea match', {'fields':[
+            'bird'
+        ]}),
     ]
 
 

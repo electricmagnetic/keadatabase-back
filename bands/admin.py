@@ -8,10 +8,13 @@ class BandAdmin(admin.ModelAdmin):
     form = BandForm
 
     fieldsets = [
-        ('Location', {'fields':[('primary_location',)]}),
-        ('Band', {'fields':['id_band', 'colour_band_type',
-                            ('colour_band_symbol_colour', 'colour_band_symbol', 'colour_band_colour'
-                            )]}),
+        ('Location', {'fields':[
+            ('primary_location',)
+        ]}),
+        ('Band', {'fields':[
+            'id_band', 'colour_band_type',
+            ('colour_band_symbol_colour', 'colour_band_symbol', 'colour_band_colour')
+        ]}),
     ]
 
     list_display = ('get_id_band', 'get_colour_band', 'primary_location', 'get_bird',)
