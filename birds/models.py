@@ -83,7 +83,7 @@ class Bird(models.Model):
     id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
                                    verbose_name='ID band leg (primary)', default='')
     band = models.OneToOneField(Band)
-    
+
 
     ## Transmitter details
     transmitter_channel = models.CharField(max_length=10, blank=True)
@@ -125,7 +125,7 @@ class Bird(models.Model):
 
     def get_id_band(self):
         """ Passes 'get_id_band' to Band """
-        return self.band.get_id_band()
+        return self.band.id_band
     get_id_band.short_description = 'ID band'
 
 

@@ -13,6 +13,7 @@ class BandSerializer(serializers.HyperlinkedModelSerializer):
 
 
     # Methods
+    get_colour_band = serializers.ReadOnlyField()
     get_colour_band_code = serializers.ReadOnlyField()
 
 

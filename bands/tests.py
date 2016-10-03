@@ -84,15 +84,6 @@ class BandObjectTests(TestCase):
 
 class BandMethodTests(TestCase):
     """ Tests for methods of Band objects """
-    def test_id_band_method(self):
-        """ The get_id_band method should return an appropriately formatted ID band """
-        band_unknown_leg = Band(id_band='v-12345')
-        self.assertEqual(band_unknown_leg.get_id_band(), 'v-12345')
-
-        band_known_leg = Band(id_band='v-12345', id_band_leg='R')
-        self.assertEqual(band_known_leg.get_id_band(), 'v-12345 [Right]')
-
-
     def test_colour_band_method(self):
         """ The get_colour_band method should return an appropriately formatted colour band """
         band_blank_colour_band = Band(id_band='v-12345')

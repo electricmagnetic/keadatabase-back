@@ -64,15 +64,6 @@ class Band(models.Model):
 
 
     # Functions
-    def get_id_band(self):
-        """ Creates string containing ID band information """
-        if self.id_band_leg:
-            return '%s [%s]' % (self.id_band, self.get_id_band_leg_display())
-        else:
-            return self.id_band
-    get_id_band.short_description = 'ID band'
-
-
     def get_colour_band(self):
         """ Creates string containing colour band information """
         if self.colour_band_colour or self.colour_band_symbol_colour or self.colour_band_symbol:

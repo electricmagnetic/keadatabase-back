@@ -17,7 +17,7 @@ class BandAdmin(admin.ModelAdmin):
         ]}),
     ]
 
-    list_display = ('get_id_band', 'get_colour_band', 'primary_location', 'get_bird',)
+    list_display = ('id_band', 'get_colour_band', 'primary_location', 'get_bird',)
 
 
 admin.site.register(Band, BandAdmin)
