@@ -4,6 +4,8 @@ from .models import Bird, BirdSighting
 
 
 class BirdSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField() # TODO: remove this and use hyperlinks alone
+
     # Choices
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')

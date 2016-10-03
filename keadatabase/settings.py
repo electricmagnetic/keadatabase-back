@@ -178,7 +178,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50
 }
 
+
 # CORS for development
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
+    'localhost:4200',
 )
