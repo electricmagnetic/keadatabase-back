@@ -9,7 +9,7 @@ class BirdAdmin(admin.GeoModelAdmin):
     """ Defines the fieldsets for the Bird model admin """
     form = BirdForm
 
-    list_display = ('get_identifier', 'status', 'life_stage', 'get_location', 'get_id_band',
+    list_display = ('get_identifier', 'status', 'life_stage', 'get_location', 'id_band',
                     'get_colour_band', 'date_updated',)
     list_filter = ('status', 'sex', 'life_stage',)
     search_fields = ['name']
@@ -25,7 +25,7 @@ class BirdAdmin(admin.GeoModelAdmin):
             'date_caught', ('caught_by', 'banded_by'), 'caught_location'
         ]}),
         ('Band', {'fields':[
-            'id_band_leg', 'band'
+            ('id_band_leg', 'id_band'), 'band'
         ]}),
         ('Transmitter', {'fields':[
             'transmitter_channel'
@@ -65,8 +65,8 @@ class BirdSightingAdmin(admin.GeoModelAdmin):
             'status', 'sex', 'life_stage'
         ]}),
         ('Band details', {'fields':[
-            'banded', 'colour_band_type', 'colour_band_colour', 'colour_band_symbol',
-            'colour_band_symbol_colour'
+            'banded', 'band_type', 'band_colour', 'band_symbol',
+            'band_symbol_colour'
         ]}),
         ('Verification', {'fields':[
             'verification'

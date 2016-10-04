@@ -17,13 +17,28 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+from rest_framework.routers import DefaultRouter
+
+from birds.views import BirdViewSet, BirdSightingViewSet
+from sightings.views import SightingViewSet
+from locations.views import PrimaryLocationViewSet, SecondaryLocationViewSet
+from bands.views import BandViewSet
+
+
+router = DefaultRouter()
+router.register(r'birds', BirdViewSet)
+router.register(r'bands', BandViewSet)
+router.register(r'sightings', SightingViewSet)
+router.register(r'bird_sightings', BirdSightingViewSet)
+router.register(r'primary_locations', PrimaryLocationViewSet)
+router.register(r'secondary_locations', SecondaryLocationViewSet)
 
 
 urlpatterns = [
+    url(r'^', include(router.urls)),
     url(r'^bands/', include('bands.urls', namespace='bands')),
     url(r'^locations/', include('locations.urls', namespace='locations')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('api.urls')),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^about/', TemplateView.as_view(template_name='about.html'), name='about'),
 ]

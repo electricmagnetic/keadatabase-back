@@ -12,12 +12,12 @@ class BandAdmin(admin.ModelAdmin):
             ('primary_location',)
         ]}),
         ('Band', {'fields':[
-            'id_band', 'colour_band_type',
-            ('colour_band_symbol_colour', 'colour_band_symbol', 'colour_band_colour')
+            'band_type',
+            ('band_symbol_colour', 'band_symbol', 'band_colour')
         ]}),
     ]
 
-    list_display = ('id_band', 'get_colour_band', 'primary_location', 'get_bird',)
+    list_display = ('get_colour_band', 'primary_location', 'get_bird',)
 
 
 admin.site.register(Band, BandAdmin)

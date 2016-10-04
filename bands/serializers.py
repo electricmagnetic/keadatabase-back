@@ -5,11 +5,11 @@ from .models import Band
 
 class BandSerializer(serializers.HyperlinkedModelSerializer):
     # Choices
-    colour_band_type = serializers.CharField(source='get_colour_band_type_display')
-    colour_band_symbol_colour = serializers.CharField(
-        source='get_colour_band_symbol_colour_display'
+    band_type = serializers.CharField(source='get_band_type_display')
+    band_symbol_colour = serializers.CharField(
+        source='get_band_symbol_colour_display'
     )
-    colour_band_colour = serializers.CharField(source='get_colour_band_colour_display')
+    band_colour = serializers.CharField(source='get_band_colour_display')
 
 
     # Methods

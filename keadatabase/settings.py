@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
 
-    'api',
     'portal',
 
     'corsheaders',
