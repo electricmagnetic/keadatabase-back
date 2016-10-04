@@ -38,8 +38,10 @@ class SecondaryLocationAutocomplete(autocomplete.Select2QuerySetView):
 class PrimaryLocationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = PrimaryLocation.objects.all()
     serializer_class = PrimaryLocationSerializer
+    filter_fields = ('name',)
 
 
 class SecondaryLocationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = SecondaryLocation.objects.all()
     serializer_class = SecondaryLocationSerializer
+    filter_fields = ('name', 'primary_location')
