@@ -7,6 +7,7 @@ from .serializers import BirdSerializer, BirdSightingSerializer
 class BirdViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Bird.objects.all()
     serializer_class = BirdSerializer
+    filter_fields = ('name',)
 
 
 class BirdSightingViewSet(viewsets.ReadOnlyModelViewSet):

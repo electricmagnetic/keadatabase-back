@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'portal',
 
+    'django_filters',
     'corsheaders',
     'rest_framework',
     'rest_framework_gis',
@@ -173,6 +174,9 @@ COMPRESS_PRECOMPILERS = (
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.DjangoFilterBackend',
     ),
     'PAGE_SIZE': 50
 }
