@@ -9,10 +9,11 @@ class BandAutocomplete(autocomplete.Select2QuerySetView):
     """ Provides a list of bands as an autocomplete """
 
     def get_queryset(self):
-        qs = Band.objects.all().order_by('id_band')
+        qs = Band.objects.all()
 
-        if self.q:
-            qs = qs.filter(id_band__istartswith=self.q)
+        # TODO: fix query
+        #if self.q:
+            #qs = qs.filter(id_band__istartswith=self.q)
 
         return qs
 

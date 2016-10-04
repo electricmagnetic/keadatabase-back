@@ -16,7 +16,7 @@
 {% block title %}{% if name %}{{ name }} – {% endif %}Kea Database API{% endblock %}
 
 {% block branding %}
-  <a class="navbar-brand" href="{# url 'index' #}">
+  <a class="navbar-brand" href="{% url 'api-root' %}">
       Kea Database API
   </a>
 {% endblock %}

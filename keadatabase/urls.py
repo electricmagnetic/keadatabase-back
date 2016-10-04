@@ -35,10 +35,10 @@ router.register(r'secondary_locations', SecondaryLocationViewSet)
 
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^bands/', include('bands.urls', namespace='bands')),
-    url(r'^locations/', include('locations.urls', namespace='locations')),
+    url(r'^bands_autocomplete/', include('bands.urls', namespace='bands')),
+    url(r'^locations_autocomplete/', include('locations.urls', namespace='locations')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
     url(r'^about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    url(r'^', include(router.urls)),
 ]
