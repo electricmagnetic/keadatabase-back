@@ -9,8 +9,8 @@ class BirdAdmin(admin.GeoModelAdmin):
     """ Defines the fieldsets for the Bird model admin """
     form = BirdForm
 
-    list_display = ('get_identifier', 'status', 'life_stage', 'get_location', 'id_band',
-                    'get_colour_band', 'date_updated',)
+    list_display = ('get_identifier', 'status',  'get_location', 'id_band', 'get_colour_band',
+                    'life_stage', 'date_updated',)
     list_filter = ('status', 'sex', 'life_stage',)
     search_fields = ['name']
 

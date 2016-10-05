@@ -18,7 +18,7 @@ class BandObjectTests(TestCase):
             band.save()
 
 
-    def test_unique(self):
+    def test_unique_with_location(self):
         """ Check only unique (to one primary location) colour band combinations can be added """
         with self.assertRaises(ValidationError):
             primary_location = PrimaryLocation.objects.create(name='Craigieburn Forest Park')
@@ -27,6 +27,19 @@ class BandObjectTests(TestCase):
                                  primary_location=primary_location)
             band_duplicate = Band(band_symbol_colour='WHITE', band_symbol='X', band_colour='BLACK',
                                   primary_location=primary_location)
+
+            band_original.full_clean()
+            band_original.save()
+
+            band_duplicate.full_clean()
+            band_duplicate.save()
+
+
+    def test_unique_without_location(self):
+        """ Check only unique (without location) colour band combinations can be added """
+        with self.assertRaises(ValidationError):
+            band_original = Band(band_symbol_colour='WHITE', band_symbol='X', band_colour='BLACK')
+            band_duplicate = Band(band_symbol_colour='WHITE', band_symbol='X', band_colour='BLACK')
 
             band_original.full_clean()
             band_original.save()
