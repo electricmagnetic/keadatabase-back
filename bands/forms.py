@@ -12,8 +12,6 @@ class BandForm(forms.ModelForm):
         model = Band
         fields = ('__all__')
 
-        # TODO: disallow creation/editing of new locations without some sort of checking
-
         widgets = {
             'primary_location':
                 autocomplete.ModelSelect2(

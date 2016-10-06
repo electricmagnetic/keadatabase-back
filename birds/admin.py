@@ -44,10 +44,6 @@ class BirdAdmin(admin.GeoModelAdmin):
     wms_name = settings.GEO_WMS_NAME
     wms_options = settings.GEO_WMS_OPTIONS
 
-    # TODO change to EPSG:2193 to fix map render issues
-    # TODO use local openlayers (instead of external URL for JS library)
-    # TODO change PointField to allow manual point entry
-
 
 admin.site.register(Bird, BirdAdmin)
 

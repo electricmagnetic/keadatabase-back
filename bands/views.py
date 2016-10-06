@@ -11,7 +11,7 @@ class BandAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Band.objects.all()
 
-        # TODO: fix query
+        # TODO: Refer to issue #2
         #if self.q:
             #qs = qs.filter(id_band__istartswith=self.q)
 
