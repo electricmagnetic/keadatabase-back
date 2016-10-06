@@ -51,6 +51,11 @@ LEG_CHOICES = (
 )
 
 
+# Helper Functions
+def bird_directory_path(instance, filename):
+    return 'birds/%s/%s' % (instance.id, filename)
+
+
 # Models
 class Bird(models.Model):
     """ Information on existing banded birds """
@@ -63,6 +68,10 @@ class Bird(models.Model):
     age = models.IntegerField(blank=True, null=True, verbose_name='Approximate age (years)')
     family = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
+
+
+    ## Media
+    photo = models.ImageField(upload_to=bird_directory_path, blank=True, null=True)
 
 
     ## Location details
@@ -102,10 +111,6 @@ class Bird(models.Model):
     ## Notes
     health = models.TextField(blank=True)
     notes = models.TextField(blank=True)
-
-
-    ## Media
-    # TODO photo
 
 
     ## Metadata
