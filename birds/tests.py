@@ -62,6 +62,16 @@ class BirdObjectTests(TestCase):
             bird_future.save()
 
 
+    def test_validate_birthday(self):
+        """ Check that birthday can only be today or from the past """
+
+        with self.assertRaises(ValidationError):
+            date_future = date.today() + timedelta(days=1)
+            bird_future = Bird(id_band='v-12345', birthday=date_future)
+            bird_future.full_clean()
+            bird_future.save()
+
+
     def test_validate_regex_id_band(self):
         """ Check only id bands matching the regex '^[a-z0-9]{1,2}-[0-9]+$' can be added """
         with self.assertRaises(ValidationError):

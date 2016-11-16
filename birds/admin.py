@@ -16,7 +16,7 @@ class BirdAdmin(admin.GeoModelAdmin):
 
     fieldsets = [
         (None, {'fields':[
-            'name', 'status', 'sex', 'life_stage', 'age', 'family', 'description', 'photo'
+            'name', 'status', 'sex', 'life_stage', 'birthday', 'description', 'photo'
         ]}),
         ('Location', {'fields':[
             ('primary_location', 'secondary_location')

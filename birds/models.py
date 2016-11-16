@@ -65,8 +65,7 @@ class Bird(models.Model):
     status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES, default='A')
     sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES, default='')
     life_stage = models.CharField(max_length=1, blank=True, choices=LIFE_STAGE_CHOICES, default='')
-    age = models.IntegerField(blank=True, null=True, verbose_name='Approximate age (years)')
-    family = models.CharField(max_length=200, blank=True)
+    birthday = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
 
 
@@ -161,6 +160,12 @@ class Bird(models.Model):
         if self.date_caught:
             if self.date_caught > current_date:
                 errors.update({'date_caught': 'Date cannot be from the future.'})
+
+
+        ## Validate birthday is not from the future
+        if self.birthday:
+            if self.birthday > current_date:
+                errors.update({'birthday': 'Date cannot be from the future.'})
 
 
         ## Validate secondary_location is paired with/is a child of primary_location
