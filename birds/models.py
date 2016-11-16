@@ -19,10 +19,10 @@ BAND_CHOICES = (
 )
 
 VERIFICATION_CHOICES = (
-    ('', 'Unverified'),
-    ('Q', 'Questionable'),
-    ('G', 'Good'),
-    ('C', 'Confirmed'),
+    ('', '(-) Unverified'),
+    ('0', '(0) Bad'),
+    ('1', '(1) OK'),
+    ('2', '(2) Confirmed'),
 )
 
 SEX_CHOICES = (
@@ -194,12 +194,12 @@ class BirdSighting(models.Model):
     banded = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES, default='N')
 
     band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
-                                        verbose_name='Colour band type', default='')
+                                 verbose_name='Colour band type', default='')
     band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
-                                          default='')
+                                   default='')
     band_symbol = models.CharField(max_length=1, blank=True)
     band_symbol_colour = models.CharField(max_length=8, blank=True,
-                                                 choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
+                                          choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
 
 
     ## Verification details (admin only)
