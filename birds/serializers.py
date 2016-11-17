@@ -8,7 +8,7 @@ class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
     life_stage = serializers.CharField(source='get_life_stage_display')
-    id_band_leg = serializers.CharField(source='get_id_band_leg_display')
+    #id_band_leg = serializers.CharField(source='get_id_band_leg_display')
 
 
     # Methods
@@ -16,8 +16,7 @@ class BirdSerializer(serializers.ModelSerializer):
 
 
     # Relations
-    sightings = serializers.HyperlinkedRelatedField(many=True, read_only=True,
-                                                    view_name='birdsighting-detail')
+    sightings = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
 
     class Meta:

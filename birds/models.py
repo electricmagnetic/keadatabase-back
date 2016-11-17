@@ -2,7 +2,6 @@ from datetime import date
 
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
-from django.core.validators import RegexValidator
 
 from locations.models import PrimaryLocation, SecondaryLocation
 from sightings.models import Sighting
@@ -37,21 +36,14 @@ class Bird(models.Model):
     secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
 
 
+    """
     ## ID band details
-    id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
-                                   verbose_name='ID band leg (primary)', default='')
-    id_band = models.CharField(max_length=200, verbose_name='ID band (v-band)', unique=True,
-                               validators=[
-                                   RegexValidator(regex='^[a-z0-9]{1,2}-[0-9]+$',
-                                                  message='ID band must be a lowercase series of ' \
-                                                  'letters or numbers followed by a dash then a ' \
-                                                  'series of numbers. No spaces.')
-                               ])
+
 
 
     ## Colour band details
     band = models.OneToOneField(Band, null=True, blank=True)
-
+    """
 
     ## Notes
     health = models.TextField(blank=True)
@@ -68,7 +60,8 @@ class Bird(models.Model):
         if self.name:
             return self.name
         else:
-            return self.id_band
+            #return self.id_band
+            return ''
     get_identifier.short_description = 'Identifier'
 
 
@@ -83,14 +76,15 @@ class Bird(models.Model):
     get_location.short_description = 'Location'
 
 
+    """
     def get_colour_band(self):
-        """ Passes 'get_colour_band' to Band """
+         Passes 'get_colour_band' to Band
         if self.band:
             return self.band.get_colour_band()
         else:
             return ''
     get_colour_band.short_description = 'Colour band'
-
+    """
 
     def __str__(self):
         return self.get_identifier()
@@ -137,15 +131,15 @@ class BirdSighting(models.Model):
 
 
     ## Band details
-    banded = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES, default='N')
-
-    band_type = models.CharField(max_length=1, blank=True, choices=BAND_TYPE_CHOICES,
-                                 verbose_name='Colour band type', default='')
-    band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
-                                   default='')
-    band_symbol = models.CharField(max_length=1, blank=True)
-    band_symbol_colour = models.CharField(max_length=8, blank=True,
-                                          choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
+    # banded = models.CharField(max_length=1, blank=True, choices=BAND_CHOICES, default='N')
+    #
+    # band_style = models.CharField(max_length=1, blank=True, choices=BAND_STYLE_CHOICES,
+    #                              verbose_name='Colour band type', default='')
+    # band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
+    #                                default='')
+    # band_symbol = models.CharField(max_length=1, blank=True)
+    # band_symbol_colour = models.CharField(max_length=8, blank=True,
+    #                                       choices=BAND_SYMBOL_COLOUR_CHOICES, default='')
 
 
     ## Verification details (admin only)

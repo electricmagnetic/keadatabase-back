@@ -47,25 +47,54 @@ LIFE_STAGE_CHOICES = (
 )
 
 STATUS_CHOICES = (
-    ('A', 'Alive'),
-    ('D', 'Dead'),
+    ('+', 'Alive'),
+    ('-', 'Dead'),
 )
 
-LEG_CHOICES = (
+BAND_STATUS_CHOICES = (
+    ('', ''),
+    ('+', 'Active'),
+    ('-', 'Decommissioned'),
+)
+
+BAND_LEG_CHOICES = (
     ('', 'Unknown'),
     ('L', 'Left'),
     ('R', 'Right'),
 )
 
+BAND_POSITION_CHOICES = (
+    ('', 'Unknown'),
+    ('T', 'Top'),
+    ('B', 'Bottom'),
+    ('S', 'Single'),
+)
+
+BAND_STYLE_CHOICES = (
+    ('', 'Unknown'),
+    ('P', 'Plastic'),
+    ('UM', 'Metal (uncoated)'),
+    ('CM', 'Metal (powder coated)'),
+)
+
+BAND_SIZE_CHOICE = (
+    ('', 'Unspecified'),
+    ('SM', 'Small'),
+    ('LG', 'Large'),
+)
+
 BAND_COLOUR_CHOICES = (
     ('BLACK', 'Black'),
-    ('WHITE', 'White'),
-    ('RED', 'Red'),
-    ('ORANGE', 'Orange'),
-    ('YELLOW', 'Yellow'),
-    ('GREEN', 'Green'),
     ('BLUE', 'Blue'),
-    ('GREY', 'Grey'),
+    ('GREEN', 'Green'),
+    ('LIME', 'Lime'),
+    ('METAL', 'Metal'),
+    ('ORANGE', 'Orange'),
+    ('PINK', 'Pink'),
+    ('PURPLE', 'Purple'),
+    ('RED', 'Red'),
+    ('WHITE', 'White'),
+    ('YELLOW', 'Yellow'),
     ('O', 'Other'),
 )
 
@@ -77,8 +106,76 @@ BAND_SYMBOL_COLOUR_CHOICES = (
     ('O', 'Other'),
 )
 
-BAND_TYPE_CHOICES = (
-    ('', 'Unknown'),
-    ('P', 'Plastic (modern)'),
-    ('M', 'Metal (historic)'),
+BAND_SYMBOL_CHOICES = (
+    ('', ''),
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ('A', 'A'),
+    ('B', 'B'),
+    ('C', 'C'),
+    ('D', 'D'),
+    ('E', 'E'),
+    ('F', 'F'),
+    ('G', 'G'),
+    ('H', 'H'),
+    ('I', 'I'),
+    ('J', 'J'),
+    ('K', 'K'),
+    ('L', 'L'),
+    ('M', 'M'),
+    ('N', 'N'),
+    ('O', 'O'),
+    ('P', 'P'),
+    ('Q', 'Q'),
+    ('R', 'R'),
+    ('S', 'S'),
+    ('T', 'T'),
+    ('U', 'U'),
+    ('V', 'V'),
+    ('W', 'W'),
+    ('X', 'X'),
+    ('Y', 'Y'),
+    ('Z', 'Z'),
+    ('!', '!'),
+    ('"', '"'),
+    ('#', '#'),
+    ('$', '$'),
+    ('%', '%'),
+    ('&', '&'),
+    ('\'', '\''),
+    ('(', '('),
+    (')', ')'),
+    ('*', '*'),
+    ('+', '+'),
+    (',', ','),
+    ('-', '-'),
+    ('.', '.'),
+    ('/', '/'),
+    (':', ':'),
+    (';', ';'),
+    ('<', '<'),
+    ('=', '='),
+    ('>', '>'),
+    ('?', '?'),
+    ('@', '@'),
+    ('[', '['),
+    ('\\', '\\'),
+    (']', ']'),
+    ('^', '^'),
+    ('_', '_'),
+    ('`', '`'),
+    ('{', '{'),
+    ('|', '|'),
+    ('}', '}'),
+    ('~', '~'),
+    ('obelus', 'Divide'),
+    ('theta', 'Theta'),
 )
