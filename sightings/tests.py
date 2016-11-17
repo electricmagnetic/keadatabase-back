@@ -17,8 +17,8 @@ class SightingObjectTests(TestCase):
             bird.save()
 
 
-    def test_validate_date_caught(self):
-        """ Check that date_caught can only be today or from the past """
+    def test_validate_date_sighted(self):
+        """ Check that date_sighted can only be today or from the past """
         with self.assertRaises(ValidationError):
             time_now = datetime.now().time()
             date_future = date.today() + timedelta(days=1)

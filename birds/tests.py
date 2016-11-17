@@ -52,16 +52,6 @@ class BirdObjectTests(TestCase):
             bird_alternative_primary.save()
 
 
-    def test_validate_date_caught(self):
-        """ Check that date_caught can only be today or from the past """
-
-        with self.assertRaises(ValidationError):
-            date_future = date.today() + timedelta(days=1)
-            bird_future = Bird(id_band='v-12345', date_caught=date_future)
-            bird_future.full_clean()
-            bird_future.save()
-
-
     def test_validate_birthday(self):
         """ Check that birthday can only be today or from the past """
 

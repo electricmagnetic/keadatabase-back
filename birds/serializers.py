@@ -22,8 +22,7 @@ class BirdSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bird
-        exclude = ('date_caught', 'caught_by', 'banded_by', 'caught_location',
-                   'transmitter_channel', 'notes',)
+        exclude = ('notes',)
 
 
 class BirdSightingSerializer(serializers.ModelSerializer):

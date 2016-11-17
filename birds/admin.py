@@ -21,9 +21,6 @@ class BirdAdmin(admin.GeoModelAdmin):
         ('Location', {'fields':[
             ('primary_location', 'secondary_location')
         ]}),
-        ('Catch', {'fields':[
-            'date_caught', ('caught_by', 'banded_by'), 'caught_location'
-        ]}),
         ('Band', {'fields':[
             ('id_band_leg', 'id_band'), 'band'
         ]}),

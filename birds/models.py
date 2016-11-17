@@ -37,15 +37,6 @@ class Bird(models.Model):
     secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
 
 
-    ## Catch details
-    date_caught = models.DateField(blank=True, null=True)
-
-    caught_by = models.CharField(max_length=200, blank=True)
-    banded_by = models.CharField(max_length=200, blank=True)
-
-    caught_location = models.PointField(null=True, blank=True)
-
-
     ## ID band details
     id_band_leg = models.CharField(max_length=1, blank=True, choices=LEG_CHOICES,
                                    verbose_name='ID band leg (primary)', default='')
@@ -114,14 +105,9 @@ class Bird(models.Model):
         """ Validate various model fields to ensure uniqueness and consistency """
         errors = {}
 
-        ## Validate date_caught is not from the future
-        current_date = date.today()
-        if self.date_caught:
-            if self.date_caught > current_date:
-                errors.update({'date_caught': 'Date cannot be from the future.'})
-
 
         ## Validate birthday is not from the future
+        current_date = date.today()
         if self.birthday:
             if self.birthday > current_date:
                 errors.update({'birthday': 'Date cannot be from the future.'})

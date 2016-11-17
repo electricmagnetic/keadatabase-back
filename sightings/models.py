@@ -67,7 +67,7 @@ class Sighting(SightingBase):
         """ Validate various model fields to ensure uniqueness and consistency """
         errors = {}
 
-        ## Validate date_caught is not from the future
+        ## Validate date_sighted is not from the future
         current_date = date.today()
         if self.date_sighted:
             if self.date_sighted > current_date:
