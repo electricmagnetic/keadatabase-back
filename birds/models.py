@@ -53,10 +53,6 @@ class Bird(models.Model):
     band = models.OneToOneField(Band, null=True, blank=True)
 
 
-    ## Transmitter details
-    transmitter_channel = models.CharField(max_length=10, blank=True)
-
-
     ## Notes
     health = models.TextField(blank=True)
     notes = models.TextField(blank=True)
