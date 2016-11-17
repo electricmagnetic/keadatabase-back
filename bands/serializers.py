@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import Band
 
 
-class BandSerializer(serializers.HyperlinkedModelSerializer):
+class BandSerializer(serializers.ModelSerializer):
     # Choices
     band_type = serializers.CharField(source='get_band_type_display')
     band_symbol_colour = serializers.CharField(

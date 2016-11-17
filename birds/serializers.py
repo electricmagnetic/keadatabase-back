@@ -3,9 +3,7 @@ from rest_framework import serializers
 from .models import Bird, BirdSighting
 
 
-class BirdSerializer(serializers.HyperlinkedModelSerializer):
-    id = serializers.ReadOnlyField() # TODO: remove this and use hyperlinks alone
-
+class BirdSerializer(serializers.ModelSerializer):
     # Choices
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
@@ -28,7 +26,7 @@ class BirdSerializer(serializers.HyperlinkedModelSerializer):
                    'transmitter_channel', 'notes',)
 
 
-class BirdSightingSerializer(serializers.HyperlinkedModelSerializer):
+class BirdSightingSerializer(serializers.ModelSerializer):
     class Meta:
         model = BirdSighting
         exclude = ('verification',)

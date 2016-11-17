@@ -29,9 +29,9 @@ from bands.views import BandViewSet
 
 router = DefaultRouter()
 router.register(r'birds', BirdViewSet)
-router.register(r'bands', BandViewSet)
-router.register(r'sightings', SightingViewSet)
-router.register(r'bird_sightings', BirdSightingViewSet)
+router.register(r'bands/bands', BandViewSet)
+router.register(r'sightings/sightings', SightingViewSet)
+router.register(r'sightings/birds', BirdSightingViewSet)
 router.register(r'locations/primary', PrimaryLocationViewSet)
 router.register(r'locations/secondary', SecondaryLocationViewSet)
 
