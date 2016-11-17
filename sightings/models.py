@@ -3,29 +3,8 @@ from datetime import date
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
 
+from keadatabase.choices import *
 from locations.models import PrimaryLocation, SecondaryLocation
-
-
-# Choices
-CONTRIBUTOR_CHOICES = (
-    ('', ''),
-    ('TO', 'Tourist'),
-    ('LO', 'Local'),
-    ('SC', 'School group'),
-    ('CG', 'Community group'),
-    ('TR', 'Tramper'),
-    ('HU', 'Hunter'),
-    ('BI', 'Birder'),
-    ('DO', 'DOC Staff'),
-    ('OT', 'Other'),
-)
-
-ACCURACY_CHOICES = (
-    ('', 'Unknown'),
-    ('G', 'GPS coordinates'),
-    ('E', 'Estimate from map'),
-    ('O', 'Other'),
-)
 
 
 # Models

@@ -2,34 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 from locations.models import PrimaryLocation
-
-
-# Choices
-BAND_COLOUR_CHOICES = (
-    ('BLACK', 'Black'),
-    ('WHITE', 'White'),
-    ('RED', 'Red'),
-    ('ORANGE', 'Orange'),
-    ('YELLOW', 'Yellow'),
-    ('GREEN', 'Green'),
-    ('BLUE', 'Blue'),
-    ('GREY', 'Grey'),
-    ('O', 'Other'),
-)
-
-BAND_SYMBOL_COLOUR_CHOICES = (
-    ('WHITE', 'White'),
-    ('BLACK', 'Black'),
-    ('RED', 'Red'),
-    ('YELLOW', 'Yellow'),
-    ('O', 'Other'),
-)
-
-BAND_TYPE_CHOICES = (
-    ('', 'Unknown'),
-    ('P', 'Plastic (modern)'),
-    ('M', 'Metal (historic)'),
-)
+from keadatabase.choices import *
 
 
 # Models

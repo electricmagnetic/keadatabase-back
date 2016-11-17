@@ -7,48 +7,7 @@ from django.core.validators import RegexValidator
 from locations.models import PrimaryLocation, SecondaryLocation
 from sightings.models import Sighting
 from bands.models import Band
-from bands.models import BAND_TYPE_CHOICES, BAND_COLOUR_CHOICES, BAND_SYMBOL_COLOUR_CHOICES
-
-
-# Choices
-BAND_CHOICES = (
-    ('', 'Couldn\'t tell'),
-    ('U', 'Banded, unreadable'),
-    ('B', 'Banded, readable'),
-    ('N', 'Not banded'),
-)
-
-VERIFICATION_CHOICES = (
-    ('', '(-) Unverified'),
-    ('0', '(0) Bad'),
-    ('1', '(1) OK'),
-    ('2', '(2) Confirmed'),
-)
-
-SEX_CHOICES = (
-    ('', 'Unknown'),
-    ('F', 'Female'),
-    ('M', 'Male'),
-)
-
-LIFE_STAGE_CHOICES = (
-    ('', 'Unknown'),
-    ('A', 'Adult'),
-    ('S', 'Sub-adult'),
-    ('J', 'Juvenile'),
-    ('F', 'Fledgling'),
-)
-
-STATUS_CHOICES = (
-    ('A', 'Alive'),
-    ('D', 'Dead'),
-)
-
-LEG_CHOICES = (
-    ('', 'Unknown'),
-    ('L', 'Left'),
-    ('R', 'Right'),
-)
+from keadatabase.choices import *
 
 
 # Helper Functions
