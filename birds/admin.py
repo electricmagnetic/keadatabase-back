@@ -27,9 +27,6 @@ class BirdAdmin(admin.GeoModelAdmin):
         ('Band', {'fields':[
             ('id_band_leg', 'id_band'), 'band'
         ]}),
-        ('Transmitter', {'fields':[
-            'transmitter_channel'
-        ]}),
         ('Notes', {'fields':[
             'health', 'notes'
         ]}),
