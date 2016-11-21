@@ -13,18 +13,9 @@ class BirdForm(forms.ModelForm):
         fields = ('__all__')
 
         widgets = {
-            'primary_location':
+            'home_location':
                 autocomplete.ModelSelect2(
-                    url='locations:primary_location_autocomplete',
-                ),
-            'secondary_location':
-                autocomplete.ModelSelect2(
-                    url='locations:secondary_location_autocomplete',
-                    forward=['primary_location'],
-                ),
-            'band':
-                autocomplete.ModelSelect2(
-                    url='bands:band_autocomplete',
+                    url='locations:home_location_autocomplete',
                 ),
         }
 

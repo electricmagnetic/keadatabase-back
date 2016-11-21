@@ -3,7 +3,7 @@ from datetime import date
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
 
-from locations.models import PrimaryLocation, SecondaryLocation
+from locations.models import HomeLocation
 from sightings.models import Sighting
 from bands.models import BandCombo
 from keadatabase.choices import *
@@ -32,8 +32,7 @@ class Bird(models.Model):
 
 
     ## Location details
-    primary_location = models.ForeignKey(PrimaryLocation, blank=True, null=True)
-    secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
+    home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 
 
     ## Band details
@@ -58,17 +57,6 @@ class Bird(models.Model):
             #return self.id_band
             return ''
     get_identifier.short_description = 'Identifier'
-
-
-    def get_location(self):
-        """ Creates string for location """
-        if self.primary_location and self.secondary_location:
-            return '%s (%s)' % (self.primary_location, self.secondary_location)
-        elif self.primary_location:
-            return '%s' % (self.primary_location)
-        else:
-            return ''
-    get_location.short_description = 'Location'
 
 
     """
@@ -97,15 +85,6 @@ class Bird(models.Model):
             if self.birthday > current_date:
                 errors.update({'birthday': 'Date cannot be from the future.'})
 
-
-        ## Validate secondary_location is paired with/is a child of primary_location
-        if self.primary_location and self.secondary_location:
-            if self.secondary_location.primary_location != self.primary_location:
-                errors.update({'secondary_location': 'Secondary location must be in ' \
-                                                              'primary location.'})
-        elif self.secondary_location:
-            errors.update({'primary_location': 'Must have primary location if secondary ' \
-                                                        'location is specified.'})
 
         ## If any errors occur, raise them
         if errors:

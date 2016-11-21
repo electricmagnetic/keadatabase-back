@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
-from .views import PrimaryLocationAutocomplete, SecondaryLocationAutocomplete
+from .views import PrimaryLocationAutocomplete, SecondaryLocationAutocomplete, \
+                   HomeLocationAutocomplete
 
 
 urlpatterns = [
@@ -13,5 +14,10 @@ urlpatterns = [
         r'^secondary_location_autocomplete/$',
         SecondaryLocationAutocomplete.as_view(),
         name='secondary_location_autocomplete',
+    ),
+    url(
+        r'^home_location_autocomplete/$',
+        HomeLocationAutocomplete.as_view(),
+        name='home_location_autocomplete',
     ),
 ]
