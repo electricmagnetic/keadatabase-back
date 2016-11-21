@@ -13,8 +13,10 @@ class BandSerializer(serializers.ModelSerializer):
 
 
     # Methods
-    #get_colour_band = serializers.ReadOnlyField()
-    #get_colour_band_code = serializers.ReadOnlyField()
+    get_bird = serializers.ReadOnlyField()
+    get_band_type = serializers.ReadOnlyField()
+    get_band_type_display = serializers.ReadOnlyField()
+    get_band_combo_display = serializers.ReadOnlyField()
 
 
     # Relations
