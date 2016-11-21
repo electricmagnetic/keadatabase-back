@@ -11,7 +11,7 @@ class BandAdmin(admin.ModelAdmin):
             'band_combo',
         ]}),
         ('Common', {'fields':[
-            'primary', 'style', 'identifier', ('colour', 'position', 'leg',), 'size',
+            'primary', ('style', 'size'), 'identifier', ('colour', 'position', 'leg',),
         ]}),
         ('Letter (New)', {'fields':[
             ('symbol_colour', 'symbol',)

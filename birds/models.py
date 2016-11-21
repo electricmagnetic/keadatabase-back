@@ -109,7 +109,7 @@ class BirdSighting(models.Model):
     #
     # band_style = models.CharField(max_length=1, blank=True, choices=BAND_STYLE_CHOICES,
     #                              verbose_name='Colour band type', default='')
-    # band_colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES,
+    # band_colour = models.CharField(max_length=10, blank=True, choices=BAND_COLOUR_CHOICES,
     #                                default='')
     # band_symbol = models.CharField(max_length=1, blank=True)
     # band_symbol_colour = models.CharField(max_length=8, blank=True,

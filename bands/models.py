@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.core.validators import RegexValidator
 
 from locations.models import HomeLocation
@@ -34,13 +34,13 @@ class Band(models.Model):
                                                      'then a series of numbers. No spaces.')
                                   ])
     size = models.CharField(max_length=2, blank=True, choices=BAND_SIZE_CHOICE, default='')
-    colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES, default='')
+    colour = models.CharField(max_length=10, blank=True, choices=BAND_COLOUR_CHOICES, default='')
     position = models.CharField(max_length=1, blank=True, choices=BAND_POSITION_CHOICES, default='')
     leg = models.CharField(max_length=1, blank=True, choices=BAND_LEG_CHOICES, default='')
 
 
     ## Letter (New)
-    symbol_colour = models.CharField(max_length=8, blank=True, choices=BAND_SYMBOL_COLOUR_CHOICES,
+    symbol_colour = models.CharField(max_length=10, blank=True, choices=BAND_SYMBOL_COLOUR_CHOICES,
                                      default='')
     symbol = models.CharField(max_length=10, blank=True, choices=BAND_SYMBOL_CHOICES, default='')
 
@@ -56,20 +56,10 @@ class Band(models.Model):
         """ Validate various model fields to ensure uniqueness and consistency """
         errors = {}
 
-        ## Model needs to validate that the band is a complete band for one of three types:
-        ## (a) Letter (New) (b) colour (c) metal
-
-
-        # if self.band_colour or self.band_symbol_colour or self.band_symbol:
-        #     if not self.band_colour:
-        #         errors.update({'band_colour': 'Cannot leave colour band partially ' \
-        #                                       'complete. Please fill out remainder.'})
-        #     if not self.band_symbol_colour:
-        #         errors.update({'band_symbol_colour': 'Cannot leave colour band partially ' \
-        #                                              'complete. Please fill out remainder.'})
-        #     if not self.band_symbol:
-        #         errors.update({'band_symbol': 'Cannot leave colour band partially ' \
-        #                                       'complete. Please fill out remainder.'})
+        ## Model needs to validate that the band is a complete band for one of the three types
+        if self.get_band_type() == '?':
+            errors.update({NON_FIELD_ERRORS: 'Band type unable to be identified. ' \
+                                             'Please provide more information.'})
 
         ## If any errors occur, raise them
         if errors:
@@ -90,18 +80,18 @@ class Band(models.Model):
         """ Determines the BAND_TYPE_CHOICES of the band, based on fields completed """
         if self.style == 'P' and self.colour and self.symbol_colour and self.symbol:
             return 'N' # Letter (New)
-        elif self.style == 'UM' and self.identifier:
-            return 'M' # Identifier (Metal)
         elif self.colour and self.position and self.leg:
             return 'O' # Colour (Old)
-        return 'Unknown'
+        elif self.colour == 'UNCOLOURED' and self.style == 'M' and self.identifier:
+            return 'M' # Identifier (Metal)
+        return '?'
 
 
     def get_band_type_display(self):
         """ Human readable representation of get_band_type """
         band_type = self.get_band_type()
 
-        if band_type and band_type != 'Unknown':
+        if band_type and band_type != '?':
             return dict(BAND_TYPE_CHOICES)[band_type]
         else:
             return band_type
@@ -120,11 +110,12 @@ class Band(models.Model):
     def __str__(self):
         """ Creates human readable string based on type of band """
         output = []
+        band_type = self.get_band_type()
 
-        if self.get_band_type() == 'N':
+        if band_type == 'N':
             output.append('%s "%s" on %s' % (self.get_symbol_colour_display(), self.symbol,
                                              self.get_colour_display()))
-        elif self.get_band_type() == 'O':
+        elif band_type == 'O':
             output.append('%s %s %s' % (self.get_colour_display(), self.get_position_display(),
                                         self.get_leg_display()))
 
