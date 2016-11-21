@@ -1,7 +1,7 @@
 from django.contrib.gis import admin
 from django.conf import settings
 
-from .models import PrimaryLocation, SecondaryLocation
+from .models import PrimaryLocation, SecondaryLocation, HomeLocation
 
 
 class PrimaryLocationAdmin(admin.GeoModelAdmin):
@@ -25,3 +25,4 @@ class SecondaryLocationAdmin(admin.ModelAdmin):
 
 admin.site.register(PrimaryLocation, PrimaryLocationAdmin)
 admin.site.register(SecondaryLocation, SecondaryLocationAdmin)
+admin.site.register(HomeLocation, PrimaryLocationAdmin)

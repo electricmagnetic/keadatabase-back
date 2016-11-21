@@ -27,3 +27,9 @@ class SecondaryLocation(LocationBase):
     """ Secondary location (more specific sub-regions) """
     # Fields
     primary_location = models.ForeignKey(PrimaryLocation, on_delete=models.CASCADE)
+
+
+class HomeLocation(LocationBase):
+    """ Home area, as designated by DOC Kea Database """
+    # Fields
+    mpoly = models.MultiPolygonField(null=True, blank=True)

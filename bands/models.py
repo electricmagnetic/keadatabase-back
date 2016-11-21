@@ -2,51 +2,20 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
-from locations.models import PrimaryLocation
+from locations.models import HomeLocation
 from keadatabase.choices import *
 
 
 # Models
-class Band(models.Model):
-    """ Band, allows for multiple types. Can be associated with a bird via a BandCombo. """
+class BandCombo(models.Model):
+    """ BandCombo, made up of multiple Band models. """
     # Fields
-    ## Common
-    style = models.CharField(max_length=2, blank=True, choices=BAND_STYLE_CHOICES, default='')
-    identifier = models.CharField(max_length=200, null=True, blank=True,
-                                  validators=[
-                                      RegexValidator(regex='^[a-z0-9]{1,2}-[0-9]+$',
-                                                     message='ID band must be a lowercase series ' \
-                                                     'of letters or numbers followed by a dash ' \
-                                                     'then a series of numbers. No spaces.')
-                                  ])
-    colour = models.CharField(max_length=8, choices=BAND_COLOUR_CHOICES, default='BLACK')
+    ## Basic details
+    status = models.CharField(max_length=1, choices=BAND_STATUS_CHOICES, default='+')
+    combo = models.CharField(max_length=1, choices=BAND_COMBO_CHOICES, default='L')
+    home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 
 
-    ## Old style
-    leg = models.CharField(max_length=1, blank=True, choices=BAND_LEG_CHOICES, default='')
-    position = models.CharField(max_length=1, blank=True, choices=BAND_POSITION_CHOICES, default='')
-
-
-    ## New style
-    symbol = models.CharField(max_length=10, blank=True, choices=BAND_SYMBOL_CHOICES, default='')
-    symbol_colour = models.CharField(max_length=8, choices=BAND_SYMBOL_COLOUR_CHOICES,
-                                     default='WHITE')
-    size = models.CharField(max_length=2, blank=True, choices=BAND_SIZE_CHOICE, default='')
-
-
-    # Meta
-    class Meta:
-        unique_together = ('style', 'identifier', 'colour', 'leg', 'position', 'symbol',
-                           'symbol_colour', 'size',)
-
-
-# class BandCombo(models.Model):
-#     """ BandCombo, made up of multiple Band models. """
-#     # Fields
-#     ## Location
-#     primary_location = models.ForeignKey(PrimaryLocation, blank=True, null=True)
-#
-#
 #     # Functions
 #     def get_colour_band(self):
 #         """ Creates string containing colour band information """
@@ -79,15 +48,6 @@ class Band(models.Model):
 #         return self.get_colour_band()
 #
 #
-#     # Transformation
-#     def save(self, *args, **kwargs):
-#         """ Transform various model fields for consistency """
-#         ## Transform characters to uppercase in band_symbol
-#         self.band_symbol = self.band_symbol.upper()
-#
-#         super(Band, self).save(*args, **kwargs)
-#
-#
 #     # Validation
 #     def clean(self):
 #         """ Validate various model fields to ensure uniqueness and consistency """
@@ -108,3 +68,41 @@ class Band(models.Model):
 #         ## If any errors occur, raise them
 #         if errors:
 #             raise ValidationError(errors)
+
+
+class Band(models.Model):
+    """ Band, allows for multiple types. Can be associated with a bird via a BandCombo. """
+    # Fields
+    ## Foreign key
+    sighting = models.ForeignKey(BandCombo, blank=True, null=True, on_delete=models.CASCADE)
+
+
+    ## Common
+    primary = models.BooleanField()
+    style = models.CharField(max_length=2, blank=True, choices=BAND_STYLE_CHOICES, default='')
+    identifier = models.CharField(max_length=200, null=True, blank=True,
+                                  validators=[
+                                      RegexValidator(regex='^[a-z0-9]{1,2}-[0-9]+$',
+                                                     message='ID band must be a lowercase series ' \
+                                                     'of letters or numbers followed by a dash ' \
+                                                     'then a series of numbers. No spaces.')
+                                  ])
+    colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES, default='')
+
+
+    ## Old style
+    leg = models.CharField(max_length=1, blank=True, choices=BAND_LEG_CHOICES, default='')
+    position = models.CharField(max_length=1, blank=True, choices=BAND_POSITION_CHOICES, default='')
+
+
+    ## New style
+    symbol_colour = models.CharField(max_length=8, blank=True, choices=BAND_SYMBOL_COLOUR_CHOICES,
+                                     default='')
+    symbol = models.CharField(max_length=10, blank=True, choices=BAND_SYMBOL_CHOICES, default='')
+    size = models.CharField(max_length=2, blank=True, choices=BAND_SIZE_CHOICE, default='')
+
+
+    # Meta
+    class Meta:
+        unique_together = ('style', 'identifier', 'colour', 'leg', 'position', 'symbol',
+                           'symbol_colour', 'size',)

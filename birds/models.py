@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 from locations.models import PrimaryLocation, SecondaryLocation
 from sightings.models import Sighting
-from bands.models import Band
+from bands.models import BandCombo
 from keadatabase.choices import *
 
 
@@ -36,14 +36,9 @@ class Bird(models.Model):
     secondary_location = models.ForeignKey(SecondaryLocation, blank=True, null=True)
 
 
-    """
-    ## ID band details
+    ## Band details
+    band_combo = models.OneToOneField(BandCombo, null=True, blank=True)
 
-
-
-    ## Colour band details
-    band = models.OneToOneField(Band, null=True, blank=True)
-    """
 
     ## Notes
     health = models.TextField(blank=True)

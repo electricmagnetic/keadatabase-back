@@ -52,7 +52,6 @@ STATUS_CHOICES = (
 )
 
 BAND_STATUS_CHOICES = (
-    ('', ''),
     ('+', 'Active'),
     ('-', 'Decommissioned'),
 )
@@ -77,6 +76,11 @@ BAND_STYLE_CHOICES = (
     ('CM', 'Metal (powder coated)'),
 )
 
+BAND_COMBO_CHOICES = (
+    ('L', 'Letter Combo (New)'),
+    ('C', 'Colour Combo (Old)'),
+)
+
 BAND_SIZE_CHOICE = (
     ('', 'Unspecified'),
     ('SM', 'Small'),
@@ -84,6 +88,7 @@ BAND_SIZE_CHOICE = (
 )
 
 BAND_COLOUR_CHOICES = (
+    ('', ''),
     ('BLACK', 'Black'),
     ('BLUE', 'Blue'),
     ('GREEN', 'Green'),
@@ -99,6 +104,7 @@ BAND_COLOUR_CHOICES = (
 )
 
 BAND_SYMBOL_COLOUR_CHOICES = (
+    ('', ''),
     ('WHITE', 'White'),
     ('BLACK', 'Black'),
     ('RED', 'Red'),
