@@ -2,19 +2,19 @@ from django import forms
 
 from dal import autocomplete
 
-from .models import Band
+from .models import BandCombo
 
 
-class BandForm(forms.ModelForm):
-    """ Principle band form, allows for autocomplete """
+class BandComboForm(forms.ModelForm):
+    """ Principle BandCombo form, allows for autocomplete """
 
     class Meta:
-        model = Band
+        model = BandCombo
         fields = ('__all__')
 
         widgets = {
-            'primary_location':
+            'home_location':
                 autocomplete.ModelSelect2(
-                    url='locations:primary_location_autocomplete',
+                    url='locations:home_location_autocomplete',
                 ),
         }

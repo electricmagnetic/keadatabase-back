@@ -1,24 +1,27 @@
 from django.contrib import admin
 
 from .models import Band, BandCombo
-from .forms import BandForm
+from .forms import BandComboForm
 
 
 class BandAdmin(admin.ModelAdmin):
     """ Defines the fieldsets for the Band model admin """
-    form = BandForm
+    fieldsets = [
+        ('Band combo', {'fields':[
+            'band_combo',
+        ]}),
+        ('Common', {'fields':[
+            'primary', 'style', 'identifier', ('colour', 'position', 'leg',), 'size',
+        ]}),
+        ('Letter (New)', {'fields':[
+            ('symbol_colour', 'symbol',)
+        ]}),
+    ]
 
-    # fieldsets = [
-    #     ('Location', {'fields':[
-    #         ('primary_location',)
-    #     ]}),
-    #     ('Band', {'fields':[
-    #         'band_type',
-    #         ('band_symbol_colour', 'band_symbol', 'band_colour')
-    #     ]}),
-    # ]
-
-    #list_display = ('get_colour_band', 'primary_location', 'get_bird',)
+    list_display = ('__str__', 'primary', 'get_band_type_display', 'get_band_combo_display',
+                    'get_bird',)
+    list_filter = ('style', 'primary',)
+    ordering = ('-band_combo', '-primary',)
 
 
 class BandInline(admin.TabularInline):
@@ -28,6 +31,8 @@ class BandInline(admin.TabularInline):
 
 class BandComboAdmin(admin.ModelAdmin):
     """ Defines the fieldsets for the BandCombo model admin """
+    form = BandComboForm
+
     inlines = [BandInline]
 
 

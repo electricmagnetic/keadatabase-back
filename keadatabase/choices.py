@@ -64,21 +64,25 @@ BAND_LEG_CHOICES = (
 
 BAND_POSITION_CHOICES = (
     ('', 'Unknown'),
+    ('S', 'Single'),
     ('T', 'Top'),
     ('B', 'Bottom'),
-    ('S', 'Single'),
 )
 
 BAND_STYLE_CHOICES = (
     ('', 'Unknown'),
     ('P', 'Plastic'),
-    ('UM', 'Metal (uncoated)'),
-    ('CM', 'Metal (powder coated)'),
+    ('UM', 'Metal (uncoloured)'),
+    ('CM', 'Metal (coloured)'),
 )
 
-BAND_COMBO_CHOICES = (
-    ('L', 'Letter Combo (New)'),
-    ('C', 'Colour Combo (Old)'),
+COMBO_TYPE_CHOICES = (
+    ('N', 'Letter (New)'),
+    ('O', 'Colour (Old)'),
+)
+
+BAND_TYPE_CHOICES = COMBO_TYPE_CHOICES + (
+    ('M', 'Identifier (Metal)'),
 )
 
 BAND_SIZE_CHOICE = (

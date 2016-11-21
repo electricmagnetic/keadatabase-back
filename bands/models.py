@@ -12,73 +12,19 @@ class BandCombo(models.Model):
     # Fields
     ## Basic details
     status = models.CharField(max_length=1, choices=BAND_STATUS_CHOICES, default='+')
-    combo = models.CharField(max_length=1, choices=BAND_COMBO_CHOICES, default='L')
+    combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='L')
     home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
-
-
-#     # Functions
-#     def get_colour_band(self):
-#         """ Creates string containing colour band information """
-#         if self.band_colour or self.band_symbol_colour or self.band_symbol:
-#             return '%s "%s" on %s' % (self.get_band_symbol_colour_display(),
-#                                       self.band_symbol,
-#                                       self.get_band_colour_display())
-#         else:
-#             return '-'
-#     get_colour_band.short_description = 'Colour band'
-#
-#
-#     def get_colour_band_code(self):
-#         """ Creates unique code for colour band combination """
-#         if self.band_colour or self.band_symbol_colour or self.band_symbol:
-#             return '%s-%s_%s' % (self.band_symbol_colour, self.band_symbol,
-#                                  self.band_colour)
-#         else:
-#             return ''
-#     get_colour_band_code.short_description = 'Colour band code'
-#
-#
-#     def get_bird(self):
-#         """ Get bird associated with this band """
-#         return str(self.bird)
-#     get_bird.short_description = 'Bird'
-#
-#
-#     def __str__(self):
-#         return self.get_colour_band()
-#
-#
-#     # Validation
-#     def clean(self):
-#         """ Validate various model fields to ensure uniqueness and consistency """
-#         errors = {}
-#
-#         ## Validate that only fully completed colour bands are entered (i.e. no partial bands)
-#         if self.band_colour or self.band_symbol_colour or self.band_symbol:
-#             if not self.band_colour:
-#                 errors.update({'band_colour': 'Cannot leave colour band partially ' \
-#                                               'complete. Please fill out remainder.'})
-#             if not self.band_symbol_colour:
-#                 errors.update({'band_symbol_colour': 'Cannot leave colour band partially ' \
-#                                                      'complete. Please fill out remainder.'})
-#             if not self.band_symbol:
-#                 errors.update({'band_symbol': 'Cannot leave colour band partially ' \
-#                                               'complete. Please fill out remainder.'})
-#
-#         ## If any errors occur, raise them
-#         if errors:
-#             raise ValidationError(errors)
 
 
 class Band(models.Model):
     """ Band, allows for multiple types. Can be associated with a bird via a BandCombo. """
     # Fields
     ## Foreign key
-    sighting = models.ForeignKey(BandCombo, blank=True, null=True, on_delete=models.CASCADE)
+    band_combo = models.ForeignKey(BandCombo, blank=True, null=True, on_delete=models.CASCADE)
 
 
     ## Common
-    primary = models.BooleanField()
+    primary = models.BooleanField(default=False)
     style = models.CharField(max_length=2, blank=True, choices=BAND_STYLE_CHOICES, default='')
     identifier = models.CharField(max_length=200, null=True, blank=True,
                                   validators=[
@@ -87,22 +33,108 @@ class Band(models.Model):
                                                      'of letters or numbers followed by a dash ' \
                                                      'then a series of numbers. No spaces.')
                                   ])
+    size = models.CharField(max_length=2, blank=True, choices=BAND_SIZE_CHOICE, default='')
     colour = models.CharField(max_length=8, blank=True, choices=BAND_COLOUR_CHOICES, default='')
-
-
-    ## Old style
-    leg = models.CharField(max_length=1, blank=True, choices=BAND_LEG_CHOICES, default='')
     position = models.CharField(max_length=1, blank=True, choices=BAND_POSITION_CHOICES, default='')
+    leg = models.CharField(max_length=1, blank=True, choices=BAND_LEG_CHOICES, default='')
 
 
-    ## New style
+    ## Letter (New)
     symbol_colour = models.CharField(max_length=8, blank=True, choices=BAND_SYMBOL_COLOUR_CHOICES,
                                      default='')
     symbol = models.CharField(max_length=10, blank=True, choices=BAND_SYMBOL_CHOICES, default='')
-    size = models.CharField(max_length=2, blank=True, choices=BAND_SIZE_CHOICE, default='')
 
 
     # Meta
     class Meta:
-        unique_together = ('style', 'identifier', 'colour', 'leg', 'position', 'symbol',
-                           'symbol_colour', 'size',)
+        unique_together = ('style', 'identifier', 'colour', 'leg', 'position', 'symbol_colour',
+                           'symbol', 'size',)
+
+
+    # Validation
+    def clean(self):
+        """ Validate various model fields to ensure uniqueness and consistency """
+        errors = {}
+
+        ## Model needs to validate that the band is a complete band for one of three types:
+        ## (a) Letter (New) (b) colour (c) metal
+
+
+        # if self.band_colour or self.band_symbol_colour or self.band_symbol:
+        #     if not self.band_colour:
+        #         errors.update({'band_colour': 'Cannot leave colour band partially ' \
+        #                                       'complete. Please fill out remainder.'})
+        #     if not self.band_symbol_colour:
+        #         errors.update({'band_symbol_colour': 'Cannot leave colour band partially ' \
+        #                                              'complete. Please fill out remainder.'})
+        #     if not self.band_symbol:
+        #         errors.update({'band_symbol': 'Cannot leave colour band partially ' \
+        #                                       'complete. Please fill out remainder.'})
+
+        ## If any errors occur, raise them
+        if errors:
+            raise ValidationError(errors)
+
+
+    # Functions
+    def get_bird(self):
+        """ Display bird if allocated to a BandCombo (in turn, allocated to a Bird) """
+        if self.band_combo:
+            if self.band_combo.bird:
+                return str(self.band_combo.bird)
+        return 'Unallocated'
+    get_bird.short_description = 'Bird'
+
+
+    def get_band_type(self):
+        """ Determines the BAND_TYPE_CHOICES of the band, based on fields completed """
+        if self.style == 'P' and self.colour and self.symbol_colour and self.symbol:
+            return 'N' # Letter (New)
+        elif self.style == 'UM' and self.identifier:
+            return 'M' # Identifier (Metal)
+        elif self.colour and self.position and self.leg:
+            return 'O' # Colour (Old)
+        return 'Unknown'
+
+
+    def get_band_type_display(self):
+        """ Human readable representation of get_band_type """
+        band_type = self.get_band_type()
+
+        if band_type and band_type != 'Unknown':
+            return dict(BAND_TYPE_CHOICES)[band_type]
+        else:
+            return band_type
+    get_band_type_display.short_description = 'Type'
+
+
+    def get_band_combo_display(self):
+        """ Creates human readable string based on allocation to BandCombo """
+        if self.band_combo:
+            return str(self.band_combo)
+        else:
+            return 'Unallocated'
+    get_band_combo_display.short_description = 'Combo'
+
+
+    def __str__(self):
+        """ Creates human readable string based on type of band """
+        output = []
+
+        if self.get_band_type() == 'N':
+            output.append('%s "%s" on %s' % (self.get_symbol_colour_display(), self.symbol,
+                                             self.get_colour_display()))
+        elif self.get_band_type() == 'O':
+            output.append('%s %s %s' % (self.get_colour_display(), self.get_position_display(),
+                                        self.get_leg_display()))
+
+        if self.identifier:
+            output.append('[%s]' % (self.identifier))
+
+        if self.size:
+            output.append('(%s)' % (self.get_size_display()))
+
+        if not output:
+            return 'Unknown'
+        else:
+            return ' '.join(output)
