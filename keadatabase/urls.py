@@ -37,7 +37,6 @@ router.register(r'locations/secondary', SecondaryLocationViewSet)
 
 
 urlpatterns = [
-    url(r'^bands_autocomplete/', include('bands.urls', namespace='bands')),
     url(r'^locations_autocomplete/', include('locations.urls', namespace='locations')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),

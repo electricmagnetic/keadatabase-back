@@ -57,7 +57,6 @@ class BandObjectTests(TestCase):
             band_partial.save()
 
 
-    #band_combo='', primary=False, style='', identifier= '', size='', colour='', position='', leg='', symbol_colour='', symbol=''
     def test_validation_identifier(self):
         """ Check only identifiers matching the regex '^[a-z0-9]{1,2}-[0-9]+$' can be added """
         with self.assertRaises(ValidationError):
@@ -94,7 +93,6 @@ class BandMethodTests(TestCase):
         band = Band(band_combo=band_combo, style='M', identifier='v-12345', size='',
                     colour='UNCOLOURED', position='', leg='', symbol_colour='', symbol='',)
         self.assertEqual(band.get_bird_display(), bird.__str__())
-
 
 
     def test_get_band_type_display(self):
