@@ -12,7 +12,7 @@ class BandCombo(models.Model):
     # Fields
     ## Basic details
     status = models.CharField(max_length=1, choices=BAND_STATUS_CHOICES, default='+')
-    combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='L')
+    combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='N')
     home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 
 
@@ -67,20 +67,21 @@ class Band(models.Model):
 
 
     # Functions
-    def get_bird(self):
-        """ Display bird if allocated to a BandCombo (in turn, allocated to a Bird) """
+    def get_bird_display(self):
+        """ Display bird str if allocated to a BandCombo (in turn, allocated to a Bird) """
         if self.band_combo:
             if self.band_combo.bird:
                 return str(self.band_combo.bird)
         return 'Unallocated'
-    get_bird.short_description = 'Bird'
+    get_bird_display.short_description = 'Bird'
 
 
     def get_band_type(self):
         """ Determines the BAND_TYPE_CHOICES of the band, based on fields completed """
-        if self.style == 'P' and self.colour and self.symbol_colour and self.symbol:
+        if self.colour and self.symbol_colour and self.symbol and self.style == 'P':
             return 'N' # Letter (New)
-        elif self.colour and self.position and self.leg:
+        elif self.colour and self.position and self.leg and not self.symbol \
+             and not self.symbol_colour:
             return 'O' # Colour (Old)
         elif self.colour == 'UNCOLOURED' and self.style == 'M' and self.identifier:
             return 'M' # Identifier (Metal)

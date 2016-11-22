@@ -1,10 +1,8 @@
-from unittest import skip
-
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
 from birds.models import Bird
-from .models import Band
+from .models import Band, BandCombo
 
 
 class BandObjectTests(TestCase):
@@ -17,14 +15,13 @@ class BandObjectTests(TestCase):
             band.save()
 
 
-    @skip
     def test_unique(self):
         """ Check only unique bands combinations can be added """
         with self.assertRaises(ValidationError):
-            band_original = Band(style='P', identifier='', colour='BLACK', leg='L', position='S',
-                                 symbol_colour='WHITE', symbol='X', size='LG')
-            band_duplicate = Band(style='P', identifier='', colour='BLACK', leg='L', position='S',
-                                  symbol_colour='WHITE', symbol='X', size='LG')
+            band_original = Band(style='P', identifier='', size='LG', colour='BLACK', position='S',
+                                 leg='L', symbol_colour='WHITE', symbol='X',)
+            band_duplicate = Band(style='P', identifier='', size='LG', colour='BLACK', position='S',
+                                  leg='L', symbol_colour='WHITE', symbol='X',)
 
             band_original.full_clean()
             band_original.save()
@@ -33,74 +30,102 @@ class BandObjectTests(TestCase):
             band_duplicate.save()
 
 
-    @skip
     def test_complete_letter_band(self):
         """ Check that only fully completed letter bands are entered (i.e. no partial bands) """
         with self.assertRaises(ValidationError):
-            band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
-            band_partial_colour_band.full_clean()
-            band_partial_colour_band.save()
+            band_partial = Band(style='P', identifier='', size='LG', colour='BLACK', position='S',
+                                leg='L', symbol_colour='WHITE', symbol='',)
+            band_partial.full_clean()
+            band_partial.save()
 
 
-    @skip
     def test_complete_colour_band(self):
         """ Check that only fully completed colour bands are entered (i.e. no partial bands) """
         with self.assertRaises(ValidationError):
-            band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
-            band_partial_colour_band.full_clean()
-            band_partial_colour_band.save()
+            band_partial = Band(style='M', identifier='v-1234', size='LG', colour='BLACK',
+                                position='S', leg='', symbol_colour='', symbol='',)
+            band_partial.full_clean()
+            band_partial.save()
 
 
-    @skip
     def test_complete_identifier_band(self):
         """ Check that only fully completed identifier bands are entered (i.e. no partial bands) """
         with self.assertRaises(ValidationError):
-            band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
-            band_partial_colour_band.full_clean()
-            band_partial_colour_band.save()
+            band_partial = Band(style='M', identifier='', size='', colour='UNCOLOURED',
+                                position='', leg='', symbol_colour='', symbol='',)
+            band_partial.full_clean()
+            band_partial.save()
+
+
+    #band_combo='', primary=False, style='', identifier= '', size='', colour='', position='', leg='', symbol_colour='', symbol=''
+    def test_validation_identifier(self):
+        """ Check only identifiers matching the regex '^[a-z0-9]{1,2}-[0-9]+$' can be added """
+        with self.assertRaises(ValidationError):
+            band_spaces = Band(style='M', identifier='v - 12345', size='', colour='UNCOLOURED',
+                               position='', leg='', symbol_colour='', symbol='',)
+            band_spaces.full_clean()
+            band_spaces.save()
+
+        with self.assertRaises(ValidationError):
+            band_uppercase = Band(style='M', identifier='V-12345', size='', colour='UNCOLOURED',
+                                  position='', leg='', symbol_colour='', symbol='',)
+            band_uppercase.full_clean()
+            band_uppercase.save()
+
+        with self.assertRaises(ValidationError):
+            band_no_dash = Band(style='M', identifier='v12345', size='', colour='UNCOLOURED',
+                                position='', leg='', symbol_colour='', symbol='',)
+            band_no_dash.full_clean()
+            band_no_dash.save()
+
+        with self.assertRaises(ValidationError):
+            band_no_prefix = Band(style='M', identifier='-12345', size='', colour='UNCOLOURED',
+                                  position='', leg='', symbol_colour='', symbol='',)
+            band_no_prefix.full_clean()
+            band_no_prefix.save()
 
 
 class BandMethodTests(TestCase):
     """ Tests for methods of Band objects """
-    @skip
-    def test_bird_method(self):
-        """ The get_bird method should return a Bird identifier or a '-' """
-        band1 = Band(band_symbol_colour='WHITE', band_symbol='X', band_colour='BLACK')
-        band1.full_clean()
-        band1.save()
-
-        band2 = Band(band_symbol_colour='WHITE', band_symbol='Z', band_colour='BLACK')
-        band2.full_clean()
-        band2.save()
-
-        bird_with_name = Bird(band=band1, name='Colin', id_band='v-12345')
-        bird_with_name.full_clean()
-        bird_with_name.save()
-        self.assertEqual(band1.get_bird(), 'Colin')
-
-        bird_id_only = Bird(band=band2, id_band='v-54321')
-        bird_id_only.full_clean()
-        bird_id_only.save()
-        self.assertEqual(band2.get_bird(), 'v-54321')
+    def test_get_bird_display(self):
+        """ Checks that a Bird is returned if the Band is associated with an assigned BandCombo """
+        band_combo = BandCombo()
+        bird = Bird(band_combo=band_combo)
+        band = Band(band_combo=band_combo, style='M', identifier='v-12345', size='',
+                    colour='UNCOLOURED', position='', leg='', symbol_colour='', symbol='',)
+        self.assertEqual(band.get_bird_display(), bird.__str__())
 
 
-    @skip
-    def test_band_type_method(self):
-        self.fail('TODO')
+
+    def test_get_band_type_display(self):
+        """ Checks that the appropiate human-readable choice is returned """
+        band = Band(style='M', identifier='v-12345', size='', colour='UNCOLOURED',
+                    position='', leg='', symbol_colour='', symbol='',)
+        self.assertEqual(band.get_band_type_display(), 'Identifier (Metal)')
 
 
-    @skip
-    def test_band_type_display_method(self):
-        self.fail('TODO')
+    def test_get_band_combo_display(self):
+        """ Checks that the str function of the BandCombo is returned, only if assigned """
+        band_combo = BandCombo()
+        band_with = Band(band_combo=band_combo, style='M', identifier='v-12345', size='',
+                         colour='UNCOLOURED', position='', leg='', symbol_colour='', symbol='',)
+        self.assertEqual(band_with.get_band_combo_display(), band_combo.__str__())
+
+        band_without = Band(style='M', identifier='v-12345', size='', colour='UNCOLOURED',
+                            position='', leg='', symbol_colour='', symbol='',)
+        self.assertEqual(band_without.get_band_combo_display(), 'Unallocated')
 
 
-    @skip
-    def test_band_combo_display_method(self):
-        self.fail('TODO')
+    def test_str(self):
+        """ Checks that bands are appropriately formatted depending on type """
+        band_new = Band(style='P', identifier='', size='', colour='YELLOW',
+                        position='', leg='', symbol_colour='BLACK', symbol='X',)
+        self.assertEqual(band_new.__str__(), 'Black "X" on Yellow')
 
+        band_old = Band(style='M', identifier='v-12345', size='', colour='BLUE',
+                        position='T', leg='L', symbol_colour='', symbol='',)
+        self.assertEqual(band_old.__str__(), 'Blue Top Left [v-12345]')
 
-    @skip
-    def test_str_method(self):
-        """ The get_colour_band method should return an appropriately formatted colour band """
-        band_colour_band = Band(band_colour='BLACK', band_symbol='*', band_symbol_colour='WHITE')
-        self.assertEqual(band_colour_band.get_colour_band(), 'White "*" on Black')
+        band_identifier = Band(style='M', identifier='v-12345', size='', colour='UNCOLOURED',
+                               position='', leg='', symbol_colour='', symbol='',)
+        self.assertEqual(band_identifier.__str__(), '[v-12345]')

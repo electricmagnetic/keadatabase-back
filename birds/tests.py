@@ -62,29 +62,6 @@ class BirdObjectTests(TestCase):
             bird_future.save()
 
 
-    def test_validate_regex_id_band(self):
-        """ Check only id bands matching the regex '^[a-z0-9]{1,2}-[0-9]+$' can be added """
-        with self.assertRaises(ValidationError):
-            bird_invalid_spaces = Bird(id_band='v - 12345')
-            bird_invalid_spaces.full_clean()
-            bird_invalid_spaces.save()
-
-        with self.assertRaises(ValidationError):
-            bird_invalid_uppercase = Bird(id_band='V-12345')
-            bird_invalid_uppercase.full_clean()
-            bird_invalid_uppercase.save()
-
-        with self.assertRaises(ValidationError):
-            bird_invalid_no_dash = Bird(id_band='V12345')
-            bird_invalid_no_dash.full_clean()
-            bird_invalid_no_dash.save()
-
-        with self.assertRaises(ValidationError):
-            bird_invalid_no_prefix = Bird(id_band='-12345')
-            bird_invalid_no_prefix.full_clean()
-            bird_invalid_no_prefix.save()
-
-
 class BirdMethodTests(TestCase):
     """ Tests for methods of Bird objects """
     def test_identifier_method(self):
