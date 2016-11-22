@@ -9,6 +9,14 @@ from .models import Band
 
 class BandObjectTests(TestCase):
     """ Tests for create/edit/delete functions of Band objects """
+    def test_blank(self):
+        """ The model should not submit if all fields are left blank """
+        with self.assertRaises(ValidationError):
+            band = Band()
+            band.full_clean()
+            band.save()
+
+
     @skip
     def test_unique(self):
         """ Check only unique bands combinations can be added """
@@ -26,8 +34,26 @@ class BandObjectTests(TestCase):
 
 
     @skip
+    def test_complete_letter_band(self):
+        """ Check that only fully completed letter bands are entered (i.e. no partial bands) """
+        with self.assertRaises(ValidationError):
+            band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
+            band_partial_colour_band.full_clean()
+            band_partial_colour_band.save()
+
+
+    @skip
     def test_complete_colour_band(self):
         """ Check that only fully completed colour bands are entered (i.e. no partial bands) """
+        with self.assertRaises(ValidationError):
+            band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
+            band_partial_colour_band.full_clean()
+            band_partial_colour_band.save()
+
+
+    @skip
+    def test_complete_identifier_band(self):
+        """ Check that only fully completed identifier bands are entered (i.e. no partial bands) """
         with self.assertRaises(ValidationError):
             band_partial_colour_band = Band(band_symbol_colour='WHITE', band_colour='BLACK')
             band_partial_colour_band.full_clean()
