@@ -15,6 +15,42 @@ class BandCombo(models.Model):
     home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 
 
+    # Validation
+    def clean(self):
+        """ Validate various model fields to ensure uniqueness and consistency """
+        errors = {}
+
+        ## (1) BandCombo must have (only) one primary band
+        print(self.band_set.all())
+        # if self.band_set.filter(primary=True).count() != 1:
+        #     errors.update({NON_FIELD_ERRORS: 'Invalid primary band. ' \
+        #                                      'Please ensure one band is assigned as primary.'})
+
+        ## (2) Any associated bands must be consistent with the combo_type (or an identifier)
+        # Delegated to child object?
+
+        ## If any errors occur, raise them
+        if errors:
+            raise ValidationError(errors)
+
+
+    # Functions
+    # ...
+    def __str__(self):
+        """ Creates human readable string based on type of Band """
+        output = []
+
+        if self.combo_type == 'N':
+            output.append('new')
+        if self.combo_type == 'O':
+            output.append('old')
+
+        if not output:
+            return 'Unknown'
+
+        return ' '.join(output)
+
+
 class Band(models.Model):
     """ Band, allows for multiple types. Can be associated with a bird via a BandCombo. """
     # Fields
@@ -54,11 +90,18 @@ class Band(models.Model):
     def clean(self):
         """ Validate various model fields to ensure uniqueness and consistency """
         errors = {}
+        band_type = self.get_band_type()
 
         ## Model needs to validate that the band is a complete band for one of the three types
-        if self.get_band_type() == '?':
+        if band_type == '?':
             errors.update({NON_FIELD_ERRORS: 'Band type unable to be identified. ' \
                                              'Please provide more information.'})
+
+        ## Model needs to validate that if assigned to a BandCombo, it is of the correct type
+        if self.band_combo:
+            if self.band_combo.combo_type != band_type and band_type != 'M':
+                errors.update({NON_FIELD_ERRORS: 'Invalid band type for BandCombo. ' \
+                                                 'Please change the Band or BandCombo type.'})
 
         ## If any errors occur, raise them
         if errors:
@@ -79,7 +122,7 @@ class Band(models.Model):
         """ Determines the BAND_TYPE_CHOICES of the band, based on fields completed """
         if self.colour and self.symbol_colour and self.symbol and self.style == 'P':
             return 'N' # Letter (New)
-        elif self.colour and self.position and self.leg and not self.symbol \
+        elif self.colour != 'UNCOLOURED' and self.position and self.leg and not self.symbol \
              and not self.symbol_colour:
             return 'O' # Colour (Old)
         elif self.colour == 'UNCOLOURED' and self.style == 'M' and self.identifier:
@@ -108,7 +151,7 @@ class Band(models.Model):
 
 
     def __str__(self):
-        """ Creates human readable string based on type of band """
+        """ Creates human readable string based on type of Band """
         output = []
         band_type = self.get_band_type()
 

@@ -32,8 +32,11 @@ class BandInline(admin.TabularInline):
 class BandComboAdmin(admin.ModelAdmin):
     """ Defines the fieldsets for the BandCombo model admin """
     form = BandComboForm
-
     inlines = [BandInline]
+
+    #readonly_fields = ('__str__',)
+    list_display = ('__str__', 'combo_type', 'home_location', 'bird',)
+    list_filter = ('combo_type', 'home_location',)
 
 
 admin.site.register(Band, BandAdmin)

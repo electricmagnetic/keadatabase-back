@@ -84,6 +84,11 @@ class BandObjectTests(TestCase):
             band_no_prefix.save()
 
 
+    def test_validation_band_combo_type(self):
+        """ Check that the validation of band_type against parent band_combo type works"""
+        self.fail('TODO')
+
+
 class BandMethodTests(TestCase):
     """ Tests for methods of Band objects """
     def test_get_bird_display(self):
