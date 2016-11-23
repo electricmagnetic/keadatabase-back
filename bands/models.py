@@ -11,7 +11,6 @@ class BandCombo(models.Model):
     """ BandCombo, made up of multiple Band models. """
     # Fields
     ## Basic details
-    status = models.CharField(max_length=1, choices=BAND_STATUS_CHOICES, default='+')
     combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='N')
     home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 

@@ -51,11 +51,6 @@ STATUS_CHOICES = (
     ('-', 'Dead'),
 )
 
-BAND_STATUS_CHOICES = (
-    ('+', 'Active'),
-    ('-', 'Decommissioned'),
-)
-
 BAND_LEG_CHOICES = (
     ('', 'Unknown'),
     ('L', 'Left'),
