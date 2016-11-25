@@ -84,7 +84,6 @@ class Sighting(SightingBase):
                                                         'location is specified.'})
 
 
-        ## If any errors occur, raise them
         if errors:
             raise ValidationError(errors)
 

@@ -18,9 +18,8 @@ class BandAdmin(admin.ModelAdmin):
         ]}),
     ]
 
-    list_display = ('__str__', 'primary', 'get_band_type_display', 'get_band_combo_display',
-                    'get_bird_display',)
-    list_filter = ('style', 'primary',)
+    list_display = ('__str__', 'band_type', 'primary', 'band_combo', 'get_bird_display',)
+    list_filter = ('band_type', 'style', 'primary',)
     ordering = ('-band_combo', '-primary',)
 
 

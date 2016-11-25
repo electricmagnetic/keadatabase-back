@@ -54,7 +54,6 @@ class Bird(models.Model):
         if self.name:
             return self.name
         else:
-            #return self.id_band
             return ''
     get_identifier.short_description = 'Identifier'
 
@@ -86,7 +85,6 @@ class Bird(models.Model):
                 errors.update({'birthday': 'Date cannot be from the future.'})
 
 
-        ## If any errors occur, raise them
         if errors:
             raise ValidationError(errors)
 
