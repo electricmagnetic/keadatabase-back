@@ -1,0 +1,26 @@
+{
+  "name": "keadatabase",
+  "version": "1.0.0",
+  "description": "An online database designed to track kea sightings and information for the Kea Conservation Trust",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "html5shiv": "^3.7.3",
+    "jquery": "^3.1.1",
+    "respond.js": "^1.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/greenstone/keadatabase.git"
+  },
+  "author": "",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/greenstone/keadatabase/issues"
+  },
+  "homepage": "https://gitlab.com/greenstone/keadatabase#README"
+}

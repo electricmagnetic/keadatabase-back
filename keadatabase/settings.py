@@ -97,6 +97,7 @@ DATABASES = {
         'NAME': 'keadatabase',
         'USER': 'keadatabase',
         'PASSWORD': 'keadatabase',
+        'HOST': 'localhost',
     }
 }
 
@@ -142,7 +143,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'bower_components')
+    os.path.join(BASE_DIR, 'node_modules')
 ]
 
 STATICFILES_FINDERS = (
