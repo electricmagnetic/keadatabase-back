@@ -3,12 +3,11 @@ An online database designed to track kea sightings and information for the Kea C
 
 
 ## Layout
-* 'locations' - models and admin for primary and secondary locations
-* 'birds' - models and admin for known birds
-* 'sightings' - models and admin for sightings of kea
-* 'portal' - public facing portal for adding sightings and searching kea
-* 'api' - contains urls for API
 * 'bands' - models and admin for band combinations
+* 'birds' - models and admin for known birds
+* 'locations' - models and admin for primary and secondary locations
+* 'portal' - public facing portal for adding sightings and searching kea
+* 'sightings' - models and admin for sightings of kea
 
 
 ## Setup
@@ -19,9 +18,9 @@ For instructions on setting up `postgres` with postgis:
 <https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/postgis/>
 
 1. Ensure postgres is installed with the postgis extension
-2. Create a new database 'keadatabase' with username 'keadatabase' and no password
+2. Create a new database 'keadatabase' with username/password 'keadatabase'/'keadatabase'
 3. Setup virtual environment with python3
-4. `bower install`
+4. `npm install`
 5. `pip install -r requirements.txt` (install relevant dependencies)
 6. `./manage.py migrate` (database setup and migration)
 7. `./manage.py createsuperuser` (superuser creation)
