@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import PrimaryLocation, SecondaryLocation, HomeLocation
+from .models import PrimaryLocation, SecondaryLocation, AreaLocation
 
 
 class PrimaryLocationSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class SecondaryLocationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class HomeLocationSerializer(serializers.ModelSerializer):
+class AreaLocationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HomeLocation
+        model = AreaLocation
         fields = '__all__'

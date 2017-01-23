@@ -34,8 +34,8 @@ class BandComboAdmin(admin.ModelAdmin):
     inlines = [BandInline]
 
     #readonly_fields = ('__str__',)
-    list_display = ('__str__', 'combo_type', 'home_location', 'bird',)
-    list_filter = ('combo_type', 'home_location',)
+    list_display = ('__str__', 'combo_type', 'area_location',)
+    list_filter = ('combo_type', 'area_location',)
 
 
 admin.site.register(Band, BandAdmin)

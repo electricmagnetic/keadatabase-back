@@ -2,7 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.core.validators import RegexValidator
 
-from locations.models import HomeLocation
+from locations.models import AreaLocation
 from keadatabase.choices import *
 
 
@@ -12,7 +12,7 @@ class BandCombo(models.Model):
     # Fields
     ## Basic details
     combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='N')
-    home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
+    area_location = models.ForeignKey(AreaLocation, blank=True, null=True)
 
     ## Validation helper for primary (TODO: fix)
     primary_count = 0

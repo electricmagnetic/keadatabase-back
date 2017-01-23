@@ -3,7 +3,7 @@ from datetime import date
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
 
-from locations.models import HomeLocation
+from locations.models import AreaLocation
 from sightings.models import Sighting
 from bands.models import BandCombo
 from keadatabase.choices import *
@@ -16,15 +16,13 @@ def bird_directory_path(instance, filename):
 
 # Models
 class Bird(models.Model):
-    """ Information on existing banded birds """
+    """ A model (intended to be read-only) imported from Access """
     # Fields
     ## Basic details
-    name = models.CharField(max_length=200, blank=True)
-    status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES, default='A')
+    name = models.CharField(max_length=200)
     sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES, default='')
-    life_stage = models.CharField(max_length=1, blank=True, choices=LIFE_STAGE_CHOICES, default='')
+    status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES, default='A')
     birthday = models.DateField(blank=True, null=True)
-    description = models.TextField(blank=True)
 
 
     ## Media
@@ -32,61 +30,44 @@ class Bird(models.Model):
 
 
     ## Location details
-    home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
+    # TODO: area = models.ForeignKey(AreaLocation, blank=True, null=True)
 
 
     ## Band details
-    band_combo = models.OneToOneField(BandCombo, null=True, blank=True)
-
-
-    ## Notes
-    health = models.TextField(blank=True)
-    notes = models.TextField(blank=True)
+    # TODO: band_combo = models.OneToOneField(BandCombo, null=True, blank=True)
 
 
     ## Metadata
-    date_updated = models.DateTimeField(auto_now=True)
+    date_changed = models.DateTimeField(auto_now=True)
+    date_imported = models.DateTimeField(blank=True, null=True)
 
 
     # Functions
-    def get_identifier(self):
-        """ Creates string for identifying bird """
-        if self.name:
-            return self.name
-        else:
-            return ''
-    get_identifier.short_description = 'Identifier'
-
-
-    """
-    def get_colour_band(self):
-         Passes 'get_colour_band' to Band
-        if self.band:
-            return self.band.get_colour_band()
-        else:
-            return ''
-    get_colour_band.short_description = 'Colour band'
-    """
-
     def __str__(self):
-        return self.get_identifier()
+        return self.name
 
 
-    # Validation
-    def clean(self):
-        """ Validate various model fields to ensure uniqueness and consistency """
-        errors = {}
-
-
+    def get_age(self):
+        """ Calculates age based on birthday """
         ## Validate birthday is not from the future
-        current_date = date.today()
-        if self.birthday:
-            if self.birthday > current_date:
-                errors.update({'birthday': 'Date cannot be from the future.'})
+        #     current_date = date.today()
+        #     if self.birthday:
+        #         if self.birthday > current_date:
+        #             errors.update({'birthday': 'Date cannot be from the future.'})
+        return 'age'
 
 
-        if errors:
-            raise ValidationError(errors)
+    def get_life_stage(self):
+        """ Calculates life stage based on age """
+        # choices=LIFE_STAGE_CHOICES
+        return 'life stage'
+
+
+class BirdExtended(models.Model):
+    """ A complementary model to Bird, intended to be editable """
+    bird = models.OneToOneField(Bird, models.CASCADE)
+    featured = models.BooleanField(default=False)
+    description = models.TextField()
 
 
 class BirdSighting(models.Model):

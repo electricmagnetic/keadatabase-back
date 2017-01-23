@@ -13,8 +13,8 @@ class BandComboForm(forms.ModelForm):
         fields = ('__all__')
 
         widgets = {
-            'home_location':
+            'area_location':
                 autocomplete.ModelSelect2(
-                    url='locations:home_location_autocomplete',
+                    url='locations:area_location_autocomplete',
                 ),
         }

@@ -1,9 +1,9 @@
 from dal import autocomplete
 from rest_framework import viewsets
 
-from .models import PrimaryLocation, SecondaryLocation, HomeLocation
+from .models import PrimaryLocation, SecondaryLocation, AreaLocation
 from .serializers import PrimaryLocationSerializer, SecondaryLocationSerializer, \
-                         HomeLocationSerializer
+                         AreaLocationSerializer
 
 
 class PrimaryLocationAutocomplete(autocomplete.Select2QuerySetView):
@@ -36,11 +36,11 @@ class SecondaryLocationAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
 
-class HomeLocationAutocomplete(autocomplete.Select2QuerySetView):
+class AreaLocationAutocomplete(autocomplete.Select2QuerySetView):
     """ Provides a list of home locations as an autocomplete """
 
     def get_queryset(self):
-        qs = HomeLocation.objects.all().order_by('name')
+        qs = AreaLocation.objects.all().order_by('name')
 
         if self.q:
             qs = qs.filter(name__istartswith=self.q)
@@ -60,7 +60,7 @@ class SecondaryLocationViewSet(viewsets.ReadOnlyModelViewSet):
     filter_fields = ('name', 'primary_location')
 
 
-class HomeLocationViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = HomeLocation.objects.all()
-    serializer_class = HomeLocationSerializer
+class AreaLocationViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = AreaLocation.objects.all()
+    serializer_class = AreaLocationSerializer
     filter_fields = ('name',)
