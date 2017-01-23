@@ -1,5 +1,4 @@
 from django.contrib.gis import admin
-from django.conf import settings
 
 from .models import Bird, BirdSighting
 from .forms import BirdForm
@@ -24,15 +23,6 @@ class BirdAdmin(admin.GeoModelAdmin):
             'health', 'notes'
         ]}),
     ]
-
-    default_lon = settings.GEO_DEFAULT_LON
-    default_lat = settings.GEO_DEFAULT_LAT
-    default_zoom = settings.GEO_DEFAULT_ZOOM
-
-    wms_url = settings.GEO_WMS_URL
-    wms_layer = settings.GEO_WMS_LAYER
-    wms_name = settings.GEO_WMS_NAME
-    wms_options = settings.GEO_WMS_OPTIONS
 
 
 admin.site.register(Bird, BirdAdmin)

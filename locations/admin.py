@@ -14,6 +14,11 @@ class PrimaryLocationAdmin(admin.GeoModelAdmin):
     default_lat = settings.GEO_DEFAULT_LAT
     default_zoom = settings.GEO_DEFAULT_ZOOM
 
+    wms_url = settings.GEO_WMS_URL
+    wms_layer = settings.GEO_WMS_LAYER
+    wms_name = settings.GEO_WMS_NAME
+    wms_options = settings.GEO_WMS_OPTIONS
+
 
 class SecondaryLocationAdmin(admin.ModelAdmin):
     """ Defines the table layout for secondary locations """
