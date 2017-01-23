@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_gis',
     'compressor',
 
+    'import',
     'locations',
     'bands',
     'birds',
