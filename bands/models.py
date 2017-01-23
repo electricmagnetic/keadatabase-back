@@ -14,8 +14,11 @@ class BandCombo(models.Model):
     combo_type = models.CharField(max_length=1, choices=COMBO_TYPE_CHOICES, default='N')
     home_location = models.ForeignKey(HomeLocation, blank=True, null=True)
 
-    ## Validation helper for primary
+    ## Validation helper for primary (TODO: fix)
     primary_count = 0
+
+    ## Helper field for display
+    display = models.CharField(max_length=255, editable=False)
 
 
     # Validation
@@ -30,10 +33,9 @@ class BandCombo(models.Model):
 
 
     # Functions
-    def __str__(self):
-        """ Creates human readable string depending on info and combo_type """
+    def get_display(self):
+        """ Create human readable string depending on bands and combo_type """
         ## TODO: confirm if order is important (e.g. L leg then R leg)??
-        ## TODO: generate this into a field?
         output = []
         if self.band_set.all():
             bands_str = []
@@ -44,6 +46,17 @@ class BandCombo(models.Model):
         if not output:
             return 'Unknown'
         return ' '.join(output)
+
+
+    def __str__(self):
+        return self.display
+
+
+    # Transformation
+    def save(self, *args, **kwargs):
+        """ Update non-editable field containing display """
+        self.display = self.get_display()
+        super(BandCombo, self).save(*args, **kwargs)
 
 
 class Band(models.Model):
