@@ -1,3 +1,5 @@
+from autoslug import AutoSlugField
+
 from django.contrib.gis.db import models
 
 
@@ -9,7 +11,11 @@ class LocationBase(models.Model):
 
 
     # Fields
+    ## Basic details
     name = models.CharField(max_length=200)
+
+    ## Unique slug (for comparisons)
+    slug = AutoSlugField(populate_from='name', unique=True, always_update=True)
 
 
     # Functions

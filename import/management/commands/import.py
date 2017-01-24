@@ -5,6 +5,7 @@ from django.core.management import BaseCommand
 
 from keadatabase.choices import *
 from birds.models import Bird
+from locations.models import AreaLocation
 from bands.models import Band, BandCombo
 
 
@@ -32,8 +33,32 @@ class Command(BaseCommand):
     def import_areas(self):
         """ Imports AreaLocation objects from data/areas.csv """
         self.stdout.write("  Importing areas...")
-        self.stdout.write("TODO")
+
+        with open('data/areas.csv', 'rt') as areas_csv:
+            areas_reader = csv.DictReader(areas_csv, delimiter=',', quotechar='"')
+            for row in areas_reader:
+                # Map fields
+                area_map = {
+                    'name': row['Study area'],
+                }
+
+                self.stdout.write(row['Study area'])
+
+                # TODO: check duplicates
+                # TODO: relations
+
+                # Save as AreaLocation object
+                area = AreaLocation(**area_map)
+                area.full_clean()
+                area.save()
+
         self.stdout.write("    ...done!")
+
+
+    def import_bands(self):
+        """ Imports Band objects from various csv files """
+        self.stdout.write("  Importing bands...")
+        self.stdout.write("    ...TODO!")
 
 
     def import_birds(self):
@@ -43,6 +68,10 @@ class Command(BaseCommand):
         with open('data/birds.csv', 'rt') as birds_csv:
             birds_reader = csv.DictReader(birds_csv, delimiter=',', quotechar='"')
             for row in birds_reader:
+                # Validate species
+                if row['Species'] != 'Kea':
+                    continue
+
                 # Format and validate status
                 status_map = {
                     'Alive': '+',
@@ -65,9 +94,14 @@ class Command(BaseCommand):
 
                 # Format birthday
                 if row['birthday']:
-                    birthday_formatted = datetime.datetime.strptime(row['birthday'], "%d/%m/%y %H:%M:%S")
+                    birthday_formatted = datetime.datetime.strptime(row['birthday'],
+                                                                    "%d/%m/%y %H:%M:%S")
                 else:
                     birthday_formatted = None
+
+                # Get associated area
+                #area = AreaLocation.objects.get(name=row['Study area'])
+                # TODO: not all areas have associated AreaLocations
 
                 # Map fields
                 bird_map = {
@@ -75,13 +109,16 @@ class Command(BaseCommand):
                     'sex': sex_map[row['Sex']],
                     'status': status_map[row['Status']],
                     'birthday': birthday_formatted,
-                    #'area': '',
+                    #'area': area,
                     #'photo': '',
                     #'date_imported': '',
                 }
 
-                # TEMP: #self.stdout.write("%s: %s %s %s" % (row['Kea ID'], row['Study area'], row['birthday'], birthday_formatted))
+                self.stdout.write("%s" % (row['Study area']))
                 # TODO: check duplicates
+                # TODO: media
+                # TODO: relations
+
 
                 # Save as Bird object
                 bird = Bird(**bird_map)
@@ -97,8 +134,8 @@ class Command(BaseCommand):
         self.stdout.write(self.style.MIGRATE_HEADING("\nBeginning import..."))
 
         self.import_areas()
-        #self.stdout.write("TODO: importing bands")
-        self.import_birds()
+        self.import_bands()
+        #self.import_birds()
 
         self.stdout.write(self.style.SUCCESS("\nImport successful!"))
 

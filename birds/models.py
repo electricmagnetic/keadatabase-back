@@ -1,5 +1,7 @@
 from datetime import date
 
+from autoslug import AutoSlugField
+
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
 
@@ -25,12 +27,16 @@ class Bird(models.Model):
     birthday = models.DateField(blank=True, null=True)
 
 
+    ## Unique slug (for comparisons)
+    slug = AutoSlugField(populate_from='name', unique=True, always_update=True)
+
+
     ## Media
     photo = models.ImageField(upload_to=bird_directory_path, blank=True, null=True)
 
 
     ## Location details
-    # TODO: area = models.ForeignKey(AreaLocation, blank=True, null=True)
+    area = models.ForeignKey(AreaLocation, blank=True, null=True)
 
 
     ## Band details
