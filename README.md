@@ -41,9 +41,15 @@ TBD
 
 
 ## Loading data
+### From primary Access database
+1. Export tables from Access to csv files in 'data' directory of the project
+   "Kea bands" -> data/birds.csv
+   "tStudyAreas" -> data/areas.csv
+2. Run `./manage.py import` and follow instructions
+
+
 ### Sample data
 * `./manage.py loaddata sample_data/locations.json`
-* `./manage.py loaddata sample_data/birds.json`
 
 
 ### DOC boundary data

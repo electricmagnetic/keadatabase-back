@@ -1,0 +1,1031 @@
+Database import
+
+  Current data status:
+    Birds: 0
+    Bands: 7
+    Band Combos: 2
+
+  Import data status:
+    TODO: checking import data
+
+Beginning import...
+  Importing birds
+2C-1: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Aeneas: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Agnes: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Aguti: Fiordland, Male, 01/01/08 00:00:00, Alive
+Ajax: Rotoiti, Male, 01/01/07 00:00:00, Alive
+Alex: Kahurangi, Undetermined, 01/11/15 00:00:00, Alive
+Alf: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Alison: Waimakariri, Female, 01/01/09 00:00:00, Dead
+Allsorts: Rotoiti, Male, 01/01/08 00:00:00, Alive
+Alwyn: Waimakariri, Female, 01/01/14 00:00:00, Alive
+Amelia: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Amy: Aoraki, Female, , Alive
+Ana: Westland, Female, 01/01/09 00:00:00, Alive
+Andrea: Rotoiti, Female, 01/01/92 00:00:00, Alive
+Andrew: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Andy: Fiordland, Male, 01/01/05 00:00:00, Alive
+Angus: Kahurangi, Male, 01/01/10 00:00:00, Missing
+Anika: Kahurangi, Female, 01/01/12 00:00:00, Alive
+Anna: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Anthea: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Anuradha: Fiordland, Male, 01/01/05 00:00:00, Alive
+Aotea: Westland, Female, 01/01/07 00:00:00, Alive
+Aphrodite: Rotoiti, Female, 01/01/07 00:00:00, Alive
+Apollo: Rotoiti, Male, 01/01/15 00:00:00, Alive
+Appenzeller: Wakatipu, Male, 01/01/11 00:00:00, Alive
+April Dawn: Kahurangi, Female, 01/01/07 00:00:00, Alive
+Apsley: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Archie: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Arnie: Rotoiti, Male, 01/01/05 00:00:00, Alive
+Arno: Westland, Male, 01/01/08 00:00:00, Missing
+Aroha: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Arthur: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Arya: Westland, Female, 27/11/12 00:00:00, Alive
+Asha: Westland, Female, 06/12/12 00:00:00, Alive
+Asparagus: Rotoiti, Male, 01/01/98 00:00:00, Alive
+Asterix: Abel Tasman, Male, 01/01/10 00:00:00, Dead
+Atlas: Rotoiti, Female, 01/01/92 00:00:00, Alive
+Audrey: Rotoiti, Undetermined, 01/01/94 00:00:00, Alive
+Auguste: Fiordland, Male, , Alive
+Auroch: Fiordland, Male, 01/01/12 00:00:00, Alive
+Axel: Westland, Male, 01/01/06 00:00:00, Alive
+Ayla: Westland, Female, 01/01/08 00:00:00, Alive
+Baggins: Westland, Male, 01/01/05 00:00:00, Alive
+Baileys: Aoraki, Undetermined, , Alive
+Baldwin: Waimakariri, Female, 01/01/05 00:00:00, Alive
+Bambam: Westland, Female, 01/12/10 00:00:00, Alive
+Bandit: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Bangles: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Baracus: Wakatipu, Male, 01/01/07 00:00:00, Alive
+Barbie: Aoraki, Undetermined, , Alive
+Barrie: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Barry: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Bateman: Kahurangi, Male, 01/01/13 00:00:00, Alive
+Baz: Westland, Male, 01/01/13 00:00:00, Alive
+Beast: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Beau: Wanaka, Male, 01/01/09 00:00:00, Alive
+Becky: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Beech: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Bekz: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Bell: Rotoiti, Female, 03/01/98 00:00:00, Dead
+Bella: Kahurangi, Female, 01/01/11 00:00:00, Alive
+Bella Vista: Westland, Male, 01/01/07 00:00:00, Alive
+Belvedere Statesman: Kahurangi, Male, 01/01/08 00:00:00, Alive
+Bender: Rotoiti, Male, 01/01/93 00:00:00, Alive
+Benji: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Bennett: Westland, Male, 01/01/08 00:00:00, Alive
+Bern: Wakatipu, Female, 01/01/11 00:00:00, Alive
+Bernard: Westland, Male, 01/01/08 00:00:00, Alive
+Beryl: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Besse: Fiordland, Male, 01/01/07 00:00:00, Alive
+Bestie: Kahurangi, Male, 01/01/05 00:00:00, Alive
+BevanTheBiter: Rotoiti, Undetermined, 28/12/14 00:00:00, Alive
+Bill: Aoraki, Male, , Alive
+Billy: Rotoiti, Male, 01/01/94 00:00:00, Alive
+Bilong: Rotoiti, Female, 01/01/92 00:00:00, Alive
+Bimo: Aoraki, Male, , Alive
+Bioman: Fiordland, Male, 01/01/08 00:00:00, Unknown
+Birds Clearing 1: Golden Bay, Female, , Alive
+Biter: Rotoiti, Male, 01/01/88 00:00:00, Alive
+Blex: Westland, Male, 18/11/09 00:00:00, Alive
+Blondie: Fiordland, Female, 01/01/07 00:00:00, Alive
+Blu: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Blue J: Wanaka, Male, 01/01/09 00:00:00, Alive
+Blue Moon: Waimakariri, Male, 01/05/11 00:00:00, Dead
+Bluff: Westland, Female, 01/01/06 00:00:00, Alive
+Bob: Rotoiti, Male, 01/01/89 00:00:00, Alive
+Bobbit: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Bobby: Aoraki, Male, , Alive
+Bobs Chick 3: Rotoiti, Undetermined, 01/01/98 00:00:00, Dead
+Bobs Chick 4: Rotoiti, Undetermined, 01/01/98 00:00:00, Dead
+Boo Boo: Westland, Female, 05/11/12 00:00:00, Alive
+Bosco: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Bowers: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Fraser: Westland, Male, 01/01/09 00:00:00, Alive
+Freddie: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Frenchy: Fiordland, Male, 01/01/06 00:00:00, Alive
+Freya: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Friday13: Westland, Female, 01/01/10 00:00:00, Alive
+Friends: Westland, Female, 01/01/11 00:00:00, Alive
+Frodo: Westland, Male, 25/01/09 00:00:00, Missing
+Frosty: Rotoiti, Female, 01/01/95 00:00:00, Alive
+Gabba: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Gandalf: Rotoiti, Male, 01/01/92 00:00:00, Alive
+Janis Joplin: Kahurangi, Female, 01/01/06 00:00:00, Dead
+Tyndall: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Tyrion: Westland, Male, 08/11/12 00:00:00, Alive
+Ueli: Fiordland, Male, 01/01/06 00:00:00, Alive
+Uli: Westland, Female, 01/01/08 00:00:00, Dead
+Umpa: Kaikoura, Undetermined, , Alive
+Yang: Waimakariri, Male, 31/01/11 00:00:00, Dead
+Yellow Kelly: Fiordland, Female, 01/01/09 00:00:00, Alive
+Yeti: Waimakariri, Undetermined, 01/01/14 00:00:00, Alive
+Yin: Waimakariri, Female, 31/01/11 00:00:00, Alive
+Yoda: Westland, Male, 01/01/06 00:00:00, Alive
+Yogi: Westland, Female, 02/11/12 00:00:00, Dead
+Yuki: Rotoiti, Male, 01/01/12 00:00:00, Alive
+Yvonne: Westland, Female, 01/01/08 00:00:00, Missing
+Bowie: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Brabyn: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Branches: Fiordland, Male, 01/01/09 00:00:00, Alive
+Brandon: Westland, Male, 14/11/12 00:00:00, Alive
+Bravo: Rotoiti, Undetermined, 01/09/12 00:00:00, Dead
+Brenda: Rotoiti, Female, 01/12/94 00:00:00, Alive
+Brendon: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Brent: Kahurangi, Male, 01/01/10 00:00:00, Dead
+Brice: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Bridget: Westland, Female, 01/01/08 00:00:00, Dead
+Bruce: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Brutus: Rotoiti, Male, 01/01/10 00:00:00, Alive
+Bryan: Fiordland, Male, 01/01/06 00:00:00, Alive
+Bubbles: Waimakariri, Male, 01/01/07 00:00:00, Dead
+Buck: Wanaka, Male, 01/01/12 00:00:00, Alive
+Bucket: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Bud: Waimakariri, Female, 21/11/13 00:00:00, Alive
+Buddy: Westland, Male, 01/01/09 00:00:00, Not sure, it's been over a year
+Buglefree: Kahurangi, Male, 01/01/08 00:00:00, Alive
+Bulmers: Aoraki, Male, , Alive
+Burnier: Fiordland, Male, 01/01/09 00:00:00, Alive
+Burtrand: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Buzz Aldrin: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Cabbage: Aoraki, Male, , Alive
+Caida: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Caiti: Waimakariri, Female, 01/01/06 00:00:00, Alive
+Camber: Murchison, Male, 01/01/03 00:00:00, Alive
+Camel: Waimakariri, Female, 01/01/13 00:00:00, Alive
+Cannibal: Westland, Male, 01/01/13 00:00:00, Missing
+Captain Sanderson: Waimakariri, Male, , Alive
+Cardie: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Carkea: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Carl: Rotoiti, Male, 01/01/88 00:00:00, Alive
+Cassidy: Waimakariri, Female, 01/01/13 00:00:00, Alive
+Cassius: Waimakariri, Male, , Alive
+Catherine: Waimakariri, Female, 01/01/09 00:00:00, Alive
+CC: Westland, Female, 01/01/08 00:00:00, Alive
+Cedar: Westland, Female, 01/01/10 00:00:00, Alive
+Ceejay: Rotoiti, Female, 01/01/05 00:00:00, Dead
+Celine: Fiordland, Female, 01/01/07 00:00:00, Alive
+Champ: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Chance: Westland, Male, 13/12/10 00:00:00, Missing
+Chaos: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Charleston: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Charlize: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Chase: Westland, Male, 01/01/10 00:00:00, Alive
+Cheese: Rotoiti, Male, 01/01/09 00:00:00, Dead
+Cheezel: Rotoiti, Male, 01/01/05 00:00:00, Alive
+Chewy: Kahurangi, Male, 12/12/12 00:00:00, Alive
+Chicken Little: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Chill: Wanaka, Male, 01/01/13 00:00:00, Alive
+Chole: Westland, Male, 01/01/08 00:00:00, Alive
+Christie: Rotoiti, Female, 01/01/91 00:00:00, Alive
+Christmas: Kahurangi, Female, 14/01/12 00:00:00, Dead
+Chunk: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Ciara: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Clamp: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Clara: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Clarke: Aoraki, Male, , Alive
+Claudius: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Clean: Westland, Male, 01/01/06 00:00:00, Alive
+Clelio: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Cleopatra: Rotoiti, Female, 01/01/10 00:00:00, Missing
+Clever: Aoraki, Female, , Alive
+Clio: Fiordland, Male, 01/01/05 00:00:00, Alive
+Cloud: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Coco: Aoraki, Female, , Alive
+Cold Chester: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Colin: Rotoiti, Undetermined, 01/01/15 00:00:00, Alive
+Connemara: Aoraki, Female, , Alive
+Connor: Wakatipu, Male, 01/01/06 00:00:00, Alive
+Cooksie: Westland, Male, 01/01/07 00:00:00, Alive
+Cooper: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Cooter: Fiordland, Male, 01/01/06 00:00:00, Alive
+Corey: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Corkscrew: Kahurangi, Male, 01/01/04 00:00:00, Missing
+Courtney: Kahurangi, Undetermined, 01/01/16 00:00:00, Alive
+Cradle: Westland, Male, 01/01/10 00:00:00, Alive
+Craig: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Crazy Horse: Kahurangi, Male, 01/01/05 00:00:00, Dead
+Creb: Westland, Male, 14/02/12 00:00:00, Dead
+Creeky: Westland, Female, 01/01/05 00:00:00, Alive
+Cribbage: Westland, Male, 01/01/04 00:00:00, Alive
+Cromarty: Wakatipu, Male, 01/01/06 00:00:00, Alive
+Cubit: Westland, Male, 01/01/08 00:00:00, Alive
+Cue: Kahurangi, Male, 01/01/11 00:00:00, Alive
+Cunning: Fiordland, Male, 01/01/06 00:00:00, Alive
+Curious George: Fiordland, Male, 01/01/10 00:00:00, Alive
+Curry: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Daffy: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Dahl: Kahurangi, Male, 01/01/13 00:00:00, Alive
+Daisy: Aoraki, Female, , Alive
+Dale: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Danny: Westland, Male, 01/01/08 00:00:00, Alive
+Danny Boy: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Dante: Kahurangi, Male, 01/01/13 00:00:00, Alive
+Daphne: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Dapple: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Darbeley: Mckenzie Country, Male, , Alive
+Darwin: Rotoiti, Male, 01/01/98 00:00:00, Alive
+Darwined: Rotoiti, Female, 10/12/12 00:00:00, Alive
+Dave: Waimakariri, Male, 01/01/15 00:00:00, Alive
+David: Aoraki, Male, , Alive
+Davos: Wakatipu, Male, 01/01/11 00:00:00, Alive
+Dawgie: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Dawn: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Decoy: Westland, Male, 01/01/06 00:00:00, Alive
+Deep bite: Fiordland, Female, 01/01/07 00:00:00, Alive
+Desiree: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Desmond: Kahurangi, Male, 01/01/11 00:00:00, Dead
+Dexter: Aoraki, Male, , Alive
+Diana: Aoraki, Female, , Alive
+Digweed: Aoraki, Male, , Alive
+Ding: Waimakariri, Female, 01/01/07 00:00:00, Alive
+Dobbie: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Docherty: Westland, Male, 01/01/07 00:00:00, Alive
+Dodger: Rotoiti, Undetermined, 01/01/96 00:00:00, Alive
+Dodo: Kahurangi, Male, 01/01/10 00:00:00, Dead
+Don: Rotoiti, Male, 01/01/92 00:00:00, Alive
+Donald: Aoraki, Male, , Alive
+Donnie: Rotoiti, Male, 01/01/12 00:00:00, Alive
+Dot: Westland, Female, 01/01/08 00:00:00, Alive
+Douglas: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Draco: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Drizzle: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Drogo: Westland, Male, 14/11/12 00:00:00, Dead
+Ducky: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Dudley: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Dumper: Westland, Male, 01/01/07 00:00:00, Alive
+Duncan: Westland, Male, 01/01/08 00:00:00, Alive
+Dusty: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Dylan: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Dylanger: Kahurangi, Male, 01/01/05 00:00:00, Missing
+Earl: Waimakariri, Undetermined, , Alive
+Easter: Rotoiti, Male, 01/01/89 00:00:00, Alive
+Easy as: Fiordland, Male, 01/01/06 00:00:00, Alive
+Eddie: Kahurangi, Female, 01/01/10 00:00:00, Dead
+Edelweiss: Rotoiti, Female, 01/01/94 00:00:00, Alive
+Eelco: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Egor: Westland, Male, 10/11/11 00:00:00, Dead
+Einstein: Fiordland, Male, 01/01/12 00:00:00, Alive
+Ejay: Waimakariri, Female, 01/01/14 00:00:00, Alive
+Eliza: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Ellis: Kahurangi, Female, 01/01/09 00:00:00, Alive
+Elton: Kahurangi, Male, 01/01/07 00:00:00, Alive
+Elvin: Westland, Male, 03/11/11 00:00:00, Alive
+Emily: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Erin: Waimakariri, Female, , Alive
+Eskimo: Rotoiti, Male, 01/01/12 00:00:00, Alive
+Estrella: Kahurangi, Female, 01/01/05 00:00:00, Alive
+Eva: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Faceplant: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Fanjo: Fiordland, Male, 01/01/06 00:00:00, Alive
+Fast Al: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Fat Boy: Wanaka, Male, 01/01/09 00:00:00, Alive
+Feisty: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Fellay: Kaikoura, Undetermined, , Alive
+Fifty: Rotoiti, Male, 01/01/91 00:00:00, Dead
+Filmore: Aoraki, Male, , Alive
+Fish: Westland, Male, 01/01/08 00:00:00, Alive
+Fizzy: Rotoiti, Male, 01/01/91 00:00:00, Alive
+Flame: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Flappy: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Flare: Rotoiti, Female, 01/01/14 00:00:00, Alive
+Flatty: Wanaka, Male, 01/01/09 00:00:00, Alive
+Flint: Wakatipu, Male, 01/01/06 00:00:00, Alive
+Flying start: Westland, Male, 01/01/04 00:00:00, Dead
+Fonald: Westland, Male, 01/01/08 00:00:00, Alive
+Ford Perfect: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Forgot: Westland, Male, 07/12/10 00:00:00, Alive
+Fortune: Rotoiti, Female, 01/01/14 00:00:00, Alive
+Foxxy: Aoraki, Female, , Alive
+Foxy: Westland, Female, 01/01/07 00:00:00, Alive
+Francis: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Frank: Aoraki, Male, , Alive
+Frankenstein: Westland, Female, 10/11/11 00:00:00, Alive
+Franny: Kahurangi, Female, 01/01/06 00:00:00, Alive
+Garfunkel: Waimakariri, Male, 01/01/08 00:00:00, Dead
+Gaspode: Waimakariri, Undetermined, , Alive
+Gavin: Kahurangi, Male, 01/01/10 00:00:00, Dead
+Gdog: Kahurangi, Male, 01/01/09 00:00:00, Alive
+George: Rotoiti, Male, 01/01/93 00:00:00, Alive
+Georgina: Wanaka, Female, 01/01/09 00:00:00, Alive
+Gerald: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Ghandi: Rotoiti, Male, 01/01/88 00:00:00, Dead
+Gillespie: Westland, Male, 01/01/06 00:00:00, Dead
+Gina: Wakatipu, Female, 01/01/06 00:00:00, Alive
+Ginette: Fiordland, Female, 01/01/08 00:00:00, Alive
+Ginger Nut: Westland, Female, 01/01/11 00:00:00, Dead
+Gizo: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Glen: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Gob: Waimakariri, Male, , Alive
+Goji: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Goliath: Aoraki, Male, , Alive
+Goodall: Waimakariri, Female, , Alive
+Goodman: Rotoiti, Undetermined, 28/12/14 00:00:00, Alive
+Goofy: Aoraki, Male, , Alive
+Gordie Howe: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Gordon: Fiordland, Male, 01/01/07 00:00:00, Alive
+Grease nipple: Rotoiti, Male, 01/01/94 00:00:00, Alive
+Greebo: Waimakariri, Male, , Dead
+Griffin: Fiordland, Male, 01/01/12 00:00:00, Alive
+Grommit: Aoraki, Male, , Alive
+Grutli: Wakatipu, Male, 01/01/11 00:00:00, Alive
+Guinness: Westland, Male, 01/01/09 00:00:00, Alive
+Gumby: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Gus: Wanaka, Male, 01/01/13 00:00:00, Alive
+Gyp: Fiordland, Male, 01/01/08 00:00:00, Alive
+Hamburglar: Westland, Male, 05/12/11 00:00:00, Alive
+Hamish: Waimakariri, Male, 01/01/09 00:00:00, Dead
+Handlebars: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Hannah: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Harry: Kahurangi, Male, 01/01/06 00:00:00, Missing
+Haupara: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Hayley: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Hazel: Rotoiti, Female, 01/01/14 00:00:00, Alive
+Hector: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Heidi: Rotoiti, Undetermined, 01/01/95 00:00:00, Alive
+Helen Clark: Kahurangi, Female, 01/01/07 00:00:00, Alive
+Hellboy: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Hendrix: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Henri Des: Fiordland, Male, 01/01/10 00:00:00, Alive
+Herbert: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Hermes: Aoraki, Male, , Alive
+HighFeather: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Hijac: Rotoiti, Male, 01/01/10 00:00:00, Alive
+Hine: Westland, Female, 01/01/10 00:00:00, Alive
+Hiness: Rotoiti, Female, 01/01/10 00:00:00, Alive
+Hobbit: Westland, Female, 01/01/05 00:00:00, Alive
+Hobo: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Hoheria: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Hohoro: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Hoki: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Homer: Aoraki, Male, , Alive
+Homer Buddy: Fiordland, Male, 01/01/06 00:00:00, Alive
+Homer Chief: Fiordland, Male, 01/01/06 00:00:00, Alive
+Honey: Waimakariri, Female, 01/01/08 00:00:00, Dead
+Hoopy: Aoraki, Male, , Alive
+Hoover: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Hope: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Hopman: Westland, Male, 01/01/07 00:00:00, Alive
+Hoppy: Rotoiti, Male, 01/01/05 00:00:00, Alive
+Hordor: Westland, Male, 06/12/12 00:00:00, Alive
+Houdini: Westland, Male, 01/01/09 00:00:00, Alive
+How: Waimakariri, Female, 01/01/06 00:00:00, Dead
+Hubert: Aoraki, Male, , Alive
+Hueco: Westland, Female, 01/01/05 00:00:00, Alive
+Hugh: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Huia: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Hulk: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Hut Warden: Fiordland, Male, 01/01/07 00:00:00, Alive
+Huta: Westland, Undetermined, 05/12/10 00:00:00, Alive
+Hutch: Wakatipu, Male, 01/01/07 00:00:00, Alive
+Hyla: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Ice Zeiss: Rotoiti, Male, 14/12/94 00:00:00, Dead
+Iliad: Kahurangi, Male, 01/01/10 00:00:00, Alive
+India: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Iron: Kahurangi, Male, 01/01/11 00:00:00, Alive
+Iza: Westland, Female, 23/02/12 00:00:00, Alive
+J2: Westland, Male, 12/11/11 00:00:00, Alive
+JA: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Jabby: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Jack: Fiordland, Male, 01/01/06 00:00:00, Alive
+Jackie Moon: Wakatipu, Male, 01/01/07 00:00:00, Alive
+Jackson: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Jacob: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Jacob Boy: Westland, Male, 01/01/07 00:00:00, Missing
+Jadam: Westland, Male, 04/12/08 00:00:00, Alive
+Jam: Kahurangi, Undetermined, 01/01/09 00:00:00, Alive
+Jamie: Westland, Female, 01/01/10 00:00:00, Alive
+Jan: Waimakariri, Female, , Alive
+Jane: Fiordland, Female, 01/01/06 00:00:00, Alive
+Jaqueline: Fiordland, Female, 01/01/10 00:00:00, Alive
+Jase: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Jasper: Waimakariri, Male, , Alive
+Jean Jean: Fiordland, Male, 01/01/10 00:00:00, Alive
+Jeff: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Jellyroll: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Jem: Rotoiti, Female, 01/01/98 00:00:00, Alive
+Jenny: Kahurangi, Female, 01/01/12 00:00:00, Alive
+Jess: Waimakariri, Female, 01/01/06 00:00:00, Alive
+Jesse: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Jimmy: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Joana: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Job: Rahu, Male, 01/01/06 00:00:00, Alive
+Jock: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Joe: Westland, Male, 01/01/05 00:00:00, Alive
+Joel: Westland, Male, 01/01/10 00:00:00, Alive
+Johanna: Waimakariri, Female, , Alive
+Johnny: Aoraki, Male, , Alive
+JoJo: Westland, Male, 01/01/03 00:00:00, Alive
+Jolly: Kahurangi, Male, 01/01/14 00:00:00, Dead
+Joop: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Jorge: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Joris: Kahurangi, Male, 01/01/12 00:00:00, Alive
+Joseph powell: Westland, Undetermined, , Alive
+Josh: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Joy: Rotoiti, Female, 31/12/98 00:00:00, Alive
+JP: Wanaka, Male, 01/01/09 00:00:00, Alive
+Judas: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Juggernaut: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Julia: Waimakariri, Female, 02/01/10 00:00:00, Alive
+Julie: Kahurangi, Female, 01/01/13 00:00:00, Alive
+Julien: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Julius: Rotoiti, Male, 01/01/08 00:00:00, Alive
+June: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Juno: Kahurangi, Female, 12/01/12 00:00:00, Alive
+Jupiter: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Kaha: Waimakariri, Male, 01/01/16 00:00:00, Alive
+Kaitlyn: Westland, Female, 14/11/12 00:00:00, Dead
+Kaka: Waimakariri, Female, 01/01/13 00:00:00, Alive
+Kakapo: Kakapo, Undetermined, , Alive
+Karearea: Rotoiti, Male, 01/01/94 00:00:00, Alive
+Karina: Kahurangi, Female, 30/11/09 00:00:00, Alive
+Karyn: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Kasper: Rahu, Male, 01/01/08 00:00:00, Alive
+Kata: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Kate: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Kath: Westland, Female, 08/02/11 00:00:00, Alive
+Katie: Aoraki, Female, , Alive
+Katsu: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Kaua: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Kauri: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Kea-Ora: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Keeth: Aoraki, Male, , Alive
+Keith Moon: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Kelly: Rotoiti, Male, 01/01/91 00:00:00, Dead
+Kelsey: Kahurangi, Male, 12/01/12 00:00:00, Alive
+Kenevil: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Kent: Aoraki, Male, , Alive
+Kew: Westland, Male, 01/01/10 00:00:00, Dead
+Khasm: Fiordland, Male, 01/01/13 00:00:00, Alive
+Kicking Bird: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Kiekie: Westland, Male, 20/11/11 00:00:00, Alive
+Kilian: Fiordland, Male, 01/01/06 00:00:00, Alive
+Kilkenny: Aoraki, Male, , Alive
+Kilo: Rotoiti, Male, 01/01/90 00:00:00, Alive
+Kingan: Kahurangi, Male, 01/01/12 00:00:00, Alive
+Kinky: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Kirk: Kahurangi, Male, 01/01/10 00:00:00, Missing
+Kirsty: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Kite: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Klinky: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Konini: Westland, Male, 01/01/10 00:00:00, Alive
+Krakatoa: Rotoiti, Female, 01/01/10 00:00:00, Alive
+Kramer Blue: Westland, Female, 13/01/10 00:00:00, Dead
+Kruger: Aoraki, Male, , Alive
+L-21621: Rotoiti, Female, 01/01/93 00:00:00, Alive
+L-21624: Rotoiti, Male, 01/01/90 00:00:00, Alive
+L-21628: Rotoiti, Male, 01/01/93 00:00:00, Alive
+L-35853: Westland, Male, 01/01/07 00:00:00, Alive
+Lady Gaga: Fiordland, Female, 01/01/07 00:00:00, Alive
+Lae: Rotoiti, Female, 01/01/10 00:00:00, Alive
+Lake: Westland, Female, 01/01/08 00:00:00, Alive
+Lambiel: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Lamy: Aoraki, Male, , Alive
+Lance: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Lancelot: Waimakariri, Male, , Alive
+Larry: Rahu, Male, 01/01/09 00:00:00, Alive
+Lars: Kahurangi, Male, 01/01/10 00:00:00, Dead
+Lassoo: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Laura: Fiordland, Female, 01/01/06 00:00:00, Alive
+Laurie: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Layne: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Lbit: Westland, Male, 01/01/11 00:00:00, Dead
+Leela: Aoraki, Female, , Alive
+Leia: Kahurangi, Female, 01/01/06 00:00:00, Alive
+Lenny: Waimakariri, Male, , Alive
+LennyKins: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Leo: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Leonardo: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Leppard: Rotoiti, Male, 08/12/09 00:00:00, Alive
+Lessi: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Letham: Rotoiti, Male, 01/01/14 00:00:00, Alive
+Lew: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Liam: Waimakariri, Male, 01/01/09 00:00:00, Dead
+Lily: Kahurangi, Female, 01/01/07 00:00:00, Dead
+Limo: Aoraki, Male, , Alive
+Lisa: Aoraki, Female, , Alive
+Little Copey: Westland, Female, 01/01/07 00:00:00, Alive
+Llanta: Westland, Male, 01/01/06 00:00:00, Alive
+Locket: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Log: Westland, Male, 01/01/05 00:00:00, Alive
+Lola: Westland, Female, 01/01/07 00:00:00, Alive
+Lonely: Fiordland, Male, 01/01/07 00:00:00, Alive
+Loquacious: Rotoiti, Female, 10/01/99 00:00:00, Dead
+Lord Monkey: Fiordland, Male, 01/01/06 00:00:00, Alive
+Lorraine: Kahurangi, Female, 01/11/15 00:00:00, Alive
+Louise: Rotoiti, Female, 05/12/99 00:00:00, Alive
+Lowrider: Westland, Male, 01/01/10 00:00:00, Alive
+Lucette: Fiordland, Female, 01/01/06 00:00:00, Alive
+Lucky: Aoraki, Male, , Alive
+Lucy: Rotoiti, Female, 01/01/05 00:00:00, Missing
+Lucy Locket: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Luff: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Luke: Westland, Male, 15/01/11 00:00:00, Alive
+Luzern: Wakatipu, Male, 01/01/08 00:00:00, Alive
+Lyndon: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Mac: Kahurangi, Male, 01/01/10 00:00:00, Alive
+MacKennon: Rotoiti, Male, 01/01/13 00:00:00, Alive
+MadJ: Waimakariri, Female, 06/12/08 00:00:00, Alive
+Maggie: Aoraki, Female, , Alive
+Magneto: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Magrat: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Mahatma: Aoraki, Male, , Alive
+Mai Fem: Westland, Female, 01/01/07 00:00:00, Alive
+Maiden: Kahurangi, Female, 01/01/07 00:00:00, Alive
+Mainland: Westland, Male, 01/01/14 00:00:00, Alive
+Malcolm: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Manda: Aoraki, Female, , Alive
+Manny: Waimakariri, Male, 01/01/08 00:00:00, Dead
+Manu: Wakatipu, Male, 01/01/07 00:00:00, Alive
+Manuka: Westland, Female, 01/01/10 00:00:00, Alive
+Mardey: Westland, Female, 01/01/10 00:00:00, Alive
+Marge: Aoraki, Female, , Alive
+Marguerite: Fiordland, Female, 01/01/07 00:00:00, Alive
+Marie: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Mariner: Westland, Female, 01/01/14 00:00:00, Alive
+Marley: Aoraki, Male, , Alive
+Marry: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Mars: Rotoiti, Male, 01/01/15 00:00:00, Alive
+Martha: Waimakariri, Female, 01/01/14 00:00:00, Alive
+Martin: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Marvel: Waimakariri, Female, 31/12/08 00:00:00, Alive
+Marvin: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Mary: Westland, Female, 01/01/08 00:00:00, Alive
+Matai: Westland, Male, 20/11/11 00:00:00, Alive
+Matheson: Westland, Male, 01/01/04 00:00:00, Alive
+Matie: Wanaka, Female, 01/01/12 00:00:00, Alive
+Matu: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Maude: Waimakariri, Female, , Alive
+Maurice: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Maverick: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Maximus: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Maynard: Kahurangi, Male, 01/01/12 00:00:00, Alive
+Mazdak: Kahurangi, Male, 01/01/14 00:00:00, Alive
+McArthur: Westland, Male, 01/01/03 00:00:00, Alive
+McGregor: Waimakariri, Male, 01/01/15 00:00:00, Alive
+McGyver: Wakatipu, Male, 01/01/07 00:00:00, Alive
+McIntosh: Westland, Male, 01/01/05 00:00:00, Alive
+McNugget: Westland, Male, 05/12/11 00:00:00, Alive
+Medusa: Rotoiti, Female, 01/01/11 00:00:00, Alive
+Meera: Westland, Female, 14/11/12 00:00:00, Alive
+Megan: Rotoiti, Female, 01/01/98 00:00:00, Alive
+Megatron: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Mellow Yellow: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Menestrel: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Mergus: Wakatipu, Female, 01/01/06 00:00:00, Alive
+Messty: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Mia: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Michael: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Michel: Kahurangi, Male, 01/01/07 00:00:00, Alive
+Michelle: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Mickey: Aoraki, Male, , Alive
+Mifty: Waimakariri, Undetermined, 01/01/14 00:00:00, Alive
+Mika: Aoraki, Female, , Alive
+Mike: Rotoiti, Male, 01/01/94 00:00:00, Alive
+Milford: Fiordland, Male, 01/01/12 00:00:00, Alive
+Mill: Westland, Male, 01/01/06 00:00:00, Alive
+Milly: Kahurangi, Female, 01/01/14 00:00:00, Dead
+Milo: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Mimi: Westland, Male, 01/01/10 00:00:00, Alive
+Minerva: Rotoiti, Female, 01/01/09 00:00:00, Missing
+Minet: Fiordland, Male, 01/01/07 00:00:00, Alive
+Mingimingi: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Minnie: Aoraki, Female, , Alive
+Miriam: Waimakariri, Female, 01/01/10 00:00:00, Dead
+Miro: Westland, Male, 28/10/11 00:00:00, Alive
+Mischief: Waimakariri, Female, 21/11/13 00:00:00, Alive
+Misha: Westland, Female, 11/11/10 00:00:00, Alive
+Miss P: Westland, Female, 01/01/07 00:00:00, Dead
+MissMonk: Westland, Female, 01/01/11 00:00:00, Alive
+Missy: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Mistletoe: Rotoiti, Male, 13/12/97 00:00:00, Alive
+Misty: Westland, Male, 01/01/11 00:00:00, Alive
+Mo: Westland, Male, 01/01/10 00:00:00, Alive
+Moby: Westland, Male, 01/01/06 00:00:00, Alive
+Moe: Westland, Male, 01/01/06 00:00:00, Alive
+Moeraki: Westland, Male, 01/01/14 00:00:00, Alive
+Mohow: Waimakariri, Female, 02/02/11 00:00:00, Dead
+Mojo: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Molloy: Westland, Female, 01/01/08 00:00:00, Alive
+Molly: Waimakariri, Female, 01/01/06 00:00:00, Alive
+Moltke: Westland, Male, 01/01/07 00:00:00, Dead
+Mona: Aoraki, Female, , Alive
+Monkey: Aoraki, Male, , Alive
+Monro: Westland, Female, 01/01/14 00:00:00, Alive
+Moonshadow: Kahurangi, Male, 12/12/12 00:00:00, Alive
+Mordor: Westland, Female, 03/11/11 00:00:00, Alive
+Moritz: Kahurangi, Undetermined, 01/11/15 00:00:00, Alive
+Morrocan: Waimakariri, Female, 01/01/07 00:00:00, Alive
+Mosca: Westland, Female, 01/01/06 00:00:00, Alive
+Mr Capri: Rotoiti, Male, 01/01/06 00:00:00, Alive
+Mr Deville: Westland, Male, 01/01/10 00:00:00, Alive
+Mr Joe: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Mr T: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Mr Whittaker: Waimakariri, Male, 01/01/09 00:00:00, Dead
+Mrs Moon: Waimakariri, Female, 01/01/08 00:00:00, Dead
+Mrs Wriggler: Rotoiti, Female, 01/01/90 00:00:00, Alive
+Mrs X: Kahurangi, Female, 01/01/07 00:00:00, Alive
+Mrs Zeiss: Rotoiti, Female, 01/01/90 00:00:00, Alive
+Mud: Waimakariri, Undetermined, 01/01/15 00:00:00, Alive
+Muddy: Wanaka, Male, 01/01/09 00:00:00, Alive
+Mungbean: Westland, Female, 01/01/10 00:00:00, Alive
+Murch: Rotoiti, Male, 01/01/98 00:00:00, Alive
+Murphy: Aoraki, Male, , Alive
+Mynx: Rotoiti, Female, 01/01/09 00:00:00, Alive
+Namunamu: Westland, Male, 01/01/05 00:00:00, Alive
+Naranja: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Nasal: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Nebula: Kahurangi, Female, 01/01/12 00:00:00, Alive
+Neddy: Waimakariri, Male, , Alive
+Nelle: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Neptune: Rotoiti, Male, 01/01/15 00:00:00, Alive
+Nero: Rotoiti, Male, 01/01/07 00:00:00, Alive
+Neve: Kahurangi, Female, 01/01/06 00:00:00, Alive
+Neville: Kahurangi, Male, 01/01/08 00:00:00, Alive
+Nicola: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Nidwald: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Nigel: Rotoiti, Male, 01/01/90 00:00:00, Alive
+Nightowl: Waimakariri, Female, 01/01/13 00:00:00, Alive
+Nike: Rotoiti, Male, 01/12/97 00:00:00, Alive
+Ninja: Waimakariri, Female, 01/01/09 00:00:00, Alive
+Nipper: Aoraki, Male, , Alive
+Nippery: Waimakariri, Female, 01/01/10 00:00:00, Dead
+Nola: Westland, Female, 24/01/11 00:00:00, Alive
+Nora: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Norma: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Norman: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Nosy: Fiordland, Female, 01/01/07 00:00:00, Alive
+Numbat: Westland, Female, 01/01/05 00:00:00, Dead
+OB1: Westland, Male, 01/01/11 00:00:00, Alive
+Obwald: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Odettekea: Rahu, Female, 01/01/09 00:00:00, Alive
+Odyssey: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Okipoki: Rotoiti, Female, 14/12/99 00:00:00, Dead
+Old Blue: Westland, Male, 01/01/08 00:00:00, Alive
+Olive: Kahurangi, Female, 01/01/06 00:00:00, Alive
+Omega: Kahurangi, Male, 01/01/09 00:00:00, Alive
+Omoeroa: Westland, Female, 01/01/07 00:00:00, Alive
+Opal: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Opawa: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Orca: Westland, Female, 01/01/06 00:00:00, Alive
+Orinoco: Rotoiti, Male, 01/01/05 00:00:00, Alive
+Orion: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Oroko: Westland, Female, 01/01/10 00:00:00, Dead
+Ory: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Oscar: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Ozzy: Rotoiti, Male, 07/12/11 00:00:00, Alive
+Palmer: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Pam: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Panda: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Panel: Westland, Female, 01/01/14 00:00:00, Alive
+Papa Gianol: Fiordland, Male, 01/01/07 00:00:00, Alive
+Paradise: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Pardaillec: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Paringa: Westland, Female, 24/01/11 00:00:00, Missing
+Parroliosus: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Patricia: McKenzie Country, Female, , Alive
+Patty: Aoraki, Female, , Alive
+Pauline: Rotoiti, Female, 01/01/14 00:00:00, Alive
+Pavlova: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Pearl: Kahurangi, Female, 09/11/08 00:00:00, Alive
+Pebbles: Aoraki, Male, , Alive
+Peg: Kahurangi, Female, 01/01/06 00:00:00, Alive
+Peggy: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Penelope: Waimakariri, Female, 01/01/06 00:00:00, Dead
+Penny: Kahurangi, Female, 01/01/14 00:00:00, Dead
+Perdido: Westland, Male, 01/01/05 00:00:00, Alive
+Peripatus: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Persephone: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Pete: Rotoiti, Male, 01/01/93 00:00:00, Alive
+Pete Townsend: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Phantom: Rotoiti, Male, 01/01/90 00:00:00, Alive
+Pharaoh: Rotoiti, Male, 01/01/96 00:00:00, Alive
+Phil: Westland, Male, 01/01/08 00:00:00, Alive
+Philibert: Fiordland, Male, 01/01/06 00:00:00, Alive
+Phoenix: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Piccolo: Fiordland, Undetermined, 01/01/11 00:00:00, Alive
+Pickle: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Pierre: Aoraki, Male, , Alive
+Pietro: Kahurangi, Male, 14/01/12 00:00:00, Alive
+Pillsbury: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Ping: Waimakariri, Female, 01/01/11 00:00:00, Dead
+Pinky: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Pip Stocker: Kahurangi, Female, 01/01/12 00:00:00, Alive
+Pirate: Westland, Male, 01/01/08 00:00:00, Alive
+Pirmin: McKenzie Country, Male, , Alive
+Piton: Rotoiti, Male, 18/12/97 00:00:00, Alive
+Pitstop: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Pixie: Rotoiti, Female, 01/01/98 00:00:00, Alive
+Plasticman: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Plato: Waimakariri, Male, 20/12/12 00:00:00, Alive
+Po: Rotoiti, Female, 01/01/99 00:00:00, Alive
+Podrick: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Poker: Westland, Male, 01/01/04 00:00:00, Alive
+Polaris: Kahurangi, Male, 01/01/11 00:00:00, Alive
+Pollock: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Pommell: Westland, Male, 01/01/04 00:00:00, Alive
+Pong: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Poof: Rotoiti, Male, 01/01/95 00:00:00, Alive
+Poor thing: Fiordland, Female, 01/01/07 00:00:00, Alive
+Popoff: Rotoiti, Male, 01/01/95 00:00:00, Alive
+Poppit: Westland, Female, 08/11/12 00:00:00, Alive
+Poppy: Rotoiti, Male, 01/01/00 00:00:00, Alive
+Potter: Westland, Male, 01/01/10 00:00:00, Alive
+Precious: Westland, Female, 03/11/11 00:00:00, Alive
+Pretty Misfire: Westland, Female, 01/01/07 00:00:00, Alive
+Primero: Westland, Male, 01/01/06 00:00:00, Dead
+Priscilla: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Q: Westland, Male, 22/12/11 00:00:00, Dead
+Queen pow pow: Waimakariri, Female, 01/01/06 00:00:00, Dead
+Quillam: Abel Tasman, Male, 01/01/13 00:00:00, Alive
+R2D2: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Rachel: Rotoiti, Female, 01/01/09 00:00:00, Dead
+Raglan Ranger: Rotoiti, Male, 01/01/10 00:00:00, Alive
+Rain: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Ramses: Rotoiti, Male, 01/01/12 00:00:00, Alive
+Randy: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Ranger: Westland, Male, 01/01/08 00:00:00, Dead
+Rangi: Kahurangi, Male, 01/01/07 00:00:00, Alive
+Raoul: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Rasselas: Westland, Male, 01/01/12 00:00:00, Alive
+Rasta: Rotoiti, Male, 01/01/98 00:00:00, Alive
+Rata: Westland, Female, 01/01/05 00:00:00, Alive
+Rawyl: Fiordland, Male, 01/01/07 00:00:00, Alive
+Red Cloud: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Red Zeppelin: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Reefer: Rotoiti, Male, 01/01/96 00:00:00, Alive
+Reese: Rotoiti, Undetermined, 01/01/15 00:00:00, Alive
+Reg: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Regal: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Regula: Wakatipu, Female, 01/01/08 00:00:00, Alive
+Rex: Westland, Male, 01/01/08 00:00:00, Alive
+Richard: Kahurangi, Male, 01/01/15 00:00:00, Alive
+Rico: Kahurangi, Male, 01/01/14 00:00:00, Alive
+Ridcully: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Ridge Runner: Kahurangi, Female, 01/01/09 00:00:00, Alive
+Riley: Kahurangi, Male, 01/01/15 00:00:00, Alive
+Rita: Rotoiti, Female, 01/01/13 00:00:00, Alive
+River: Westland, Female, 01/01/08 00:00:00, Alive
+Roadie: Rotoiti, Male, 01/01/96 00:00:00, Alive
+Rob: Kaikoura, Male, 01/01/11 00:00:00, Alive
+Robber: Rotoiti, Male, 01/12/97 00:00:00, Dead
+Robbie: Fiordland, Male, 01/01/04 00:00:00, Alive
+Robyr: Fiordland, Male, 01/01/07 00:00:00, Alive
+Rochelle: Wakatipu, Female, 01/01/09 00:00:00, Alive
+Rocio: Wakatipu, Female, 01/01/11 00:00:00, Alive
+Rocker: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Rocky: Aoraki, Male, , Alive
+Roger: Aoraki, Male, , Alive
+Romano: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Romeo: Fiordland, Male, 01/01/07 00:00:00, Alive
+Ron: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Rona: Waimakariri, Female, 01/01/09 00:00:00, Dead
+Ronan: Aoraki, Male, , Alive
+Ronoldo: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Rory: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Rose: Westland, Female, 01/01/08 00:00:00, Alive
+Rosie: Aoraki, Female, , Alive
+Rossie: Westland, Female, 01/01/08 00:00:00, Alive
+Roughie: Rotoiti, Male, 01/01/90 00:00:00, Alive
+Roux: Kaikoura, Undetermined, , Alive
+Roxanne: Kahurangi, Female, 01/01/09 00:00:00, Alive
+Roxette: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Roxy: Fiordland, Female, 01/01/06 00:00:00, Alive
+Rufus: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Russell: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Rusty Runtball: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Ruta: Westland, Female, 01/12/10 00:00:00, Missing
+Ruth: Westland, Female, 01/01/05 00:00:00, Alive
+Rutherford: Rotoiti, Undetermined, 01/09/12 00:00:00, Alive
+Sally: Waimakariri, Female, 01/01/08 00:00:00, Alive
+Salsa: Westland, Female, 28/11/11 00:00:00, Alive
+Salty Bob: Waimakariri, Male, 01/01/05 00:00:00, Alive
+Salvatore: Wakatipu, Male, 01/01/06 00:00:00, Alive
+Samarin: Fiordland, Male, 01/01/07 00:00:00, Alive
+Sandfly: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Sansa: Westland, Male, 01/11/12 00:00:00, Alive
+Sarah: Kahurangi, Female, 01/01/11 00:00:00, Alive
+Sasha: Aoraki, Female, , Alive
+Sasquatch: Aoraki, Male, , Alive
+Sass: Waimakariri, Undetermined, 01/01/14 00:00:00, Alive
+Satchmo: Aoraki, Male, , Alive
+Saturn: Rotoiti, Male, 01/01/15 00:00:00, Alive
+Saul: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Scarlet Pimpernel: Kahurangi, Male, 01/01/06 00:00:00, Alive
+Scarper: Rotoiti, Male, 01/01/88 00:00:00, Dead
+Schist: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Scooter: Waimakariri, Female, 01/01/06 00:00:00, Alive
+Screamer: Rotoiti, Male, 14/12/94 00:00:00, Alive
+Screech: Waimakariri, Undetermined, , Alive
+Screeface: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Scrimshaw: Westland, Male, 01/01/06 00:00:00, Alive
+Scruffy: Rotoiti, Male, 01/01/88 00:00:00, Alive
+Scuffle: Rotoiti, Female, 01/01/09 00:00:00, Alive
+Sebastian: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Sentinel: Westland, Female, 01/01/06 00:00:00, Dead
+Serge: Fiordland, Male, 01/01/06 00:00:00, Alive
+Shana: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Shane: Aoraki, Male, , Alive
+Shanekea: Rahu, Male, 01/01/09 00:00:00, Alive
+Shayla: Kahurangi, Undetermined, 01/01/16 00:00:00, Dead
+Sheila: Wanaka, Female, 01/01/09 00:00:00, Alive
+Sherpa: Rotoiti, Male, 01/01/95 00:00:00, Alive
+Shredder: Rotoiti, Male, 01/01/92 00:00:00, Alive
+Shrew: Kaikoura, Undetermined, , Alive
+Siegrid: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Simon: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Sinnott: Rotoiti, Male, 01/01/13 00:00:00, Alive
+Sioux: Westland, Female, 01/01/08 00:00:00, Alive
+Sirius: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Skittles: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Skyline Chick 1: Murchison, Male, 01/01/98 00:00:00, Alive
+Skyline Chick 2: Murchison, Undetermined, 01/01/98 00:00:00, Alive
+Skyline Chick 3: Murchison, Undetermined, 01/01/98 00:00:00, Alive
+Slartibartfast: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Smithwick: Aoraki, Male, , Alive
+Snap: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Sneaky: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Snikdang: Rotoiti, Female, 04/12/99 00:00:00, Alive
+Snorre: Kahurangi, Male, 01/01/04 00:00:00, Missing
+Socrates: Waimakariri, Male, 20/12/12 00:00:00, Alive
+Sola: Westland, Female, 01/01/10 00:00:00, Alive
+Solo: Rotoiti, Male, 26/11/99 00:00:00, Alive
+Sonya: Waimakariri, Female, 01/01/14 00:00:00, Alive
+Sophia: Westland, Female, 01/01/08 00:00:00, Missing
+Sorrell: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Spanky: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Sparkle: Westland, Female, 01/01/07 00:00:00, Dead
+Spartacus: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Speckle: Westland, Undetermined, 01/01/14 00:00:00, Alive
+Speights: Kahurangi, Male, 01/01/07 00:00:00, Alive
+Splunker: Rotoiti, Male, 18/12/97 00:00:00, Alive
+Spondonicle: Rotoiti, Male, 01/01/14 00:00:00, Alive
+Sputnik: Kahurangi, Male, 01/01/15 00:00:00, Alive
+Squiggle: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Stan: Aoraki, Male, , Alive
+Stephen: Aoraki, Male, , Alive
+Steppa: Fiordland, Male, , Alive
+Steve: Fiordland, Undetermined, 01/01/06 00:00:00, Alive
+Stew: Westland, Male, 01/01/10 00:00:00, Alive
+Stinky: Westland, Female, 01/01/05 00:00:00, Alive
+Stone: Kahurangi, Male, 01/01/10 00:00:00, Missing
+Stoney: Westland, Male, 01/01/07 00:00:00, Alive
+Stoney Ridge: Westland, Female, 01/01/07 00:00:00, Alive
+Streamer: Westland, Male, 01/01/06 00:00:00, Dead
+StrongBeak: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Stropster: Waimakariri, Male, 01/01/05 00:00:00, Alive
+Stump: Westland, Female, 08/11/12 00:00:00, Alive
+Stylie: Murchison, Male, 01/01/98 00:00:00, Alive
+Sunflower: Rotoiti, Female, 23/12/99 00:00:00, Dead
+Surfer: Rotoiti, Male, 01/01/96 00:00:00, Alive
+Swamp: Westland, Male, 01/01/05 00:00:00, Alive
+Swazi: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Syd: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Syds tx: Kahurangi, Male, , Alive
+Sylvain: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Sylvie: Kahurangi, Female, 01/01/10 00:00:00, Alive
+Taan: Westland, Female, 17/11/09 00:00:00, Dead
+Tane: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Tarzan: Westland, Male, 01/01/08 00:00:00, Dead
+Tasty: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Tatty: Westland, Female, 01/01/08 00:00:00, Alive
+Tawhiri: Rotoiti, Male, 06/12/98 00:00:00, Alive
+Tea: Westland, Male, 13/12/11 00:00:00, Alive
+Ted: Aoraki, Male, , Alive
+Teffe: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Temeritus: Rotoiti, Male, 01/01/11 00:00:00, Alive
+Temple: Westland, Male, 17/11/11 00:00:00, Alive
+Templeton: Waimakariri, Female, 01/01/12 00:00:00, Alive
+Teressa: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Terry: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Tertia: Waimakariri, Male, 01/01/06 00:00:00, Alive
+tetra: Fiordland, Male, 01/01/08 00:00:00, Alive
+The Hulk: Waimakariri, Male, 01/01/06 00:00:00, Dead
+The Swedish Chef: Westland, Male, 11/12/11 00:00:00, Alive
+Thelma: Rotoiti, Female, 05/12/99 00:00:00, Alive
+Theo: Waimakariri, Male, 01/01/12 00:00:00, Dead
+Thirsty: Kahurangi, Female, 01/01/07 00:00:00, Alive
+Thirty3: Westland, Male, 01/01/10 00:00:00, Dead
+Thoroughgood: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Ticino: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Tick Tock: Waimakariri, Male, 01/01/08 00:00:00, Alive
+Timbo: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Timeri: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Tina: Rotoiti, Female, 01/01/93 00:00:00, Alive
+Tinker: Rotoiti, Female, 01/01/92 00:00:00, Alive
+Tiny: Aoraki, Female, , Alive
+Tip Top: Wakatipu, Male, 01/01/06 00:00:00, Dead
+Tita: Rotoiti, Female, 01/01/91 00:00:00, Alive
+Titine: Wanaka, Female, 01/01/08 00:00:00, Alive
+Titus: Rotoiti, Male, 01/01/10 00:00:00, Missing
+Toati: Aoraki, Female, , Alive
+Tobin: Rahu, Male, 01/01/05 00:00:00, Alive
+Todd: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Toey: Rotoiti, Male, 01/01/88 00:00:00, Dead
+Tom Tom: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Tomo: Rotoiti, Female, 17/12/97 00:00:00, Alive
+Tonton jules: McKenzie Country, Male, , Alive
+Toogood: Waimakariri, Male, 01/01/11 00:00:00, Dead
+Tool: Rotoiti, Female, 01/01/12 00:00:00, Alive
+Toot: Waimakariri, Female, 01/01/07 00:00:00, Alive
+Topsy: Hohonu, Male, 01/01/04 00:00:00, Alive
+Torgon: Fiordland, Undetermined, 01/01/08 00:00:00, Alive
+Toru: Rotoiti, Male, 18/12/97 00:00:00, Alive
+Totara: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Tough Daddy: Fiordland, Male, 01/01/06 00:00:00, Alive
+Tracy: Westland, Female, 01/01/08 00:00:00, Alive
+Trasher: Westland, Male, 01/01/05 00:00:00, Dead
+Travers: Rotoiti, Male, 19/11/98 00:00:00, Alive
+Trevor: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Trig: Westland, Male, 01/01/05 00:00:00, Alive
+Trillian: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Trixy: Westland, Female, 01/01/05 00:00:00, Alive
+Tui: Westland, Male, 01/01/10 00:00:00, Alive
+Tumbleweed: Rotoiti, Female, 09/12/98 00:00:00, Alive
+Turvy: Hohonu, Male, 01/01/07 00:00:00, Alive
+Tutaki 1yr: Murchison, Female, 01/01/97 00:00:00, Alive
+Tutaki adult: Murchison, Female, 01/01/95 00:00:00, Alive
+Tutaki Chick 1: Murchison, Male, 01/01/98 00:00:00, Alive
+Tutaki Chick 2: Murchison, Undetermined, 01/01/98 00:00:00, Alive
+Tutaki Chick 3: Murchison, Male, 01/01/98 00:00:00, Alive
+Tutaki Chick 4: Murchison, Female, 01/01/98 00:00:00, Alive
+Tutaki Chick 5: Murchison, Female, 01/01/98 00:00:00, Alive
+Tutaki subadult: Murchison, Female, 01/01/97 00:00:00, Alive
+Tutaki subadult 2: Murchison, Male, 01/01/96 00:00:00, Alive
+Tutoko: Fiordland, Male, 01/01/13 00:00:00, Alive
+Twizzle: Westland, Female, 01/01/10 00:00:00, Alive
+Unbanded juvenile sex unknown Kahurangi 2: Kahurangi, Undetermined, , Alive
+Underpants: Aoraki, Female, , Alive
+Unknown kea 1 Rotoiti: Rotoiti, Male, , Dead
+Untoward: Westland, Female, 01/01/06 00:00:00, Alive
+Upster: Westland, Male, 01/01/07 00:00:00, Alive
+Uri: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Vale: Aoraki, Male, , Alive
+Valeo: Aoraki, Male, , Alive
+Vanessa: Kahurangi, Female, 01/01/13 00:00:00, Alive
+Vegas: Wakatipu, Male, 01/01/09 00:00:00, Alive
+Verne: Kahurangi, Male, 01/01/13 00:00:00, Alive
+Vervet: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Vick: Fiordland, Male, 01/01/04 00:00:00, Alive
+Vince: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Vinie: Wakatipu, Male, 01/01/10 00:00:00, Alive
+Violet: Waimakariri, Female, 01/01/11 00:00:00, Alive
+Virginia: Kahurangi, Female, 01/01/14 00:00:00, Alive
+Wadda: Waimakariri, Male, 01/01/14 00:00:00, Alive
+Wade: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Wagon: Fiordland, Male, 01/01/12 00:00:00, Alive
+Wai Bob: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Wai Frodo: Waimakariri, Male, 01/01/10 00:00:00, Alive
+Wai Laura: Waimakariri, Female, 01/01/10 00:00:00, Alive
+Waiho: Westland, Male, 01/01/05 00:00:00, Alive
+Waihopai: Waimakariri, Male, 01/01/15 00:00:00, Alive
+Warren: Fiordland, Male, 01/01/12 00:00:00, Alive
+Warrick: Waimakariri, Male, 01/01/12 00:00:00, Alive
+water1: Rotoiti, Male, 01/01/96 00:00:00, Alive
+Wayne: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Wayne Gretzky: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Weapon X: Kahurangi, Male, 01/01/07 00:00:00, Alive
+Weatherall: Kahurangi, Male, 01/01/13 00:00:00, Missing
+Weevil: Westland, Male, 13/01/10 00:00:00, Alive
+Weka: Duncan Bay, Undetermined, , Alive
+Wendel: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Wendy: Aoraki, Female, , Alive
+Whakaura: Waimakariri, Female, 01/01/15 00:00:00, Alive
+Whisky: Rotoiti, Female, 19/11/98 00:00:00, Alive
+White Star: Waimakariri, Male, 01/01/11 00:00:00, Alive
+White Walker: Waimakariri, Male, 01/01/13 00:00:00, Alive
+Who: Rotoiti, Male, 01/01/14 00:00:00, Alive
+Wide Boy: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Will Tell: Wakatipu, Male, 01/01/11 00:00:00, Alive
+William: Waimakariri, Male, 01/01/09 00:00:00, Alive
+Wilson: Kahurangi, Male, 01/01/06 00:00:00, Missing
+Windbag: Westland, Female, 01/01/10 00:00:00, Alive
+Windfall: Rotoiti, Male, 01/01/94 00:00:00, Alive
+Windmill: Kahurangi, Male, 01/01/05 00:00:00, Alive
+Windscreen: Rotoiti, Male, 01/01/11 00:00:00, Alive
+Wingnut: Rotoiti, Male, 01/01/94 00:00:00, Dead
+Wobbly: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Woody: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Wooldoor: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Wriggler: Rotoiti, Male, 01/01/88 00:00:00, Alive
+Wrinkly: Rotoiti, Female, 01/01/95 00:00:00, Alive
+Xandir: Waimakariri, Male, 01/01/06 00:00:00, Alive
+Xaphod: Waimakariri, Male, 01/01/11 00:00:00, Alive
+Xavier: Kahurangi, Male, 01/01/10 00:00:00, Alive
+Xena: Westland, Female, 01/01/05 00:00:00, Alive
+Ya se: Waimakariri, Male, 01/01/12 00:00:00, Alive
+Zalas: Westland, Female, 01/01/08 00:00:00, Alive
+Zappa: Aoraki, Male, , Alive
+Zeal: Kahurangi, Female, 01/01/13 00:00:00, Alive
+Zelma: Aoraki, Female, , Alive
+Zemmour: Fiordland, Male, 01/01/08 00:00:00, Alive
+Zeppelin: Rotoiti, Male, 07/12/09 00:00:00, Alive
+Zeus: Rotoiti, Male, 01/01/09 00:00:00, Alive
+Ziggy: Aoraki, Male, , Alive
+Zim: Aoraki, Male, , Alive
+Zombie: Waimakariri, Male, 01/01/07 00:00:00, Alive
+Zoolander: Waimakariri, Male, 01/01/11 00:00:00, Alive
+
+Import successful!

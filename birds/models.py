@@ -20,7 +20,7 @@ class Bird(models.Model):
     # Fields
     ## Basic details
     name = models.CharField(max_length=200)
-    sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES, default='')
+    sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES, default='Undetermined')
     status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES, default='A')
     birthday = models.DateField(blank=True, null=True)
 
@@ -68,6 +68,9 @@ class BirdExtended(models.Model):
     bird = models.OneToOneField(Bird, models.CASCADE)
     featured = models.BooleanField(default=False)
     description = models.TextField()
+
+    def __str__(self):
+        return self.bird.__str__()
 
 
 class BirdSighting(models.Model):

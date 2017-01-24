@@ -33,7 +33,7 @@ VERIFICATION_CHOICES = (
 )
 
 SEX_CHOICES = (
-    ('', 'Unknown'),
+    ('', 'Undetermined'),
     ('F', 'Female'),
     ('M', 'Male'),
 )
@@ -47,6 +47,7 @@ LIFE_STAGE_CHOICES = (
 )
 
 STATUS_CHOICES = (
+    ('', 'Unknown'),
     ('+', 'Alive'),
     ('-', 'Dead'),
 )
