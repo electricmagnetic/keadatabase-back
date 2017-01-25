@@ -12,22 +12,14 @@ from bands.models import Band, BandCombo
 class Command(BaseCommand):
     help = "Allows the import of information exported from the primary Access-based database."
 
+
     def check_current_status(self):
         """ Outputs information about objects currently in database """
-        birds = Bird.objects.count()
-        bands = Band.objects.count()
-        band_combos = BandCombo.objects.count()
-
         self.stdout.write(self.style.MIGRATE_LABEL("\n  Current data status:"))
-        self.stdout.write("    Birds: %d" % birds)
-        self.stdout.write("    Bands: %d" % bands)
-        self.stdout.write("    Band Combos: %d" % band_combos)
-
-
-    def check_import_status(self):
-        """ Outputs information about objects to be imported """
-        self.stdout.write(self.style.MIGRATE_LABEL("\n  Import data status:"))
-        self.stdout.write("    TODO: checking import data")
+        self.stdout.write("    Areas: %d" % AreaLocation.objects.count())
+        self.stdout.write("    Birds: %d" % Bird.objects.count())
+        self.stdout.write("    Bands: %d" % Band.objects.count())
+        self.stdout.write("    Band Combos: %d" % BandCombo.objects.count())
 
 
     def import_areas(self):
@@ -128,7 +120,6 @@ class Command(BaseCommand):
         self.stdout.write("    ...done!")
 
 
-
     def do_import(self):
         """ Imports objects into database """
         self.stdout.write(self.style.MIGRATE_HEADING("\nBeginning import..."))
@@ -143,7 +134,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write(self.style.MIGRATE_HEADING("Database import"))
         self.check_current_status()
-        self.check_import_status()
 
         confirm = input("\nReady to import? Type 'yes' to continue, or 'no' to cancel: ")
         # TEMP: confirm = 'yes'
