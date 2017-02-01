@@ -1,6 +1,7 @@
 import csv
 import datetime
 
+from django.utils.text import slugify
 from django.core.management import BaseCommand
 
 from keadatabase.choices import *
@@ -24,41 +25,62 @@ class Command(BaseCommand):
 
     def import_areas(self):
         """ Imports AreaLocation objects from data/areas.csv """
-        self.stdout.write("  Importing areas...")
+        self.stdout.write(self.style.MIGRATE_LABEL("\n  Importing areas..."))
 
         with open('data/areas.csv', 'rt') as areas_csv:
             areas_reader = csv.DictReader(areas_csv, delimiter=',', quotechar='"')
+
+            created_count = 0
+            checked_count = 0
+
             for row in areas_reader:
+                # Generate slug
+                name_slugified = slugify(row['Study area'])
+
                 # Map fields
                 area_map = {
+                    'slug': name_slugified,
                     'name': row['Study area'],
                 }
-
-                self.stdout.write(row['Study area'])
 
                 # TODO: check duplicates
                 # TODO: relations
 
                 # Save as AreaLocation object
-                area = AreaLocation(**area_map)
-                area.full_clean()
-                area.save()
+                try:
+                    area = AreaLocation.objects.get(slug=name_slugified)
+                    for key, value in area_map.items():
+                        setattr(area, key, value)
+                    area.full_clean()
+                    area.save()
+                    checked_count += 1
+                except AreaLocation.DoesNotExist:
+                    area = AreaLocation(**area_map)
+                    area.full_clean()
+                    area.save()
+                    created_count += 1
 
+        self.stdout.write("    Checked: %d" % checked_count)
+        self.stdout.write("    New: %d" % created_count)
         self.stdout.write("    ...done!")
 
 
     def import_bands(self):
         """ Imports Band objects from various csv files """
-        self.stdout.write("  Importing bands...")
+        self.stdout.write(self.style.MIGRATE_LABEL("\n  Importing bands..."))
         self.stdout.write("    ...TODO!")
 
 
     def import_birds(self):
         """ Imports Bird objects from data/birds.csv """
-        self.stdout.write("  Importing birds...")
+        self.stdout.write(self.style.MIGRATE_LABEL("\n  Importing birds..."))
 
         with open('data/birds.csv', 'rt') as birds_csv:
             birds_reader = csv.DictReader(birds_csv, delimiter=',', quotechar='"')
+
+            created_count = 0
+            checked_count = 0
+
             for row in birds_reader:
                 # Validate species
                 if row['Species'] != 'Kea':
@@ -91,12 +113,16 @@ class Command(BaseCommand):
                 else:
                     birthday_formatted = None
 
+                # Generate slug
+                name_slugified = slugify(row['Kea ID'])
+
                 # Get associated area
                 #area = AreaLocation.objects.get(name=row['Study area'])
                 # TODO: not all areas have associated AreaLocations
 
                 # Map fields
                 bird_map = {
+                    'slug': name_slugified,
                     'name': row['Kea ID'],
                     'sex': sex_map[row['Sex']],
                     'status': status_map[row['Status']],
@@ -106,17 +132,30 @@ class Command(BaseCommand):
                     #'date_imported': '',
                 }
 
-                self.stdout.write("%s" % (row['Study area']))
-                # TODO: check duplicates
+                #self.stdout.write("%s" % (row['Study area']))
                 # TODO: media
                 # TODO: relations
 
 
-                # Save as Bird object
-                bird = Bird(**bird_map)
-                bird.full_clean()
-                bird.save()
+                # Attempts to get object (on unique slug).
+                #   If exists: update existing values
+                #   If doesn't exist: create new bird
+                try:
+                    bird = Bird.objects.get(slug=name_slugified)
+                    for key, value in bird_map.items():
+                        setattr(bird, key, value)
+                    bird.full_clean()
+                    bird.save()
+                    checked_count += 1
+                except Bird.DoesNotExist:
+                    bird = Bird(**bird_map)
+                    bird.full_clean()
+                    bird.save()
+                    created_count += 1
 
+
+        self.stdout.write("    Checked: %d" % checked_count)
+        self.stdout.write("    New: %d" % created_count)
         self.stdout.write("    ...done!")
 
 
@@ -126,7 +165,7 @@ class Command(BaseCommand):
 
         self.import_areas()
         self.import_bands()
-        #self.import_birds()
+        self.import_birds()
 
         self.stdout.write(self.style.SUCCESS("\nImport successful!"))
 
@@ -135,8 +174,8 @@ class Command(BaseCommand):
         self.stdout.write(self.style.MIGRATE_HEADING("Database import"))
         self.check_current_status()
 
-        confirm = input("\nReady to import? Type 'yes' to continue, or 'no' to cancel: ")
-        # TEMP: confirm = 'yes'
+        #confirm = input("\nReady to import? Type 'yes' to continue, or 'no' to cancel: ")
+        confirm = 'yes' # for debugging
 
         if confirm == 'yes':
             self.do_import()

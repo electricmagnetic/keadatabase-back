@@ -1,7 +1,5 @@
 from datetime import date
 
-from autoslug import AutoSlugField
-
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
 
@@ -27,8 +25,8 @@ class Bird(models.Model):
     birthday = models.DateField(blank=True, null=True)
 
 
-    ## Unique slug (for comparisons)
-    slug = AutoSlugField(populate_from='name', unique=True, always_update=True)
+    ## Unique slug ID
+    slug = models.SlugField(max_length=100, primary_key=True)
 
 
     ## Media
