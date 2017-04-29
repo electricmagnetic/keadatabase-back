@@ -195,5 +195,6 @@ BAND_SYMBOL_CHOICES = (
     ('Greek', (
         ('obelus', 'Divide'),
         ('theta', 'Theta'),
+        ('diamond', 'Diamond'),
     ),),
 )

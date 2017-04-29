@@ -109,7 +109,7 @@ class Command(BaseCommand):
                 # Format birthday
                 if row['birthday']:
                     birthday_formatted = datetime.datetime.strptime(row['birthday'],
-                                                                    "%d/%m/%y %H:%M:%S")
+                                                                    "%d/%m/%Y %H:%M:%S")
                 else:
                     birthday_formatted = None
 
@@ -117,7 +117,7 @@ class Command(BaseCommand):
                 name_slugified = slugify(row['Kea ID'])
 
                 # Get associated area
-                #area = AreaLocation.objects.get(name=row['Study area'])
+                area = AreaLocation.objects.get(name=row['Study Area'])
                 # TODO: not all areas have associated AreaLocations
 
                 # Map fields
@@ -127,7 +127,7 @@ class Command(BaseCommand):
                     'sex': sex_map[row['Sex']],
                     'status': status_map[row['Status']],
                     'birthday': birthday_formatted,
-                    #'area': area,
+                    'area': area,
                     #'photo': '',
                     #'date_imported': '',
                 }

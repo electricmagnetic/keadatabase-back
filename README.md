@@ -42,9 +42,11 @@ TBD
 
 ## Loading data
 ### From primary Access database
-1. Export tables from Access to csv files in 'data' directory of the project
-   "Kea bands" -> data/birds.csv
+1. Export tables from Access to csv files in 'data' directory of the project. Ensure that it uses UTF-8 encoding, the fields are included in the first row and that dates are preceded by a leading zero.
+   "Kea bands" -> data/bands.csv
    "tStudyAreas" -> data/areas.csv
+   "Kea" -> data/birds.csv
+   "Transmitters" -> data/transmitters.csv
 2. Run `./manage.py import` and follow instructions
 
 

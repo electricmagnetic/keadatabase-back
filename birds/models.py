@@ -1,4 +1,5 @@
 from datetime import date
+from dateutil.relativedelta import relativedelta
 
 from django.contrib.gis.db import models
 from django.core.exceptions import ValidationError
@@ -54,17 +55,28 @@ class Bird(models.Model):
     def get_age(self):
         """ Calculates age based on birthday """
         ## Validate birthday is not from the future
-        #     current_date = date.today()
-        #     if self.birthday:
-        #         if self.birthday > current_date:
-        #             errors.update({'birthday': 'Date cannot be from the future.'})
-        return 'age'
+        if self.status == '-':
+            return None
+
+        difference_in_years = relativedelta(date.today(), self.birthday).years
+        return difference_in_years
 
 
     def get_life_stage(self):
         """ Calculates life stage based on age """
-        # choices=LIFE_STAGE_CHOICES
-        return 'life stage'
+        if self.status == '-':
+            return 'N/A'
+
+        age = self.get_age()
+
+        if age <= 1:
+            return 'Juvenile/Fledgling'
+        elif age > 1 and age <= 2:
+            return 'Sub-Adult'
+        elif age > 2:
+            return 'Adult'
+        else:
+            return 'Unknown'
 
 
 class BirdExtended(models.Model):

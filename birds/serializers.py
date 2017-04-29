@@ -7,6 +7,7 @@ class BirdSerializer(serializers.ModelSerializer):
     # Choices
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
+    area = serializers.CharField(source='area.__str__')
 
 
     # Methods
