@@ -1,7 +1,39 @@
-# Kea Database
-An online database designed to track kea sightings and information
+keadatabase-back
+================
 
-## Licence
+[![Build Status](https://travis-ci.org/greenstone/keadatabase-back.svg?branch=master)](https://travis-ci.org/greenstone/keadatabase-back)
+
+Setup
+-----
+This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual environments are installed.
+
+For instructions on setting up PostGIS:
+<https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/postgis/>
+
+1. Setup `python3` virtual environment
+2. Create a new database 'keadatabase' with username/password 'keadatabase'/'keadatabase'
+3. `pip install -r requirements.txt`
+4. `./manage.py migrate`
+5. `./manage.py createsuperuser`
+
+Running
+-------
+`./manage.py runserver`
+
+Testing
+-------
+TODO
+
+Data synchronisation
+--------------------
+TODO
+
+Deploying
+---------
+TODO
+
+Licence
+-------
 Kea Database
 Copyright (C) 2017 Greenstone Limited <hello@greenstone.org.nz>
 
