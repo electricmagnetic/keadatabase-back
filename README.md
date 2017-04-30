@@ -11,7 +11,7 @@ For instructions on setting up PostGIS:
 <https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/postgis/>
 
 1. Setup `python3` virtual environment
-2. Create a new database 'keadatabase' with username/password 'keadatabase'/'keadatabase'
+2. Create a new database 'keadatabase' with username 'postgres' and no password
 3. `pip install -r requirements.txt`
 4. `./manage.py migrate`
 5. `./manage.py createsuperuser`
