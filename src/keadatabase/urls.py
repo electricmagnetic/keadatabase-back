@@ -18,7 +18,10 @@ from django.contrib import admin
 
 from rest_framework.routers import DefaultRouter
 
+from locations.views import StudyAreaViewSet
+
 router = DefaultRouter()
+router.register(r'locations/study_area', StudyAreaViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

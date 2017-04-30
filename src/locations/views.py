@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from .models import StudyArea
+from .serializers import StudyAreaSerializer
+
+class StudyAreaViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = StudyArea.objects.all()
+    serializer_class = StudyAreaSerializer
+    filter_fields = ('name',)
