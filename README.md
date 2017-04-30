@@ -32,6 +32,8 @@ Data synchronisation
 --------------------
 Export tables from Access to CSV files, ensuring that they use UTF-8 encoding, the fields are included in the first row and that dates are preceded by a leading zero.
 
+Data synchronisation is non-destructive (it will not delete objects).
+
 Add the following files to a `data/` folder in the root directory:
 * `tStudyAreas.csv`
 * `Kea.csv`
