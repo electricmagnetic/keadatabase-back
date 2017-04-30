@@ -84,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'keadatabase',
-        'USER': 'keadatabase',
-        'PASSWORD': 'keadatabase',
+        'USER': 'postgres',
+        'PASSWORD': '',
         'HOST': 'localhost',
     }
 }
