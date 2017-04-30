@@ -1,0 +1,16 @@
+{% extends 'rest_framework/base.html' %}
+{% load static %}
+
+{% block title %}
+{% if name %}{{ name }} – {% endif %}Kea Database API
+{% endblock %}
+
+{% block bootstrap_theme %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+{% endblock %}
+
+{% block branding %}
+  <a class="navbar-brand" href="{% url 'api-root' %}">
+      Kea Database API
+  </a>
+{% endblock %}

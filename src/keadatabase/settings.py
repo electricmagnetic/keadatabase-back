@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'theme',
+
     'django_filters',
     'corsheaders',
     'rest_framework',
     'rest_framework_gis',
 
     'birds',
+    'locations',
 ]
 
 MIDDLEWARE = [
