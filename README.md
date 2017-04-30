@@ -5,7 +5,10 @@ keadatabase-back
 
 Setup
 -----
-This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual environments are installed.
+This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual
+environments are installed.
+
+`./manage.py` commands should be run from the `src/` directory.
 
 For instructions on setting up PostGIS:
 <https://docs.djangoproject.com/en/1.10/ref/contrib/gis/install/postgis/>
@@ -22,20 +25,40 @@ Running
 
 Testing
 -------
-TODO
+Ensure that the `keadatabase_test` db is able to be created before running.
+`./manage.py test`
 
 Data synchronisation
 --------------------
-TODO
+Export tables from Access to CSV files, ensuring that they use UTF-8 encoding, the fields are included in the first row and that dates are preceded by a leading zero.
+
+Add the following files to a `data/` folder in the root directory:
+* `tStudyAreas.csv`
+* `Kea.csv`
+* `Kea bands.csv`
+* `Transmitters.csv`
+
+The filenames are taken directly from the Access table names.
+
+Then run: `./manage.py synchronise`
 
 Deploying
 ---------
-TODO
+TODO (but also `./manage.py test` and `./manage.py check --deploy`)
+
+Layout
+------
+Within `src` folder:
+* `birds` - Bird models and helpers
+* `keadatabase` - Project settings
+* `locations` - StudyArea models and helpers
+* `synchronise` - Command and helpers that syncs Django DB with provided CSVs
+* `theme` - Django REST Framework customisations
 
 Licence
 -------
-Kea Database
-Copyright (C) 2017 Greenstone Limited <hello@greenstone.org.nz>
+Kea Database  
+Copyright (C) 2017 Greenstone Limited <hello@greenstone.org.nz>  
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
