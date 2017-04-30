@@ -15,14 +15,23 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 
 from rest_framework.routers import DefaultRouter
 
 from locations.views import StudyAreaViewSet
 
+# Custom admin site settings
+admin.site.site_header = settings.ADMIN_SITE_HEADER
+admin.site.site_title = settings.ADMIN_SITE_TITLE
+admin.site.index_title = settings.ADMIN_INDEX_TITLE
+
+# Router settings
 router = DefaultRouter()
 router.register(r'locations/study_area', StudyAreaViewSet)
 
+
+# URLs
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),

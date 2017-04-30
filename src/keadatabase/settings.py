@@ -157,3 +157,10 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
 )
+
+
+# Custom admin site header
+
+ADMIN_SITE_HEADER = "Kea Database API"
+ADMIN_SITE_TITLE = "Kea Database API"
+ADMIN_INDEX_TITLE = "Administration"
