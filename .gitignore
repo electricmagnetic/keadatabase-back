@@ -7,12 +7,7 @@
 
 /static/
 
-node_modules/
 .vagrant/
-media/
+src/media/
 __pycache__/
 data/
-
-db.sqlite3
-
-.coverage
