@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'birds',
     'locations',
+    'synchronise',
 ]
 
 MIDDLEWARE = [

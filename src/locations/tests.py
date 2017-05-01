@@ -27,7 +27,6 @@ class StudyAreaObjectTests(TestCase):
 
     def test_slug_generated(self):
         """ Models should auto-generate a slug on save """
-
         study_area = StudyArea(name='Christchurch')
         self.assertEqual(study_area.slug, '')
 
