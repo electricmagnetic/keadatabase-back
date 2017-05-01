@@ -7,7 +7,8 @@ from locations.models import StudyArea
 
 def synchronise_StudyArea(self, csv_file):
     """ Imports StudyArea objects from data/areas.csv """
-    self.stdout.write(self.style.MIGRATE_LABEL("StudyArea:"))
+    if hasattr(self, 'stdout'):
+        self.stdout.write(self.style.MIGRATE_LABEL("StudyArea:"))
 
     with open(csv_file, 'rt') as areas_csv:
         areas_reader = csv.DictReader(areas_csv, delimiter=',', quotechar='"')
@@ -38,5 +39,6 @@ def synchronise_StudyArea(self, csv_file):
                 area.save()
                 created_count += 1
 
-    self.stdout.write("\tChecked: %d" % checked_count)
-    self.stdout.write("\tCreated: %d" % created_count)
+    if hasattr(self, 'stdout'):
+        self.stdout.write("\tChecked: %d" % checked_count)
+        self.stdout.write("\tCreated: %d" % created_count)
