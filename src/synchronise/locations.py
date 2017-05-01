@@ -5,27 +5,24 @@ from django.utils.text import slugify
 
 from locations.models import StudyArea
 
-def synchronise_StudyArea(self):
+def synchronise_StudyArea(self, csv_file):
     """ Imports StudyArea objects from data/areas.csv """
     self.stdout.write(self.style.MIGRATE_LABEL("StudyArea:"))
 
-    with open('../data/areas.csv', 'rt') as areas_csv:
+    with open(csv_file, 'rt') as areas_csv:
         areas_reader = csv.DictReader(areas_csv, delimiter=',', quotechar='"')
 
         created_count = 0
         checked_count = 0
 
         for row in areas_reader:
-=            name_slugified = slugify(row['Study area'])
+            name_slugified = slugify(row['Study area'])
 
             # Map fields
             area_map = {
                 'name': row['Study area'],
                 'slug': name_slugified,
             }
-
-            # TODO: check duplicates
-            # TODO: relations
 
             # Save as StudyArea object
             try:

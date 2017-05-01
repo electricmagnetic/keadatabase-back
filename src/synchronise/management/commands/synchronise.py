@@ -15,7 +15,7 @@ class Command(management.BaseCommand):
         """ Imports objects into database """
         self.stdout.write(self.style.MIGRATE_HEADING("\nBeginning import:"))
 
-        synchronise_StudyArea(self)
+        synchronise_StudyArea(self, "../data/tStudyAreas.csv")
 
         self.stdout.write(self.style.SUCCESS("\nImport complete"))
 

@@ -46,16 +46,16 @@ Then run: `./manage.py synchronise`
 
 Deploying
 ---------
-TODO (but also `./manage.py test` and `./manage.py check --deploy`)
+TODO (but pre-deploy steps: `./manage.py test` and `./manage.py check --deploy`)
 
 Layout
 ------
-Within `src` folder:
-* `birds` - Bird models and helpers
-* `keadatabase` - Project settings
-* `locations` - StudyArea models and helpers
-* `synchronise` - Command and helpers that syncs Django DB with provided CSVs
-* `theme` - Django REST Framework customisations
+* 'test_data/' - Sample CSV data used for testing purposes
+* `src/birds/` - Bird models and helpers
+* `src/keadatabase/` - Project settings
+* `src/locations/` - StudyArea models and helpers
+* `src/synchronise/` - Command and helpers that syncs Django DB with provided CSVs
+* `src/theme/` - Django REST Framework customisations
 
 Licence
 -------
