@@ -26,6 +26,7 @@ Running
 Testing
 -------
 Ensure that the `keadatabase_test` db is able to be created before running.
+
 `./manage.py test`
 
 Data synchronisation
@@ -50,7 +51,7 @@ TODO (but pre-deploy steps: `./manage.py test` and `./manage.py check --deploy`)
 
 Layout
 ------
-* 'test_data/' - Sample CSV data used for testing purposes
+* `test_data/` - Sample CSV data used for testing purposes
 * `src/birds/` - Bird models and helpers
 * `src/keadatabase/` - Project settings
 * `src/locations/` - StudyArea models and helpers
