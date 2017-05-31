@@ -40,7 +40,8 @@ class BirdFunctionTests(TestCase):
     """ Tests for custom functions of Bird objects """
 
     def test_get_age(self):
-        birthday = date.today() - timedelta(days=547)
+        """ Function should return correct age for 600-day-old bird """
+        birthday = date.today() - timedelta(days=600)
         bird = Bird(name='Helen Clark', birthday=birthday)
 
         bird.full_clean()
@@ -49,6 +50,7 @@ class BirdFunctionTests(TestCase):
         self.assertEqual(bird.get_age(), 1)
 
     def test_no_get_age(self):
+        """ Function should return None if no birthday """
         bird = Bird(name='Helen Clark', birthday=None)
 
         bird.full_clean()
@@ -57,6 +59,7 @@ class BirdFunctionTests(TestCase):
         self.assertEqual(bird.get_age(), None)
 
     def test_get_life_stage(self):
+        """ Function should return different stages depending on birthday """
         birthday = date.today() - timedelta(days=100)
         bird_fledgling = Bird(name='Helen Clark', birthday=birthday)
 
@@ -74,6 +77,7 @@ class BirdFunctionTests(TestCase):
         self.assertEqual(bird_juvenile.get_life_stage(), 'Juvenile')
 
     def test_no_get_life_stage(self):
+        """ Function should return None if no birthday """
         bird = Bird(name='Helen Clark', birthday=None)
 
         bird.full_clean()
