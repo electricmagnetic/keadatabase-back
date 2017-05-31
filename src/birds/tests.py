@@ -1,3 +1,5 @@
+from datetime import date, timedelta
+
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
@@ -33,3 +35,48 @@ class BirdObjectTests(TestCase):
         bird.full_clean()
         bird.save()
         self.assertEqual(bird.slug, 'helen-clark')
+
+class BirdFunctionTests(TestCase):
+    """ Tests for custom functions of Bird objects """
+
+    def test_get_age(self):
+        birthday = date.today() - timedelta(days=547)
+        bird = Bird(name='Helen Clark', birthday=birthday)
+
+        bird.full_clean()
+        bird.save()
+
+        self.assertEqual(bird.get_age(), 1)
+
+    def test_no_get_age(self):
+        bird = Bird(name='Helen Clark', birthday=None)
+
+        bird.full_clean()
+        bird.save()
+
+        self.assertEqual(bird.get_age(), None)
+
+    def test_get_life_stage(self):
+        birthday = date.today() - timedelta(days=100)
+        bird_fledgling = Bird(name='Helen Clark', birthday=birthday)
+
+        bird_fledgling.full_clean()
+        bird_fledgling.save()
+
+        self.assertEqual(bird_fledgling.get_life_stage(), 'Fledgling')
+
+        birthday = date.today() - timedelta(days=600)
+        bird_juvenile = Bird(name='Keith Moon', birthday=birthday)
+
+        bird_juvenile.full_clean()
+        bird_juvenile.save()
+
+        self.assertEqual(bird_juvenile.get_life_stage(), 'Juvenile')
+
+    def test_no_get_life_stage(self):
+        bird = Bird(name='Helen Clark', birthday=None)
+
+        bird.full_clean()
+        bird.save()
+
+        self.assertEqual(bird.get_life_stage(), None)
