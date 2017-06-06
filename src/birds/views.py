@@ -6,4 +6,5 @@ from .serializers import BirdSerializer
 class BirdViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Bird.objects.all()
     serializer_class = BirdSerializer
-    #filter_fields = ('name',)
+    search_fields = ('name',)
+    filter_fields = ('sex', 'status', 'study_area',)

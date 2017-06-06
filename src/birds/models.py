@@ -12,14 +12,6 @@ SEX_CHOICES = (
     ('M', 'Male'),
 )
 
-LIFE_STAGE_CHOICES = (
-    ('', 'Unknown'),
-    ('A', 'Adult'),
-    ('S', 'Sub-adult'),
-    ('J', 'Juvenile'),
-    ('F', 'Fledgling'),
-)
-
 STATUS_CHOICES = (
     ('', 'Unknown'),
     ('+', 'Alive'),
