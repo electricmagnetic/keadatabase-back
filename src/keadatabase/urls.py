@@ -20,6 +20,7 @@ from django.conf import settings
 from rest_framework.routers import DefaultRouter
 
 from locations.views import StudyAreaViewSet
+from birds.views import BirdViewSet
 
 # Custom admin site settings
 admin.site.site_header = settings.ADMIN_SITE_HEADER
@@ -29,7 +30,7 @@ admin.site.index_title = settings.ADMIN_INDEX_TITLE
 # Router settings
 router = DefaultRouter()
 router.register(r'locations/study_area', StudyAreaViewSet)
-
+router.register(r'birds/bird', BirdViewSet)
 
 # URLs
 urlpatterns = [
