@@ -2,6 +2,7 @@ from django.core import management
 
 from synchronise.locations import synchronise_StudyArea
 from synchronise.birds import synchronise_Bird
+from synchronise.bands import synchronise_Band
 from locations.models import StudyArea
 from birds.models import Bird
 
@@ -18,8 +19,9 @@ class Command(management.BaseCommand):
         """ Imports objects into database """
         self.stdout.write(self.style.MIGRATE_HEADING("\nBeginning import:"))
 
-        synchronise_StudyArea(self, "../data/tStudyAreas.csv")
-        synchronise_Bird(self, "../data/Kea.csv")
+        #synchronise_StudyArea(self, "../data/tStudyAreas.csv")
+        #synchronise_Bird(self, "../data/Kea.csv")
+        synchronise_Band(self, "../data/Transmitters.csv", "../data/tStudyAreas.csv")
 
         self.stdout.write(self.style.SUCCESS("\nImport complete"))
 
