@@ -6,7 +6,8 @@ from django.utils.text import slugify
 from locations.models import StudyArea
 
 def synchronise_StudyArea(self, csv_file):
-    """ Imports StudyArea objects from data/areas.csv """
+    """ Imports StudyArea objects from data/tStudyAreas.csv """
+
     if hasattr(self, 'stdout'):
         self.stdout.write(self.style.MIGRATE_LABEL("StudyArea:"))
 
