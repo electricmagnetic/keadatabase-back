@@ -6,7 +6,7 @@ from django.core import management
 from django.utils.text import slugify
 
 def is_valid_Band(row):
-    if row['Status'] == 'Active':
+    if row['Action'].lower() == 'deployed':
         return True
 
     return False
@@ -22,15 +22,14 @@ def classify_Band(row):
 
     return False
 
-def synchronise_Band(self, transmitters_file, bands_file):
-    """ Imports Band objects from data/Transmitters.csv, data/Kea\ bands.csv """
+def synchronise_Band(self, transmitters_file):
+    """ Imports Band objects from data/Transmitters actions.csv """
 
     if hasattr(self, 'stdout'):
         self.stdout.write(self.style.MIGRATE_LABEL("Band:"))
 
-    with open(transmitters_file, 'rt') as transmitters_csv, open(bands_file, 'rt') as bands_csv:
+    with open(transmitters_file, 'rt') as transmitters_csv:
         transmitters_reader = csv.DictReader(transmitters_csv, delimiter=',', quotechar='"')
-        bands_reader = csv.DictReader(bands_csv, delimiter=',', quotechar='"')
 
         created_count = 0
         checked_count = 0
@@ -39,10 +38,12 @@ def synchronise_Band(self, transmitters_file, bands_file):
             if not is_valid_Band(row):
                 continue
 
-            band_type = classify_Band(row)
+            print ('"%s", "%s", "%s", "%s"' % (row['Kea ID'], row['Transmitter ID'].rsplit(None, 1)[0], row['Transmitter ID'].rsplit(None, 1)[-1], row['Date']))
+            checked_count += 1
 
-            if band_type:
-                print("%s %s" % (row['TR4 tune'], row['StudyArea']))
+            #band_type = classify_Band(row)
+
+            #print(band_type)
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tChecked: %d" % checked_count)

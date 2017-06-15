@@ -21,7 +21,7 @@ class Command(management.BaseCommand):
 
         #synchronise_StudyArea(self, "../data/tStudyAreas.csv")
         #synchronise_Bird(self, "../data/Kea.csv")
-        synchronise_Band(self, "../data/Transmitters.csv", "../data/tStudyAreas.csv")
+        synchronise_Band(self, "../data/Transmitter actions.csv")
 
         self.stdout.write(self.style.SUCCESS("\nImport complete"))
 
