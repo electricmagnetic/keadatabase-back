@@ -32,6 +32,7 @@ class Bird(models.Model):
 
     study_area = models.ForeignKey(StudyArea, blank=True, null=True)
 
+    # Metadata
     date_modified = models.DateTimeField(auto_now=True)
     date_imported = models.DateTimeField(blank=True, null=True)
 

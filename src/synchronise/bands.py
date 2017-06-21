@@ -9,18 +9,48 @@ from locations.models import StudyArea
 from birds.models import Bird
 from bands.models import BandCombo
 
-def get_StudyArea(name):
-    """ Returns a StudyArea if it matches the given name, False otherwise """
+def get_StudyArea(row):
+    """ Returns a StudyArea if it matches the name obtained from the row, False otherwise """
+
     try:
-        study_area = StudyArea.objects.get(slug=slugify(name))
+        # Checks last word  (e.g. 'Rotoiti')
+        one_word_location = ' '.join(row['Transmitter ID'].split()[-1:])
+        study_area = StudyArea.objects.get(slug=slugify(one_word_location))
         return study_area
     except StudyArea.DoesNotExist:
-        return False
+        pass
 
-def get_Bird(name):
-    """ Returns a Bird if it matches the given name, False otherwise """
     try:
-        bird = Bird.objects.get(slug=slugify(name))
+        # Checks last two words (e.g. 'Abel Tasman')
+        two_word_location = ' '.join(row['Transmitter ID'].split()[-2:])
+        study_area = StudyArea.objects.get(slug=slugify(two_word_location))
+        return study_area
+    except StudyArea.DoesNotExist:
+        pass
+
+    try:
+        # Checks second-to-last word (e.g. 'Waimakariri 2')
+        second_last_word_location = ' '.join(row['Transmitter ID'].split()[-2:-1])
+        study_area = StudyArea.objects.get(slug=slugify(second_last_word_location))
+        return study_area
+    except StudyArea.DoesNotExist:
+        pass
+
+    # if not get_StudyArea(one_word_location) and \
+    #    not get_StudyArea(two_word_location) and \
+    #    not one_word_location == 'Decommissioned' and \
+    #    not one_word_location == 'duplicate' and \
+    #    not one_word_location == '2' and \
+    #    not one_word_location == '3':
+    #     # TODO: check the special cases
+
+    return False
+
+
+def get_Bird(row):
+    """ Returns a Bird if it matches the name obtained from the row, False otherwise """
+    try:
+        bird = Bird.objects.get(slug=slugify(row['Kea ID']))
         return bird
     except Bird.DoesNotExist:
         return False
@@ -52,21 +82,11 @@ def is_valid_Band(row):
         return False
 
     # 'Kea ID' must match up with a Bird
-    if not get_Bird(row['Kea ID']):
+    if not get_Bird(row):
         raise ValueError('No Bird exists for this band:', row['Transmitter ID'])
 
     # Location contained within ID must match with a StudyArea
-    one_word_location = ' '.join(row['Transmitter ID'].split()[-1:])
-    two_word_location = ' '.join(row['Transmitter ID'].split()[-2:])
-
-    if not get_StudyArea(one_word_location) and \
-       not get_StudyArea(two_word_location) and \
-       not one_word_location == 'Decommissioned' and \
-       not one_word_location == 'duplicate' and \
-       not one_word_location == '2' and \
-       not one_word_location == '3':
-        # TODO: remove the special cases
-        print("%s | %s" % (one_word_location, two_word_location))
+    if not get_StudyArea(row):
         raise ValueError('No StudyArea exists for this band:', row['Transmitter ID'])
 
     return True
@@ -103,19 +123,21 @@ def synchronise_Band(self, transmitters_file):
                 continue
 
             #band_combo = standardise_BandCombo(row)
-            formatted_action = '"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date'])
+            #formatted_action = '"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date'])
+            formatted_action = '"%s" %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'])
             #print(formatted_action)
 
             # Get associated objects
-            bird = get_Bird(row['Kea ID'])
-            #study_area = get_StudyArea
+            bird = get_Bird(row)
+            study_area = get_StudyArea(row)
+            #print(formatted_action)
 
             # Map fields
             band_combo_map = {
                 'bird': bird,
                 'name': formatted_action,
-                # 'study_area': study_area,
-                # TODO: import dates
+                'study_area': study_area,
+                'date_deployed': datetime.datetime.strptime(row['Date'], "%Y-%m-%d %H:%M:%S")
             }
 
             try:
@@ -126,7 +148,7 @@ def synchronise_Band(self, transmitters_file):
                 band_combo.save()
                 checked_count += 1
             except BandCombo.DoesNotExist:
-                #band_combo_map['date_imported'] = timezone.now()
+                band_combo_map['date_imported'] = timezone.now()
                 band_combo = BandCombo(**band_combo_map)
                 band_combo.full_clean()
                 band_combo.save()
