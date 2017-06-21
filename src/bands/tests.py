@@ -17,7 +17,7 @@ class BandComboObjectTests(TestCase):
             band.save()
 
     def test_bird(self):
-        """ Models should required a Bird object """
+        """ Models should require a Bird object """
         with self.assertRaises(ValidationError):
             band = BandCombo(name="Black 'C' on Yellow Otira")
 
