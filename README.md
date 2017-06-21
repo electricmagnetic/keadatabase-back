@@ -31,19 +31,13 @@ Ensure that the `keadatabase_test` db is able to be created before running.
 
 Data synchronisation
 --------------------
-Export tables from Access to CSV files, ensuring that they use UTF-8 encoding, the fields are included in the first row and that dates are preceded by a leading zero.
+These steps assume you have `mdbtools` installed.
+
+1. Create a directory 'data/' and add the `kea_be.mdb` file (back-end to the Access kea database).
+2. From the current directory run: `./export_kea_be.sh`. This will export three CSV files into the `data/` directory.
+3. Run `./manage.py synchronise`
 
 Data synchronisation is non-destructive (it will not delete objects).
-
-Add the following files to a `data/` folder in the root directory:
-* `tStudyAreas.csv`
-* `Kea.csv`
-* `Kea bands.csv`
-* `Transmitters.csv`
-
-The filenames are taken directly from the Access table names.
-
-Then run: `./manage.py synchronise`
 
 Deploying
 ---------
@@ -61,7 +55,8 @@ Layout
 Licence
 -------
 Kea Database  
-Copyright (C) 2017 Greenstone Limited <hello@greenstone.org.nz>  
+Copyright (C) 2017 Greenstone Limited  
+<hello@greenstone.org.nz>  
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by

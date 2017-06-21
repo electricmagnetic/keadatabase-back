@@ -57,7 +57,7 @@ def synchronise_Bird(self, csv_file):
             # Represent birthday as a datetime object based on input format
             if row['birthday']:
                 birthday = datetime.datetime.strptime(row['birthday'],
-                                                      "%d/%m/%Y %H:%M:%S")
+                                                      "%Y-%m-%d %H:%M:%S")
             else:
                 birthday = None
 
