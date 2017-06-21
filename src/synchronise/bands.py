@@ -7,6 +7,7 @@ from django.utils.text import slugify
 
 from locations.models import StudyArea
 from birds.models import Bird
+from bands.models import BandCombo
 
 def get_StudyArea(name):
     """ Returns a StudyArea if it matches the given name, False otherwise """
@@ -72,10 +73,10 @@ def is_valid_Band(row):
 
     # TODO: (verify where there is band but no bird, and bird but no band)
 
-def standardise_Band(row):
+def standardise_BandCombo(row):
     """ Takes a given row and returns a standardised object """
 
-    band = []
+    band_combo = []
     classification = classify_Band(row)
     bird = get_Bird(name)
 
@@ -83,7 +84,7 @@ def standardise_Band(row):
     # split out area and band id
     # categorise based on 'new' style or 'old' style
 
-    return band
+    return band_combo
 
 def synchronise_Band(self, transmitters_file):
     """ Imports Band objects from data/Transmitter actions.csv """
@@ -101,9 +102,35 @@ def synchronise_Band(self, transmitters_file):
             if not is_valid_Band(row):
                 continue
 
-            #band = standardise_Band(row)
+            #band_combo = standardise_BandCombo(row)
+            formatted_action = '"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date'])
+            #print(formatted_action)
 
-            print('"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date']))
+            # Get associated objects
+            bird = get_Bird(row['Kea ID'])
+            #study_area = get_StudyArea
+
+            # Map fields
+            band_combo_map = {
+                'bird': bird,
+                'name': formatted_action,
+                # 'study_area': study_area,
+                # TODO: import dates
+            }
+
+            try:
+                band_combo = BandCombo.objects.get(bird=bird)
+                for key, value in band_combo_map.items():
+                    setattr(band_combo, key, value)
+                band_combo.full_clean()
+                band_combo.save()
+                checked_count += 1
+            except BandCombo.DoesNotExist:
+                #band_combo_map['date_imported'] = timezone.now()
+                band_combo = BandCombo(**band_combo_map)
+                band_combo.full_clean()
+                band_combo.save()
+                created_count += 1
 
 
     if hasattr(self, 'stdout'):
