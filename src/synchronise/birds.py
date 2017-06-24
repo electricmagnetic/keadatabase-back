@@ -22,7 +22,7 @@ sex_map = {
 }
 
 def is_valid_Bird(row):
-    """ Returns True if valid bird - filters noise in original dataset """
+    """ Returns True if valid Bird - filters noise in original dataset """
 
     # Check to confirm species is listed as 'Kea' (not 'Dummy' or 'Cavity')
     if row['Species'] != 'Kea':
