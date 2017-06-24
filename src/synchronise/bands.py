@@ -46,7 +46,6 @@ def get_StudyArea(row):
 
     return False
 
-
 def get_Bird(row):
     """ Returns a Bird if it matches the name obtained from the row, False otherwise """
     try:
@@ -103,6 +102,10 @@ def standardise_BandCombo(row):
     # determine what is noise and what is not
     # split out area and band id
     # categorise based on 'new' style or 'old' style
+    # write tests
+    # special characters (e.g. divides)
+    # decommissioned bands
+    # deploy – check date deployed, use most recent one
 
     return band_combo
 
@@ -124,7 +127,7 @@ def synchronise_Band(self, transmitters_file):
 
             #band_combo = standardise_BandCombo(row)
             #formatted_action = '"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date'])
-            formatted_action = '"%s" %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'])
+            formatted_action = '"%s" %s' % (row['Transmitter ID'], row['Action'].lower())
             #print(formatted_action)
 
             # Get associated objects

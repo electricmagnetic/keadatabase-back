@@ -152,7 +152,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.DjangoFilterBackend',
         'rest_framework.filters.SearchFilter'
     ),
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': 2000
 }
 
 

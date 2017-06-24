@@ -12,7 +12,7 @@ class BandCombo(models.Model):
         primary_key=True,
         related_name='band_combo'
     )
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
 
     study_area = models.ForeignKey(StudyArea)
 
