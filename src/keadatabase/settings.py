@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        '*.keadatabase.nz'
+    ]
+
 
 # Application definition
 
@@ -169,10 +174,24 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
 )
-
+if not DEBUG:
+    CORS_ORIGIN_WHITELIST = (
+        '*.keadatabase.nz',
+    )
 
 # Custom admin site header
 
 ADMIN_SITE_HEADER = "Kea Database API"
 ADMIN_SITE_TITLE = "Kea Database API"
 ADMIN_INDEX_TITLE = "Administration"
+
+
+# HTTPS configuration
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
