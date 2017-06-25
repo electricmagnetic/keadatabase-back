@@ -20,5 +20,5 @@ class BirdViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Bird.objects.all()
     serializer_class = BirdSerializer
     search_fields = ('name',)
-    # TODO: ordering
+    ordering_fields = ('name', 'status', 'study_area', 'bird_extended',)
     filter_class = BirdFilter
