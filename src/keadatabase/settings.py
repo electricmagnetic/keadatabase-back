@@ -27,10 +27,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-if not DEBUG:
+# Production settings for security and geo libraries
+if os.environ.get('IS_PRODUCTION') == 'True' \
+   and 'DJANGO_SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+
+    DEBUG = False
+
     ALLOWED_HOSTS = [
-        '*.keadatabase.nz'
+        '.keadatabase.nz'
     ]
+
+    GEOS_LIBRARY_PATH = "{}/libgeos_c.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+    GDAL_LIBRARY_PATH = "{}/libgdal.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+    PROJ4_LIBRARY_PATH = "{}/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+
 
 
 # Application definition
@@ -41,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 
     'theme',
@@ -98,7 +110,8 @@ DATABASES = {}
 
 DATABASES['default'] = dj_database_url.config(
     default='postgres://postgres:@localhost:5432/keadatabase',
-    conn_max_age=600)
+    conn_max_age=600
+    )
 
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
@@ -146,7 +159,7 @@ STATIC_URL = '/static/'
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 
@@ -174,6 +187,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
 )
+
 if not DEBUG:
     CORS_ORIGIN_WHITELIST = (
         '*.keadatabase.nz',
