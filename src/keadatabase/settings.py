@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 # Production settings for security and geo libraries
 if os.environ.get('IS_PRODUCTION') == 'True' \
    and 'DJANGO_SECRET_KEY' in os.environ:
@@ -43,7 +44,6 @@ if os.environ.get('IS_PRODUCTION') == 'True' \
     PROJ4_LIBRARY_PATH = "{}/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'theme',
     'django.contrib.admin',
 
+    'storages',
     'versatileimagefield',
     'django_filters',
     'corsheaders',
@@ -157,10 +158,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
+
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Media files
 
@@ -180,11 +183,11 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ),
-    'PAGE_SIZE': 2000
+    'PAGE_SIZE': 72
 }
 
 
-# CORS for development
+# CORS
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
@@ -197,6 +200,7 @@ if not DEBUG:
         'keadatabase.nz',
     )
 
+
 # Custom admin site header
 
 ADMIN_SITE_HEADER = "Kea Database API"
@@ -204,7 +208,7 @@ ADMIN_SITE_TITLE = "Kea Database API"
 ADMIN_INDEX_TITLE = "Administration"
 
 
-# HTTPS configuration
+# Production security
 
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
@@ -214,3 +218,14 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 3600
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
+
+
+# Amazon S3 storage
+
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
+    AWS_LOCATION = '/media'
