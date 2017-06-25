@@ -41,7 +41,9 @@ Data synchronisation is non-destructive (it will not delete objects).
 
 Deploying
 ---------
-TODO (but pre-deploy steps: `./manage.py test` and `./manage.py check --deploy`)
+This code is deployed using a continuous integration workflow. Code pushed to master will be deployed to Heroku after Travis CI tests are passed. The process takes a few minutes.
+
+Please note, aside from `collectstatic` Django commands such as `migrate` are not run automatically.
 
 Layout
 ------

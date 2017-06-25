@@ -190,7 +190,9 @@ CORS_ORIGIN_WHITELIST = (
 
 if not DEBUG:
     CORS_ORIGIN_WHITELIST = (
-        '*.keadatabase.nz',
+        'beta.keadatabase.nz',
+        'www.keadatabase.nz',
+        'keadatabase.nz',
     )
 
 # Custom admin site header
