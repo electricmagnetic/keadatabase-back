@@ -1,12 +1,21 @@
 from rest_framework import serializers
+from versatileimagefield.serializers import VersatileImageFieldSerializer
 
 from .models import Bird, BirdExtended
 
 class BirdExtendedSerializer(serializers.ModelSerializer):
+    profile_picture = VersatileImageFieldSerializer(
+        sizes=[
+            ('full_size', 'url'),
+            ('thumbnail', 'crop__350x250'),
+            ('large', 'crop__500x500'),
+        ]
+    )
+
     class Meta:
         model = BirdExtended
         fields = ('description', 'is_featured', 'sponsor_name',
-                  'sponsor_website')
+                  'sponsor_website', 'profile_picture')
 
 class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')

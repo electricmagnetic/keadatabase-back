@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'theme',
     'django.contrib.admin',
 
+    'versatileimagefield',
     'django_filters',
     'corsheaders',
     'rest_framework',
@@ -204,6 +205,7 @@ ADMIN_INDEX_TITLE = "Administration"
 
 
 # HTTPS configuration
+
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
