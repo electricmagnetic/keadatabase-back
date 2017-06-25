@@ -2,6 +2,12 @@ from rest_framework import serializers
 
 from .models import Bird, BirdExtended
 
+class BirdExtendedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BirdExtended
+        fields = ('description', 'is_featured', 'sponsor_name',
+                  'sponsor_website')
+
 class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
@@ -9,9 +15,7 @@ class BirdSerializer(serializers.ModelSerializer):
     study_area = serializers.StringRelatedField(many=False)
     band_combo = serializers.StringRelatedField(many=False)
 
-    is_extended = serializers.ReadOnlyField(source='birdextended.is_extended')
-    is_featured = serializers.ReadOnlyField(source='birdextended.is_featured')
-    description = serializers.ReadOnlyField(source='birdextended.description')
+    bird_extended = BirdExtendedSerializer()
 
     get_age = serializers.ReadOnlyField()
     get_life_stage = serializers.ReadOnlyField()

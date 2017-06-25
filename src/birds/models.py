@@ -83,11 +83,16 @@ class BirdExtended(models.Model):
     bird = models.OneToOneField(
         Bird,
         on_delete=models.CASCADE,
-        primary_key=True
+        primary_key=True,
+        related_name='bird_extended'
     )
+
+    is_extended = models.BooleanField(default=True, editable=False)
 
     is_featured = models.BooleanField(default=False)
     description = models.TextField(null=True, blank=True)
+    sponsor_name = models.CharField(max_length=200, null=True, blank=True)
+    sponsor_website = models.URLField(max_length=200, null=True, blank=True)
 
     # TODO: add picture upload
 
@@ -97,6 +102,3 @@ class BirdExtended(models.Model):
 
     def __str__(self):
         return str(self.bird)
-
-    def is_extended(self):
-        return True
