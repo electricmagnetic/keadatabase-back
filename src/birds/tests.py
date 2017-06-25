@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
-from .models import Bird
+from .models import Bird, BirdExtended
 
 class BirdObjectTests(TestCase):
     """ Tests for main functions of Bird objects """
@@ -84,3 +84,28 @@ class BirdFunctionTests(TestCase):
         bird.save()
 
         self.assertEqual(bird.get_life_stage(), None)
+
+class BirdExtendedObjectTests(TestCase):
+    """ Tests for main functions of BirdExtended objects """
+
+    def test_blank(self):
+        """ The model should not submit if all fields are left blank """
+        with self.assertRaises(ValidationError):
+            bird_extended = BirdExtended()
+            bird_extended.full_clean()
+            bird_extended.save()
+
+    def test_unique_bird(self):
+        """ Each Bird can only have one BirdExtended """
+        with self.assertRaises(ValidationError):
+            bird = Bird(name='Helen Clark')
+            bird.full_clean()
+            bird.save()
+
+            bird_extended = BirdExtended(bird=bird)
+            bird_extended.full_clean()
+            bird_extended.save()
+
+            bird_extended_duplicate = BirdExtended(bird=bird)
+            bird_extended_duplicate.full_clean()
+            bird_extended_duplicate.save()
