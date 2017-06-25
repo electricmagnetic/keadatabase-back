@@ -77,3 +77,26 @@ class Bird(models.Model):
             return 'Adult'
         else:
             return None
+
+class BirdExtended(models.Model):
+    """ Extended bird information, designed to be edited on Django """
+    bird = models.OneToOneField(
+        Bird,
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
+
+    is_featured = models.BooleanField(default=False)
+    description = models.TextField(null=True, blank=True)
+
+    # TODO: add picture upload
+
+    class Meta:
+        ordering = ['bird']
+        verbose_name = 'Extended Bird'
+
+    def __str__(self):
+        return str(self.bird)
+
+    def is_extended(self):
+        return True
