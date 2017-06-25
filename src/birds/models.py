@@ -1,5 +1,6 @@
 from datetime import date
 from dateutil.relativedelta import relativedelta
+from versatileimagefield.fields import VersatileImageField, PPOIField
 
 from django.db import models
 from django.utils.text import slugify
@@ -17,6 +18,10 @@ STATUS_CHOICES = (
     ('+', 'Alive'),
     ('-', 'Dead'),
 )
+
+def bird_directory_path(instance, filename):
+    """ Helper function for determining upload location for BirdExtended """
+    return 'birds/%s/%s' % (instance.bird.slug, filename)
 
 class Bird(models.Model):
     """ Basic bird information, designed to be imported from Access """
@@ -94,7 +99,10 @@ class BirdExtended(models.Model):
     sponsor_name = models.CharField(max_length=200, null=True, blank=True)
     sponsor_website = models.URLField(max_length=200, null=True, blank=True)
 
-    # TODO: add picture upload
+    profile_picture = VersatileImageField(upload_to=bird_directory_path,
+                                          blank=True, null=True,
+                                          ppoi_field='profile_picture_ppoi')
+    profile_picture_ppoi = PPOIField()
 
     class Meta:
         ordering = ['bird']
