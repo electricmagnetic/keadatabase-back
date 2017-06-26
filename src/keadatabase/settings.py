@@ -229,3 +229,4 @@ if not DEBUG:
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
     AWS_LOCATION = '/media'
+    AWS_IS_GZIPPED = True
