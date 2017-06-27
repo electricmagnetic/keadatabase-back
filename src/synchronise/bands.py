@@ -58,7 +58,7 @@ def is_valid_Band(row):
     """ Returns True if given row appears to be a Band, False otherwise """
 
     # must have valid action
-    valid_actions = ['deployed', 'transferred', 'decommissioned', 'off kea']
+    valid_actions = ['deployed', 'transferred',]
     if not row['Action'].lower() in valid_actions:
         return False
 
@@ -126,25 +126,28 @@ def synchronise_Band(self, transmitters_file):
                 continue
 
             #band_combo = standardise_BandCombo(row)
-            #formatted_action = '"%s" %s to %s on %s' % (row['Transmitter ID'], row['Action'].lower(), row['Kea ID'], row['Date'])
-            formatted_action = '"%s" %s' % (row['Transmitter ID'], row['Action'].lower())
-            #print(formatted_action)
 
             # Get associated objects
             bird = get_Bird(row)
             study_area = get_StudyArea(row)
-            #print(formatted_action)
 
             # Map fields
             band_combo_map = {
                 'bird': bird,
-                'name': formatted_action,
+                'name': row['Transmitter ID'],
                 'study_area': study_area,
                 'date_deployed': datetime.datetime.strptime(row['Date'], "%Y-%m-%d %H:%M:%S")
             }
 
             try:
                 band_combo = BandCombo.objects.get(bird=bird)
+
+                # Only updated if database-stored action is older
+                if band_combo.date_deployed > band_combo_map['date_deployed'].date():
+                    continue
+
+                # TODO: only update 'modified date' if something changed
+
                 for key, value in band_combo_map.items():
                     setattr(band_combo, key, value)
                 band_combo.full_clean()
