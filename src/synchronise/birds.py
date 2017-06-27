@@ -38,61 +38,60 @@ def is_valid_Bird(row):
 
     return True
 
-def synchronise_Bird(self, csv_file):
+def synchronise_Bird(self, birds_csv):
     """ Imports Bird objects from data/Kea.csv """
 
     if hasattr(self, 'stdout'):
         self.stdout.write(self.style.MIGRATE_LABEL("Bird:"))
 
-    with open(csv_file, 'rt') as birds_csv:
-        birds_reader = csv.DictReader(birds_csv, delimiter=',', quotechar='"')
+    birds_reader = csv.DictReader(birds_csv, delimiter=',', quotechar='"')
 
-        created_count = 0
-        checked_count = 0
+    created_count = 0
+    checked_count = 0
 
-        for row in birds_reader:
-            if not is_valid_Bird(row):
-                continue
+    for row in birds_reader:
+        if not is_valid_Bird(row):
+            continue
 
-            # Represent birthday as a datetime object based on input format
-            if row['birthday']:
-                birthday = datetime.datetime.strptime(row['birthday'],
-                                                      "%Y-%m-%d %H:%M:%S")
-            else:
-                birthday = None
+        # Represent birthday as a datetime object based on input format
+        if row['birthday']:
+            birthday = datetime.datetime.strptime(row['birthday'],
+                                                  "%Y-%m-%d %H:%M:%S")
+        else:
+            birthday = None
 
-            # Generate slug
-            name_slugified = slugify(row['Kea ID'])
+        # Generate slug
+        name_slugified = slugify(row['Kea ID'])
 
-            # Get associated area
-            study_area = StudyArea.objects.get(name=row['Study Area'])
+        # Get associated area
+        study_area = StudyArea.objects.get(name=row['Study Area'])
 
-            # Map fields
-            bird_map = {
-                'slug': name_slugified,
-                'name': row['Kea ID'],
-                'sex': sex_map[row['Sex']],
-                'status': status_map[row['Status']],
-                'birthday': birthday,
-                'study_area': study_area,
-            }
+        # Map fields
+        bird_map = {
+            'slug': name_slugified,
+            'name': row['Kea ID'],
+            'sex': sex_map[row['Sex']],
+            'status': status_map[row['Status']],
+            'birthday': birthday,
+            'study_area': study_area,
+        }
 
-            try:
-                bird = Bird.objects.get(slug=name_slugified)
+        try:
+            bird = Bird.objects.get(slug=name_slugified)
 
-                # TODO: only update 'modified date' if something changed
+            # TODO: only update 'modified date' if something changed
 
-                for key, value in bird_map.items():
-                    setattr(bird, key, value)
-                bird.full_clean()
-                bird.save()
-                checked_count += 1
-            except Bird.DoesNotExist:
-                bird_map['date_imported'] = timezone.now()
-                bird = Bird(**bird_map)
-                bird.full_clean()
-                bird.save()
-                created_count += 1
+            for key, value in bird_map.items():
+                setattr(bird, key, value)
+            bird.full_clean()
+            bird.save()
+            checked_count += 1
+        except Bird.DoesNotExist:
+            bird_map['date_imported'] = timezone.now()
+            bird = Bird(**bird_map)
+            bird.full_clean()
+            bird.save()
+            created_count += 1
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tChecked: %d" % checked_count)

@@ -164,49 +164,48 @@ def standardise_BandCombo(row, bird, study_area):
 
     return standardised_bc
 
-def synchronise_BandCombo(self, transmitters_file):
+def synchronise_BandCombo(self, transmitters_csv):
     """ Imports Band objects from data/Transmitter actions.csv """
 
     if hasattr(self, 'stdout'):
         self.stdout.write(self.style.MIGRATE_LABEL("Band:"))
 
-    with open(transmitters_file, 'rt') as transmitters_csv:
-        transmitters_reader = csv.DictReader(transmitters_csv, delimiter=',', quotechar='"')
+    transmitters_reader = csv.DictReader(transmitters_csv, delimiter=',', quotechar='"')
 
-        created_count = 0
-        checked_count = 0
+    created_count = 0
+    checked_count = 0
 
-        for row in transmitters_reader:
-            if not is_valid_BandCombo(row):
+    for row in transmitters_reader:
+        if not is_valid_BandCombo(row):
+            continue
+
+        # Get associated objects
+        bird = get_Bird(row)
+        study_area = get_StudyArea(row)
+
+        # Get standardised object
+        band_combo_map = standardise_BandCombo(row, bird, study_area)
+
+        try:
+            band_combo = BandCombo.objects.get(bird=bird)
+
+            # Only updated if database-stored action is older
+            if band_combo.date_deployed > band_combo_map['date_deployed'].date():
                 continue
 
-            # Get associated objects
-            bird = get_Bird(row)
-            study_area = get_StudyArea(row)
+            # TODO: only update 'modified date' if something changed
 
-            # Get standardised object
-            band_combo_map = standardise_BandCombo(row, bird, study_area)
-
-            try:
-                band_combo = BandCombo.objects.get(bird=bird)
-
-                # Only updated if database-stored action is older
-                if band_combo.date_deployed > band_combo_map['date_deployed'].date():
-                    continue
-
-                # TODO: only update 'modified date' if something changed
-
-                for key, value in band_combo_map.items():
-                    setattr(band_combo, key, value)
-                band_combo.full_clean()
-                band_combo.save()
-                checked_count += 1
-            except BandCombo.DoesNotExist:
-                band_combo_map['date_imported'] = timezone.now()
-                band_combo = BandCombo(**band_combo_map)
-                band_combo.full_clean()
-                band_combo.save()
-                created_count += 1
+            for key, value in band_combo_map.items():
+                setattr(band_combo, key, value)
+            band_combo.full_clean()
+            band_combo.save()
+            checked_count += 1
+        except BandCombo.DoesNotExist:
+            band_combo_map['date_imported'] = timezone.now()
+            band_combo = BandCombo(**band_combo_map)
+            band_combo.full_clean()
+            band_combo.save()
+            created_count += 1
 
 
     if hasattr(self, 'stdout'):
