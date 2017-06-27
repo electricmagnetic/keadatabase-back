@@ -2,9 +2,10 @@ from django.core import management
 
 from synchronise.locations import synchronise_StudyArea
 from synchronise.birds import synchronise_Bird
-from synchronise.bands import synchronise_Band
+from synchronise.bands import synchronise_BandCombo
 from locations.models import StudyArea
 from birds.models import Bird
+from bands.models import BandCombo
 
 class Command(management.BaseCommand):
     help = "Allows the import of tables exported from the Access database."
@@ -14,6 +15,7 @@ class Command(management.BaseCommand):
         self.stdout.write(self.style.MIGRATE_HEADING("Current status:"))
         self.stdout.write("StudyArea: %d" % StudyArea.objects.count())
         self.stdout.write("Bird: %d" % Bird.objects.count())
+        self.stdout.write("BandCombo: %d" % BandCombo.objects.count())
 
     def do_import(self):
         """ Imports objects into database """
@@ -21,7 +23,7 @@ class Command(management.BaseCommand):
 
         synchronise_StudyArea(self, "../data/tStudyAreas.csv")
         synchronise_Bird(self, "../data/Kea.csv")
-        synchronise_Band(self, "../data/Transmitter actions.csv")
+        synchronise_BandCombo(self, "../data/Transmitter actions.csv")
 
         self.stdout.write(self.style.SUCCESS("\nImport complete"))
 
