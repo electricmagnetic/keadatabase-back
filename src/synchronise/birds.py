@@ -79,6 +79,9 @@ def synchronise_Bird(self, csv_file):
 
             try:
                 bird = Bird.objects.get(slug=name_slugified)
+
+                # TODO: only update 'modified date' if something changed
+
                 for key, value in bird_map.items():
                     setattr(bird, key, value)
                 bird.full_clean()

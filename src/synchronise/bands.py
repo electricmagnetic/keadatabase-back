@@ -36,14 +36,6 @@ def get_StudyArea(row):
     except StudyArea.DoesNotExist:
         pass
 
-    # if not get_StudyArea(one_word_location) and \
-    #    not get_StudyArea(two_word_location) and \
-    #    not one_word_location == 'Decommissioned' and \
-    #    not one_word_location == 'duplicate' and \
-    #    not one_word_location == '2' and \
-    #    not one_word_location == '3':
-    #     # TODO: check the special cases
-
     return False
 
 def get_Bird(row):
@@ -54,8 +46,8 @@ def get_Bird(row):
     except Bird.DoesNotExist:
         return False
 
-def is_valid_Band(row):
-    """ Returns True if given row appears to be a Band, False otherwise """
+def is_valid_BandCombo(row):
+    """ Returns True if given row appears to be a BandCombo, False otherwise """
 
     # must have valid action
     valid_actions = ['deployed', 'transferred',]
@@ -96,7 +88,7 @@ def standardise_BandCombo(row):
     """ Takes a given row and returns a standardised object """
 
     band_combo = []
-    classification = classify_Band(row)
+    classification = classify_BandCombo(row)
     bird = get_Bird(name)
 
     # determine what is noise and what is not
@@ -107,9 +99,17 @@ def standardise_BandCombo(row):
     # decommissioned bands
     # deploy – check date deployed, use most recent one
 
+    # if not get_StudyArea(one_word_location) and \
+    #    not get_StudyArea(two_word_location) and \
+    #    not one_word_location == 'Decommissioned' and \
+    #    not one_word_location == 'duplicate' and \
+    #    not one_word_location == '2' and \
+    #    not one_word_location == '3':
+    #     # TODO: check the special cases
+
     return band_combo
 
-def synchronise_Band(self, transmitters_file):
+def synchronise_BandCombo(self, transmitters_file):
     """ Imports Band objects from data/Transmitter actions.csv """
 
     if hasattr(self, 'stdout'):
@@ -122,7 +122,7 @@ def synchronise_Band(self, transmitters_file):
         checked_count = 0
 
         for row in transmitters_reader:
-            if not is_valid_Band(row):
+            if not is_valid_BandCombo(row):
                 continue
 
             #band_combo = standardise_BandCombo(row)
