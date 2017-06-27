@@ -22,6 +22,7 @@ from rest_framework.routers import DefaultRouter
 
 from locations.views import StudyAreaViewSet
 from birds.views import BirdViewSet
+from bands.views import BandComboViewSet
 
 # Custom admin site settings
 admin.site.site_header = settings.ADMIN_SITE_HEADER
@@ -32,6 +33,7 @@ admin.site.index_title = settings.ADMIN_INDEX_TITLE
 router = DefaultRouter()
 router.register(r'study_areas', StudyAreaViewSet)
 router.register(r'birds', BirdViewSet)
+router.register(r'band_combos', BandComboViewSet)
 
 # URLs
 urlpatterns = [

@@ -12,6 +12,8 @@ class BirdFilter(django_filters.FilterSet):
     is_featured = django_filters.BooleanFilter(name='bird_extended__is_featured',
                                                label='Is featured')
 
+    has_band = django_filters.BooleanFilter(name='band_combo', lookup_expr='isnull', exclude=True)
+
     class Meta:
         model = Bird
         fields = ('sex', 'status', 'study_area', 'is_extended',)

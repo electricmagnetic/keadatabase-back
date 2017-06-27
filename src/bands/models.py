@@ -5,8 +5,8 @@ from birds.models import Bird
 from locations.models import StudyArea
 
 STYLE_CHOICES = (
-    ('old', 'Old'),
-    ('new', 'New'),
+    ('old', 'old'),
+    ('new', 'new'),
 )
 
 
