@@ -18,6 +18,6 @@ class BandComboViewSet(viewsets.ReadOnlyModelViewSet):
                select_related('study_area'). \
                all()
     serializer_class = BandComboSerializer
-    search_fields = ('bird', 'name',)
+    search_fields = ('name', 'bird__name',)
     ordering_fields = ('bird', 'name', 'style', 'date_deployed',)
     filter_class = BandComboFilter
