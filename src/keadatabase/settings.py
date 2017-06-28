@@ -205,7 +205,7 @@ if not DEBUG:
 
 if os.environ.get('CORS_ALLOW_LOCALHOST') == 'True':
     CORS_ORIGIN_WHITELIST += (
-        'localhost:3000'
+        'localhost:3000',
     )
 
 
