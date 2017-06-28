@@ -13,12 +13,10 @@ class BirdExtendedSerializer(serializers.ModelSerializer):
         fields = ('description', 'is_featured', 'sponsor_name',
                   'sponsor_website', 'profile_picture')
 
-class BirdSerializer(serializers.ModelSerializer):
+class BaseBirdSerializer(serializers.ModelSerializer):
+    """ BirdSerializer, without StringRelatedField (used by BandComboSerializer) """
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
-
-    study_area = serializers.StringRelatedField(many=False)
-    band_combo = serializers.StringRelatedField(many=False)
 
     bird_extended = BirdExtendedSerializer()
 
@@ -28,3 +26,14 @@ class BirdSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bird
         fields = '__all__'
+
+    @staticmethod
+    def setup_eager_loading(queryset):
+        queryset = queryset.select_related("bird_extended", "study_area", "band_combo")
+
+        return queryset
+
+
+class BirdSerializer(BaseBirdSerializer):
+    study_area = serializers.StringRelatedField(many=False)
+    band_combo = serializers.StringRelatedField(many=False)

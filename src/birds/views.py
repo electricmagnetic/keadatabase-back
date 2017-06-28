@@ -20,9 +20,7 @@ class BirdFilter(django_filters.FilterSet):
 
 class BirdViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Bird.objects. \
-               select_related('bird_extended'). \
-               select_related('band_combo'). \
-               select_related('study_area'). \
+               select_related('bird_extended', 'band_combo', 'study_area',). \
                all()
     serializer_class = BirdSerializer
     search_fields = ('name',)
