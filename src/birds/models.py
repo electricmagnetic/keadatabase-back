@@ -1,9 +1,11 @@
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from versatileimagefield.fields import VersatileImageField, PPOIField
+from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
 from django.db import models
 from django.utils.text import slugify
+from django.dispatch import receiver
 
 from locations.models import StudyArea
 
@@ -110,3 +112,13 @@ class BirdExtended(models.Model):
 
     def __str__(self):
         return str(self.bird)
+
+@receiver(models.signals.post_save, sender=BirdExtended)
+def warm_BirdExtended_profile_pictures(sender, instance, **kwargs):
+    """Ensures Person head shots are created post-save"""
+    profile_picture_warmer = VersatileImageFieldWarmer(
+        instance_or_queryset=instance,
+        rendition_key_set='profile_picture',
+        image_attr='profile_picture'
+    )
+    num_created, failed_to_create = profile_picture_warmer.warm()
