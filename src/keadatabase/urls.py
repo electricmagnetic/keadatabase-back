@@ -31,9 +31,9 @@ admin.site.index_title = settings.ADMIN_INDEX_TITLE
 
 # Router settings
 router = DefaultRouter()
-router.register(r'study_areas', StudyAreaViewSet)
-router.register(r'birds', BirdViewSet)
-router.register(r'band_combos', BandComboViewSet)
+router.register(r'study_areas', StudyAreaViewSet, 'StudyArea')
+router.register(r'birds', BirdViewSet, 'Bird')
+router.register(r'band_combos', BandComboViewSet, 'BandCombo')
 
 # URLs
 urlpatterns = [
