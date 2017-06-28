@@ -5,11 +5,7 @@ from .models import Bird, BirdExtended
 
 class BirdExtendedSerializer(serializers.ModelSerializer):
     profile_picture = VersatileImageFieldSerializer(
-        sizes=[
-            ('full_size', 'url'),
-            ('thumbnail', 'crop__350x250'),
-            ('large', 'crop__500x500'),
-        ]
+        sizes='profile_picture'
     )
 
     class Meta:

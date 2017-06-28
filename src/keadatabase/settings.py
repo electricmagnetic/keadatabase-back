@@ -240,6 +240,21 @@ if not DEBUG:
     AWS_IS_GZIPPED = True
 
 
+# Versatile Image Field
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+    'create_images_on_demand': False,
+}
+
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'profile_picture': [
+        ('full_size', 'url'),
+        ('thumbnail', 'crop__350x250'),
+        ('large', 'crop__500x500'),
+    ],
+}
+
+
 # Debug toolbar
 
 if DEBUG:
