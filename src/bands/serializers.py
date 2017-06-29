@@ -2,11 +2,11 @@ from rest_framework import serializers
 
 from .models import BandCombo
 
-from birds.serializers import BaseBirdSerializer, BirdExtendedSerializer
+from birds.serializers import BirdSerializer
 from birds.models import Bird
 
 class BandComboSerializer(serializers.ModelSerializer):
-    bird = BaseBirdSerializer(read_only=True, many=False)
+    bird = BirdSerializer(read_only=True, many=False)
 
     class Meta:
         model = BandCombo

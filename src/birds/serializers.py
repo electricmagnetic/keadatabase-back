@@ -13,8 +13,7 @@ class BirdExtendedSerializer(serializers.ModelSerializer):
         fields = ('description', 'is_featured', 'sponsor_name',
                   'sponsor_website', 'profile_picture')
 
-class BaseBirdSerializer(serializers.ModelSerializer):
-    """ BirdSerializer, without StringRelatedField (used by BandComboSerializer) """
+class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')
     sex = serializers.CharField(source='get_sex_display')
 
@@ -22,6 +21,8 @@ class BaseBirdSerializer(serializers.ModelSerializer):
 
     get_age = serializers.ReadOnlyField()
     get_life_stage = serializers.ReadOnlyField()
+
+    band_combo = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = Bird
@@ -32,8 +33,3 @@ class BaseBirdSerializer(serializers.ModelSerializer):
         queryset = queryset.select_related("bird_extended", "study_area", "band_combo")
 
         return queryset
-
-
-class BirdSerializer(BaseBirdSerializer):
-    study_area = serializers.StringRelatedField(many=False)
-    band_combo = serializers.StringRelatedField(many=False)
