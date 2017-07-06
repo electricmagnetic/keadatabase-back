@@ -33,3 +33,6 @@ class StudyAreaObjectTests(TestCase):
         study_area.full_clean()
         study_area.save()
         self.assertEqual(study_area.slug, 'christchurch')
+
+# TODO: test Region
+# TODO: test CommonLocation

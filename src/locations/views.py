@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from .models import StudyArea, Region
-from .serializers import StudyAreaSerializer, RegionSerializer
+from .models import StudyArea, Region, CommonLocation
+from .serializers import StudyAreaSerializer, RegionSerializer, CommonLocationSerializer
 
 class StudyAreaViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = StudyArea.objects. \
@@ -15,4 +15,11 @@ class RegionViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
     search_fields = ('name',)
+    ordering_fields = ('name',)
+
+class CommonLocationViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = CommonLocation.objects.all()
+    serializer_class = CommonLocationSerializer
+    search_fields = ('name',)
+    filter_fields = ('specificity',)
     ordering_fields = ('name',)
