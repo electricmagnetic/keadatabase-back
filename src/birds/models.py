@@ -10,15 +10,23 @@ from django.dispatch import receiver
 from locations.models import StudyArea
 
 SEX_CHOICES = (
-    ('', 'Undetermined'),
-    ('F', 'Female'),
-    ('M', 'Male'),
+    ('female', 'Female'),
+    ('male', 'Male'),
+)
+
+SEX_CHOICES_UNDETERMINED = SEX_CHOICES + (('undetermined', 'Undetermined'),)
+
+LIFE_STAGE_CHOICES = (
+    ('fledgling', 'Fledgling'),
+    ('juvenile', 'Juvenile'),
+    ('sub-adult', 'Sub-Adult'),
+    ('adult', 'Adult'),
 )
 
 STATUS_CHOICES = (
-    ('', 'Unknown'),
-    ('+', 'Alive'),
-    ('-', 'Dead'),
+    ('unknown', 'Unknown'),
+    ('alive', 'Alive'),
+    ('dead', 'Dead'),
 )
 
 def bird_directory_path(instance, filename):
@@ -31,10 +39,10 @@ class Bird(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, primary_key=True, editable=False)
 
-    sex = models.CharField(max_length=1, blank=True, choices=SEX_CHOICES,
-                           default='')
-    status = models.CharField(max_length=1, blank=True, choices=STATUS_CHOICES,
-                              default='')
+    sex = models.CharField(max_length=15, blank=True, choices=SEX_CHOICES_UNDETERMINED,
+                           default='undetermined')
+    status = models.CharField(max_length=15, blank=True, choices=STATUS_CHOICES,
+                              default='unknown')
     birthday = models.DateField(blank=True, null=True)
 
     study_area = models.ForeignKey(StudyArea, related_name='birds', blank=True, null=True)
@@ -74,6 +82,7 @@ class Bird(models.Model):
 
         age = self.get_age()
 
+        # TODO: map to LIFE_STAGE_CHOICES
         if age == 0:  # Under 12 months
             return 'Fledgling'
         elif age == 1:
