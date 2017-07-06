@@ -9,16 +9,16 @@ from locations.models import StudyArea
 from birds.models import Bird
 
 status_map = {
-    'Alive': '+',
-    'Dead': '-',
-    'Missing': '',
-    'Unknown': '',
+    'Alive': 'alive',
+    'Dead': 'dead',
+    'Missing': 'unknown',
+    'Unknown': 'unknown',
 }
 
 sex_map = {
-    'Male': 'M',
-    'Female': 'F',
-    'Undetermined': '',
+    'Male': 'male',
+    'Female': 'female',
+    'Undetermined': 'undetermined',
 }
 
 def is_valid_Bird(row):
