@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 from locations.views import StudyAreaViewSet, RegionViewSet, CommonLocationViewSet
 from birds.views import BirdViewSet
 from bands.views import BandComboViewSet
-from sightings.views import SightingsSightingViewSet
+#from sightings.views import SightingsSightingViewSet
 
 router = DefaultRouter()
 
