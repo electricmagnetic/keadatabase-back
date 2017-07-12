@@ -52,7 +52,6 @@ class SightingsBase(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ['date_sighted', 'time_sighted',]
 
     def __str__(self):
         return "%s %s (%s)" % (self.date_sighted, self.time_sighted, self.contributor)
@@ -66,6 +65,7 @@ class SightingsNonSighting(SightingsBase):
 
     class Meta:
         verbose_name = 'Non-sighting'
+        ordering = ['-date_sighted', '-time_sighted',]
 
 class SightingsSighting(SightingsBase):
     """ Information specific to a sighting """
@@ -86,3 +86,4 @@ class SightingsSighting(SightingsBase):
 
     class Meta:
         verbose_name = 'Sighting'
+        ordering = ['-date_sighted', '-time_sighted',]

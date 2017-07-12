@@ -1,10 +1,11 @@
 """ DRF router configuration """
+
 from rest_framework.routers import DefaultRouter
 
 from locations.views import StudyAreaViewSet, RegionViewSet, CommonLocationViewSet
 from birds.views import BirdViewSet
 from bands.views import BandComboViewSet
-#from sightings.views import SightingsSightingViewSet
+from sightings.views.sightings import SightingsNonSightingViewSet
 
 router = DefaultRouter()
 
@@ -19,5 +20,5 @@ router.register(r'locations/common_locations', CommonLocationViewSet, 'CommonLoc
 #router.register(r'report', ReportViewSet)
 
 #router.register(r'sightings/sightings', SightingsSightingViewSet, 'SightingsSighting')
-#router.register(r'sightings/non-sightings', SightingsNonSightingsViewSet, 'SightingsNonSighting')
+router.register(r'sightings/non_sightings', SightingsNonSightingViewSet, 'SightingsNonSighting')
 #router.register(r'sightings/birds', SightingsBirdViewSet, 'SightingsBird')
