@@ -53,6 +53,7 @@ Layout
 * `src/locations/` - StudyArea models and helpers
 * `src/synchronise/` - Command and helpers that syncs Django DB with provided CSVs
 * `src/theme/` - Django REST Framework customisations
+* `src/sightings/ - All sightings related information, including links to Bird objects
 
 Licence
 -------
