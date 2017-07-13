@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'bands',
     'locations',
     'synchronise',
+    'sightings',
 ]
 
 MIDDLEWARE = [

@@ -18,24 +18,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from rest_framework.routers import DefaultRouter
-
-from locations.views import StudyAreaViewSet, RegionViewSet, CommonLocationViewSet
-from birds.views import BirdViewSet
-from bands.views import BandComboViewSet
+from .router import router
 
 # Custom admin site settings
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 admin.site.site_title = settings.ADMIN_SITE_TITLE
 admin.site.index_title = settings.ADMIN_INDEX_TITLE
-
-# Router settings
-router = DefaultRouter()
-router.register(r'study_areas', StudyAreaViewSet, 'StudyArea')
-router.register(r'regions', RegionViewSet, 'Region')
-router.register(r'common_locations', CommonLocationViewSet, 'CommonLocation')
-router.register(r'birds', BirdViewSet, 'Bird')
-router.register(r'band_combos', BandComboViewSet, 'BandCombo')
 
 # URLs
 urlpatterns = [

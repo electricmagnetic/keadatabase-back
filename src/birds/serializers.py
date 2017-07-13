@@ -22,6 +22,7 @@ class BirdSerializer(serializers.ModelSerializer):
     get_age = serializers.ReadOnlyField()
     get_life_stage = serializers.ReadOnlyField()
 
+    study_area = serializers.StringRelatedField(many=False)
     band_combo = serializers.StringRelatedField(many=False)
 
     class Meta:
