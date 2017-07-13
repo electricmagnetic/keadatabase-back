@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'locations',
     'synchronise',
     'sightings',
+    'report',
 ]
 
 MIDDLEWARE = [
