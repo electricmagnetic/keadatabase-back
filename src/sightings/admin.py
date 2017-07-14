@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib.gis import admin
 
 from .models.contributors import SightingsContributor
 #from .models.media import SightingsMedia
@@ -9,7 +9,7 @@ class SightingsBirdInline(admin.TabularInline):
     model = SightingsBird
     extra = 0
 
-class SightingsSightingAdmin(admin.ModelAdmin):
+class SightingsSightingAdmin(admin.OSMGeoAdmin):
     list_display = ('__str__', 'quality',)
     inlines = [SightingsBirdInline]
 
