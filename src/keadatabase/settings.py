@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'locations',
     'synchronise',
     'sightings',
+    'report',
 ]
 
 MIDDLEWARE = [
@@ -187,7 +188,13 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ),
-    'PAGE_SIZE': 72
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.ScopedRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'report': '60/hour',
+    },
+    'PAGE_SIZE': 72,
 }
 
 
