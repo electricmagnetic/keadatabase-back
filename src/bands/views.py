@@ -1,6 +1,7 @@
 import django_filters
 from rest_framework import viewsets
 
+from keadatabase.pagination import BirdPagination
 from .models import BandCombo
 from .serializers import BandComboSerializer
 
@@ -21,6 +22,7 @@ class BandComboFilter(django_filters.FilterSet):
 
 class BandComboViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = BandComboSerializer
+    pagination_class = BirdPagination
     search_fields = ('name', 'bird__name',)
     ordering_fields = ('name', 'style', 'date_deployed' 'study_area',
                        'bird__name', 'bird__status', 'bird__bird_extended',)
