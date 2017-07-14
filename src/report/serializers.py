@@ -18,6 +18,13 @@ class SightingsContributorSerializer(serializers.ModelSerializer):
 # Report serializers
 class ReportBaseSerializer(serializers.ModelSerializer):
     contributor = SightingsContributorSerializer(many=False)
+    challenge = serializers.CharField(allow_blank=True, required=False)
+
+    def validate(self, data):
+        """ Basic check to deter spam submissions """
+        if data.pop('challenge', None) != 'kea':
+            raise serializers.ValidationError('Invalid submission')
+        return data
 
 class ReportSightingSerializer(ReportBaseSerializer):
     birds = SightingsBirdSerializer(many=True)

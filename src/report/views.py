@@ -5,6 +5,7 @@ from rest_framework import mixins
 from .serializers import ReportSightingSerializer, ReportNonSightingSerializer
 
 class ReportSightingBaseViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    throttle_scope = 'report'
     permission_classes = (AllowAny,)
 
 class ReportSightingViewSet(ReportSightingBaseViewSet):
