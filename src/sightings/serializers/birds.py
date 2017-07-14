@@ -3,9 +3,9 @@ from rest_framework import serializers
 from ..models.birds import SightingsBird
 
 class SightingsBirdSerializer(serializers.ModelSerializer):
-    banded = serializers.CharField(source='get_banded_display')
-    sex_guess = serializers.CharField(source='get_sex_guess_display')
-    life_stage_guess = serializers.CharField(source='get_life_stage_guess_display')
+    get_banded_display = serializers.CharField()
+    get_sex_guess_display = serializers.CharField()
+    get_life_stage_guess_display = serializers.CharField()
 
     get_bird_display = serializers.StringRelatedField(source='bird', many=False)
     sighting = serializers.PrimaryKeyRelatedField(many=False, read_only=True)

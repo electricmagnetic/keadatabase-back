@@ -1,22 +1,25 @@
 from rest_framework import viewsets
 
+from keadatabase.pagination import SightingPagination
 from ..models.sightings import SightingsSighting, SightingsNonSighting
 from ..serializers.sightings import SightingsSightingSerializer, SightingsNonSightingSerializer
 
-class SightingsSightingViewSet(viewsets.ReadOnlyModelViewSet):
+class SightingsBaseViewSet(viewsets.ReadOnlyModelViewSet):
+    pagination_class = SightingPagination
+    ordering_fields = ('contributor', 'quality', 'region', 'date_sighted', 'time_sighted',
+                       'date_created', 'date_updated',)
+
+class SightingsSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsSighting.objects. \
                select_related('contributor', 'region',). \
                prefetch_related('birds'). \
                all()
     serializer_class = SightingsSightingSerializer
-    # ordering_fields
-    # filter_fields
+    filter_fields = ('quality', 'region', 'sighting_type', 'accuracy', 'specificity', 'number',)
 
-class SightingsNonSightingViewSet(viewsets.ReadOnlyModelViewSet):
+class SightingsNonSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsNonSighting.objects. \
                select_related('contributor', 'region',). \
                all()
     serializer_class = SightingsNonSightingSerializer
-    ordering_fields = ('contributor', 'quality', 'region', 'date_sighted', 'time_sighted',
-                       'date_created', 'date_updated',)
     filter_fields = ('quality', 'region',)

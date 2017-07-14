@@ -1,6 +1,7 @@
 import django_filters
 from rest_framework import viewsets
 
+from keadatabase.pagination import BirdPagination
 from .models import Bird
 from .serializers import BirdSerializer
 
@@ -23,6 +24,7 @@ class BirdViewSet(viewsets.ReadOnlyModelViewSet):
                select_related('bird_extended', 'band_combo', 'study_area',). \
                all()
     serializer_class = BirdSerializer
+    pagination_class = BirdPagination
     search_fields = ('name',)
     ordering_fields = ('name', 'status', 'study_area', 'bird_extended',)
     filter_class = BirdFilter

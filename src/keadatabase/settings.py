@@ -194,7 +194,7 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'report': '60/hour',
     },
-    'PAGE_SIZE': 72,
+    'PAGE_SIZE': 20,
 }
 
 
