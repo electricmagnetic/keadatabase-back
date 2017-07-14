@@ -12,7 +12,9 @@ class StudyAreaViewSet(viewsets.ReadOnlyModelViewSet):
     ordering_fields = ('name',)
 
 class RegionViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Region.objects.all()
+    queryset = Region.objects. \
+               prefetch_related('study_areas'). \
+               all()
     serializer_class = RegionSerializer
     search_fields = ('name',)
     ordering_fields = ('name',)
