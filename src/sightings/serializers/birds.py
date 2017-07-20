@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework_gis.serializers import GeometryField
 
 from ..models.birds import SightingsBird
 
@@ -12,6 +13,7 @@ class SightingsBirdSerializer(serializers.ModelSerializer):
 
     sighting__date_sighted = serializers.ReadOnlyField(source='sighting.date_sighted')
     sighting__time_sighted = serializers.ReadOnlyField(source='sighting.time_sighted')
+    sighting__point_location = GeometryField(source='sighting.point_location')
 
     class Meta:
         model = SightingsBird

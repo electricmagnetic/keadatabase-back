@@ -53,9 +53,6 @@ class SightingsBase(models.Model):
     class Meta:
         abstract = True
 
-    def __str__(self):
-        return "%s %s (%s)" % (self.date_sighted, self.time_sighted, self.contributor)
-
 class SightingsNonSighting(SightingsBase):
     """ Information specific to a non-sighting """
     location_details = models.TextField()
@@ -66,6 +63,9 @@ class SightingsNonSighting(SightingsBase):
     class Meta:
         verbose_name = 'Non-sighting'
         ordering = ['-date_sighted', '-time_sighted',]
+
+    def __str__(self):
+        return "%s %s" % (self.date_sighted, self.time_sighted)
 
 class SightingsSighting(SightingsBase):
     """ Information specific to a sighting """
@@ -87,3 +87,6 @@ class SightingsSighting(SightingsBase):
     class Meta:
         verbose_name = 'Sighting'
         ordering = ['-date_sighted', '-time_sighted',]
+
+    def __str__(self):
+        return "%s %d on %s %s" % (self.get_sighting_type_display(), self.number, self.date_sighted, self.time_sighted)
