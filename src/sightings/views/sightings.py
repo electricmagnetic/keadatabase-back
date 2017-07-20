@@ -12,7 +12,6 @@ class SightingsBaseViewSet(viewsets.ReadOnlyModelViewSet):
 class SightingsSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsSighting.objects. \
                select_related('contributor', 'region',). \
-               prefetch_related('birds'). \
                all()
     serializer_class = SightingsSightingSerializer
     filter_fields = ('quality', 'region', 'sighting_type', 'accuracy', 'specificity', 'number',)

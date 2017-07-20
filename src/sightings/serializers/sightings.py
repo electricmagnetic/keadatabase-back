@@ -10,7 +10,6 @@ class SightingsBaseSerializer(serializers.ModelSerializer):
 
 class SightingsSightingSerializer(SightingsBaseSerializer):
     get_sighting_type_display = serializers.CharField()
-    sighting_birds = serializers.PrimaryKeyRelatedField(source='birds', many=True, read_only=True)
 
     class Meta:
         model = SightingsSighting
