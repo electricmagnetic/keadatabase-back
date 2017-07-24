@@ -14,6 +14,10 @@ BAND_CHOICES = (
     ('unbanded', 'Not banded'),
 )
 
+SEX_CHOICES_UNSURE = (('', 'Unsure'),) + SEX_CHOICES
+LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'),) + LIFE_STAGE_CHOICES
+
+
 class SightingsBird(models.Model):
     """ Information specific to a bird in a sighting """
     sighting = models.ForeignKey(SightingsSighting, related_name='birds')
@@ -22,8 +26,8 @@ class SightingsBird(models.Model):
 
     # Optional, depends on whether bird was banded or not
     band_combo = models.CharField(max_length=200, blank=True, null=True)
-    sex_guess = models.CharField(max_length=15, choices=SEX_CHOICES, null=True, blank=True)
-    life_stage_guess = models.CharField(max_length=15, choices=LIFE_STAGE_CHOICES,
+    sex_guess = models.CharField(max_length=15, choices=SEX_CHOICES_UNSURE, null=True, blank=True)
+    life_stage_guess = models.CharField(max_length=15, choices=LIFE_STAGE_CHOICES_UNSURE,
                                         null=True, blank=True)
 
     # Staff only
