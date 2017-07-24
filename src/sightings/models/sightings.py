@@ -79,6 +79,7 @@ class SightingsSighting(SightingsBase):
     number = models.PositiveIntegerField()
 
     # Optional
+    location_details = models.TextField(blank=True)
     behaviour = models.TextField(blank=True)
 
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)
