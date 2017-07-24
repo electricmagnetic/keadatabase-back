@@ -3,14 +3,14 @@
 from django.contrib.gis.db import models
 from versatileimagefield.fields import VersatileImageField
 
-from locations.models import SPECIFICITY_CHOICES
 from locations.models import Region
 from .contributors import SightingsContributor
 
-ACCURACY_CHOICES = (
-    ('estimated', 'Estimated, used map'),
-    ('known', 'Known, used map'),
-    ('gps', 'GPS coordinates'),
+PRECISION_CHOICES = (
+    (10, '(10m) GPS Coordinates'),
+    (50, '(50m) Known Location'),
+    (200, '(200m) Approximate Location'),
+    (1000, '(1000m) General Area'),
 )
 
 VERIFICATION_CHOICES = (
@@ -73,12 +73,12 @@ class SightingsSighting(SightingsBase):
                                      default='sighted')
 
     point_location = models.PointField()
-    accuracy = models.CharField(max_length=15, choices=ACCURACY_CHOICES, default='estimated')
-    specificity = models.CharField(max_length=15, choices=SPECIFICITY_CHOICES, default='general')
+    precision = models.PositiveIntegerField(choices=PRECISION_CHOICES, default=50)
 
     number = models.PositiveIntegerField()
 
     # Optional
+    location_details = models.TextField(blank=True)
     behaviour = models.TextField(blank=True)
 
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)

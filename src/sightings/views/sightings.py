@@ -14,7 +14,7 @@ class SightingsSightingViewSet(SightingsBaseViewSet):
                select_related('contributor', 'region',). \
                all()
     serializer_class = SightingsSightingSerializer
-    filter_fields = ('quality', 'region', 'sighting_type', 'accuracy', 'specificity', 'number',)
+    filter_fields = ('quality', 'region', 'sighting_type', 'precision', 'number',)
 
 class SightingsNonSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsNonSighting.objects. \
