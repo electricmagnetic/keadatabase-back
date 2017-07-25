@@ -23,6 +23,7 @@ VERIFICATION_CHOICES = (
 SIGHTING_TYPE_CHOICES = (
     ('sighted', 'Sighted'),
     ('heard', 'Heard'),
+    ('distant', 'Sighted (distant)'),
 )
 
 class SightingsBase(models.Model):
