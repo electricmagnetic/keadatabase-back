@@ -70,11 +70,10 @@ class SightingsNonSighting(SightingsBase):
 
 class SightingsSighting(SightingsBase):
     """ Information specific to a sighting """
-    sighting_type = models.CharField(max_length=15, choices=SIGHTING_TYPE_CHOICES,
-                                     default='sighted')
+    sighting_type = models.CharField(max_length=15, choices=SIGHTING_TYPE_CHOICES)
 
     point_location = models.PointField()
-    precision = models.PositiveIntegerField(choices=PRECISION_CHOICES, default=50)
+    precision = models.PositiveIntegerField(choices=PRECISION_CHOICES)
 
     number = models.PositiveIntegerField()
 
