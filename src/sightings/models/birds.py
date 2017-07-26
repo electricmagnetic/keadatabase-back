@@ -22,7 +22,7 @@ class SightingsBird(models.Model):
     """ Information specific to a bird in a sighting """
     sighting = models.ForeignKey(SightingsSighting, related_name='birds')
 
-    banded = models.CharField(max_length=15, choices=BAND_CHOICES, default='unknown')
+    banded = models.CharField(max_length=15, choices=BAND_CHOICES)
 
     # Optional, depends on whether bird was banded or not
     band_combo = models.CharField(max_length=200, blank=True, null=True)
