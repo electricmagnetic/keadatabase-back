@@ -11,7 +11,7 @@ class BirdExtendedSerializer(serializers.ModelSerializer):
     class Meta:
         model = BirdExtended
         fields = ('description', 'is_featured', 'sponsor_name',
-                  'sponsor_website', 'profile_picture')
+                  'sponsor_website', 'profile_picture', 'profile_picture_attribution',)
 
 class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')

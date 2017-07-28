@@ -13,9 +13,9 @@ class SightingsSightingSerializer(SightingsBaseSerializer):
 
     class Meta:
         model = SightingsSighting
-        fields = '__all__'
+        exclude = ('moderator_notes', )
 
 class SightingsNonSightingSerializer(SightingsBaseSerializer):
     class Meta:
         model = SightingsNonSighting
-        fields = '__all__'
+        exclude = ('moderator_notes', )
