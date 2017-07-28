@@ -44,6 +44,7 @@ class SightingsBase(models.Model):
 
     # Staff only
     quality = models.CharField(max_length=3, choices=VERIFICATION_CHOICES, default='-1')
+    moderator_notes = models.TextField(blank=True, help_text="Notes on moderation (not public)")
 
     # Metadata
     date_created = models.DateTimeField(auto_now_add=True)

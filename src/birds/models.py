@@ -114,6 +114,7 @@ class BirdExtended(models.Model):
                                           blank=True, null=True,
                                           ppoi_field='profile_picture_ppoi')
     profile_picture_ppoi = PPOIField()
+    profile_picture_attribution = models.CharField(max_length=200, null=True, blank=True)
 
     class Meta:
         ordering = ['bird']
