@@ -37,14 +37,19 @@ class SightingsBase(models.Model):
     date_sighted = models.DateField()
     time_sighted = models.TimeField()
 
-    region = models.ForeignKey(Region, on_delete=models.PROTECT)
+    region = models.ForeignKey(Region, on_delete=models.PROTECT,
+                               help_text='Moderator: Select region for sighting.')
 
     # Optional
     comments = models.TextField(blank=True)
 
     # Staff only
-    quality = models.CharField(max_length=3, choices=VERIFICATION_CHOICES, default='-1')
-    moderator_notes = models.TextField(blank=True, help_text="Notes on moderation (not public)")
+    quality = models.CharField(max_length=3, choices=VERIFICATION_CHOICES, default='-1',
+                               help_text='Moderator: Select level of quality. \
+                                          Confirmed should only be used for known contributors.')
+    moderator_notes = models.TextField(blank=True,
+                                       help_text='Moderator: Add notes here if you needed to \
+                                                  change sighting information (not public).')
 
     # Metadata
     date_created = models.DateTimeField(auto_now_add=True)
@@ -67,7 +72,7 @@ class SightingsNonSighting(SightingsBase):
         ordering = ['-date_sighted', '-time_sighted',]
 
     def __str__(self):
-        return "%s %s" % (self.date_sighted, self.time_sighted)
+        return '%s %s' % (self.date_sighted, self.time_sighted)
 
 class SightingsSighting(SightingsBase):
     """ Information specific to a sighting """
@@ -90,4 +95,5 @@ class SightingsSighting(SightingsBase):
         ordering = ['-date_sighted', '-time_sighted',]
 
     def __str__(self):
-        return "%s %d on %s %s" % (self.get_sighting_type_display(), self.number, self.date_sighted, self.time_sighted)
+        return '%s %d on %s %s' % (self.get_sighting_type_display(), self.number,
+                                   self.date_sighted, self.time_sighted)
