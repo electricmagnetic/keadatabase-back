@@ -248,6 +248,10 @@ if not DEBUG:
     AWS_LOCATION = '/media'
     AWS_IS_GZIPPED = True
 
+    if 'AWS_S3_CUSTOM_DOMAIN' in os.environ:
+        # Enable CloudFront
+        AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
+
 
 # Versatile Image Field
 
