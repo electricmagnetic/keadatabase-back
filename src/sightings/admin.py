@@ -13,7 +13,7 @@ class SightingsBirdInline(admin.TabularInline):
     extra = 0
 
 class SightingsSightingAdmin(admin.OSMGeoAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created',)
+    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'revisit',)
     inlines = [SightingsBirdInline]
 
 class SightingsNonSightingAdmin(admin.ModelAdmin):

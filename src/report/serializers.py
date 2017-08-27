@@ -31,7 +31,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
 
     class Meta:
         model = SightingsSighting
-        exclude = ('quality',)
+        exclude = ('quality', 'moderator_notes', 'revisit',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
@@ -49,7 +49,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
 class ReportNonSightingSerializer(ReportBaseSerializer):
     class Meta:
         model = SightingsNonSighting
-        exclude = ('quality',)
+        exclude = ('quality', 'moderator_notes',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
