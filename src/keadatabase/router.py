@@ -7,7 +7,7 @@ from birds.views import BirdViewSet
 from bands.views import BandComboViewSet
 from sightings.views.sightings import SightingsSightingViewSet, SightingsNonSightingViewSet
 from sightings.views.birds import SightingsBirdViewSet
-#from sightings.views.media import SightingsMediaViewSet
+from sightings.views.media import SightingsMediaViewSet
 from report.views import ReportSightingViewSet, ReportNonSightingViewSet
 
 router = DefaultRouter()
@@ -26,4 +26,4 @@ router.register(r'report/non_sighting', ReportNonSightingViewSet, 'ReportNonSigh
 router.register(r'sightings/sightings', SightingsSightingViewSet, 'SightingsSighting')
 router.register(r'sightings/non_sightings', SightingsNonSightingViewSet, 'SightingsNonSighting')
 router.register(r'sightings/birds', SightingsBirdViewSet, 'SightingsBird')
-#router.register(r'sightings/media', SightingsMediaViewSet, 'SightingsMedia')
+router.register(r'sightings/media', SightingsMediaViewSet, 'SightingsMedia')
