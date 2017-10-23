@@ -21,7 +21,8 @@ class SightingsMedia(models.Model):
                                          ppoi_field='sighting_image_ppoi')
     sighting_image_ppoi = PPOIField()
 
-    birds = models.ManyToManyField(Bird, verbose_name="Birds in image")
+    birds = models.ManyToManyField(Bird, verbose_name="Birds in image",
+                                   blank=True)
 
     # Optional
     caption = models.CharField(max_length=255, blank=True, null=True)
