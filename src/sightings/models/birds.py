@@ -32,6 +32,7 @@ class SightingsBird(models.Model):
 
     # Staff only
     bird = models.ForeignKey(Bird, related_name='sightings', blank=True, null=True)
+    revisit = models.BooleanField(default=False, help_text='Moderator: tick if bird not added yet')
 
     class Meta:
         verbose_name = 'Bird sighting'

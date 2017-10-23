@@ -18,14 +18,20 @@ class SightingsMediaInline(admin.StackedInline):
 
 class SightingsSightingAdmin(admin.OSMGeoAdmin):
     list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'revisit',)
+    list_filter = ('quality', 'date_created', 'revisit',)
     inlines = [SightingsBirdInline, SightingsMediaInline]
 
 class SightingsNonSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created',)
+
+class SightingsBirdAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'banded', 'sex_guess', 'life_stage_guess', 'band_combo', 'bird',
+                    'revisit',)
+    list_filter = ('revisit',)
 
 admin.site.register(SightingsContributor, SightingsContributorAdmin)
 admin.site.register(SightingsMedia)
 
 admin.site.register(SightingsNonSighting, SightingsNonSightingAdmin)
 admin.site.register(SightingsSighting, SightingsSightingAdmin)
-admin.site.register(SightingsBird)
+admin.site.register(SightingsBird, SightingsBirdAdmin)
