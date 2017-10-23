@@ -17,8 +17,8 @@ class SightingsMediaInline(admin.StackedInline):
     extra = 0
 
 class SightingsSightingAdmin(admin.OSMGeoAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'revisit',)
-    list_filter = ('quality', 'date_created', 'revisit',)
+    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created',)
+    list_filter = ('quality', 'date_created',)
     inlines = [SightingsBirdInline, SightingsMediaInline]
 
 class SightingsNonSightingAdmin(admin.ModelAdmin):

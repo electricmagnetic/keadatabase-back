@@ -8,7 +8,7 @@ from sightings.models.birds import SightingsBird
 class SightingsBirdSerializer(serializers.ModelSerializer):
     class Meta:
         model = SightingsBird
-        exclude = ('bird', 'sighting',)
+        exclude = ('bird', 'sighting', 'revisit',)
 
 class SightingsContributorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,7 +31,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
 
     class Meta:
         model = SightingsSighting
-        exclude = ('quality', 'moderator_notes', 'revisit',)
+        exclude = ('quality', 'moderator_notes',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
