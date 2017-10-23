@@ -125,7 +125,7 @@ class BirdExtended(models.Model):
 
 @receiver(models.signals.post_save, sender=BirdExtended)
 def warm_BirdExtended_profile_pictures(sender, instance, **kwargs):
-    """Ensures Person head shots are created post-save"""
+    """Ensures BirdExtended thumbnails are created post-save"""
     profile_picture_warmer = VersatileImageFieldWarmer(
         instance_or_queryset=instance,
         rendition_key_set='profile_picture',
