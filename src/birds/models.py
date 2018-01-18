@@ -45,7 +45,8 @@ class Bird(models.Model):
                               default='unknown')
     birthday = models.DateField(blank=True, null=True)
 
-    study_area = models.ForeignKey(StudyArea, related_name='birds', blank=True, null=True)
+    study_area = models.ForeignKey(StudyArea, related_name='birds', blank=True, null=True,
+                                   on_delete=models.SET_NULL)
 
     # Metadata
     date_modified = models.DateTimeField(auto_now=True)
