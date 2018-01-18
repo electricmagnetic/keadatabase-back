@@ -20,7 +20,7 @@ LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'),) + LIFE_STAGE_CHOICES
 
 class SightingsBird(models.Model):
     """ Information specific to a bird in a sighting """
-    sighting = models.ForeignKey(SightingsSighting, related_name='birds')
+    sighting = models.ForeignKey(SightingsSighting, related_name='birds', on_delete=models.CASCADE)
 
     banded = models.CharField(max_length=15, choices=BAND_CHOICES)
 
@@ -31,7 +31,8 @@ class SightingsBird(models.Model):
                                         null=True, blank=True)
 
     # Staff only
-    bird = models.ForeignKey(Bird, related_name='sightings', blank=True, null=True)
+    bird = models.ForeignKey(Bird, related_name='sightings', blank=True, null=True,
+                             on_delete=models.SET_NULL)
     revisit = models.BooleanField(default=False, help_text='Moderator: tick if bird not added yet')
 
     class Meta:

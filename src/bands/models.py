@@ -26,7 +26,7 @@ class BandCombo(models.Model):
     colours = ArrayField(models.CharField(max_length=50), default=list([]))
     symbols = ArrayField(models.CharField(max_length=50), blank=True, default=list([]))
 
-    study_area = models.ForeignKey(StudyArea)
+    study_area = models.ForeignKey(StudyArea, on_delete=models.PROTECT)
 
     date_deployed = models.DateField()
 
