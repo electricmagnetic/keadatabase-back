@@ -3,6 +3,9 @@ keadatabase-back
 
 [![Build Status](https://travis-ci.org/greenstone/keadatabase-back.svg?branch=master)](https://travis-ci.org/greenstone/keadatabase-back)
 
+The GeoDjango-based back-end for the Kea Database <https://keadatabase.nz> citizen science project.
+Sponsored by [Catalyst](https://catalyst.net.nz).
+
 Setup
 -----
 This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual
@@ -62,7 +65,7 @@ Layout
 Licence
 -------
 Kea Database  
-Copyright (C) 2017 Greenstone Limited  
+Copyright (C) 2018 Greenstone Limited  
 <hello@greenstone.org.nz>  
 
 This program is free software: you can redistribute it and/or modify
