@@ -73,6 +73,7 @@ def synchronise_Bird(self, birds_csv):
             'sex': sex_map[row['Sex']],
             'status': status_map[row['Status']],
             'birthday': birthday,
+            'primary_band': row['Primary band no'],
             'study_area': study_area,
         }
 
