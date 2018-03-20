@@ -67,7 +67,7 @@ class Bird(models.Model):
     def get_age(self):
         """ Calculates age based on birthday """
 
-        if self.status == '-':  # No age if bird is dead
+        if self.status == 'dead':  # No age if bird is dead
             return None
         if self.birthday == None:  # No age if no birthday
             return None
@@ -78,10 +78,10 @@ class Bird(models.Model):
     def get_life_stage(self):
         """ Calculates life stage based on age (integers) """
 
-        if self.get_age() == None:
-            return None
-
         age = self.get_age()
+
+        if age == None:
+            return None
 
         # TODO: map to LIFE_STAGE_CHOICES
         if age == 0:  # Under 12 months
