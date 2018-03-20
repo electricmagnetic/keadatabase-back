@@ -45,6 +45,12 @@ These steps assume you have `mdbtools` installed.
 
 Data synchronisation is non-destructive (it will not delete objects).
 
+Importing database dump
+-----------------------
+To import a database dump from Heroku run the following command as the `postgres` user:
+`pg_restore --clean --no-owner --role=postgres -d keadatabase <file>.sql`
+
+
 Deploying
 ---------
 This code is deployed using a continuous integration workflow. Code pushed to master will be deployed to Heroku after Travis CI tests are passed. The process takes a few minutes.
@@ -54,13 +60,14 @@ Please note, aside from `collectstatic` Django commands such as `migrate` are no
 Layout
 ------
 * `test_data/` - Sample CSV data used for testing purposes
+* `src/bands/` - Band models and helpers
 * `src/birds/` - Bird models and helpers
 * `src/keadatabase/` - Project settings
 * `src/locations/` - StudyArea models and helpers
+* `src/report/` - The only non-read-only API endpoint, used for POSTing sightings
+* `src/sightings/` - All sightings related information, including links to Bird objects
 * `src/synchronise/` - Command and helpers that syncs Django DB with provided CSVs
 * `src/theme/` - Django REST Framework customisations
-* `src/sightings/ - All sightings related information, including links to Bird objects
-* `src/report/` - The only non-read-only API endpoint, used for POSTing sightings
 
 Licence
 -------
