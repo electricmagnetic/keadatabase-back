@@ -44,6 +44,7 @@ class Bird(models.Model):
     status = models.CharField(max_length=15, blank=True, choices=STATUS_CHOICES,
                               default='unknown')
     birthday = models.DateField(blank=True, null=True)
+    primary_band = models.CharField(max_length=100, blank=True, null=True)
 
     study_area = models.ForeignKey(StudyArea, related_name='birds', blank=True, null=True,
                                    on_delete=models.SET_NULL)
