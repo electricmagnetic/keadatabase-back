@@ -45,7 +45,7 @@ ALLOWED_HOSTS = []
 
 # Production settings for security and geo libraries
 if os.environ.get('IS_PRODUCTION') == 'True' \
-   and 'DJANGO_SECRET_KEY' in os.environ:
+   and env_or_secret('django_secret_key') is not None:
     SECRET_KEY = env_or_secret('django_secret_key')
 
     DEBUG = False
