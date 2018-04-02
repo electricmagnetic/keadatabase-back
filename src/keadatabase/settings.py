@@ -12,6 +12,21 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+
+def env_or_secret(key_name, default=None):
+    """
+    Reads a setting from Docker secrets, or returns the environment variable version
+    if the secret isn't defined
+
+    See https://docs.docker.com/engine/swarm/secrets/ for info on Docker secrets
+    """
+    secret_path = os.path.join('/run/secrets', key_name)
+    if os.path.exists(secret_path):
+        with open(secret_path, 'r') as f:
+            return f.read().strip()
+    else:
+        return os.environ.get(key_name.upper(), default)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,7 +46,7 @@ ALLOWED_HOSTS = []
 # Production settings for security and geo libraries
 if os.environ.get('IS_PRODUCTION') == 'True' \
    and 'DJANGO_SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+    SECRET_KEY = env_or_secret('django_secret_key')
 
     DEBUG = False
 
@@ -119,10 +134,10 @@ import dj_database_url
 
 DATABASES = {}
 
-DATABASES['default'] = dj_database_url.config(
-    default='postgres://postgres:@localhost:5432/keadatabase',
+DATABASES['default'] = dj_database_url.parse(
+    env_or_secret('database_url', 'postgres://postgres:@localhost:5432/keadatabase'),
     conn_max_age=600
-    )
+)
 
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
@@ -255,8 +270,8 @@ if not DEBUG:
 
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = env_or_secret('aws_access_key_id')
+    AWS_SECRET_ACCESS_KEY = env_or_secret('aws_secret_access_key')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
     AWS_LOCATION = 'media'
