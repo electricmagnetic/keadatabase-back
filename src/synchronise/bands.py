@@ -142,7 +142,8 @@ def standardise_BandCombo(row, bird, study_area):
             # Remove any colours, 'on' and '/'
             if raw_symbol.lower() in COLOURS or \
                raw_symbol.lower() == 'on' or \
-               raw_symbol.lower() == '/':
+               raw_symbol.lower() == '/' or \
+               raw_symbol.lower() == '-':
                 raw_symbols.remove(raw_symbol)
 
         # remove duplicates (e.g ['A', 'A'])
