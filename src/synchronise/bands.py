@@ -11,7 +11,7 @@ from birds.models import Bird
 from bands.models import BandCombo
 
 COLOURS = ['yellow', 'white', 'metal', 'blue', 'red', 'orange', 'silver',
-           'pink', 'black', 'green', 'grey', 'lime', 'purple',]
+           'pink', 'black', 'green', 'grey', 'lime', 'purple', 'brown',]
 
 def get_StudyArea(row):
     """ Returns a StudyArea if it matches the name obtained from the row, False otherwise """
@@ -92,7 +92,7 @@ def standardise_BandCombo(row, bird, study_area):
     standardised_bc = {
         'bird': bird,
         'study_area': study_area,
-        'date_deployed': datetime.datetime.strptime(row['Date'], "%Y-%m-%d %H:%M:%S"),
+        'date_deployed': datetime.datetime.strptime(row['Date'], "%Y-%m-%d %H:%M:%S").date(),
     }
 
     raw_bc_str = row['Transmitter ID']
@@ -113,7 +113,7 @@ def standardise_BandCombo(row, bird, study_area):
             standardised_bc['colours'].append(colour)
 
     # [common] remove extraneous words (case insensitive)
-    old_extraneous_words = ['decommissioned', '2', '3',]
+    old_extraneous_words = ['decommissioned', '2', '3', 'duplicate',]
     new_extraneous_words = ['big', 'duplicate', '(upsidedown m)', 'm -']
 
     if standardised_bc['style'] == 'new':
@@ -142,7 +142,8 @@ def standardise_BandCombo(row, bird, study_area):
             # Remove any colours, 'on' and '/'
             if raw_symbol.lower() in COLOURS or \
                raw_symbol.lower() == 'on' or \
-               raw_symbol.lower() == '/':
+               raw_symbol.lower() == '/' or \
+               raw_symbol.lower() == '-':
                 raw_symbols.remove(raw_symbol)
 
         # remove duplicates (e.g ['A', 'A'])
@@ -152,7 +153,7 @@ def standardise_BandCombo(row, bird, study_area):
     standardised_bc['name'] = raw_bc_str
 
     # [common] offer alternative to special characters
-    standardised_bc['special'] = ''
+    standardised_bc['special'] = None
     if '◊' in standardised_bc['name']:
         standardised_bc['special'] = 'diamond'
     elif 'Σ' in standardised_bc['name']:
@@ -174,6 +175,7 @@ def synchronise_BandCombo(self, transmitters_csv):
 
     created_count = 0
     checked_count = 0
+    modified_count = 0
 
     for row in transmitters_reader:
         if not is_valid_BandCombo(row):
@@ -190,16 +192,25 @@ def synchronise_BandCombo(self, transmitters_csv):
             band_combo = BandCombo.objects.get(bird=bird)
 
             # Only updated if database-stored action is older
-            if band_combo.date_deployed > band_combo_map['date_deployed'].date():
+            if band_combo.date_deployed > band_combo_map['date_deployed']:
                 continue
 
-            # TODO: only update 'modified date' if something changed
+            has_changed = False
+
 
             for key, value in band_combo_map.items():
-                setattr(band_combo, key, value)
-            band_combo.full_clean()
-            band_combo.save()
-            checked_count += 1
+                if getattr(band_combo, key) != value:
+                    has_changed = True
+                    #print("%s: %s has changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
+                    setattr(band_combo, key, value)
+
+            if has_changed:
+                band_combo.full_clean()
+                band_combo.save()
+                modified_count += 1
+            else:
+                checked_count += 1
+
         except BandCombo.DoesNotExist:
             band_combo_map['date_imported'] = timezone.now()
             band_combo = BandCombo(**band_combo_map)
@@ -210,4 +221,5 @@ def synchronise_BandCombo(self, transmitters_csv):
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tChecked: %d" % checked_count)
+        self.stdout.write("\tModified: %d" % modified_count)
         self.stdout.write("\tCreated: %d" % created_count)

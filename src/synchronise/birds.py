@@ -48,6 +48,7 @@ def synchronise_Bird(self, birds_csv):
 
     created_count = 0
     checked_count = 0
+    modified_count = 0
 
     for row in birds_reader:
         if not is_valid_Bird(row):
@@ -56,7 +57,7 @@ def synchronise_Bird(self, birds_csv):
         # Represent birthday as a datetime object based on input format
         if row['birthday']:
             birthday = datetime.datetime.strptime(row['birthday'],
-                                                  "%Y-%m-%d %H:%M:%S")
+                                                  "%Y-%m-%d %H:%M:%S").date()
         else:
             birthday = None
 
@@ -80,13 +81,21 @@ def synchronise_Bird(self, birds_csv):
         try:
             bird = Bird.objects.get(slug=name_slugified)
 
-            # TODO: only update 'modified date' if something changed
+            has_changed = False
 
             for key, value in bird_map.items():
-                setattr(bird, key, value)
-            bird.full_clean()
-            bird.save()
-            checked_count += 1
+                if getattr(bird, key) != value:
+                    has_changed = True
+                    #print("%s: %s has changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
+                    setattr(bird, key, value)
+
+            if has_changed:
+                bird.full_clean()
+                bird.save()
+                modified_count += 1
+            else:
+                checked_count += 1
+
         except Bird.DoesNotExist:
             bird_map['date_imported'] = timezone.now()
             bird = Bird(**bird_map)
@@ -96,4 +105,5 @@ def synchronise_Bird(self, birds_csv):
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tChecked: %d" % checked_count)
+        self.stdout.write("\tModified: %d" % modified_count)
         self.stdout.write("\tCreated: %d" % created_count)
