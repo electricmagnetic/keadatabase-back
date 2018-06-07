@@ -24,6 +24,20 @@ class StudyArea(models.Model):
         self.slug = slugify(self.name)
         super(StudyArea, self).save(*args, **kwargs)
 
+class Place(models.Model):
+    """ Place used to generate geocode strings """
+    name_id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+    feat_type = models.CharField(max_length=200, blank=True, null=True)
+    land_district = models.CharField(max_length=200, blank=True, null=True)
+
+    point = models.PointField()
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 class Region(models.Model):
     """ Wider regions, designed to be made up of imported StudyArea objects """
