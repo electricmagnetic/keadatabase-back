@@ -20,6 +20,7 @@ class SightingsSightingAdmin(admin.OSMGeoAdmin):
     list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'favourite',)
     list_filter = ('quality', 'date_created', 'favourite',)
     inlines = [SightingsBirdInline, SightingsMediaInline]
+    readonly_fields = ('geocode',)
 
 class SightingsNonSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created',)

@@ -90,6 +90,9 @@ class SightingsSighting(SightingsBase):
     # Staff only
     favourite = models.BooleanField(default=False, help_text="Moderator: If noteworthy sighting")
 
+    # Automated
+    geocode = models.CharField(max_length=200, blank=True, null=True)
+
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)
     ## TODO: Check number is within bounds of New Zealand
 
