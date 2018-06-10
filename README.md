@@ -35,8 +35,8 @@ Ensure that the `keadatabase_test` db is able to be created before running.
 
 `./manage.py test`
 
-Data synchronisation
---------------------
+Data synchronisation: Bird, BandCombo, StudyArea
+------------------------------------------------
 These steps assume you have `mdbtools` installed.
 
 1. Create a directory 'data/' and add the `kea_be.mdb` file (back-end to the Access kea database).
@@ -49,6 +49,16 @@ Importing database dump
 -----------------------
 To import a database dump from Heroku run the following command as the `postgres` user:
 `pg_restore --clean --no-owner --role=postgres -d keadatabase <file>.sql`
+
+
+Data synchronisation: Region, Place
+-----------------------------------
+
+1. Obtain datasets for Region (merged copy of NZ regions dataset), and Place (SI-only NZ Placenames)
+2. Import datasets into a local version of the kea database using `./manage.py loadregions` and `./manage.py loadplaces`
+3. Dump data using `./manage.py dumpdata locations.place`and `./manage.py dumpdata locations.region`
+4. Upload data to the keadatabase S3 bucket
+5. `heroku run bash` then wget the data and run `./manage.py loadddata <filename>json`
 
 
 Deploying
