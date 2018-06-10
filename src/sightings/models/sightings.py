@@ -37,7 +37,7 @@ class SightingsBase(models.Model):
     date_sighted = models.DateField()
     time_sighted = models.TimeField()
 
-    region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True, null=True)
+    region = models.ForeignKey(Region, on_delete=models.SET_NULL, blank=True, null=True)
 
     # Optional
     comments = models.TextField(blank=True)
