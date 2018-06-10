@@ -18,7 +18,7 @@ class SightingsMediaInline(admin.StackedInline):
 
 class SightingsSightingAdmin(admin.OSMGeoAdmin):
     list_display = ('__str__', 'contributor', 'region', 'geocode', 'quality', 'date_created', 'favourite',)
-    list_filter = ('quality', 'date_created', 'favourite',)
+    list_filter = ('quality', 'date_created', 'favourite', 'region',)
     inlines = [SightingsBirdInline, SightingsMediaInline]
     readonly_fields = ('geocode', 'region',)
 
