@@ -49,6 +49,8 @@ class Region(models.Model):
 
     study_areas = models.ManyToManyField(StudyArea)
 
+    polygon = models.PolygonField(null=True)
+
     class Meta:
         ordering = ['name']
 
