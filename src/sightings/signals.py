@@ -10,11 +10,11 @@ def get_place_string(instance):
         distance=Distance('point', instance.point_location)
     ).order_by('distance').first())
 
-def get_region(instance):
-    """ Return the Region instance that point_location is contained within """
+def get_region_string(instance):
+    """ Return the Region (as string) that point_location is contained within """
     from locations.models import Region
 
-    return Region.objects.get(polygon__contains=instance.point_location)
+    return str(Region.objects.get(polygon__contains=instance.point_location))
 
 
 def run_geocode(sender, instance, **kwargs):
@@ -29,8 +29,8 @@ def run_geocode(sender, instance, **kwargs):
 
     # Geocode region
     try:
-        region = get_region(instance)
+        region_string = get_region_string(instance)
     except:
         pass
     else:
-        instance.region = region
+        instance.region = region_string

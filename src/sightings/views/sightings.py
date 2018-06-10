@@ -11,14 +11,14 @@ class SightingsBaseViewSet(viewsets.ReadOnlyModelViewSet):
 
 class SightingsSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsSighting.objects. \
-               select_related('contributor', 'region',). \
+               select_related('contributor',). \
                all()
     serializer_class = SightingsSightingSerializer
-    filter_fields = ('quality', 'region', 'sighting_type', 'precision', 'number',)
+    filter_fields = ('quality', 'sighting_type', 'precision', 'number',)
 
 class SightingsNonSightingViewSet(SightingsBaseViewSet):
     queryset = SightingsNonSighting.objects. \
-               select_related('contributor', 'region',). \
+               select_related('contributor',). \
                all()
     serializer_class = SightingsNonSightingSerializer
     filter_fields = ('quality', 'region',)
