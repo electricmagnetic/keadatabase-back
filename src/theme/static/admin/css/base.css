@@ -16,12 +16,12 @@ body {
 /* LINKS */
 
 a:link, a:visited {
-    color: #447e9b;
+    color: #f96b1e;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #036;
+    color: #b5490e;
 }
 
 a:focus {
@@ -247,7 +247,7 @@ table {
 }
 
 td, th {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 16px;
     border-bottom: 1px solid #eee;
     vertical-align: top;
@@ -264,7 +264,7 @@ thead th,
 tfoot td {
     color: #666;
     padding: 5px 10px;
-    font-size: 11px;
+    font-size: 12px;
     background: #fff;
     border: none;
     border-top: 1px solid #eee;
@@ -377,7 +377,7 @@ table thead th.sorted .sortoptions a.sortremove:after {
 
 table thead th.sorted .sortoptions a.sortremove:focus:after,
 table thead th.sorted .sortoptions a.sortremove:hover:after {
-    color: #447e9b;
+    color: #f96b1e;
 }
 
 table thead th.sorted .sortoptions a.sortremove:focus,
@@ -447,7 +447,7 @@ select[multiple] {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
+    background: #6a7030;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -473,7 +473,7 @@ a.button {
     float: right;
     border: none;
     font-weight: 400;
-    background: #417690;
+    background: #231f20;
 }
 
 .button.default:active, input[type=submit].default:active,
@@ -520,7 +520,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: #6a7030;
     color: #fff;
 }
 
@@ -554,7 +554,7 @@ ul.messagelist li {
 }
 
 ul.messagelist li.warning {
-    background: #ffc url(../img/icon-alert.svg) 40px 14px no-repeat;
+    background: #f96b1f url(../img/icon-alert.svg) 40px 14px no-repeat;
     background-size: 14px auto;
 }
 
@@ -623,7 +623,7 @@ td ul.errorlist li {
 }
 
 div.system-message {
-    background: #ffc;
+    background: #f96b1f;
     margin: 10px;
     padding: 6px 8px;
     font-size: .8em;
@@ -644,11 +644,11 @@ div.system-message p.system-message-title {
 /* BREADCRUMBS */
 
 div.breadcrumbs {
-    background: #79aec8;
+    background: #6a7030;
     padding: 10px 40px;
     border: none;
     font-size: 14px;
-    color: #c4dce8;
+    color: #cccccc;
     text-align: left;
 }
 
@@ -657,7 +657,7 @@ div.breadcrumbs a {
 }
 
 div.breadcrumbs a:focus, div.breadcrumbs a:hover {
-    color: #c4dce8;
+    color: #cccccc;
 }
 
 /* ACTION ICONS */
@@ -729,7 +729,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #417690;
+    background-color: #231f20;
 }
 
 .object-tools a:focus{
@@ -824,9 +824,9 @@ table#change-history tbody th {
     width: auto;
     height: 40px;
     padding: 10px 40px;
-    background: #417690;
+    background: #231f20;
     line-height: 40px;
-    color: #ffc;
+    color: #f96b1f;
     overflow: hidden;
 }
 
@@ -847,11 +847,11 @@ table#change-history tbody th {
     margin: 0 20px 0 0;
     font-weight: 300;
     font-size: 24px;
-    color: #f5dd5d;
+    color: #fff;
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
+    color: #fff;
 }
 
 #branding h2 {
@@ -859,7 +859,7 @@ table#change-history tbody th {
     font-size: 14px;
     margin: -8px 0 8px 0;
     font-weight: normal;
-    color: #ffc;
+    color: #f96b1f;
 }
 
 #branding a:hover {
@@ -883,8 +883,8 @@ table#change-history tbody th {
 
 #user-tools a:focus, #user-tools a:hover {
     text-decoration: none;
-    border-bottom-color: #79aec8;
-    color: #79aec8;
+    border-bottom-color: #6a7030;
+    color: #6a7030;
 }
 
 /* SIDEBAR */

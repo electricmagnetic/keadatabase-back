@@ -222,9 +222,9 @@ if os.environ.get('CORS_ALLOW_LOCALHOST') == 'True':
 
 # Custom admin site header
 
-ADMIN_SITE_HEADER = "Kea Database API"
-ADMIN_SITE_TITLE = "Kea Database API"
-ADMIN_INDEX_TITLE = "Administration"
+ADMIN_SITE_HEADER = "Kea Database"
+ADMIN_SITE_TITLE = "Kea Database"
+ADMIN_INDEX_TITLE = "Admin"
 
 
 # Production security

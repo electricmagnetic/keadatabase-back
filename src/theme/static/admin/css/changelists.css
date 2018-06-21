@@ -177,13 +177,13 @@
 }
 
 #changelist-filter li.selected a {
-    color: #5b80b2;
+    color: #6a7031;
 }
 
 #changelist-filter a:focus, #changelist-filter a:hover,
 #changelist-filter li.selected a:focus,
 #changelist-filter li.selected a:hover {
-    color: #036;
+    color: #b5490e;
 }
 
 /* DATE DRILLDOWN */
@@ -209,7 +209,7 @@
 
 .change-list ul.toplinks .date-back a:focus,
 .change-list ul.toplinks .date-back a:hover {
-    color: #036;
+    color: #b5490e;
 }
 
 /* PAGINATOR */
@@ -225,7 +225,7 @@
 
 .paginator a:link, .paginator a:visited {
     padding: 2px 6px;
-    background: #79aec8;
+    background: #6a7030;
     text-decoration: none;
     color: #fff;
 }
@@ -234,12 +234,12 @@
     padding: 0;
     border: none;
     background: none;
-    color: #5b80b2;
+    color: #6a7031;
 }
 
 .paginator a.showall:focus, .paginator a.showall:hover {
     background: none;
-    color: #036;
+    color: #b5490e;
 }
 
 .paginator .end {
@@ -255,7 +255,7 @@
 
 .paginator a:focus, .paginator a:hover {
     color: white;
-    background: #036;
+    background: #b5490e;
 }
 
 /* ACTIONS */
