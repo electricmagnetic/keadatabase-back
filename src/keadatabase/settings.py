@@ -40,24 +40,22 @@ SECRET_KEY = 'DO_NOT_USE_IN_PRODUCTION'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if env_or_secret('django_allowed_hosts') is not None:
+    ALLOWED_HOSTS = env_or_secret('django_allowed_hosts').split(';')
+else:
+    ALLOWED_HOSTS = []
 
-
-# Production settings for security and geo libraries
+# Production settings for security
 if os.environ.get('IS_PRODUCTION') == 'True' \
    and env_or_secret('django_secret_key') is not None:
     SECRET_KEY = env_or_secret('django_secret_key')
 
     DEBUG = False
 
-    ALLOWED_HOSTS = [
-        '.keadatabase.nz'
-    ]
-
-    GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-    GDAL_LIBRARY_PATH = "{}/lib/libgdal.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-    PROJ4_LIBRARY_PATH = "{}/lib/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-    GDAL_DATA = "{}/share/gdal/".format(os.environ.get('GEO_LIBRARIES_PATH'))
+GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+GDAL_LIBRARY_PATH = "{}/lib/libgdal.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+PROJ4_LIBRARY_PATH = "{}/lib/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+GDAL_DATA = "{}/share/gdal/".format(os.environ.get('GEO_LIBRARIES_PATH'))
 
 
 # Application definition
@@ -259,7 +257,7 @@ ADMIN_INDEX_TITLE = "Admin"
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False  # fix this
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_HSTS_SECONDS = 3600
     SECURE_BROWSER_XSS_FILTER = True
