@@ -52,10 +52,17 @@ if os.environ.get('IS_PRODUCTION') == 'True' \
 
     DEBUG = False
 
-GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-GDAL_LIBRARY_PATH = "{}/lib/libgdal.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-PROJ4_LIBRARY_PATH = "{}/lib/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
-GDAL_DATA = "{}/share/gdal/".format(os.environ.get('GEO_LIBRARIES_PATH'))
+if os.environ.get('GEO_LIBRARIES_PATH') is not None:
+    GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+
+if os.environ.get('GEO_LIBRARIES_PATH') is not None:
+    GDAL_LIBRARY_PATH = "{}/lib/libgdal.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+
+if os.environ.get('GEO_LIBRARIES_PATH') is not None:
+    PROJ4_LIBRARY_PATH = "{}/lib/libproj.so".format(os.environ.get('GEO_LIBRARIES_PATH'))
+
+if os.environ.get('GEO_LIBRARIES_PATH') is not None:
+    GDAL_DATA = "{}/share/gdal/".format(os.environ.get('GEO_LIBRARIES_PATH'))
 
 
 # Application definition
