@@ -9,7 +9,6 @@ class SightingsBirdSerializer(serializers.ModelSerializer):
     get_sex_guess_display = serializers.CharField()
     get_life_stage_guess_display = serializers.CharField()
 
-    get_bird_display = serializers.StringRelatedField(source='bird', many=False) # TODO: deprecate
     bird = BirdSerializer(many=False, read_only=True)
     sighting = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
 
