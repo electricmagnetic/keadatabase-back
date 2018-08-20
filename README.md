@@ -16,6 +16,8 @@ environments are installed.
 For instructions on setting up PostGIS:
 <https://docs.djangoproject.com/en/2.0/ref/contrib/gis/install/postgis/>
 
+Required packages: `binutils`, `libproj-dev`, `gdal-bin`, `postgresql-x.x`, `postgresql-x.x-postgis`, `postgresql-x.x-postgis-x.x-scripts`, `postgresql-server-dev-x.x`, `python3-psycopg2`
+
 1. Setup `python3` virtual environment
 2. Create a new database 'keadatabase' with username 'postgres' and no password
 3. `pip install -r requirements.txt`
