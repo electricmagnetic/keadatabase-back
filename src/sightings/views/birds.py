@@ -16,12 +16,15 @@ class SightingsBirdFilter(django_filters.FilterSet):
         fields = ('sighting', 'bird',)
 
 class SightingsBirdViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = SightingsBird.objects. \
-               select_related('sighting', 'bird',). \
-               all()
     serializer_class = SightingsBirdSerializer
     pagination_class = SightingPagination
     ordering = ('-sighting__date_sighted', '-sighting__time_sighted',)
     ordering_fields = ('id', 'banded', 'sighting', 'sighting__date_sighted',
                        'sighting__time_sighted', 'bird',)
     filter_class = SightingsBirdFilter
+
+    def get_queryset(self):
+        queryset = SightingsBird.objects.all()
+
+        queryset = self.get_serializer_class().setup_eager_loading(queryset)
+        return queryset
