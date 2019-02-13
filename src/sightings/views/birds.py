@@ -6,7 +6,7 @@ from ..models.birds import SightingsBird
 from ..serializers.birds import SightingsBirdSerializer
 
 class SightingsBirdFilter(django_filters.FilterSet):
-    has_bird = django_filters.BooleanFilter(name='bird',
+    has_bird = django_filters.BooleanFilter(field_name='bird',
                                             lookup_expr='isnull',
                                             exclude=True,
                                             label='Has bird')

@@ -9,11 +9,11 @@ class BandComboFilter(django_filters.FilterSet):
     colours = django_filters.BaseInFilter(lookup_expr='contains')
     symbols = django_filters.BaseInFilter(lookup_expr='contains')
 
-    is_extended = django_filters.BooleanFilter(name='bird__bird_extended__is_extended',
+    is_extended = django_filters.BooleanFilter(field_name='bird__bird_extended__is_extended',
                                                lookup_expr='isnull',
                                                exclude=True,
                                                label='Is extended')
-    is_featured = django_filters.BooleanFilter(name='bird__bird_extended__is_featured',
+    is_featured = django_filters.BooleanFilter(field_name='bird__bird_extended__is_featured',
                                                label='Is featured')
 
     class Meta:
