@@ -11,7 +11,8 @@ from birds.models import Bird
 from bands.models import BandCombo
 
 COLOURS = ['yellow', 'white', 'metal', 'blue', 'red', 'orange', 'silver',
-           'pink', 'black', 'green', 'grey', 'lime', 'purple', 'brown',]
+           'pink', 'black', 'green', 'grey', 'lime', 'purple', 'brown',
+           'lightblue',]
 
 def get_StudyArea(row):
     """ Returns a StudyArea if it matches the name obtained from the row, False otherwise """
