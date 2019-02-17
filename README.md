@@ -6,6 +6,7 @@ keadatabase-back
 The GeoDjango-based back-end for the Kea Database <https://keadatabase.nz> citizen science project.
 Sponsored by [Catalyst](https://catalyst.net.nz).
 
+
 Setup
 -----
 This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual
@@ -27,9 +28,11 @@ Required packages: `binutils`, `libproj-dev`, `gdal-bin`, `postgresql-x.x`, `pos
 
 NB: To create database, login as postgres user then run `createdb keadatabase` in bash shell and `grant all privileges on database keadatabase to postgres;` in the psql shell. You may need to adjust your pg_hba.conf settings for no password access.
 
+
 Running
 -------
 `./manage.py runserver`
+
 
 Testing
 -------
@@ -37,15 +40,16 @@ Ensure that the `keadatabase_test` db is able to be created before running.
 
 `./manage.py test`
 
+
 Data synchronisation: Bird, BandCombo, StudyArea
 ------------------------------------------------
 These steps assume you have `mdbtools` installed.
-
 1. Create a directory 'data/' and add the `kea_be.mdb` file (back-end to the Access kea database).
 2. From the current directory run: `./export_kea_be.sh`. This will export three CSV files into the `data/` directory.
 3. Run `./manage.py synchronise`
 
-Data synchronisation is non-destructive (it will not delete objects).
+Data synchronisation is non-destructive (it will not delete objects). On production data files will need to be added to S3 before import.
+
 
 Importing database dump
 -----------------------
@@ -55,7 +59,6 @@ To import a database dump from Heroku run the following command as the `postgres
 
 Data synchronisation: Region, Place
 -----------------------------------
-
 1. Obtain datasets for Region (merged copy of NZ regions dataset), and Place (SI-only NZ Placenames)
 2. Import datasets into a local version of the kea database using `./manage.py loadregions` and `./manage.py loadplaces`
 3. Dump data using `./manage.py dumpdata locations.place`and `./manage.py dumpdata locations.region`
@@ -63,11 +66,25 @@ Data synchronisation: Region, Place
 5. `heroku run bash` then wget the data and run `./manage.py loadddata <filename>json`
 
 
+Sightings import
+----------------
+To import sightings data from a provided CSV:
+1. Create a directory 'data/' and add an appropriately formatted `sightings.csv` file
+2. Run `./manage.py importsightings`
+
+Format:
+`name,email,date_sighted,time_sighted,comments,sighting_type,longitude,latitude,precision,number,location_details,behaviour`
+
+Example:
+`John Smith,contact@example.org,2018-01-01,12:00:00,,sighted,172.3188943,-43.5127894,200,1,"Cathedral Square",`
+
+
 Deploying
 ---------
 This code is deployed using a continuous integration workflow. Code pushed to master will be deployed to Heroku after Travis CI tests are passed. The process takes a few minutes.
 
 Please note, aside from `collectstatic` Django commands such as `migrate` are not run automatically.
+
 
 Layout
 ------
@@ -80,6 +97,7 @@ Layout
 * `src/sightings/` - All sightings related information, including links to Bird objects
 * `src/synchronise/` - Command and helpers that syncs Django DB with provided CSVs
 * `src/theme/` - Django REST Framework customisations
+
 
 Licence
 -------
