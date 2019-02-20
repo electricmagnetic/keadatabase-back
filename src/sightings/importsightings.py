@@ -3,7 +3,7 @@ import csv
 from django.core import management
 
 from sightings.models.sightings import Sighting
-from sightings.models.birds import SightingsBird
+from sightings.models.birds import BirdSighting
 from sightings.models.contributors import Contributor
 
 def createContributor(row):
@@ -40,13 +40,13 @@ def createSighting(row, contributor):
     return sighting
 
 
-def createSightingsBird(row, sighting):
+def createBirdSighting(row, sighting):
     bird_map = {
         'sighting': sighting,
         'banded': 'unknown',
     }
 
-    bird = SightingsBird(**bird_map)
+    bird = BirdSighting(**bird_map)
     bird.full_clean()
     bird.save()
 
@@ -69,11 +69,11 @@ def import_Sighting(self, sightings_csv):
 
         created_count += 1
 
-        # Create SightingsBird object(s) if relevant
+        # Create BirdSighting object(s) if relevant
         if sighting.sighting_type == 'sighted':
             for bird_number in range(0, sighting.number):
                 # TODO enable more complexity in creating SightingBirds
-                bird = createSightingsBird(row,sighting)
+                bird = createBirdSighting(row,sighting)
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tCreated: %d" % created_count)

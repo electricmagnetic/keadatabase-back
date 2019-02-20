@@ -2,12 +2,12 @@ from rest_framework import serializers
 
 from sightings.models.sightings import Sighting, NonSighting
 from sightings.models.contributors import Contributor
-from sightings.models.birds import SightingsBird
+from sightings.models.birds import BirdSighting
 
 # Helpers
-class SightingsBirdSerializer(serializers.ModelSerializer):
+class BirdSightingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SightingsBird
+        model = BirdSighting
         exclude = ('bird', 'sighting', 'revisit',)
 
 class ContributorSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class ReportBaseSerializer(serializers.ModelSerializer):
         return data
 
 class ReportSightingSerializer(ReportBaseSerializer):
-    birds = SightingsBirdSerializer(many=True)
+    birds = BirdSightingSerializer(many=True)
 
     class Meta:
         model = Sighting
@@ -41,7 +41,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
         sighting = Sighting.objects.create(contributor=contributor, **validated_data)
 
         for bird_data in birds_data:
-            SightingsBird.objects.create(sighting=sighting, **bird_data)
+            BirdSighting.objects.create(sighting=sighting, **bird_data)
 
         return sighting
 

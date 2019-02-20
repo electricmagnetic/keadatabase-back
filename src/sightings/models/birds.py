@@ -18,7 +18,7 @@ SEX_CHOICES_UNSURE = (('', 'Unsure'),) + SEX_CHOICES
 LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'),) + LIFE_STAGE_CHOICES
 
 
-class SightingsBird(models.Model):
+class BirdSighting(models.Model):
     """ Information specific to a bird in a sighting """
     sighting = models.ForeignKey(Sighting, related_name='birds', on_delete=models.CASCADE)
 
