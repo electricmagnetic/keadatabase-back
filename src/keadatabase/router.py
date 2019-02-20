@@ -2,7 +2,6 @@
 
 from rest_framework.routers import DefaultRouter
 
-from locations.views import StudyAreaViewSet, RegionViewSet
 from birds.views import BirdViewSet
 from bands.views import BandComboViewSet
 from sightings.views.sightings import SightingsSightingViewSet, SightingsNonSightingViewSet
@@ -15,9 +14,6 @@ router = DefaultRouter()
 router.register(r'band_combos', BandComboViewSet, 'BandCombo')
 
 router.register(r'birds', BirdViewSet, 'Bird')
-
-router.register(r'locations/study_areas', StudyAreaViewSet, 'StudyArea')
-router.register(r'locations/regions', RegionViewSet, 'Region')
 
 router.register(r'report/sighting', ReportSightingViewSet, 'ReportSighting')
 router.register(r'report/non_sighting', ReportNonSightingViewSet, 'ReportNonSighting')
