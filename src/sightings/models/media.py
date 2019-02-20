@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from versatileimagefield.fields import VersatileImageField, PPOIField
 from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
-from sightings.models.sightings import SightingsSighting
+from sightings.models.sightings import Sighting
 from birds.models import Bird
 
 def sighting_directory_path(instance, filename):
@@ -15,7 +15,7 @@ def sighting_directory_path(instance, filename):
 
 class SightingsMedia(models.Model):
     """ User uploaded media for a sighting """
-    sighting = models.ForeignKey(SightingsSighting, related_name='media', on_delete=models.CASCADE)
+    sighting = models.ForeignKey(Sighting, related_name='media', on_delete=models.CASCADE)
 
     sighting_image = VersatileImageField(upload_to=sighting_directory_path,
                                          ppoi_field='sighting_image_ppoi')

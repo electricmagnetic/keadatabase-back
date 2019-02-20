@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeometryField
 
-from ..models.birds import SightingsBird
+from ..models.birds import BirdSighting
 from birds.serializers import BirdSerializer
 
-class SightingsBirdSerializer(serializers.ModelSerializer):
+class BirdSightingSerializer(serializers.ModelSerializer):
     get_banded_display = serializers.CharField()
     get_sex_guess_display = serializers.CharField()
     get_life_stage_guess_display = serializers.CharField()
@@ -17,7 +17,7 @@ class SightingsBirdSerializer(serializers.ModelSerializer):
     sighting__point_location = GeometryField(source='sighting.point_location')
 
     class Meta:
-        model = SightingsBird
+        model = BirdSighting
         fields = '__all__'
 
     @staticmethod

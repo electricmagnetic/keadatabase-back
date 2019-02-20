@@ -4,7 +4,7 @@ from django.contrib.gis.db import models
 from versatileimagefield.fields import VersatileImageField
 
 from locations.models import Region
-from .contributors import SightingsContributor
+from .contributors import Contributor
 
 PRECISION_CHOICES = (
     (10, '(10m) GPS Coordinates'),
@@ -26,11 +26,11 @@ SIGHTING_TYPE_CHOICES = (
     ('distant', 'Sighted (distant)'),
 )
 
-class SightingsBase(models.Model):
+class BaseSighting(models.Model):
     """ Sightings information common to sightings and non-sightings """
 
     contributor = models.OneToOneField(
-        SightingsContributor,
+        Contributor,
         on_delete=models.PROTECT
     )
 
@@ -59,7 +59,7 @@ class SightingsBase(models.Model):
     class Meta:
         abstract = True
 
-class SightingsNonSighting(SightingsBase):
+class NonSighting(BaseSighting):
     """ Information specific to a non-sighting """
     location_details = models.TextField()
 
@@ -73,7 +73,7 @@ class SightingsNonSighting(SightingsBase):
     def __str__(self):
         return '%s %s' % (self.date_sighted, self.time_sighted)
 
-class SightingsSighting(SightingsBase):
+class Sighting(BaseSighting):
     """ Information specific to a sighting """
     sighting_type = models.CharField(max_length=15, choices=SIGHTING_TYPE_CHOICES)
 

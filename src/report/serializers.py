@@ -1,23 +1,23 @@
 from rest_framework import serializers
 
-from sightings.models.sightings import SightingsSighting, SightingsNonSighting
-from sightings.models.contributors import SightingsContributor
-from sightings.models.birds import SightingsBird
+from sightings.models.sightings import Sighting, NonSighting
+from sightings.models.contributors import Contributor
+from sightings.models.birds import BirdSighting
 
 # Helpers
-class SightingsBirdSerializer(serializers.ModelSerializer):
+class BirdSightingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SightingsBird
+        model = BirdSighting
         exclude = ('bird', 'sighting', 'revisit',)
 
-class SightingsContributorSerializer(serializers.ModelSerializer):
+class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SightingsContributor
+        model = Contributor
         fields = '__all__'
 
 # Report serializers
 class ReportBaseSerializer(serializers.ModelSerializer):
-    contributor = SightingsContributorSerializer(many=False)
+    contributor = ContributorSerializer(many=False)
     challenge = serializers.CharField(allow_blank=True, required=False)
 
     def validate(self, data):
@@ -27,35 +27,35 @@ class ReportBaseSerializer(serializers.ModelSerializer):
         return data
 
 class ReportSightingSerializer(ReportBaseSerializer):
-    birds = SightingsBirdSerializer(many=True)
+    birds = BirdSightingSerializer(many=True)
 
     class Meta:
-        model = SightingsSighting
+        model = Sighting
         exclude = ('quality', 'moderator_notes', 'favourite', 'geocode', 'region',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
         birds_data = validated_data.pop('birds')
 
-        contributor = SightingsContributor.objects.create(**contributor_data)
-        sighting = SightingsSighting.objects.create(contributor=contributor, **validated_data)
+        contributor = Contributor.objects.create(**contributor_data)
+        sighting = Sighting.objects.create(contributor=contributor, **validated_data)
 
         for bird_data in birds_data:
-            SightingsBird.objects.create(sighting=sighting, **bird_data)
+            BirdSighting.objects.create(sighting=sighting, **bird_data)
 
         return sighting
 
 
 class ReportNonSightingSerializer(ReportBaseSerializer):
     class Meta:
-        model = SightingsNonSighting
+        model = NonSighting
         exclude = ('quality', 'moderator_notes', 'region',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
 
-        contributor = SightingsContributor.objects.create(**contributor_data)
-        non_sighting = SightingsNonSighting.objects.create(contributor=contributor,
+        contributor = Contributor.objects.create(**contributor_data)
+        non_sighting = NonSighting.objects.create(contributor=contributor,
                                                            **validated_data)
 
         return non_sighting

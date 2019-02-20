@@ -4,7 +4,7 @@ from django.core import management
 from django.conf import settings
 from django.core.files.storage import default_storage
 
-from sightings.importsightings import import_SightingsSighting
+from sightings.importsightings import import_Sighting
 
 class Command(management.BaseCommand):
     help = 'Allows the import of sightings data from CSVs.'
@@ -18,10 +18,10 @@ class Command(management.BaseCommand):
                 # boto3 opens files as binary, hence the need to convert
                 sightings_csv = io.StringIO(sightings_csv_bin.read().decode('utf-8'))
 
-                import_SightingsSighting(self, sightings_csv)
+                import_Sighting(self, sightings_csv)
         else:
             with open('../data/sightings.csv', 'rt') as sightings_csv:
-                import_SightingsSighting(self, sightings_csv)
+                import_Sighting(self, sightings_csv)
 
         self.stdout.write(self.style.SUCCESS('\nImport complete'))
 

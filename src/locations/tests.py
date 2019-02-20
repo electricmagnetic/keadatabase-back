@@ -35,4 +35,3 @@ class StudyAreaObjectTests(TestCase):
         self.assertEqual(study_area.slug, 'christchurch')
 
 # TODO: test Region
-# TODO: test CommonLocation

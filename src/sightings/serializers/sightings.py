@@ -1,20 +1,20 @@
 from rest_framework import serializers
 
-from ..models.sightings import SightingsSighting, SightingsNonSighting
+from ..models.sightings import Sighting, NonSighting
 
-class SightingsBaseSerializer(serializers.ModelSerializer):
+class BaseSightingSerializer(serializers.ModelSerializer):
     get_quality_display = serializers.CharField()
 
     contributor = serializers.StringRelatedField(many=False)
 
-class SightingsSightingSerializer(SightingsBaseSerializer):
+class SightingSerializer(BaseSightingSerializer):
     get_sighting_type_display = serializers.CharField()
 
     class Meta:
-        model = SightingsSighting
+        model = Sighting
         exclude = ('moderator_notes', )
 
-class SightingsNonSightingSerializer(SightingsBaseSerializer):
+class NonSightingSerializer(BaseSightingSerializer):
     class Meta:
-        model = SightingsNonSighting
+        model = NonSighting
         exclude = ('moderator_notes', )
