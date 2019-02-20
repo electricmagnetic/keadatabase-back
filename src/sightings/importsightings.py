@@ -4,15 +4,15 @@ from django.core import management
 
 from sightings.models.sightings import SightingsSighting
 from sightings.models.birds import SightingsBird
-from sightings.models.contributors import SightingsContributor
+from sightings.models.contributors import Contributor
 
-def createSightingsContributor(row):
+def createContributor(row):
     contributor_map = {
         'name': row['name'],
         'email': row['email'],
     }
 
-    contributor = SightingsContributor(**contributor_map)
+    contributor = Contributor(**contributor_map)
     contributor.full_clean()
     contributor.save()
 
@@ -64,7 +64,7 @@ def import_SightingsSighting(self, sightings_csv):
     created_count = 0
 
     for row in sightings_reader:
-        contributor = createSightingsContributor(row)
+        contributor = createContributor(row)
         sighting = createSightingsSighting(row, contributor)
 
         created_count += 1

@@ -28,7 +28,7 @@ HEARD_CHOICES = (
     ('other', 'Other'),
 )
 
-class SightingsContributor(models.Model):
+class Contributor(models.Model):
     """ Contributor details for a particular sighting """
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)

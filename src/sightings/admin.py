@@ -1,11 +1,11 @@
 from django.contrib.gis import admin
 
-from .models.contributors import SightingsContributor
+from .models.contributors import Contributor
 from .models.media import SightingsMedia
 from .models.sightings import SightingsNonSighting, SightingsSighting
 from .models.birds import SightingsBird
 
-class SightingsContributorAdmin(admin.ModelAdmin):
+class ContributorAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'email', 'activity', 'heard', 'communications',)
 
 class SightingsBirdInline(admin.TabularInline):
@@ -31,7 +31,7 @@ class SightingsBirdAdmin(admin.ModelAdmin):
                     'revisit',)
     list_filter = ('revisit',)
 
-admin.site.register(SightingsContributor, SightingsContributorAdmin)
+admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(SightingsMedia)
 
 admin.site.register(SightingsNonSighting, SightingsNonSightingAdmin)

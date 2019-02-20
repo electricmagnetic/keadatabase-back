@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from sightings.models.sightings import SightingsSighting, SightingsNonSighting
-from sightings.models.contributors import SightingsContributor
+from sightings.models.contributors import Contributor
 from sightings.models.birds import SightingsBird
 
 # Helpers
@@ -10,14 +10,14 @@ class SightingsBirdSerializer(serializers.ModelSerializer):
         model = SightingsBird
         exclude = ('bird', 'sighting', 'revisit',)
 
-class SightingsContributorSerializer(serializers.ModelSerializer):
+class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SightingsContributor
+        model = Contributor
         fields = '__all__'
 
 # Report serializers
 class ReportBaseSerializer(serializers.ModelSerializer):
-    contributor = SightingsContributorSerializer(many=False)
+    contributor = ContributorSerializer(many=False)
     challenge = serializers.CharField(allow_blank=True, required=False)
 
     def validate(self, data):
@@ -37,7 +37,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
         contributor_data = validated_data.pop('contributor')
         birds_data = validated_data.pop('birds')
 
-        contributor = SightingsContributor.objects.create(**contributor_data)
+        contributor = Contributor.objects.create(**contributor_data)
         sighting = SightingsSighting.objects.create(contributor=contributor, **validated_data)
 
         for bird_data in birds_data:
@@ -54,7 +54,7 @@ class ReportNonSightingSerializer(ReportBaseSerializer):
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
 
-        contributor = SightingsContributor.objects.create(**contributor_data)
+        contributor = Contributor.objects.create(**contributor_data)
         non_sighting = SightingsNonSighting.objects.create(contributor=contributor,
                                                            **validated_data)
 

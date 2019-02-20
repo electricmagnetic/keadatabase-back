@@ -4,7 +4,7 @@ from django.contrib.gis.db import models
 from versatileimagefield.fields import VersatileImageField
 
 from locations.models import Region
-from .contributors import SightingsContributor
+from .contributors import Contributor
 
 PRECISION_CHOICES = (
     (10, '(10m) GPS Coordinates'),
@@ -30,7 +30,7 @@ class SightingsBase(models.Model):
     """ Sightings information common to sightings and non-sightings """
 
     contributor = models.OneToOneField(
-        SightingsContributor,
+        Contributor,
         on_delete=models.PROTECT
     )
 
