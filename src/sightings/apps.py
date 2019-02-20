@@ -7,5 +7,5 @@ class SightingsConfig(AppConfig):
     name = 'sightings'
 
     def ready(self):
-        SightingsSighting = self.get_model('SightingsSighting')
-        pre_save.connect(run_geocode, sender='sightings.SightingsSighting')
+        Sighting = self.get_model('Sighting')
+        pre_save.connect(run_geocode, sender='sightings.Sighting')

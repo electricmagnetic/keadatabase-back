@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from sightings.models.sightings import SightingsSighting, SightingsNonSighting
+from sightings.models.sightings import Sighting, NonSighting
 from sightings.models.contributors import Contributor
 from sightings.models.birds import SightingsBird
 
@@ -30,7 +30,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
     birds = SightingsBirdSerializer(many=True)
 
     class Meta:
-        model = SightingsSighting
+        model = Sighting
         exclude = ('quality', 'moderator_notes', 'favourite', 'geocode', 'region',)
 
     def create(self, validated_data):
@@ -38,7 +38,7 @@ class ReportSightingSerializer(ReportBaseSerializer):
         birds_data = validated_data.pop('birds')
 
         contributor = Contributor.objects.create(**contributor_data)
-        sighting = SightingsSighting.objects.create(contributor=contributor, **validated_data)
+        sighting = Sighting.objects.create(contributor=contributor, **validated_data)
 
         for bird_data in birds_data:
             SightingsBird.objects.create(sighting=sighting, **bird_data)
@@ -48,14 +48,14 @@ class ReportSightingSerializer(ReportBaseSerializer):
 
 class ReportNonSightingSerializer(ReportBaseSerializer):
     class Meta:
-        model = SightingsNonSighting
+        model = NonSighting
         exclude = ('quality', 'moderator_notes', 'region',)
 
     def create(self, validated_data):
         contributor_data = validated_data.pop('contributor')
 
         contributor = Contributor.objects.create(**contributor_data)
-        non_sighting = SightingsNonSighting.objects.create(contributor=contributor,
+        non_sighting = NonSighting.objects.create(contributor=contributor,
                                                            **validated_data)
 
         return non_sighting

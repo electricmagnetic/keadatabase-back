@@ -1,11 +1,11 @@
-""" Sightings related to a specific bird - must have a parent SightingsSighting object """
+""" Sightings related to a specific bird - must have a parent Sighting object """
 
 from django.contrib.gis.db import models
 from versatileimagefield.fields import VersatileImageField
 
 from birds.models import SEX_CHOICES, LIFE_STAGE_CHOICES
 from birds.models import Bird
-from .sightings import SightingsSighting
+from .sightings import Sighting
 
 BAND_CHOICES = (
     ('unknown', 'Couldn\'t tell'),
@@ -20,7 +20,7 @@ LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'),) + LIFE_STAGE_CHOICES
 
 class SightingsBird(models.Model):
     """ Information specific to a bird in a sighting """
-    sighting = models.ForeignKey(SightingsSighting, related_name='birds', on_delete=models.CASCADE)
+    sighting = models.ForeignKey(Sighting, related_name='birds', on_delete=models.CASCADE)
 
     banded = models.CharField(max_length=15, choices=BAND_CHOICES)
 

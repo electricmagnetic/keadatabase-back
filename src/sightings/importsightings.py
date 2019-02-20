@@ -2,7 +2,7 @@ import csv
 
 from django.core import management
 
-from sightings.models.sightings import SightingsSighting
+from sightings.models.sightings import Sighting
 from sightings.models.birds import SightingsBird
 from sightings.models.contributors import Contributor
 
@@ -19,7 +19,7 @@ def createContributor(row):
     return contributor
 
 
-def createSightingsSighting(row, contributor):
+def createSighting(row, contributor):
     sighting_map = {
         'date_sighted': row['date_sighted'],
         'time_sighted': row['time_sighted'],
@@ -33,7 +33,7 @@ def createSightingsSighting(row, contributor):
         'contributor': contributor,
     }
 
-    sighting = SightingsSighting(**sighting_map)
+    sighting = Sighting(**sighting_map)
     sighting.full_clean()
     sighting.save()
 
@@ -53,11 +53,11 @@ def createSightingsBird(row, sighting):
     return bird
 
 
-def import_SightingsSighting(self, sightings_csv):
-    """ Imports SightingsSighting objects from data/sightings.csv """
+def import_Sighting(self, sightings_csv):
+    """ Imports Sighting objects from data/sightings.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("SightingsSighting:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("Sighting:"))
 
     sightings_reader = csv.DictReader(sightings_csv, delimiter=',', quotechar='"')
 
@@ -65,7 +65,7 @@ def import_SightingsSighting(self, sightings_csv):
 
     for row in sightings_reader:
         contributor = createContributor(row)
-        sighting = createSightingsSighting(row, contributor)
+        sighting = createSighting(row, contributor)
 
         created_count += 1
 
