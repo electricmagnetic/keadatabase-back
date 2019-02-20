@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import StudyArea, Region, CommonLocation
+from .models import StudyArea, Region
 
 class StudyAreaSerializer(serializers.ModelSerializer):
     birds = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -12,9 +12,4 @@ class StudyAreaSerializer(serializers.ModelSerializer):
 class RegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Region
-        fields = '__all__'
-
-class CommonLocationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CommonLocation
         fields = '__all__'
