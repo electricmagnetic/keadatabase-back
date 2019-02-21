@@ -20,7 +20,7 @@ class SightingAdmin(admin.OSMGeoAdmin):
     list_display = ('__str__', 'contributor', 'region', 'geocode', 'quality', 'date_created', 'favourite',)
     list_filter = ('quality', 'date_created', 'favourite', 'region',)
     inlines = [BirdSightingInline, SightingsMediaInline]
-    readonly_fields = ('geocode', 'region',)
+    readonly_fields = ('geocode', 'region', 'origin',)
     search_fields = ('id__exact',)
 
 class NonSightingAdmin(admin.ModelAdmin):
