@@ -1,6 +1,7 @@
 """ Sightings models (contributor and media in other files) """
 
 from django.contrib.gis.db import models
+from django.core.validators import validate_slug
 from versatileimagefield.fields import VersatileImageField
 
 from locations.models import Region
@@ -91,6 +92,9 @@ class Sighting(BaseSighting):
 
     # Automated
     geocode = models.CharField(max_length=200, blank=True, null=True)
+
+    # Import
+    origin = models.CharField(max_length=200, blank=True, null=True, unique=True, validators=[validate_slug])
 
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)
     ## TODO: Check number is within bounds of New Zealand
