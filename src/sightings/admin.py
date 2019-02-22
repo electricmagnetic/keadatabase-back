@@ -14,16 +14,9 @@ class SightingImportReport(Sighting):
 
 class SightingImportReportAdmin(admin.ModelAdmin):
     """ Read only view of sightings with origin """
-    
+
     list_display = ('id', '__str__', 'origin',)
     search_fields = ('origin',)
-
-    def get_readonly_fields(self, request, obj=None):
-        readonly_fields = []
-        for field in self.model._meta.fields:
-            readonly_fields.append(field.name)
-
-        return readonly_fields
 
     def has_add_permission(self, request):
         return False
