@@ -5,6 +5,35 @@ from .models.media import SightingsMedia
 from .models.sightings import NonSighting, Sighting
 from .models.birds import BirdSighting
 
+class SightingImportReport(Sighting):
+    """ Proxy model for showing different view of sightings """
+
+    class Meta:
+        proxy = True
+        verbose_name = 'Import report'
+
+class SightingImportReportAdmin(admin.ModelAdmin):
+    """ Read only view of sightings with origin """
+    
+    list_display = ('id', '__str__', 'origin',)
+    search_fields = ('origin',)
+
+    def get_readonly_fields(self, request, obj=None):
+        readonly_fields = []
+        for field in self.model._meta.fields:
+            readonly_fields.append(field.name)
+
+        return readonly_fields
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 class ContributorAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'email', 'activity', 'heard', 'communications',)
 
@@ -17,7 +46,7 @@ class SightingsMediaInline(admin.StackedInline):
     extra = 0
 
 class SightingAdmin(admin.OSMGeoAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'geocode', 'quality', 'date_created', 'favourite',)
+    list_display = ('id', '__str__', 'contributor', 'region', 'geocode', 'quality', 'date_created', 'favourite',)
     list_filter = ('quality', 'date_created', 'favourite', 'region',)
     inlines = [BirdSightingInline, SightingsMediaInline]
     readonly_fields = ('geocode', 'region', 'origin',)
@@ -37,3 +66,5 @@ admin.site.register(SightingsMedia)
 admin.site.register(NonSighting, NonSightingAdmin)
 admin.site.register(Sighting, SightingAdmin)
 admin.site.register(BirdSighting, BirdSightingAdmin)
+
+admin.site.register(SightingImportReport, SightingImportReportAdmin)
