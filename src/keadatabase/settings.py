@@ -211,6 +211,7 @@ if not DEBUG:
     CORS_ORIGIN_WHITELIST = (
         'beta.keadatabase.nz',
         'www.keadatabase.nz',
+        'map.keadatabase.nz',
         'keadatabase.nz',
     )
 
@@ -218,6 +219,7 @@ if not DEBUG:
 if os.environ.get('CORS_ALLOW_LOCALHOST') == 'True':
     CORS_ORIGIN_WHITELIST += (
         'localhost:3000',
+        'localhost:8000',
     )
 
 
