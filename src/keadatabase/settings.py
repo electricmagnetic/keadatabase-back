@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'synchronise',
     'sightings',
     'report',
+    'geojson',
 ]
 
 MIDDLEWARE = [
