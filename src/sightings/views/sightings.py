@@ -6,7 +6,7 @@ from ..serializers.sightings import SightingSerializer, NonSightingSerializer
 
 class BaseSightingViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = SightingPagination
-    ordering_fields = ('contributor', 'quality', 'region', 'date_sighted', 'time_sighted',
+    ordering_fields = ('contributor', 'region', 'date_sighted', 'time_sighted',
                        'date_created', 'date_updated',)
 
 class SightingViewSet(BaseSightingViewSet):
@@ -14,11 +14,11 @@ class SightingViewSet(BaseSightingViewSet):
                select_related('contributor',). \
                exclude(status='private').exclude(status='bad')
     serializer_class = SightingSerializer
-    filter_fields = ('quality', 'sighting_type', 'precision', 'number', 'status', 'confirmed',)
+    filter_fields = ('sighting_type', 'precision', 'number', 'status', 'confirmed',)
 
 class NonSightingViewSet(BaseSightingViewSet):
     queryset = NonSighting.objects. \
                select_related('contributor',). \
                exclude(status='private').exclude(status='bad')
     serializer_class = NonSightingSerializer
-    filter_fields = ('quality', 'region', 'status',)
+    filter_fields = ('region', 'status',)

@@ -46,21 +46,16 @@ def make_public(modeladmin, request, queryset):
     queryset.update(status='public')
     make_public.short_description = "Mark selected sightings as public"
 
-def make_confirmed(modeladmin, request, queryset):
-    # TODO: remove (temporary)
-    queryset.update(confirmed=True)
-    make_confirmed.short_description = "Mark selected sightings as confirmed"
-
 class SightingAdmin(admin.OSMGeoAdmin):
-    list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'status', 'confirmed', 'quality', 'date_created', 'favourite',)
-    list_filter = ('status', 'quality', 'date_created', 'favourite', 'region', 'confirmed',)
+    list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'favourite', 'confirmed', 'status', 'date_created',)
+    list_filter = ('status', 'date_created', 'favourite', 'region', 'confirmed',)
     inlines = [BirdSightingInline, SightingsMediaInline]
     readonly_fields = ('geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
-    actions = [make_public, make_confirmed]
+    actions = [make_public]
 
 class NonSightingAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'status',)
+    list_display = ('__str__', 'contributor', 'region', 'date_created', 'status',)
 
 class BirdSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'banded', 'sex_guess', 'life_stage_guess', 'band_combo', 'bird',
