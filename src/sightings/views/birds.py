@@ -24,7 +24,7 @@ class BirdSightingViewSet(viewsets.ReadOnlyModelViewSet):
     filter_class = BirdSightingFilter
 
     def get_queryset(self):
-        queryset = BirdSighting.objects.all()
+        queryset = BirdSighting.objects.exclude(sighting__status='private').exclude(sighting__status='bad')
 
         queryset = self.get_serializer_class().setup_eager_loading(queryset)
         return queryset

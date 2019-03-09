@@ -12,13 +12,13 @@ class BaseSightingViewSet(viewsets.ReadOnlyModelViewSet):
 class SightingViewSet(BaseSightingViewSet):
     queryset = Sighting.objects. \
                select_related('contributor',). \
-               all()
+               exclude(status='private').exclude(status='bad')
     serializer_class = SightingSerializer
-    filter_fields = ('quality', 'sighting_type', 'precision', 'number',)
+    filter_fields = ('quality', 'sighting_type', 'precision', 'number', 'status',)
 
 class NonSightingViewSet(BaseSightingViewSet):
     queryset = NonSighting.objects. \
                select_related('contributor',). \
-               all()
+               exclude(status='private').exclude(status='bad')
     serializer_class = NonSightingSerializer
-    filter_fields = ('quality', 'region',)
+    filter_fields = ('quality', 'region', 'status',)
