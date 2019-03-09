@@ -104,6 +104,7 @@ class Sighting(BaseSighting):
 
     # Staff only
     favourite = models.BooleanField(default=False, help_text="Moderator: If noteworthy sighting")
+    confirmed = models.BooleanField(default=False, help_text="Moderator: If confirmed (known contributor or photo evidence)")
 
     # Automated
     geocode = models.CharField(max_length=200, blank=True, null=True)
