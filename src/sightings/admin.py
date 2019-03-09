@@ -13,10 +13,10 @@ class SightingImportReport(Sighting):
         verbose_name = 'Import report'
 
 class SightingImportReportAdmin(admin.ModelAdmin):
-    """ Read only view of sightings with origin """
+    """ Read only view of sightings with import_id """
 
-    list_display = ('id', '__str__', 'origin',)
-    search_fields = ('origin',)
+    list_display = ('id', '__str__', 'import_id',)
+    search_fields = ('import_id',)
 
     def has_add_permission(self, request):
         return False
@@ -42,7 +42,7 @@ class SightingAdmin(admin.OSMGeoAdmin):
     list_display = ('id', '__str__', 'contributor', 'region', 'geocode', 'quality', 'date_created', 'favourite',)
     list_filter = ('quality', 'date_created', 'favourite', 'region',)
     inlines = [BirdSightingInline, SightingsMediaInline]
-    readonly_fields = ('geocode', 'region', 'origin',)
+    readonly_fields = ('geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
 
 class NonSightingAdmin(admin.ModelAdmin):
