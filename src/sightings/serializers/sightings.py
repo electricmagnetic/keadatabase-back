@@ -12,7 +12,7 @@ class SightingSerializer(BaseSightingSerializer):
 
     class Meta:
         model = Sighting
-        exclude = ('moderator_notes', 'origin',)
+        exclude = ('moderator_notes', 'import_id',)
 
 class NonSightingSerializer(BaseSightingSerializer):
     class Meta:

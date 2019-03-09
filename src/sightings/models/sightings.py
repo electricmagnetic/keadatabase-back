@@ -27,6 +27,19 @@ SIGHTING_TYPE_CHOICES = (
     ('distant', 'Sighted (distant)'),
 )
 
+STATUS_CHOICES = (
+    ('new', 'New'),
+    ('public', 'Verified (Public)'),
+    ('Private', (
+        ('private', 'Verified (Private)'),
+        ('bad', 'Bad (Private)'),
+    )),
+    ('Special', (
+        ('fwf', 'FWF Sighting'),
+        ('kct', 'KCT Sighting'),
+    )),
+)
+
 class BaseSighting(models.Model):
     """ Sightings information common to sightings and non-sightings """
 
@@ -44,6 +57,8 @@ class BaseSighting(models.Model):
     comments = models.TextField(blank=True)
 
     # Staff only
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+
     quality = models.CharField(max_length=3, choices=VERIFICATION_CHOICES, default='-1',
                                help_text='Moderator: Select level of quality. \
                                           Confirmed should only be used for known contributors.')
@@ -94,7 +109,8 @@ class Sighting(BaseSighting):
     geocode = models.CharField(max_length=200, blank=True, null=True)
 
     # Import
-    origin = models.CharField(max_length=200, blank=True, null=True, unique=True, validators=[validate_slug])
+    import_id = models.CharField(max_length=200, blank=True, null=True, unique=True,
+                                 validators=[validate_slug], verbose_name="Import ID")
 
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)
     ## TODO: Check number is within bounds of New Zealand
