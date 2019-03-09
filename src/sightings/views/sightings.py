@@ -14,7 +14,7 @@ class SightingViewSet(BaseSightingViewSet):
                select_related('contributor',). \
                exclude(status='private').exclude(status='bad')
     serializer_class = SightingSerializer
-    filter_fields = ('quality', 'sighting_type', 'precision', 'number', 'status',)
+    filter_fields = ('quality', 'sighting_type', 'precision', 'number', 'status', 'confirmed',)
 
 class NonSightingViewSet(BaseSightingViewSet):
     queryset = NonSighting.objects. \
