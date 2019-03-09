@@ -94,7 +94,8 @@ class Sighting(BaseSighting):
     geocode = models.CharField(max_length=200, blank=True, null=True)
 
     # Import
-    import_id = models.CharField(max_length=200, blank=True, null=True, unique=True, validators=[validate_slug])
+    import_id = models.CharField(max_length=200, blank=True, null=True, unique=True,
+                                 validators=[validate_slug], verbose_name="Import ID")
 
     ## TODO: Check number is greater than zero (should be an non-sighting otherwise)
     ## TODO: Check number is within bounds of New Zealand

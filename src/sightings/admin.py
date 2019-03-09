@@ -18,6 +18,10 @@ class SightingImportReportAdmin(admin.ModelAdmin):
     list_display = ('id', '__str__', 'import_id',)
     search_fields = ('import_id',)
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(import_id__isnull=False)
+
     def has_add_permission(self, request):
         return False
 
