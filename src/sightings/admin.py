@@ -52,15 +52,15 @@ def make_confirmed(modeladmin, request, queryset):
     make_confirmed.short_description = "Mark selected sightings as confirmed"
 
 class SightingAdmin(admin.OSMGeoAdmin):
-    list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'status', 'confirmed', 'quality', 'date_created', 'favourite',)
-    list_filter = ('status', 'quality', 'date_created', 'favourite', 'region', 'confirmed',)
+    list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'status', 'confirmed', 'date_created', 'favourite',)
+    list_filter = ('status', 'date_created', 'favourite', 'region', 'confirmed',)
     inlines = [BirdSightingInline, SightingsMediaInline]
     readonly_fields = ('geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
     actions = [make_public, make_confirmed]
 
 class NonSightingAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'quality', 'date_created', 'status',)
+    list_display = ('__str__', 'contributor', 'region', 'date_created', 'status',)
 
 class BirdSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'banded', 'sex_guess', 'life_stage_guess', 'band_combo', 'bird',

@@ -14,13 +14,6 @@ PRECISION_CHOICES = (
     (1000, '(1000m) General Area'),
 )
 
-VERIFICATION_CHOICES = (
-    ('-1', '(-1) Unverified'),
-    ('0', '(0) Bad'),
-    ('1', '(1) OK'),
-    ('2', '(2) Confirmed'),
-)
-
 SIGHTING_TYPE_CHOICES = (
     ('sighted', 'Sighted'),
     ('heard', 'Heard'),
@@ -57,11 +50,9 @@ class BaseSighting(models.Model):
     comments = models.TextField(blank=True)
 
     # Staff only
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new',
+                              help_text="Moderator: confirm verification and private/public status")
 
-    quality = models.CharField(max_length=3, choices=VERIFICATION_CHOICES, default='-1',
-                               help_text='Moderator: Select level of quality. \
-                                          Confirmed should only be used for known contributors.')
     moderator_notes = models.TextField(blank=True,
                                        help_text='Moderator: Add notes here if you needed to \
                                                   change sighting information (not public).')

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models.sightings import Sighting, NonSighting
 
 class BaseSightingSerializer(serializers.ModelSerializer):
-    get_quality_display = serializers.CharField()
+    get_status_display = serializers.CharField()
 
     contributor = serializers.StringRelatedField(many=False)
 
