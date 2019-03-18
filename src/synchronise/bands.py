@@ -107,12 +107,6 @@ def standardise_BandCombo(row, bird, study_area):
     else:
         standardised_bc['style'] = 'old'
 
-    # [common] identify colours
-    standardised_bc['colours'] = []
-    for colour in COLOURS:
-        if colour in raw_bc_str.lower():
-            standardised_bc['colours'].append(colour)
-
     # [common] remove extraneous words (case insensitive)
     old_extraneous_words = ['decommissioned', '2', '3', 'duplicate',]
     new_extraneous_words = ['big', 'duplicate', '(upsidedown m)', 'm -']
@@ -132,6 +126,12 @@ def standardise_BandCombo(row, bird, study_area):
     # [common] ensure whitespace is standardised to single spaces
     raw_bc_str = " ".join(raw_bc_str.split())
 
+    # [common] identify colours (now whole words only so lightblue != blue)
+    standardised_bc['colours'] = []
+    for colour in COLOURS:
+        if any([colour == word for word in raw_bc_str.lower().split()]):
+            standardised_bc['colours'].append(colour)
+
     # [new] identify symbols - put all data in array, filter out other stuff
     standardised_bc['symbols'] = []
 
@@ -140,7 +140,7 @@ def standardise_BandCombo(row, bird, study_area):
 
         for raw_symbol in list(raw_symbols):
             # list(...) used so as to not delete items from currently iterating list
-            # Remove any colours, 'on' and '/'
+            # Remove any colours, 'on', '/' and '-'
             if raw_symbol.lower() in COLOURS or \
                raw_symbol.lower() == 'on' or \
                raw_symbol.lower() == '/' or \
@@ -149,6 +149,9 @@ def standardise_BandCombo(row, bird, study_area):
 
         # remove duplicates (e.g ['A', 'A'])
         standardised_bc['symbols'] = list(set(raw_symbols))
+
+    # [common] modify LightBlue into Light Blue
+    raw_bc_str = raw_bc_str.replace('LightBlue', 'Light Blue')
 
     # [common] string now suitably processed
     standardised_bc['name'] = raw_bc_str
