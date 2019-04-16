@@ -14,10 +14,10 @@ class LocationsSynchroniseTests(TestCase):
         self.assertEqual(StudyArea.objects.all().count(), 0)
         self.assertEqual(Bird.objects.all().count(), 0)
 
-        with open('../test_data/tStudyAreas.csv', 'rt') as areas_csv:
+        with open('test_data/tStudyAreas.csv', 'rt') as areas_csv:
             synchronise_StudyArea(self, areas_csv)
 
-        with open('../test_data/Kea.csv', 'rt') as birds_csv:
+        with open('test_data/Kea.csv', 'rt') as birds_csv:
             synchronise_Bird(self, birds_csv)
 
         # TODO: write band tests
