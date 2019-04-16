@@ -1,0 +1,9 @@
+[run]
+source = src
+
+omit =
+  src/keadatabase/settings.py
+  src/*/migrations/*
+  src/*/apps.py
+  *__init__*
+  src/keadatabase/wsgi.py

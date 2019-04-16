@@ -32,14 +32,19 @@ NB: To create database, login as postgres user then run `createdb keadatabase` i
 
 Running
 -------
-`./manage.py runserver`
+`src/manage.py runserver`
 
 
 Testing
 -------
 Ensure that the `keadatabase_test` db is able to be created before running.
 
-`python src/manage.py test`
+`src/manage.py test`
+
+You can get code coverage reports:
+1. Installed `coverage` with pip
+2. `coverage run src/manage.py test src`
+3. `coverage report`
 
 
 Data synchronisation: Bird, BandCombo, StudyArea

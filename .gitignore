@@ -11,3 +11,5 @@
 src/media/
 __pycache__/
 data/
+
+.coverage
