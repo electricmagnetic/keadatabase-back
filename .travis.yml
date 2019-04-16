@@ -2,14 +2,16 @@ language: python
 dist: xenial
 python:
   - "3.6"
-install: "pip install -r requirements.txt"
-script: "./manage.py test"
+install: 
+  - pip install -r requirements.txt
+  - pip install codecov coverage
+script:
+  - coverage run --source='src' src/manage.py test src
 services:
   - postgresql
 before_script:
   - psql -c 'create database keadatabase_test;' -U postgres
   - psql -U postgres -c "create extension postgis"
-  - cd src
 addons:
   postgresql: "9.6"
   apt:
@@ -18,3 +20,5 @@ addons:
 branches:
   only:
   - master
+after_success:
+  - codecov
