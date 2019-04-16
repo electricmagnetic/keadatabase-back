@@ -38,7 +38,7 @@ Testing
 -------
 Ensure that the `keadatabase_test` db is able to be created before running.
 
-`./manage.py test`
+`python src/manage.py test`
 
 
 Data synchronisation: Bird, BandCombo, StudyArea
