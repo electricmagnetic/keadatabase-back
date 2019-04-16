@@ -2,6 +2,7 @@ keadatabase-back
 ================
 
 [![Build Status](https://travis-ci.org/greenstone/keadatabase-back.svg?branch=master)](https://travis-ci.org/greenstone/keadatabase-back)
+[![codecov](https://codecov.io/gh/greenstone/keadatabase-back/branch/master/graph/badge.svg)](https://codecov.io/gh/greenstone/keadatabase-back)
 
 The GeoDjango-based back-end for the Kea Database <https://keadatabase.nz> citizen science project.
 Sponsored by [Catalyst](https://catalyst.net.nz).
