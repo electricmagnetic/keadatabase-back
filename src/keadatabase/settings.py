@@ -213,6 +213,7 @@ if not DEBUG:
         'www.keadatabase.nz',
         'map.keadatabase.nz',
         'keadatabase.nz',
+        'survey.keadatabase.nz',
     )
 
 
