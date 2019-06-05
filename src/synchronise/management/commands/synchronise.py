@@ -16,14 +16,14 @@ class Command(management.BaseCommand):
 
     def check_current_status(self):
         """ Outputs information about objects currently in database """
-        self.stdout.write(self.style.MIGRATE_HEADING('Current status:'))
-        self.stdout.write('StudyArea: %d' % StudyArea.objects.count())
-        self.stdout.write('Bird: %d' % Bird.objects.count())
-        self.stdout.write('BandCombo: %d' % BandCombo.objects.count())
+        self.stdout.write(self.style.MIGRATE_HEADING('# Current status\n\n'))
+        self.stdout.write('* StudyArea: %d' % StudyArea.objects.count())
+        self.stdout.write('* Bird: %d' % Bird.objects.count())
+        self.stdout.write('* BandCombo: %d' % BandCombo.objects.count())
 
     def do_import(self):
         """ Imports objects into database """
-        self.stdout.write(self.style.MIGRATE_HEADING('\nBeginning import:'))
+        self.stdout.write(self.style.MIGRATE_HEADING('\n# Beginning import\n'))
 
         if settings.DEFAULT_FILE_STORAGE == 'storages.backends.s3boto3.S3Boto3Storage':
             with default_storage.open('data/tStudyAreas.csv', 'r') as areas_csv_bin, \
@@ -47,7 +47,7 @@ class Command(management.BaseCommand):
                 synchronise_Bird(self, birds_csv)
                 synchronise_BandCombo(self, transmitters_csv)
 
-        self.stdout.write(self.style.SUCCESS('\nImport complete'))
+        self.stdout.write(self.style.SUCCESS('\n*Import complete!*'))
 
     def handle(self, *args, **options):
         self.check_current_status()
@@ -60,4 +60,4 @@ class Command(management.BaseCommand):
         if confirm == 'yes':
             self.do_import()
         else:
-            self.stdout.write('\nImport cancelled!')
+            self.stdout.write('\n*Import cancelled!*')

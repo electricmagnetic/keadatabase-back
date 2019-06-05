@@ -9,7 +9,8 @@ def synchronise_StudyArea(self, areas_csv):
     """ Imports StudyArea objects from data/tStudyAreas.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("StudyArea:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("\n## StudyArea\n\n"))
+        self.stdout.write("### Changes\n\n")
 
     areas_reader = csv.DictReader(areas_csv, delimiter=',', quotechar='"')
 
@@ -40,5 +41,6 @@ def synchronise_StudyArea(self, areas_csv):
             created_count += 1
 
     if hasattr(self, 'stdout'):
-        self.stdout.write("\tChecked: %d" % checked_count)
-        self.stdout.write("\tCreated: %d" % created_count)
+        self.stdout.write("\n### Results\n\n")
+        self.stdout.write("* Checked: %d" % checked_count)
+        self.stdout.write("* Created: %d" % created_count)

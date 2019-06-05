@@ -173,7 +173,9 @@ def synchronise_BandCombo(self, transmitters_csv):
     """ Imports Band objects from data/Transmitter actions.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("Band:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("\n## Band\n\n"))
+        self.stdout.write("### Changes\n\n")
+
 
     transmitters_reader = csv.DictReader(transmitters_csv, delimiter=',', quotechar='"')
 
@@ -205,7 +207,7 @@ def synchronise_BandCombo(self, transmitters_csv):
             for key, value in band_combo_map.items():
                 if getattr(band_combo, key) != value:
                     has_changed = True
-                    #print("%s: %s has changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
+                    self.stdout.write("* %s: %s has changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
                     setattr(band_combo, key, value)
 
             if has_changed:
@@ -224,6 +226,7 @@ def synchronise_BandCombo(self, transmitters_csv):
 
 
     if hasattr(self, 'stdout'):
-        self.stdout.write("\tChecked: %d" % checked_count)
-        self.stdout.write("\tModified: %d" % modified_count)
-        self.stdout.write("\tCreated: %d" % created_count)
+        self.stdout.write("\n### Results\n\n")
+        self.stdout.write("* Checked: %d" % checked_count)
+        self.stdout.write("* Modified: %d" % modified_count)
+        self.stdout.write("* Created: %d" % created_count)
