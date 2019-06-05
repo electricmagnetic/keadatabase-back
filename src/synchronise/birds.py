@@ -42,7 +42,8 @@ def synchronise_Bird(self, birds_csv):
     """ Imports Bird objects from data/Kea.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("Bird:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("\n## Bird\n\n"))
+        self.stdout.write("### Changes\n\n")
 
     birds_reader = csv.DictReader(birds_csv, delimiter=',', quotechar='"')
 
@@ -86,7 +87,7 @@ def synchronise_Bird(self, birds_csv):
             for key, value in bird_map.items():
                 if getattr(bird, key) != value:
                     has_changed = True
-                    #print("%s: %s has changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
+                    self.stdout.write("* %s: %s changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
                     setattr(bird, key, value)
 
             if has_changed:
@@ -104,6 +105,7 @@ def synchronise_Bird(self, birds_csv):
             created_count += 1
 
     if hasattr(self, 'stdout'):
-        self.stdout.write("\tChecked: %d" % checked_count)
-        self.stdout.write("\tModified: %d" % modified_count)
-        self.stdout.write("\tCreated: %d" % created_count)
+        self.stdout.write("\n### Results\n\n")
+        self.stdout.write("* Checked: %d" % checked_count)
+        self.stdout.write("* Modified: %d" % modified_count)
+        self.stdout.write("* Created: %d" % created_count)

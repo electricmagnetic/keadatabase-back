@@ -107,9 +107,13 @@ def standardise_BandCombo(row, bird, study_area):
     else:
         standardised_bc['style'] = 'old'
 
+    # [common] replace 'm -' with 'Metal -'
+    re_word = re.compile(re.escape('m -'), re.IGNORECASE)
+    raw_bc_str = re_word.sub('Metal -', raw_bc_str)
+
     # [common] remove extraneous words (case insensitive)
     old_extraneous_words = ['decommissioned', '2', '3', 'duplicate',]
-    new_extraneous_words = ['big', 'duplicate', '(upsidedown m)', 'm -']
+    new_extraneous_words = ['big', 'duplicate', '(upsidedown m)',]
 
     if standardised_bc['style'] == 'new':
         for word in new_extraneous_words:
@@ -173,7 +177,9 @@ def synchronise_BandCombo(self, transmitters_csv):
     """ Imports Band objects from data/Transmitter actions.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("Band:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("\n## Band\n\n"))
+        self.stdout.write("### Changes\n\n")
+
 
     transmitters_reader = csv.DictReader(transmitters_csv, delimiter=',', quotechar='"')
 
@@ -201,11 +207,10 @@ def synchronise_BandCombo(self, transmitters_csv):
 
             has_changed = False
 
-
             for key, value in band_combo_map.items():
                 if getattr(band_combo, key) != value:
                     has_changed = True
-                    #print("%s: %s has changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
+                    self.stdout.write("* %s: %s changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
                     setattr(band_combo, key, value)
 
             if has_changed:
@@ -224,6 +229,7 @@ def synchronise_BandCombo(self, transmitters_csv):
 
 
     if hasattr(self, 'stdout'):
-        self.stdout.write("\tChecked: %d" % checked_count)
-        self.stdout.write("\tModified: %d" % modified_count)
-        self.stdout.write("\tCreated: %d" % created_count)
+        self.stdout.write("\n### Results\n\n")
+        self.stdout.write("* Checked: %d" % checked_count)
+        self.stdout.write("* Modified: %d" % modified_count)
+        self.stdout.write("* Created: %d" % created_count)
