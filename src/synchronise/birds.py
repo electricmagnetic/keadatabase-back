@@ -87,7 +87,7 @@ def synchronise_Bird(self, birds_csv):
             for key, value in bird_map.items():
                 if getattr(bird, key) != value:
                     has_changed = True
-                    self.stdout.write("* %s: %s has changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
+                    self.stdout.write("* %s: %s changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
                     setattr(bird, key, value)
 
             if has_changed:

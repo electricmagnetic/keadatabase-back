@@ -16,7 +16,7 @@ environments are installed.
 `./manage.py` commands should be run from the `src/` directory.
 
 For instructions on setting up PostGIS:
-<https://docs.djangoproject.com/en/2.0/ref/contrib/gis/install/postgis/>
+<https://docs.djangoproject.com/en/2.2/ref/contrib/gis/install/postgis/>
 
 Required packages: `binutils`, `libproj-dev`, `gdal-bin`, `postgresql-x.x`, `postgresql-x.x-postgis`, `postgresql-x.x-postgis-x.x-scripts`, `postgresql-server-dev-x.x`, `python3-psycopg2`
 
@@ -109,7 +109,7 @@ Layout
 Licence
 -------
 Kea Database  
-Copyright (C) 2018 Greenstone Limited  
+Copyright (C) 2019 Greenstone Limited  
 <hello@greenstone.org.nz>  
 
 This program is free software: you can redistribute it and/or modify

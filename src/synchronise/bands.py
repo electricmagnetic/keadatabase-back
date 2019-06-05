@@ -107,9 +107,13 @@ def standardise_BandCombo(row, bird, study_area):
     else:
         standardised_bc['style'] = 'old'
 
+    # [common] replace 'm -' with 'Metal -'
+    re_word = re.compile(re.escape('m -'), re.IGNORECASE)
+    raw_bc_str = re_word.sub('Metal -', raw_bc_str)
+
     # [common] remove extraneous words (case insensitive)
     old_extraneous_words = ['decommissioned', '2', '3', 'duplicate',]
-    new_extraneous_words = ['big', 'duplicate', '(upsidedown m)', 'm -']
+    new_extraneous_words = ['big', 'duplicate', '(upsidedown m)',]
 
     if standardised_bc['style'] == 'new':
         for word in new_extraneous_words:
@@ -203,11 +207,10 @@ def synchronise_BandCombo(self, transmitters_csv):
 
             has_changed = False
 
-
             for key, value in band_combo_map.items():
                 if getattr(band_combo, key) != value:
                     has_changed = True
-                    self.stdout.write("* %s: %s has changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
+                    self.stdout.write("* %s: %s changed from %s to %s" % (band_combo.bird, key, getattr(band_combo, key), value))
                     setattr(band_combo, key, value)
 
             if has_changed:
