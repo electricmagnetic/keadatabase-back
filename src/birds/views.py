@@ -32,7 +32,7 @@ class BirdFilter(django_filters.FilterSet):
 
     has_band = django_filters.BooleanFilter(field_name='band_combo', lookup_expr='isnull', exclude=True)
 
-    ordering = BirdOrdering(fields=('name', 'status', 'study_area', 'bird_extended',))
+    ordering = BirdOrdering(fields=('name', 'status', 'study_area', 'bird_extended', 'date_imported',))
 
     class Meta:
         model = Bird
@@ -45,5 +45,5 @@ class BirdViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = BirdSerializer
     pagination_class = BirdPagination
     search_fields = ('name',)
-    ordering_fields = ('name', 'status', 'study_area', 'bird_extended',)
+    ordering_fields = ('name', 'status', 'study_area', 'bird_extended', 'date_imported',)
     filter_class = BirdFilter
