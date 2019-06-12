@@ -4,11 +4,11 @@ from .observers import Observer
 from locations.models import GridTile
 
 STATUS_CHOICES = (
-    ('W', '[W] Walking'),
-    ('S', '[S] Stationary'),
-    ('C', '[C] At camp (tent)'),
-    ('H', '[H] At human structure (hut, carpark)'),
-    ('-', '[-] Not surveying'),
+    ('W', 'W - Walking'),
+    ('S', 'S - Stationary'),
+    ('C', 'C - At camp (tent)'),
+    ('H', 'H - At human structure (hut, carpark)'),
+    ('X', 'X - Not surveying'),
 )
 
 class Survey(models.Model):
