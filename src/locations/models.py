@@ -57,3 +57,16 @@ class Region(models.Model):
 
         self.slug = slugify(self.name)
         super(Region, self).save(*args, **kwargs)
+
+class GridTile(models.Model):
+    """ Kea survey grid tile (5km by 5km) """
+    id = models.CharField(primary_key=True, max_length=7)
+    min = models.PointField(srid=2193)
+    max = models.PointField(srid=2193)
+    polygon = models.PolygonField(srid=4326)
+
+    def __str__(self):
+        return self.id
+
+    class Meta:
+        ordering = ['id']
