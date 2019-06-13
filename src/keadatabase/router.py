@@ -7,7 +7,7 @@ from bands.views import BandComboViewSet
 from sightings.views.sightings import SightingViewSet, NonSightingViewSet
 from sightings.views.birds import BirdSightingViewSet
 from sightings.views.media import SightingsMediaViewSet
-from geojson.views import SightingGeoJSONViewSet
+from geojson.views import SightingGeoJSONViewSet, GridTileGeoJSONViewSet
 from report.views import ReportSightingViewSet, ReportNonSightingViewSet
 
 router = DefaultRouter()
@@ -25,3 +25,4 @@ router.register(r'sightings/birds', BirdSightingViewSet, 'BirdSighting')
 router.register(r'sightings/media', SightingsMediaViewSet, 'SightingsMedia')
 
 router.register(r'geojson/sightings', SightingGeoJSONViewSet, 'SightingGeoJSON')
+router.register(r'geojson/grid_tiles', GridTileGeoJSONViewSet, 'GridTileGeoJSON')
