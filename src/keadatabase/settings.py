@@ -74,7 +74,7 @@ INSTALLED_APPS = [
     'sightings',
     'report',
     'geojson',
-    'survey',
+    'surveys',
 ]
 
 MIDDLEWARE = [
