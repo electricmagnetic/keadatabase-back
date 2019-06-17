@@ -24,7 +24,7 @@ class Survey(models.Model):
         on_delete=models.PROTECT
     )
 
-    comments = models.TextField()
+    comments = models.TextField(blank=True)
     max_flock_size = models.PositiveIntegerField(null=True, blank=True)
 
     # TODO: validate max flock size if child object has kea sighted?
