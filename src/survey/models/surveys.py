@@ -3,12 +3,17 @@ from django.db import models
 from .observers import Observer
 from locations.models import GridTile
 
-STATUS_CHOICES = (
+ACTIVITY_CHOICES = (
     ('W', 'W - Walking'),
     ('S', 'S - Stationary'),
     ('C', 'C - At camp (tent)'),
     ('H', 'H - At human structure (hut, carpark)'),
     ('X', 'X - Not surveying'),
+)
+
+STATUS_CHOICES = (
+    ('new', 'New'),
+    ('public', 'Verified (Public)'),
 )
 
 class Survey(models.Model):
@@ -22,9 +27,10 @@ class Survey(models.Model):
     comments = models.TextField()
     max_flock_size = models.PositiveIntegerField(null=True, blank=True)
 
-    # TODO: geocoding?
-    # TODO: moderation?
     # TODO: validate max flock size if child object has kea sighted?
+
+    # Staff only
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
 
     # Metadata
     date_created = models.DateTimeField(auto_now_add=True)
@@ -37,7 +43,7 @@ class SurveyHour(models.Model):
     survey = models.ForeignKey(Survey, related_name='hours', on_delete=models.CASCADE)
     hour = models.PositiveIntegerField()
     kea = models.BooleanField(default=False)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='')
+    activity = models.CharField(max_length=1, choices=ACTIVITY_CHOICES, default='')
     grid_tile = models.ForeignKey(GridTile, related_name='hours', on_delete=models.PROTECT)
 
     # TODO: error check ensuring unique hours only?
