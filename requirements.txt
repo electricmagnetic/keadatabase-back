@@ -13,3 +13,4 @@ django-versatileimagefield==1.10
 django-storages==1.7.1
 boto3==1.9.160
 django-debug-toolbar==1.11
+djangorestframework-csv==2.1.0

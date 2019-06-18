@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_gis',
+    'rest_framework_csv',
     'debug_toolbar',
 
     'birds',
@@ -183,6 +184,11 @@ MEDIA_URL = '/media/'
 # Django REST Framework
 
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_csv.renderers.PaginatedCSVRenderer',
+    ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
