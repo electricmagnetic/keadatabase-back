@@ -50,3 +50,7 @@ class SurveyHour(models.Model):
 
     def __str__(self):
         return ("At %i:00 in %s for survey #%s" % (self.hour, self.grid_tile, self.survey))
+
+    def get_hour_display(self):
+        """ Better display of hour value """
+        return ("%d:00" % self.hour)
