@@ -2,7 +2,7 @@ import django_filters
 from rest_framework import viewsets
 
 from keadatabase.pagination import GridTilePagination
-from .serializers import GridTileSerializer
+from .serializers import NoGeoGridTileSerializer
 from .models import GridTile
 
 class GridTileFilter(django_filters.FilterSet):
@@ -17,7 +17,7 @@ class GridTileFilter(django_filters.FilterSet):
 
 
 class GridTileViewSet(viewsets.ReadOnlyModelViewSet):
-    serializer_class = GridTileSerializer
+    serializer_class = NoGeoGridTileSerializer
     filter_class = GridTileFilter
     pagination_class = GridTilePagination
 
