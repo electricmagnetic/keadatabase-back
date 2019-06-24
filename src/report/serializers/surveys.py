@@ -28,6 +28,12 @@ class ReportSurveySerializer(serializers.ModelSerializer):
         observer_data = validated_data.pop('observer')
         hours_data = validated_data.pop('hours')
 
+        # Set a max_flock_size of 0 to 'null'
+        try:
+            if (validated_data['max_flock_size'] == 0): validated_data.pop('max_flock_size')
+        except:
+            pass
+
         observer = Observer.objects.create(**observer_data)
         survey = Survey.objects.create(observer=observer, **validated_data)
 
