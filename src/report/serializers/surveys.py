@@ -24,15 +24,15 @@ class ReportSurveySerializer(serializers.ModelSerializer):
         model = Survey
         exclude = ('status',)
 
+    def to_internal_value(self, data):
+        """ Set both empty strings and 0 to null for max_flock_size """
+        if data.get('max_flock_size', None) == '': data.pop('max_flock_size')
+        if data.get('max_flock_size', None) == 0: data.pop('max_flock_size')
+        return super().to_internal_value(data)
+
     def create(self, validated_data):
         observer_data = validated_data.pop('observer')
         hours_data = validated_data.pop('hours')
-
-        # Set a max_flock_size of 0 to 'null'
-        try:
-            if (validated_data['max_flock_size'] == 0): validated_data.pop('max_flock_size')
-        except:
-            pass
 
         observer = Observer.objects.create(**observer_data)
         survey = Survey.objects.create(observer=observer, **validated_data)
