@@ -204,6 +204,7 @@ REST_FRAMEWORK = {
         'report': '60/hour',
     },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'EXCEPTION_HANDLER': 'keadatabase.exceptions.exception_handler',
     'PAGE_SIZE': 20,
 }
 

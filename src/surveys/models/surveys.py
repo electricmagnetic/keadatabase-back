@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 from .observers import Observer
 from locations.models import GridTile
@@ -44,9 +45,8 @@ class SurveyHour(models.Model):
     hour = models.PositiveIntegerField()
     kea = models.BooleanField(default=False)
     activity = models.CharField(max_length=1, choices=ACTIVITY_CHOICES, default='')
-    grid_tile = models.ForeignKey(GridTile, related_name='hours', on_delete=models.PROTECT)
-
-    # TODO: error check ensuring unique hours only?
+    grid_tile = models.ForeignKey(GridTile, related_name='hours', on_delete=models.PROTECT,
+                                  blank=True, null=True)
 
     def __str__(self):
         return ("At %i:00 in %s for survey #%s" % (self.hour, self.grid_tile, self.survey))
@@ -54,3 +54,18 @@ class SurveyHour(models.Model):
     def get_hour_display(self):
         """ Better display of hour value """
         return ("%d:00" % self.hour)
+
+    def clean(self):
+        # If not surveying, ensure grid_tile and kea are unset.
+        if self.activity == "X":
+            self.grid_tile = None
+            self.kea = False
+        else:
+            # If any other status, must have a grid tile.
+            if self.grid_tile is None:
+                raise ValidationError('Hours surveyed must have a grid tile.')
+        super().clean()
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
