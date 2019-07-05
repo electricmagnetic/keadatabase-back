@@ -1,7 +1,8 @@
 from django.contrib.gis.db import models
 from django.utils.text import slugify
 
-GRIDTILE_IMAGE_URL = "https://geo.keadatabase.nz/tiles/"
+GRIDTILE_LARGE_IMAGE_URL = "https://geo.keadatabase.nz/tiles/"
+GRIDTILE_SMALL_IMAGE_URL = "https://geo.keadatabase.nz/small/"
 GRIDTILE_IMAGE_TYPE = ".png"
 
 class StudyArea(models.Model):
@@ -74,6 +75,10 @@ class GridTile(models.Model):
     class Meta:
         ordering = ['id']
 
-    def get_image(self):
-        """ Return URL for image """
-        return ("%s%s%s" % (GRIDTILE_IMAGE_URL, self.id, GRIDTILE_IMAGE_TYPE))
+    def get_large_image(self):
+        """ Return URL for large image """
+        return ("%s%s%s" % (GRIDTILE_LARGE_IMAGE_URL, self.id, GRIDTILE_IMAGE_TYPE))
+
+    def get_small_image(self):
+        """ Return URL for small image """
+        return ("%s%s%s" % (GRIDTILE_SMALL_IMAGE_URL, self.id, GRIDTILE_IMAGE_TYPE))

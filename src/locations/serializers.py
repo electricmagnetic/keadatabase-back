@@ -6,7 +6,8 @@ from surveys.serializers import SurveyHourSerializer
 class GridTileSerializer(serializers.ModelSerializer):
     """ Default serializer """
 
-    get_image = serializers.ReadOnlyField()
+    get_large_image = serializers.ReadOnlyField()
+    get_small_image = serializers.ReadOnlyField()
     hours = SurveyHourSerializer(many=True)
 
     class Meta:
