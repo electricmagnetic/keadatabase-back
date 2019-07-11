@@ -61,6 +61,7 @@ class BirdSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'banded', 'sex_guess', 'life_stage_guess', 'band_combo', 'bird',
                     'revisit',)
     list_filter = ('revisit',)
+    raw_id_fields = ('bird',)
 
 admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(SightingsMedia)
