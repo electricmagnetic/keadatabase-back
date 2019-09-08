@@ -12,6 +12,7 @@ PRECISION_CHOICES = (
     (50, '(50m) Known Location'),
     (200, '(200m) Approximate Location'),
     (1000, '(1000m) General Area'),
+    (5000, '(5000m) Educated Guess'),
 )
 
 SIGHTING_TYPE_CHOICES = (
