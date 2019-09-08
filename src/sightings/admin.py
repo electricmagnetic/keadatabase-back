@@ -37,6 +37,7 @@ class ContributorAdmin(admin.ModelAdmin):
 class BirdSightingInline(admin.TabularInline):
     model = BirdSighting
     extra = 0
+    raw_id_fields = ('bird',)
 
 class SightingsMediaInline(admin.StackedInline):
     model = SightingsMedia
