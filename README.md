@@ -118,6 +118,12 @@ Layout
 * `src/surveys/` - Provides the kea survey tool functionality
 
 
+Bug reports
+-----------
+
+Should be filed on the Kea Database Trello board (not presently public)
+
+
 Licence
 -------
 Kea Database  
