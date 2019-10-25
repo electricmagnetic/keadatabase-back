@@ -90,7 +90,7 @@ To import sightings data from a provided CSV:
 2. Run `./manage.py importsightings`
 
 Format:
-`name,email,date_sighted,time_sighted,comments,sighting_type,longitude,latitude,precision,number,location_details,behaviour,import_id`
+`name,email,phone,date_sighted,time_sighted,comments,sighting_type,longitude,latitude,precision,number,location_details,behaviour,import_id`
 
 Example:
 `John Smith,contact@example.org,2018-01-01,12:00:00,,sighted,172.3188943,-43.5127894,200,1,"Cathedral Square",,csv_john-smith_2019-02-17_1`

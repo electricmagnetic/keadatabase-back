@@ -10,6 +10,7 @@ def createContributor(row):
     contributor_map = {
         'name': row['name'],
         'email': row['email'],
+        'phone': row['phone'],
     }
 
     contributor = Contributor(**contributor_map)
@@ -21,6 +22,7 @@ def createContributor(row):
 
 def createSighting(row, contributor):
     sighting_map = {
+        'import_id': row['import_id'],
         'date_sighted': row['date_sighted'],
         'time_sighted': row['time_sighted'],
         'comments': row['comments'],
