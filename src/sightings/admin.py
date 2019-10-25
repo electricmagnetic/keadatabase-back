@@ -43,9 +43,17 @@ class SightingsMediaInline(admin.StackedInline):
     model = SightingsMedia
     extra = 0
 
-def make_public(modeladmin, request, queryset):
+def mark_public(modeladmin, request, queryset):
     queryset.update(status='public')
-    make_public.short_description = "Mark selected sightings as public"
+    mark_public.short_description = "Mark selected as Public"
+
+def mark_fwf(modeladmin, request, queryset):
+    queryset.update(status='fwf')
+    mark_fwf.short_description = "Mark selected as FWF"
+
+def mark_kct(modeladmin, request, queryset):
+    queryset.update(status='kct')
+    mark_kct.short_description = "Mark selected as KCT"
 
 class SightingAdmin(admin.OSMGeoAdmin):
     list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'favourite', 'confirmed', 'status', 'date_created',)
@@ -53,7 +61,7 @@ class SightingAdmin(admin.OSMGeoAdmin):
     inlines = [BirdSightingInline, SightingsMediaInline]
     readonly_fields = ('geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
-    actions = [make_public]
+    actions = [mark_public, mark_fwf, mark_kct]
 
 class NonSightingAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'contributor', 'region', 'date_created', 'status',)
