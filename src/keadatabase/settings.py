@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'report',
     'geojson',
     'surveys',
+    'analysis',
 ]
 
 MIDDLEWARE = [
