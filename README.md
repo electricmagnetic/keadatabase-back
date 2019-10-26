@@ -116,7 +116,7 @@ Layout
 * `src/theme/` - Django REST Framework customisations
 * `src/geojson/` - Provides a GeoJSON endpoint of filterable sightings
 * `src/surveys/` - Provides the kea survey tool functionality
-
+* `src/analysis/` - Provides an endpoint for analysis of observation data
 
 Bug reports
 -----------
