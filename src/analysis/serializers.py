@@ -6,8 +6,8 @@ class GridTileAnalysisSerializer(serializers.Serializer):
     """ Perform basic queries to provide an endpoint with grid tile analysis """
 
     id = serializers.CharField()
-    hours_total = serializers.SerializerMethodField(method_name='get_hours_total')
-    hours_with_kea = serializers.SerializerMethodField(method_name='get_hours_with_kea')
+    hours_total = serializers.SerializerMethodField()
+    hours_with_kea = serializers.SerializerMethodField()
 
     class Meta:
         model = GridTile
