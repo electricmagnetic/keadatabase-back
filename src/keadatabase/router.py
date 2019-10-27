@@ -12,7 +12,7 @@ from report.views import ReportSightingViewSet, ReportNonSightingViewSet
 from report.views import ReportSurveyViewSet
 from surveys.views import SurveyViewSet, SurveyHourViewSet
 from locations.views import GridTileViewSet
-from analysis.views import GridTileAnalysisViewSet
+from analysis.views import GridTileAnalysisViewSet, SurveyAnalysisViewSet
 
 router = DefaultRouter()
 
@@ -37,3 +37,4 @@ router.register(r'geojson/sightings', SightingGeoJSONViewSet, 'SightingGeoJSON')
 router.register(r'geojson/grid_tiles', GridTileGeoJSONViewSet, 'GridTileGeoJSON')
 
 router.register(r'analysis/grid_tiles', GridTileAnalysisViewSet, 'GridTileAnalysis')
+router.register(r'analysis/surveys', SurveyAnalysisViewSet, 'SurveyAnalysis')
