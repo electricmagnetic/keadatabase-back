@@ -22,8 +22,7 @@ class GridTileViewSet(viewsets.ReadOnlyModelViewSet):
     pagination_class = GridTilePagination
 
     def get_queryset(self):
-        queryset = GridTile.objects. \
-                   prefetch_related('hours'). \
-                   all()
+        queryset = GridTile.objects.all()
+        queryset = self.get_serializer_class().setup_eager_loading(queryset)
 
         return queryset
