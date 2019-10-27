@@ -22,11 +22,11 @@ class GridTileAnalysisSerializer(BaseAnalysisSerializer):
 class SurveyAnalysisSerializer(BaseAnalysisSerializer):
     """ Perform basic queries to provide an endpoint with survey analysis """
 
-    hours_total = serializers.SerializerMethodField()
+    hours_surveyed = serializers.SerializerMethodField()
     hours_with_kea = serializers.SerializerMethodField()
 
-    def get_hours_total(self, instance):
-        return instance.hours.count()
+    def get_hours_surveyed(self, instance):
+        return instance.hours.exclude(activity='X').count()
 
     def get_hours_with_kea(self, instance):
         return instance.hours.filter(kea=True).count()
