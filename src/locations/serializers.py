@@ -14,6 +14,12 @@ class GridTileSerializer(serializers.ModelSerializer):
         model = GridTile
         fields = '__all__'
 
+    @staticmethod
+    def setup_eager_loading(queryset):
+        queryset = queryset.prefetch_related('hours', 'hours__survey')
+
+        return queryset
+
 
 class NoGeoGridTileSerializer(GridTileSerializer):
     """ Serializer excluding polygon field """

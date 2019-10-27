@@ -1,16 +1,29 @@
 from rest_framework import serializers
 
 from locations.models import GridTile
+from surveys.models.surveys import Survey
 
-class GridTileAnalysisSerializer(serializers.Serializer):
+class BaseAnalysisSerializer(serializers.Serializer):
+    """ Basic list only analysis serializer """
+    id = serializers.CharField()
+
+class GridTileAnalysisSerializer(BaseAnalysisSerializer):
     """ Perform basic queries to provide an endpoint with grid tile analysis """
 
-    id = serializers.CharField()
     hours_total = serializers.SerializerMethodField()
     hours_with_kea = serializers.SerializerMethodField()
 
-    class Meta:
-        model = GridTile
+    def get_hours_total(self, instance):
+        return instance.hours.count()
+
+    def get_hours_with_kea(self, instance):
+        return instance.hours.filter(kea=True).count()
+
+class SurveyAnalysisSerializer(BaseAnalysisSerializer):
+    """ Perform basic queries to provide an endpoint with survey analysis """
+
+    hours_total = serializers.SerializerMethodField()
+    hours_with_kea = serializers.SerializerMethodField()
 
     def get_hours_total(self, instance):
         return instance.hours.count()
