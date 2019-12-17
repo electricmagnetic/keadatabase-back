@@ -1,2 +1,2 @@
-from .sightings import BirdSightingSerializer, ContributorSerializer, ReportBaseSerializer, ReportSightingSerializer, ReportNonSightingSerializer
+from .sightings import BirdSightingSerializer, ContributorSerializer, ReportSightingSerializer
 from .surveys import SurveyHourSerializer, ObserverSerializer, ReportSurveySerializer
