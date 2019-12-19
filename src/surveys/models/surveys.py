@@ -40,6 +40,9 @@ class Survey(models.Model):
     def __str__(self):
         return ("%s" % (self.id))
 
+    class Meta:
+        ordering = ['-date']
+
 class SurveyHour(models.Model):
     survey = models.ForeignKey(Survey, related_name='hours', on_delete=models.CASCADE)
     hour = models.PositiveIntegerField()
@@ -47,6 +50,9 @@ class SurveyHour(models.Model):
     activity = models.CharField(max_length=1, choices=ACTIVITY_CHOICES, default='')
     grid_tile = models.ForeignKey(GridTile, related_name='hours', on_delete=models.PROTECT,
                                   blank=True, null=True)
+
+    class Meta:
+        ordering = ['survey', 'hour']
 
     def __str__(self):
         return ("At %i:00 in %s for survey #%s" % (self.hour, self.grid_tile, self.survey))

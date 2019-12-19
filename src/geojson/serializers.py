@@ -12,8 +12,10 @@ class SightingGeoJSONSerializer(GeoFeatureModelSerializer, SightingSerializer):
         geo_field = 'point_location'
 
 class GridTileGeoJSONSerializer(GeoFeatureModelSerializer, GridTileSerializer):
-    class Meta(GridTileSerializer.Meta):
+    class Meta:
+        model = GridTile
         geo_field = 'polygon'
+        fields = '__all__'
 
 class BirdSightingGeoJSONSerializer(GeoFeatureModelSerializer, BirdSightingSerializer):
     class Meta(BirdSightingSerializer.Meta):

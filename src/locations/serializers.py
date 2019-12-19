@@ -1,29 +1,23 @@
 from rest_framework import serializers
+from rest_framework_gis.serializers import GeometryField
 
 from .models import GridTile
-from surveys.serializers import SurveyHourSerializer
 
-class GridTileSerializer(serializers.ModelSerializer):
+class BaseGridTileSerializer(serializers.Serializer):
     """ Default serializer """
+
+    id = serializers.ReadOnlyField()
 
     get_large_image = serializers.ReadOnlyField()
     get_small_image = serializers.ReadOnlyField()
-    hours = SurveyHourSerializer(many=True)
 
-    class Meta:
-        model = GridTile
-        fields = '__all__'
+    min = GeometryField()
+    max = GeometryField()
 
-    @staticmethod
-    def setup_eager_loading(queryset):
-        queryset = queryset.prefetch_related('hours', 'hours__survey')
+    hours_total = serializers.ReadOnlyField()
+    hours_with_kea = serializers.ReadOnlyField()
 
-        return queryset
+class GridTileSerializer(BaseGridTileSerializer):
+    """ Serializer including polygon field """
 
-
-class NoGeoGridTileSerializer(GridTileSerializer):
-    """ Serializer excluding polygon field """
-
-    class Meta:
-        model = GridTile
-        exclude = ('polygon',)
+    polygon = GeometryField()

@@ -7,7 +7,6 @@ from .serializers import SurveySerializer, SurveyHourSerializer
 class SurveyHourViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SurveyHourSerializer
     pagination_class = SurveyPagination
-    ordering = ('-survey__date',)
     ordering_fields = ('id', 'survey__date',)
     filter_fields = ('grid_tile', 'activity', 'kea', 'survey',)
 
@@ -21,7 +20,6 @@ class SurveyHourViewSet(viewsets.ReadOnlyModelViewSet):
 class SurveyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SurveySerializer
     pagination_class = SurveyPagination
-    ordering = ('-date',)
     ordering_fields = ('id', 'date',)
     filter_fields = ('status',)
 

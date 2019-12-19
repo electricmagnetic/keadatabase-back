@@ -1,8 +1,10 @@
+from django.db.models import Count, Q
+
 import django_filters
 from rest_framework import viewsets
 
 from keadatabase.pagination import GridTilePagination
-from .serializers import NoGeoGridTileSerializer
+from .serializers import BaseGridTileSerializer
 from .models import GridTile
 
 class GridTileFilter(django_filters.FilterSet):
@@ -17,12 +19,12 @@ class GridTileFilter(django_filters.FilterSet):
 
 
 class GridTileViewSet(viewsets.ReadOnlyModelViewSet):
-    serializer_class = NoGeoGridTileSerializer
+    serializer_class = BaseGridTileSerializer
     filter_class = GridTileFilter
     pagination_class = GridTilePagination
 
     def get_queryset(self):
         queryset = GridTile.objects.all()
-        queryset = self.get_serializer_class().setup_eager_loading(queryset)
+        queryset = queryset.annotate(hours_total=Count('hours'), hours_with_kea=Count('id', filter=Q(hours__kea=True)))
 
         return queryset
