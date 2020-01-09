@@ -127,8 +127,7 @@ Should be filed on the Kea Database Trello board (not presently public)
 Licence
 -------
 Kea Database  
-Copyright (C) 2019 Greenstone Limited  
-<hello@greenstone.org.nz>  
+Copyright (C) 2020 Electric Magnetic Limited  
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
