@@ -19,5 +19,5 @@ class GridTileAdmin(admin.ModelAdmin):
 
 admin.site.register(StudyArea)
 admin.site.register(Region)
-admin.site.register(Place, admin.OSMGeoAdmin)
+admin.site.register(Place)
 admin.site.register(GridTile, GridTileAdmin)
