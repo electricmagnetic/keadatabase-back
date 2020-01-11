@@ -1,4 +1,5 @@
 from django.contrib.gis import admin
+from leaflet.admin import LeafletGeoAdmin
 
 from .models.contributors import Contributor
 from .models.media import SightingsMedia
@@ -55,7 +56,7 @@ def mark_kct(modeladmin, request, queryset):
     queryset.update(status='kct')
     mark_kct.short_description = "Mark selected as KCT"
 
-class SightingAdmin(admin.OSMGeoAdmin):
+class SightingAdmin(LeafletGeoAdmin):
     list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'favourite', 'confirmed', 'status', 'date_created',)
     list_filter = ('status', 'date_created', 'favourite', 'region', 'confirmed',)
     inlines = [BirdSightingInline, SightingsMediaInline]
