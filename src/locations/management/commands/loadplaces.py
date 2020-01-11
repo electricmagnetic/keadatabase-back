@@ -7,7 +7,7 @@ from django.contrib.gis.utils import LayerMapping
 from locations.models import Place
 
 class Command(management.BaseCommand):
-    help = 'Allows the import of NZ Place Names'
+    help = 'Allows the import of NZ place names'
 
     def check_current_status(self):
         """ Outputs information about objects currently in database """
@@ -23,8 +23,6 @@ class Command(management.BaseCommand):
             'name' : 'name',
             'feat_type' : 'feat_type',
             'land_district' : 'land_distr',
-            # 'lon': 'crd_longit',
-            # 'lat': 'crd_latitu'
             'point': 'POINT'
         }
 

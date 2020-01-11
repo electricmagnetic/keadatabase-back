@@ -69,7 +69,7 @@ Data synchronisation: Region, Place
 2. Import datasets into a local version of the kea database using `./manage.py loadregions` and `./manage.py loadplaces`
 3. Dump data using `./manage.py dumpdata locations.place`and `./manage.py dumpdata locations.region`
 4. Upload data to the keadatabase S3 bucket
-5. `heroku run bash` then wget the data and run `./manage.py loadddata <filename>`
+5. `heroku run bash` then wget the data and run `./manage.py loaddata <filename>`
 
 
 Data synchronisation: GridTile
