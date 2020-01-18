@@ -1,7 +1,7 @@
 keadatabase-back
 ================
 
-[![Build Status](https://travis-ci.org/electricmagnetic/keadatabase-back.svg?branch=master)](https://travis-ci.org/electricmagnetic/keadatabase-back)
+[![Build Status](https://api.travis-ci.com/electricmagnetic/keadatabase-back.svg?branch=master)](https://travis-ci.com/electricmagnetic/keadatabase-back)
 [![codecov](https://codecov.io/gh/electricmagnetic/keadatabase-back/branch/master/graph/badge.svg)](https://codecov.io/gh/electricmagnetic/keadatabase-back)
 
 The GeoDjango-based back-end for the Kea Database <https://keadatabase.nz> citizen science project.
