@@ -1,3 +1,5 @@
+from django.urls import reverse
+from django.utils.html import format_html
 from django.contrib.gis import admin
 from leaflet.admin import LeafletGeoAdmin
 
@@ -33,7 +35,19 @@ class SightingImportReportAdmin(admin.ModelAdmin):
         return False
 
 class ContributorAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'email', 'activity', 'heard', 'communications',)
+    list_display = ('__str__', 'email', 'activity', 'heard', 'communications', 'link_to_sighting',)
+    search_fields = ('name', 'email',)
+
+    def link_to_sighting(self, obj):
+        link = reverse("admin:sightings_sighting_change", args=[obj.sighting.id])
+        return format_html('<a href="{}">#{}</a>', link, obj.sighting.id)
+
+    link_to_sighting.short_description = 'Sighting'
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.select_related('sighting')
+        return queryset
 
 class BirdSightingInline(admin.TabularInline):
     model = BirdSighting
@@ -60,7 +74,7 @@ class SightingAdmin(LeafletGeoAdmin):
     list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'favourite', 'confirmed', 'status', 'date_created',)
     list_filter = ('status', 'date_created', 'favourite', 'region', 'confirmed',)
     inlines = [BirdSightingInline, SightingsMediaInline]
-    readonly_fields = ('geocode', 'region', 'import_id',)
+    readonly_fields = ('id', 'geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
     actions = [mark_public, mark_fwf, mark_kct]
 
