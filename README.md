@@ -120,8 +120,11 @@ Layout
 
 Bug reports
 -----------
-
 Should be filed on the Kea Database Trello board (not presently public)
+
+Troubleshooting
+---------------
+* Getting an error about `libmagic`? Try installing `python-magic-bin`
 
 
 Licence
