@@ -20,15 +20,15 @@
 
       L.tileLayer(
         'https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/256/{z}/{x}/{y}?access_token={% mapbox_api_key %}',
-        {'attribution': 'Mapbox', 'maxZoom': 9}
+        {'attribution': 'Mapbox', 'maxZoom': 10}
       ).addTo(map);
       L.tileLayer(
         'https://tiles-a.data-cdn.linz.govt.nz/services;key={% linz_api_key %}/tiles/v4/layer=50798/EPSG:3857/{z}/{x}/{y}.png',
-        {'attribution': 'LINZ, licensed for reuse (CC BY 4.0)', 'minZoom': 10, 'maxZoom': 11}
+        {'attribution': 'LINZ, licensed for reuse (CC BY 4.0)', 'minZoom': 10, 'maxZoom': 12, 'subdomains': 'abcd'}
       ).addTo(map);
       L.tileLayer(
         'https://tiles-a.data-cdn.linz.govt.nz/services;key={% linz_api_key %}/tiles/v4/layer=50767/EPSG:3857/{z}/{x}/{y}.png',
-        {'attribution': '', 'minZoom': 12}
+        {'attribution': '', 'minZoom': 12, 'subdomains': 'abcd'}
       ).addTo(map);
     });
   </script>
