@@ -8,7 +8,9 @@ RUN apt update \
         libmagic-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . .
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+
+COPY /src /src
 
 CMD ["gunicorn", "--pythonpath", "src", "--bind", "0.0.0.0:8000", "keadatabase.wsgi"]
