@@ -10,7 +10,7 @@ from sightings.views.media import SightingsMediaViewSet
 from geojson.views import SightingGeoJSONViewSet, GridTileGeoJSONViewSet, BirdSightingGeoJSONViewSet
 from report.views import ReportSightingViewSet
 from report.views import ReportSurveyViewSet
-from surveys.views import SurveyViewSet, SurveyHourViewSet
+from surveys.views import SurveyViewSet, SurveyHourViewSet, ObserverViewSet
 from locations.views import GridTileViewSet
 from analysis.views import GridTileAnalysisViewSet, SurveyAnalysisViewSet
 
@@ -30,6 +30,7 @@ router.register(r'sightings/media', SightingsMediaViewSet, 'SightingsMedia')
 router.register(r'surveys/grid_tiles', GridTileViewSet, 'GridTile')
 router.register(r'surveys/hours', SurveyHourViewSet, 'SurveyHour')
 router.register(r'surveys/surveys', SurveyViewSet, 'Survey')
+router.register(r'surveys/observers', ObserverViewSet, 'Observer')
 
 router.register(r'geojson/sightings', SightingGeoJSONViewSet, 'SightingGeoJSON')
 router.register(r'geojson/grid_tiles', GridTileGeoJSONViewSet, 'GridTileGeoJSON')

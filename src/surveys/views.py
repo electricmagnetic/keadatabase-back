@@ -1,8 +1,9 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from keadatabase.pagination import SurveyPagination
 from .models.surveys import Survey, SurveyHour
-from .serializers import SurveySerializer, SurveyHourSerializer
+from .models.observers import Observer
+from .serializers import SurveySerializer, SurveyHourSerializer, ObserverSerializer
 
 class SurveyHourViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SurveyHourSerializer
@@ -27,6 +28,19 @@ class SurveyViewSet(viewsets.ReadOnlyModelViewSet):
         queryset = Survey.objects. \
                    prefetch_related('hours'). \
                    select_related('observer'). \
+                   all()
+
+        return queryset
+
+class ObserverViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = ObserverSerializer
+    pagination_class = SurveyPagination
+    ordering_fields = ('name',)
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = Observer.objects. \
+                   select_related('survey'). \
                    all()
 
         return queryset

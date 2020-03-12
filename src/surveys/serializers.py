@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from .models.surveys import Survey, SurveyHour
+from .models.observers import Observer
 
 class SurveyHourSerializer(serializers.ModelSerializer):
     get_activity_display = serializers.CharField()
@@ -19,4 +20,9 @@ class SurveySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Survey
+        fields = '__all__'
+
+class ObserverSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Observer
         fields = '__all__'
