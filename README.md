@@ -21,11 +21,12 @@ For instructions on setting up PostGIS:
 Required packages: `binutils`, `libproj-dev`, `gdal-bin`, `postgresql-x.x`, `postgresql-x.x-postgis`, `postgresql-x.x-postgis-x.x-scripts`, `postgresql-server-dev-x.x`, `python3-psycopg2`
 
 1. Setup `python3` virtual environment
-2. Create a new database 'keadatabase' with username 'postgres' and no password
-3. `pip install -r requirements.txt`
-4. `cd src`
-5. `./manage.py migrate`
-6. `./manage.py createsuperuser`
+2. Copy the contents of `.env.example` to `.env` and adjust as appropriate
+3. Create a new database 'keadatabase' with username 'postgres' and no password
+4. `pip install -r requirements.txt`
+5. `cd src`
+6. `./manage.py migrate`
+7. `./manage.py createsuperuser`
 
 NB: To create database, login as postgres user then run `createdb keadatabase` in bash shell and `grant all privileges on database keadatabase to postgres;` in the psql shell. You may need to adjust your pg_hba.conf settings for no password access.
 
