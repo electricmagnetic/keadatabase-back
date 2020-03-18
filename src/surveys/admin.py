@@ -4,7 +4,7 @@ from .models.observers import Observer
 from .models.surveys import Survey, SurveyHour
 
 class ObserverAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'email', 'purpose',)
+    list_display = ('__str__', 'email',)
 
 class SurveyHourInline(admin.StackedInline):
     model = SurveyHour
@@ -19,7 +19,7 @@ class SurveyHourInline(admin.StackedInline):
             all()
 
 class SurveyAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'date', 'max_flock_size', 'observer', 'status',)
+    list_display = ('__str__', 'date', 'max_flock_size', 'observer', 'purpose', 'status',)
     list_filter = ('date', 'status',)
     inlines = [SurveyHourInline]
     search_fields = ('id__exact',)
