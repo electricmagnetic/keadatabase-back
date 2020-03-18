@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 from .observers import Observer
+from .choices import PURPOSE_CHOICES
 from locations.models import GridTile
 
 ACTIVITY_CHOICES = (
@@ -25,6 +26,7 @@ class Survey(models.Model):
         on_delete=models.PROTECT
     )
 
+    purpose = models.CharField(max_length=15, blank=True, choices=PURPOSE_CHOICES, default='')
     comments = models.TextField(blank=True)
     max_flock_size = models.PositiveIntegerField(null=True, blank=True)
 
