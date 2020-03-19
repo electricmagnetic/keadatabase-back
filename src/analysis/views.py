@@ -20,8 +20,8 @@ class GridTileAnalysisViewSet(BaseListSerializerMixin, viewsets.ReadOnlyModelVie
         prefetch_related('hours'). \
         exclude(hours__isnull=True). \
         annotate(
-            all_with_kea=Count(Case(When(hours__kea=True, then=1), output_field=IntegerField())),
-            all_total=Count('hours'),
+            with_kea=Count(Case(When(hours__kea=True, then=1), output_field=IntegerField())),
+            total=Count('hours'),
         )
 
     paginator = None
@@ -32,5 +32,8 @@ class SurveyAnalysisViewSet(BaseListSerializerMixin, viewsets.ReadOnlyModelViewS
     """ Obtain all surveys """
     queryset = Survey.objects. \
         prefetch_related('hours'). \
-        all()
+        annotate(
+            with_kea=Count(Case(When(hours__kea=True, then=1), output_field=IntegerField())),
+            total=Count('hours'),
+        )
     serializer_class = SurveyAnalysisSerializer
