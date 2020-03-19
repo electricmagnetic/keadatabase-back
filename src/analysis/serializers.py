@@ -9,17 +9,15 @@ class BaseAnalysisSerializer(serializers.Serializer):
     """ Basic list only analysis serializer """
     id = serializers.CharField()
 
+    all_with_kea = serializers.IntegerField()
+    all_total = serializers.IntegerField()
+
 class GridTileAnalysisSerializer(BaseAnalysisSerializer):
     """ Perform basic queries to provide an endpoint with grid tile analysis """
 
-    hours_total = serializers.SerializerMethodField()
-    hours_per_quarter = serializers.SerializerMethodField()
+    per_quarter = serializers.SerializerMethodField()
 
-    def get_hours_total(self, instance):
-        return instance.hours. \
-            aggregate(total=Count('id'), with_kea=Count('id', filter=Q(kea=True)))
-
-    def get_hours_per_quarter(self, instance):
+    def get_per_quarter(self, instance):
         return instance.hours. \
                 annotate(quarter=TruncQuarter('survey__date')). \
                 values('quarter'). \

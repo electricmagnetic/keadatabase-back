@@ -1,3 +1,4 @@
+from django.db.models import Count, Case, When, IntegerField
 from rest_framework import viewsets
 
 from locations.models import GridTile
@@ -17,7 +18,13 @@ class GridTileAnalysisViewSet(BaseListSerializerMixin, viewsets.ReadOnlyModelVie
     """ Obtain all grid tiles with at least one survey hour """
     queryset = GridTile.objects. \
         prefetch_related('hours'). \
-        exclude(hours__isnull=True)
+        exclude(hours__isnull=True). \
+        annotate(
+            all_with_kea=Count(Case(When(hours__kea=True, then=1), output_field=IntegerField())),
+            all_total=Count('hours'),
+        )
+
+    paginator = None
     serializer_class = GridTileAnalysisSerializer
 
 
