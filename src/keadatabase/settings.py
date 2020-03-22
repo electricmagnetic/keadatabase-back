@@ -40,7 +40,8 @@ if env.bool('IS_PRODUCTION', False):
     DEBUG = False
 
     ALLOWED_HOSTS = [
-        '.keadatabase.nz'
+        '.keadatabase.nz',
+        '.electricmagnetic.io',
     ]
 
     GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(env.str('GEO_LIBRARIES_PATH'))
@@ -224,6 +225,7 @@ if not DEBUG:
         'map.keadatabase.nz',
         'keadatabase.nz',
         'survey.keadatabase.nz',
+        'electricmagnetic.io',
     )
 
 
