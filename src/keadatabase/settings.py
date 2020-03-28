@@ -320,9 +320,9 @@ MAPBOX_API_KEY = env.str('MAPBOX_API_KEY', '')
 # yapf: disable
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (-41.47, 172.72),
-    'DEFAULT_ZOOM': 5,
-    'MIN_ZOOM': 5,
-    'MAX_ZOOM': 13,
+    'DEFAULT_ZOOM': 4,
+    'MIN_ZOOM': 4,
+    'MAX_ZOOM': 14,
     'RESET_VIEW': False,
     'TILES': [],
 }
