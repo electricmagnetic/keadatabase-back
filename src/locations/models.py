@@ -70,10 +70,10 @@ class GridTile(models.Model):
     min = models.PointField(srid=2193)
     max = models.PointField(srid=2193)
 
-    centroid = models.PointField(srid=4326, null=True)
+    centroid = models.PointField(srid=4326)
     polygon = models.PolygonField(srid=4326)
 
-    neighbours = ArrayField(models.CharField(max_length=7), size=8, blank=True, null=True)
+    neighbours = ArrayField(models.CharField(max_length=7), size=8)
 
     def __str__(self):
         return self.id
