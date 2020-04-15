@@ -1,4 +1,5 @@
 from django.contrib.gis.db import models
+from django.contrib.postgres.fields import ArrayField
 from django.utils.text import slugify
 
 GRIDTILE_LARGE_IMAGE_URL = "https://geo.keadatabase.nz/tiles/"
@@ -65,9 +66,14 @@ class Region(models.Model):
 class GridTile(models.Model):
     """ Kea survey grid tile (5km by 5km) """
     id = models.CharField(primary_key=True, max_length=7)
+
     min = models.PointField(srid=2193)
     max = models.PointField(srid=2193)
+
+    centroid = models.PointField(srid=4326, null=True)
     polygon = models.PolygonField(srid=4326)
+
+    neighbours = ArrayField(models.CharField(max_length=7), size=8, blank=True, null=True)
 
     def __str__(self):
         return self.id

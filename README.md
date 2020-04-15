@@ -79,9 +79,9 @@ Data synchronisation: GridTile
 2. Temporarily modify the GridTile model on a local version of the kea database to enable `null=True` on min/max fields (discard migrations afterwards)
 3. Import datasets into the local version of the kea database using `./manage.py loadgridtiles`
 4. Remove temporary `null=True`from models
-5. Dump data using `./manage.py dumpdata locations.gridtiles`
+5. Dump data using `./manage.py dumpdata locations.gridtile`
 6. Upload data to the keadatabase S3 bucket
-7. `heroku run bash` then wget the data and run `./manage.py loaddata <filename>``
+7. `heroku run bash` then wget the data and run `./manage.py loaddata <filename>`
 
 
 Sightings import

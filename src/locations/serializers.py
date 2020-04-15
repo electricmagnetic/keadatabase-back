@@ -14,10 +14,14 @@ class BaseGridTileSerializer(serializers.Serializer):
     min = GeometryField()
     max = GeometryField()
 
+    centroid = GeometryField(precision=7)
+
+    neighbours = serializers.ListField(child=serializers.CharField())
+
     hours_total = serializers.ReadOnlyField()
     hours_with_kea = serializers.ReadOnlyField()
 
 class GridTileSerializer(BaseGridTileSerializer):
     """ Serializer including polygon field """
 
-    polygon = GeometryField()
+    polygon = GeometryField(precision=7)
