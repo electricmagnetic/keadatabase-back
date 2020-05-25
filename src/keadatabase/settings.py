@@ -33,7 +33,7 @@ DEBUG = env.bool('DEBUG', True)
 ALLOWED_HOSTS = []
 
 
-# Production settings for security and geo libraries
+# Production settings for security
 if env.bool('IS_PRODUCTION', False):
     SECRET_KEY = env.str('DJANGO_SECRET_KEY')
 
@@ -44,6 +44,8 @@ if env.bool('IS_PRODUCTION', False):
         '.electricmagnetic.io',
     ]
 
+# Specify geo libraries (if necessary)
+if env('GEO_LIBRARIES_PATH', False):
     GEOS_LIBRARY_PATH = "{}/lib/libgeos_c.so".format(env.str('GEO_LIBRARIES_PATH'))
     GDAL_LIBRARY_PATH = "{}/lib/libgdal.so".format(env.str('GEO_LIBRARIES_PATH'))
     PROJ4_LIBRARY_PATH = "{}/lib/libproj.so".format(env.str('GEO_LIBRARIES_PATH'))
