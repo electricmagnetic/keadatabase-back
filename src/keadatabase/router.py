@@ -16,25 +16,32 @@ from analysis.views import GridTileAnalysisViewSet, SurveyAnalysisViewSet
 
 router = DefaultRouter()
 
+# Base endpoints
 router.register(r'band_combos', BandComboViewSet, 'BandCombo')
-
 router.register(r'birds', BirdViewSet, 'Bird')
 
-router.register(r'report/sighting', ReportObservationViewSet, 'ReportObservation')
-router.register(r'report/survey', ReportSurveyViewSet, 'ReportSurveyViewSet')
+# Duplicate endpoints (in preparation for change from 'sighting' to 'observation')
+router.register(r'observations', ObservationViewSet, 'Observation')
+router.register(r'bird_observations', BirdObservationViewSet, 'BirdObservation')
+router.register(r'media', ObservationsMediaViewSet, 'ObservationMedia')
+router.register(r'geojson/observations', ObservationGeoJSONViewSet, 'ObservationGeoJSON')
+router.register(r'geojson/birds_observations', BirdObservationGeoJSONViewSet, 'BirdObservationGeoJSON')
+router.register(r'report/observation', ReportObservationViewSet, 'ReportObservation')
 
-router.register(r'sightings/sightings', ObservationViewSet, 'Observation')
-router.register(r'sightings/birds', BirdObservationViewSet, 'BirdObservation')
-router.register(r'sightings/media', ObservationsMediaViewSet, 'ObservationsMedia')
+# Sightings endpoints (to be deprecated)
+router.register(r'sightings/sightings', ObservationViewSet, 'Sighting')
+router.register(r'sightings/birds', BirdObservationViewSet, 'BirdSighting')
+router.register(r'sightings/media', ObservationsMediaViewSet, 'SightingsMedia')
+router.register(r'geojson/sightings', ObservationGeoJSONViewSet, 'SightingGeoJSON')
+router.register(r'geojson/birds', BirdObservationGeoJSONViewSet, 'BirdSightingGeoJSON')
+router.register(r'report/sighting', ReportObservationViewSet, 'ReportSighting')
 
+# Survey endpoints
 router.register(r'surveys/grid_tiles', GridTileViewSet, 'GridTile')
 router.register(r'surveys/hours', SurveyHourViewSet, 'SurveyHour')
 router.register(r'surveys/surveys', SurveyViewSet, 'Survey')
 router.register(r'surveys/observers', ObserverViewSet, 'Observer')
-
-router.register(r'geojson/sightings', ObservationGeoJSONViewSet, 'ObservationGeoJSON')
 router.register(r'geojson/grid_tiles', GridTileGeoJSONViewSet, 'GridTileGeoJSON')
-router.register(r'geojson/birds', BirdObservationGeoJSONViewSet, 'BirdObservationGeoJSON')
-
 router.register(r'analysis/grid_tiles', GridTileAnalysisViewSet, 'GridTileAnalysis')
 router.register(r'analysis/surveys', SurveyAnalysisViewSet, 'SurveyAnalysis')
+router.register(r'report/survey', ReportSurveyViewSet, 'ReportSurveyViewSet')
