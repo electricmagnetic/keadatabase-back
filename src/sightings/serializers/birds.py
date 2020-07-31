@@ -2,16 +2,16 @@ from rest_framework import serializers
 from rest_framework_gis.serializers import GeometryField
 
 from ..models.birds import BirdSighting
-from .sightings import SightingSerializer
+from .observations import ObservationSerializer
 from birds.serializers import BirdSerializer
 
-class BirdSightingSerializer(serializers.ModelSerializer):
+class BirdObservationSerializer(serializers.ModelSerializer):
     get_banded_display = serializers.CharField()
     get_sex_guess_display = serializers.CharField()
     get_life_stage_guess_display = serializers.CharField()
 
     bird = BirdSerializer(many=False, read_only=True)
-    sighting = SightingSerializer(many=False, read_only=True)
+    sighting = ObservationSerializer(many=False, read_only=True)
 
     # TODO: remove these three fields. Currently left in for backwards compatibility.
     sighting__date_sighted = serializers.ReadOnlyField(source='sighting.date_sighted')

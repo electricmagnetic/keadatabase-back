@@ -5,7 +5,7 @@ from versatileimagefield.fields import VersatileImageField
 
 from birds.models import SEX_CHOICES, LIFE_STAGE_CHOICES
 from birds.models import Bird
-from .sightings import Sighting
+from .observations import Sighting
 
 BAND_CHOICES = (
     ('unknown', 'Couldn\'t tell'),

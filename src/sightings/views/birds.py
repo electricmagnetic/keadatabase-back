@@ -1,9 +1,9 @@
 import django_filters
 from rest_framework import viewsets
 
-from keadatabase.pagination import SightingPagination
+from keadatabase.pagination import ObservationPagination
 from ..models.birds import BirdSighting
-from ..serializers.birds import BirdSightingSerializer
+from ..serializers.birds import BirdObservationSerializer
 
 class BirdSightingFilter(django_filters.FilterSet):
     has_bird = django_filters.BooleanFilter(field_name='bird',
@@ -15,9 +15,9 @@ class BirdSightingFilter(django_filters.FilterSet):
         model = BirdSighting
         fields = ('sighting', 'bird',)
 
-class BirdSightingViewSet(viewsets.ReadOnlyModelViewSet):
-    serializer_class = BirdSightingSerializer
-    pagination_class = SightingPagination
+class BirdObservationViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = BirdObservationSerializer
+    pagination_class = ObservationPagination
     ordering = ('-sighting__date_sighted', '-sighting__time_sighted',)
     ordering_fields = ('id', 'banded', 'sighting', 'sighting__date_sighted',
                        'sighting__time_sighted', 'bird',)

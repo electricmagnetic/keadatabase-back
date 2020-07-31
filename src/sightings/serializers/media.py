@@ -3,7 +3,7 @@ from versatileimagefield.serializers import VersatileImageFieldSerializer
 
 from ..models.media import SightingsMedia
 
-class SightingsMediaSerializer(serializers.ModelSerializer):
+class ObservationsMediaSerializer(serializers.ModelSerializer):
     sighting_image = VersatileImageFieldSerializer(
         sizes='sighting_image'
     )

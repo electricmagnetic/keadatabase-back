@@ -5,17 +5,17 @@ from leaflet.admin import LeafletGeoAdmin
 
 from .models.contributors import Contributor
 from .models.media import SightingsMedia
-from .models.sightings import NonSighting, Sighting
+from .models.observations import Sighting
 from .models.birds import BirdSighting
 
-class SightingImportReport(Sighting):
+class ObservationImportReport(Sighting):
     """ Proxy model for showing different view of sightings """
 
     class Meta:
         proxy = True
         verbose_name = 'Import report'
 
-class SightingImportReportAdmin(admin.ModelAdmin):
+class ObservationImportReportAdmin(admin.ModelAdmin):
     """ Read only view of sightings with import_id """
 
     list_display = ('id', '__str__', 'import_id',)
@@ -42,19 +42,19 @@ class ContributorAdmin(admin.ModelAdmin):
         link = reverse("admin:sightings_sighting_change", args=[obj.sighting.id])
         return format_html('<a href="{}">#{}</a>', link, obj.sighting.id)
 
-    link_to_sighting.short_description = 'Sighting'
+    link_to_sighting.short_description = 'Observation'
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         queryset = queryset.select_related('sighting')
         return queryset
 
-class BirdSightingInline(admin.TabularInline):
+class BirdObservationInline(admin.TabularInline):
     model = BirdSighting
     extra = 0
     raw_id_fields = ('bird',)
 
-class SightingsMediaInline(admin.StackedInline):
+class ObservationsMediaInline(admin.StackedInline):
     model = SightingsMedia
     extra = 0
 
@@ -70,18 +70,15 @@ def mark_kct(modeladmin, request, queryset):
     queryset.update(status='kct')
     mark_kct.short_description = "Mark selected as KCT"
 
-class SightingAdmin(LeafletGeoAdmin):
+class ObservationAdmin(LeafletGeoAdmin):
     list_display = ('id', '__str__', 'contributor', 'geocode', 'region', 'favourite', 'confirmed', 'status', 'date_created',)
     list_filter = ('status', 'date_created', 'favourite', 'region', 'confirmed',)
-    inlines = [BirdSightingInline, SightingsMediaInline]
+    inlines = [BirdObservationInline, ObservationsMediaInline]
     readonly_fields = ('id', 'geocode', 'region', 'import_id',)
     search_fields = ('id__exact',)
     actions = [mark_public, mark_fwf, mark_kct]
 
-class NonSightingAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'contributor', 'region', 'date_created', 'status',)
-
-class BirdSightingAdmin(admin.ModelAdmin):
+class BirdObservationAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'banded', 'sex_guess', 'life_stage_guess', 'band_combo', 'bird',
                     'revisit',)
     list_filter = ('revisit',)
@@ -90,8 +87,7 @@ class BirdSightingAdmin(admin.ModelAdmin):
 admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(SightingsMedia)
 
-admin.site.register(NonSighting, NonSightingAdmin)
-admin.site.register(Sighting, SightingAdmin)
-admin.site.register(BirdSighting, BirdSightingAdmin)
+admin.site.register(Sighting, ObservationAdmin)
+admin.site.register(BirdSighting, BirdObservationAdmin)
 
-admin.site.register(SightingImportReport, SightingImportReportAdmin)
+admin.site.register(ObservationImportReport, ObservationImportReportAdmin)
