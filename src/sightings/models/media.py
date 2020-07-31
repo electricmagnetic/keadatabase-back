@@ -1,4 +1,4 @@
-""" Media models for Sightings (sightings and non-sightings in .sightings)"""
+""" Media models for Sightings (sightings and non-sightings in .observations)"""
 
 from django.db import models
 from django.dispatch import receiver
@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from versatileimagefield.fields import VersatileImageField, PPOIField
 from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 
-from sightings.models.sightings import Sighting
+from sightings.models.observations import Sighting
 from birds.models import Bird
 
 def sighting_directory_path(instance, filename):

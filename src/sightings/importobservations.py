@@ -2,7 +2,7 @@ import csv
 
 from django.core import management
 
-from sightings.models.sightings import Sighting
+from sightings.models.observations import Sighting
 from sightings.models.birds import BirdSighting
 from sightings.models.contributors import Contributor
 
@@ -20,8 +20,8 @@ def createContributor(row):
     return contributor
 
 
-def createSighting(row, contributor):
-    sighting_map = {
+def createObservation(row, contributor):
+    observation_map = {
         'import_id': row['import_id'],
         'date_sighted': row['date_sighted'],
         'time_sighted': row['time_sighted'],
@@ -35,16 +35,16 @@ def createSighting(row, contributor):
         'contributor': contributor,
     }
 
-    sighting = Sighting(**sighting_map)
-    sighting.full_clean()
-    sighting.save()
+    observation = Sighting(**observation_map)
+    observation.full_clean()
+    observation.save()
 
-    return sighting
+    return observation
 
 
-def createBirdSighting(row, sighting):
+def createBirdObservation(row, observation):
     bird_map = {
-        'sighting': sighting,
+        'sighting': observation,
         'banded': 'unknown',
     }
 
@@ -55,27 +55,27 @@ def createBirdSighting(row, sighting):
     return bird
 
 
-def import_Sighting(self, sightings_csv):
-    """ Imports Sighting objects from data/sightings.csv """
+def import_Observation(self, observations_csv):
+    """ Imports Sighting objects from data/observations.csv """
 
     if hasattr(self, 'stdout'):
-        self.stdout.write(self.style.MIGRATE_LABEL("Sighting:"))
+        self.stdout.write(self.style.MIGRATE_LABEL("Observation:"))
 
-    sightings_reader = csv.DictReader(sightings_csv, delimiter=',', quotechar='"')
+    observations_reader = csv.DictReader(observations_csv, delimiter=',', quotechar='"')
 
     created_count = 0
 
-    for row in sightings_reader:
+    for row in observations_reader:
         contributor = createContributor(row)
-        sighting = createSighting(row, contributor)
+        observation = createObservation(row, contributor)
 
         created_count += 1
 
         # Create BirdSighting object(s) if relevant
-        if sighting.sighting_type == 'sighted':
-            for bird_number in range(0, sighting.number):
+        if observation.sighting_type == 'sighted':
+            for bird_number in range(0, observation.number):
                 # TODO enable more complexity in creating SightingBirds
-                bird = createBirdSighting(row,sighting)
+                bird = createBirdObservation(row, observation)
 
     if hasattr(self, 'stdout'):
         self.stdout.write("\tCreated: %d" % created_count)

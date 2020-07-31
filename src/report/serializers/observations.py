@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from sightings.models.sightings import Sighting
+from sightings.models.observations import Sighting
 from sightings.models.contributors import Contributor
 from sightings.models.birds import BirdSighting
 
 # Helpers
-class BirdSightingSerializer(serializers.ModelSerializer):
+class BirdObservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = BirdSighting
         exclude = ('bird', 'sighting', 'revisit',)
@@ -15,11 +15,11 @@ class ContributorSerializer(serializers.ModelSerializer):
         model = Contributor
         fields = '__all__'
 
-class ReportSightingSerializer(serializers.ModelSerializer):
+class ReportObservationSerializer(serializers.ModelSerializer):
     contributor = ContributorSerializer(many=False)
     challenge = serializers.CharField(allow_blank=True, required=False)
 
-    birds = BirdSightingSerializer(many=True)
+    birds = BirdObservationSerializer(many=True)
 
     class Meta:
         model = Sighting

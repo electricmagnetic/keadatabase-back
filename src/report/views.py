@@ -2,15 +2,15 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework import mixins
 
-from .serializers import ReportSightingSerializer
+from .serializers import ReportObservationSerializer
 from .serializers import ReportSurveySerializer
 
-class ReportSightingBaseViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+class ReportObservationBaseViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     throttle_scope = 'report'
     permission_classes = (AllowAny,)
 
-class ReportSightingViewSet(ReportSightingBaseViewSet):
-    serializer_class = ReportSightingSerializer
+class ReportObservationViewSet(ReportObservationBaseViewSet):
+    serializer_class = ReportObservationSerializer
 
-class ReportSurveyViewSet(ReportSightingBaseViewSet):
+class ReportSurveyViewSet(ReportObservationBaseViewSet):
     serializer_class = ReportSurveySerializer

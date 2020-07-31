@@ -1,4 +1,4 @@
-""" Contributor model for sightings (sightings and non-sightings in .sightings)"""
+""" Contributor model for sightings (sightings and non-sightings in .observations)"""
 
 from django.db import models
 

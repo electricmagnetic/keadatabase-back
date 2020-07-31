@@ -11,7 +11,7 @@ class LocationPagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 10000
 
-class SightingPagination(pagination.PageNumberPagination):
+class ObservationPagination(pagination.PageNumberPagination):
     page_size = 100
     page_size_query_param = 'page_size'
     max_page_size = 10000
@@ -19,12 +19,12 @@ class SightingPagination(pagination.PageNumberPagination):
 class GridTilePagination(pagination.LimitOffsetPagination):
     default_limit = 434
 
-class SightingGeoJSONPagination(GeoJsonPagination):
+class ObservationGeoJSONPagination(GeoJsonPagination):
     page_size = 1000
     page_size_query_param = 'page_size'
     max_page_size = 10000
 
-class BirdSightingGeoJSONPagination(GeoJsonPagination):
+class BirdObservationGeoJSONPagination(GeoJsonPagination):
     page_size = 250
     page_size_query_param = 'page_size'
     max_page_size = 10000
