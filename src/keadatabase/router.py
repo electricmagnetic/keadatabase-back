@@ -25,7 +25,7 @@ router.register(r'observations', ObservationViewSet, 'Observation')
 router.register(r'bird_observations', BirdObservationViewSet, 'BirdObservation')
 router.register(r'media', ObservationsMediaViewSet, 'ObservationMedia')
 router.register(r'geojson/observations', ObservationGeoJSONViewSet, 'ObservationGeoJSON')
-router.register(r'geojson/birds_observations', BirdObservationGeoJSONViewSet, 'BirdObservationGeoJSON')
+router.register(r'geojson/bird_observations', BirdObservationGeoJSONViewSet, 'BirdObservationGeoJSON')
 router.register(r'report/observation', ReportObservationViewSet, 'ReportObservation')
 
 # Sightings endpoints (to be deprecated)
