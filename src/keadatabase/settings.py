@@ -228,6 +228,7 @@ if not DEBUG:
         'map.keadatabase.nz',
         'keadatabase.nz',
         'survey.keadatabase.nz',
+        'about.keadatabase.nz',
         'electricmagnetic.io',
     )
 
