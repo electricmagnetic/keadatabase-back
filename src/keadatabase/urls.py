@@ -28,7 +28,13 @@ admin.site.index_title = settings.ADMIN_INDEX_TITLE
 
 # URLs
 urlpatterns = [
-    url(r'^robots.txt', lambda x: HttpResponse("user-agent: *\nAllow: /$\nDisallow: /", content_type="text/plain"), name="robots_file"),
+    url(
+        r'^robots.txt',
+        lambda x: HttpResponse(
+            "user-agent: *\nAllow: /$\nDisallow: /", content_type="text/plain"
+        ),
+        name="robots_file"
+    ),
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
 ]

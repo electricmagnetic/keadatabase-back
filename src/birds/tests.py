@@ -5,9 +5,9 @@ from django.core.exceptions import ValidationError
 
 from .models import Bird, BirdExtended
 
+
 class BirdObjectTests(TestCase):
     """ Tests for main functions of Bird objects """
-
     def test_blank(self):
         """ The model should not submit if all fields are left blank """
         with self.assertRaises(ValidationError):
@@ -36,9 +36,9 @@ class BirdObjectTests(TestCase):
         bird.save()
         self.assertEqual(bird.slug, 'helen-clark')
 
+
 class BirdFunctionTests(TestCase):
     """ Tests for custom functions of Bird objects """
-
     def test_get_age(self):
         """ Function should return correct age for 600-day-old bird """
         birthday = date.today() - timedelta(days=600)
@@ -85,9 +85,9 @@ class BirdFunctionTests(TestCase):
 
         self.assertEqual(bird.get_life_stage(), None)
 
+
 class BirdExtendedObjectTests(TestCase):
     """ Tests for main functions of BirdExtended objects """
-
     def test_blank(self):
         """ The model should not submit if all fields are left blank """
         with self.assertRaises(ValidationError):

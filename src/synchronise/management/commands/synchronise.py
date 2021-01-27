@@ -11,6 +11,7 @@ from locations.models import StudyArea
 from birds.models import Bird
 from bands.models import BandCombo
 
+
 class Command(management.BaseCommand):
     help = 'Allows the import of tables exported from the Access database.'
 
@@ -33,7 +34,9 @@ class Command(management.BaseCommand):
                 # boto3 opens files as binary, hence the need to convert
                 areas_csv = io.StringIO(areas_csv_bin.read().decode('utf-8'))
                 birds_csv = io.StringIO(birds_csv_bin.read().decode('utf-8'))
-                transmitters_csv = io.StringIO(transmitters_csv_bin.read().decode('utf-8'))
+                transmitters_csv = io.StringIO(
+                    transmitters_csv_bin.read().decode('utf-8')
+                )
 
                 synchronise_StudyArea(self, areas_csv)
                 synchronise_Bird(self, birds_csv)
@@ -52,7 +55,9 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         self.check_current_status()
 
-        self.stdout.write('\nUsing input data from: %s' % settings.DEFAULT_FILE_STORAGE)
+        self.stdout.write(
+            '\nUsing input data from: %s' % settings.DEFAULT_FILE_STORAGE
+        )
 
         confirm = input('\nReady to import? Type \'yes\' to continue: ')
         #confirm = 'yes' # for debugging

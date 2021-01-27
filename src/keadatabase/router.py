@@ -16,6 +16,7 @@ from analysis.views import GridTileAnalysisViewSet, SurveyAnalysisViewSet
 
 router = DefaultRouter()
 
+# yapf: disable
 # Base endpoints
 router.register(r'band_combos', BandComboViewSet, 'BandCombo')
 router.register(r'birds', BirdViewSet, 'Bird')
@@ -45,3 +46,4 @@ router.register(r'geojson/grid_tiles', GridTileGeoJSONViewSet, 'GridTileGeoJSON'
 router.register(r'analysis/grid_tiles', GridTileAnalysisViewSet, 'GridTileAnalysis')
 router.register(r'analysis/surveys', SurveyAnalysisViewSet, 'SurveyAnalysis')
 router.register(r'report/survey', ReportSurveyViewSet, 'ReportSurveyViewSet')
+# yapf: enable

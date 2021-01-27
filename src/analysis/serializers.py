@@ -5,15 +5,18 @@ from rest_framework import serializers
 from locations.models import GridTile
 from surveys.models.surveys import Survey
 
+
 class HourSerializer(serializers.Serializer):
     total = serializers.IntegerField()
     with_kea = serializers.IntegerField()
+
 
 class BaseAnalysisSerializer(serializers.Serializer):
     """ Basic list only analysis serializer """
     id = serializers.CharField()
 
     hours_total = HourSerializer(source='*')
+
 
 class GridTileAnalysisSerializer(BaseAnalysisSerializer):
     """ Perform basic queries to provide an endpoint with grid tile analysis """
@@ -26,6 +29,7 @@ class GridTileAnalysisSerializer(BaseAnalysisSerializer):
                 values('quarter'). \
                 annotate(total=Count('id'), with_kea=Count('id', filter=Q(kea=True))). \
                 order_by()
+
 
 class SurveyAnalysisSerializer(BaseAnalysisSerializer):
     """ Perform basic queries to provide an endpoint with survey analysis """

@@ -6,6 +6,7 @@ from locations.views import GridTileViewSet
 from keadatabase.pagination import ObservationGeoJSONPagination, GridTileGeoJSONPagination, BirdObservationGeoJSONPagination
 from .serializers import ObservationGeoJSONSerializer, GridTileGeoJSONSerializer, BirdObservationGeoJSONSerializer
 
+
 class ObservationGeoJSONViewSet(ObservationViewSet):
     serializer_class = ObservationGeoJSONSerializer
     pagination_class = ObservationGeoJSONPagination
@@ -13,12 +14,14 @@ class ObservationGeoJSONViewSet(ObservationViewSet):
     # Disable HTML view of this for compatibility
     renderer_classes = [renderers.JSONRenderer]
 
+
 class GridTileGeoJSONViewSet(GridTileViewSet):
     serializer_class = GridTileGeoJSONSerializer
     pagination_class = GridTileGeoJSONPagination
 
     # Disable HTML view of this for compatibility
     renderer_classes = [renderers.JSONRenderer]
+
 
 class BirdObservationGeoJSONViewSet(BirdObservationViewSet):
     serializer_class = BirdObservationGeoJSONSerializer

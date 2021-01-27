@@ -6,6 +6,7 @@ from django.contrib.gis.utils import LayerMapping
 
 from locations.models import Region
 
+
 class Command(management.BaseCommand):
     help = 'Allows the import of regions'
 
@@ -18,16 +19,16 @@ class Command(management.BaseCommand):
         """ Imports objects into database """
         self.stdout.write(self.style.MIGRATE_HEADING('\nBeginning import:'))
 
-        region_mapping = {
-            'name' : 'NAME',
-            'polygon': 'POLYGON'
-        }
+        region_mapping = {'name': 'NAME', 'polygon': 'POLYGON'}
 
         region_shp = '../data/kx-nz-regional-councils-2012-yearly-pattern-SHP/nz-regional-councils-2012-yearly-pattern.shp'
 
         lm = LayerMapping(
-            Region, region_shp, region_mapping,
-            transform=False, encoding='utf-8',
+            Region,
+            region_shp,
+            region_mapping,
+            transform=False,
+            encoding='utf-8',
         )
         lm.save(strict=True, verbose=False)
 

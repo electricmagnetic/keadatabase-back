@@ -32,22 +32,24 @@ STATUS_CHOICES = (
     ('public', 'Verified (Public)'),
 )
 
+
 class Survey(models.Model):
     date = models.DateField()
 
-    observer = models.OneToOneField(
-        Observer,
-        on_delete=models.PROTECT
-    )
+    observer = models.OneToOneField(Observer, on_delete=models.PROTECT)
 
-    purpose = models.CharField(max_length=15, blank=True, choices=PURPOSE_CHOICES, default='')
+    purpose = models.CharField(
+        max_length=15, blank=True, choices=PURPOSE_CHOICES, default=''
+    )
     comments = models.TextField(blank=True)
     max_flock_size = models.PositiveIntegerField(null=True, blank=True)
 
     # TODO: validate max flock size if child object has kea sighted?
 
     # Staff only
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default='new'
+    )
 
     # Metadata
     date_created = models.DateTimeField(auto_now_add=True)
@@ -59,19 +61,32 @@ class Survey(models.Model):
     class Meta:
         ordering = ['-date']
 
+
 class SurveyHour(models.Model):
-    survey = models.ForeignKey(Survey, related_name='hours', on_delete=models.CASCADE)
+    survey = models.ForeignKey(
+        Survey, related_name='hours', on_delete=models.CASCADE
+    )
     hour = models.PositiveIntegerField()
     kea = models.BooleanField(default=False)
-    activity = models.CharField(max_length=1, choices=ACTIVITY_CHOICES, default='')
-    grid_tile = models.ForeignKey(GridTile, related_name='hours', on_delete=models.PROTECT,
-                                  blank=True, null=True)
+    activity = models.CharField(
+        max_length=1, choices=ACTIVITY_CHOICES, default=''
+    )
+    grid_tile = models.ForeignKey(
+        GridTile,
+        related_name='hours',
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ['survey', 'hour']
 
     def __str__(self):
-        return ("At %i:00 in %s for survey #%s" % (self.hour, self.grid_tile, self.survey))
+        return (
+            "At %i:00 in %s for survey #%s" %
+            (self.hour, self.grid_tile, self.survey)
+        )
 
     def get_hour_display(self):
         """ Better display of hour value """

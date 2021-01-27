@@ -6,9 +6,12 @@ def get_place_string(instance):
     """ Return closest Place (as string) to point_location coordinates """
     from locations.models import Place
 
-    return str(Place.objects.annotate(
-        distance=Distance('point', instance.point_location)
-    ).order_by('distance').first())
+    return str(
+        Place.objects.annotate(
+            distance=Distance('point', instance.point_location)
+        ).order_by('distance').first()
+    )
+
 
 def get_region_string(instance):
     """ Return the Region (as string) that point_location is contained within """

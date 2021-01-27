@@ -7,7 +7,6 @@ keadatabase-back
 The GeoDjango-based back-end for the Kea Database <https://keadatabase.nz> citizen science project.
 Sponsored by [Catalyst](https://catalyst.net.nz).
 
-
 Setup
 -----
 This guide assumes that `python3`, `pip`, `postgres` (with postgis) and virtual
@@ -30,11 +29,9 @@ Required packages: `binutils`, `libproj-dev`, `gdal-bin`, `postgresql-x.x`, `pos
 
 NB: To create database, login as postgres user then run `createdb keadatabase` in bash shell and `grant all privileges on database keadatabase to postgres;` in the psql shell. You may need to adjust your pg_hba.conf settings for no password access.
 
-
 Running
 -------
 `src/manage.py runserver`
-
 
 Testing
 -------
@@ -47,7 +44,6 @@ You can get code coverage reports:
 2. `coverage run src/manage.py test src`
 3. `coverage report`
 
-
 Data synchronisation: Bird, BandCombo, StudyArea
 ------------------------------------------------
 These steps assume you have `mdbtools` installed.
@@ -57,12 +53,10 @@ These steps assume you have `mdbtools` installed.
 
 Data synchronisation is non-destructive (it will not delete objects). On production data files will need to be added to S3 before import.
 
-
 Importing database dump
 -----------------------
 To import a database dump from Heroku run the following command as the `postgres` user:
 `pg_restore --clean --no-owner --role=postgres -d keadatabase <file>.sql`
-
 
 Data synchronisation: Region, Place
 -----------------------------------
@@ -71,7 +65,6 @@ Data synchronisation: Region, Place
 3. Dump data using `./manage.py dumpdata locations.place`and `./manage.py dumpdata locations.region`
 4. Upload data to the keadatabase S3 bucket
 5. `heroku run bash` then wget the data and run `./manage.py loaddata <filename>`
-
 
 Data synchronisation: GridTile
 ------------------------------
@@ -83,12 +76,11 @@ Data synchronisation: GridTile
 6. Upload data to the keadatabase S3 bucket
 7. `heroku run bash` then wget the data and run `./manage.py loaddata <filename>`
 
-
-Sightings import
-----------------
-To import sightings data from a provided CSV:
-1. Create a directory 'data/' and add an appropriately formatted `sightings.csv` file
-2. Run `./manage.py importsightings`
+Observations import
+--------------------
+To import observations data from a provided CSV:
+1. Create a directory 'data/' and add an appropriately formatted `observations.csv` file
+2. Run `./manage.py importobservations`
 
 Format:
 `name,email,phone,date_sighted,time_sighted,comments,sighting_type,longitude,latitude,precision,number,location_details,behaviour,import_id`
@@ -96,13 +88,11 @@ Format:
 Example:
 `John Smith,contact@example.org,2018-01-01,12:00:00,,sighted,172.3188943,-43.5127894,200,1,"Cathedral Square",,csv_john-smith_2019-02-17_1`
 
-
 Deploying
 ---------
 This code is deployed using a continuous integration workflow. Code pushed to master will be deployed to Heroku after Travis CI tests are passed. The process takes a few minutes.
 
 Please note, aside from `collectstatic` Django commands such as `migrate` are not run automatically.
-
 
 Layout
 ------
@@ -111,13 +101,17 @@ Layout
 * `src/birds/` - Bird models and helpers
 * `src/keadatabase/` - Project settings
 * `src/locations/` - StudyArea models and helpers
-* `src/report/` - The only non-read-only API endpoint, used for POSTing sightings
-* `src/sightings/` - All sightings related information, including links to Bird objects
+* `src/report/` - The only non-read-only API endpoint, used for POSTing observations
+* `src/sightings/` - All observations related information, including links to Bird objects
 * `src/synchronise/` - Command and helpers that syncs Django DB with provided CSVs
 * `src/theme/` - Django REST Framework customisations
-* `src/geojson/` - Provides a GeoJSON endpoint of filterable sightings
+* `src/geojson/` - Provides a GeoJSON endpoint of filterable observations
 * `src/surveys/` - Provides the kea survey tool functionality
 * `src/analysis/` - Provides an endpoint for analysis of observation data
+
+Code formatting
+---------------
+* Code formatting is handled by `yapf`: `yapf src/**/*.py -i`
 
 Bug reports
 -----------
@@ -126,7 +120,6 @@ Should be filed on the Kea Database Trello board (not presently public)
 Troubleshooting
 ---------------
 * Getting an error about `libmagic`? Try installing `python-magic-bin`
-
 
 Licence
 -------

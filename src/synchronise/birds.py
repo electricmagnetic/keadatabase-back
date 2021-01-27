@@ -21,6 +21,7 @@ sex_map = {
     'Undetermined': 'undetermined',
 }
 
+
 def is_valid_Bird(row):
     """ Returns True if valid Bird - filters noise in original dataset """
 
@@ -37,6 +38,7 @@ def is_valid_Bird(row):
         return False
 
     return True
+
 
 def synchronise_Bird(self, birds_csv):
     """ Imports Bird objects from data/Kea.csv """
@@ -57,8 +59,9 @@ def synchronise_Bird(self, birds_csv):
 
         # Represent birthday as a datetime object based on input format
         if row['birthday']:
-            birthday = datetime.datetime.strptime(row['birthday'],
-                                                  "%Y-%m-%d %H:%M:%S").date()
+            birthday = datetime.datetime.strptime(
+                row['birthday'], "%Y-%m-%d %H:%M:%S"
+            ).date()
         else:
             birthday = None
 
@@ -87,7 +90,10 @@ def synchronise_Bird(self, birds_csv):
             for key, value in bird_map.items():
                 if getattr(bird, key) != value:
                     has_changed = True
-                    self.stdout.write("* %s: %s changed from %s to %s" % (name_slugified, key, getattr(bird, key), value))
+                    self.stdout.write(
+                        "* %s: %s changed from %s to %s" %
+                        (name_slugified, key, getattr(bird, key), value)
+                    )
                     setattr(bird, key, value)
 
             if has_changed:

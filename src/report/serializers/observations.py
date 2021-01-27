@@ -4,16 +4,23 @@ from sightings.models.observations import Sighting
 from sightings.models.contributors import Contributor
 from sightings.models.birds import BirdSighting
 
+
 # Helpers
 class BirdObservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = BirdSighting
-        exclude = ('bird', 'sighting', 'revisit',)
+        exclude = (
+            'bird',
+            'sighting',
+            'revisit',
+        )
+
 
 class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contributor
         fields = '__all__'
+
 
 class ReportObservationSerializer(serializers.ModelSerializer):
     contributor = ContributorSerializer(many=False)
@@ -23,8 +30,15 @@ class ReportObservationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sighting
-        exclude = ('moderator_notes', 'favourite', 'geocode', 'region', 'import_id', 'status',
-                   'confirmed',)
+        exclude = (
+            'moderator_notes',
+            'favourite',
+            'geocode',
+            'region',
+            'import_id',
+            'status',
+            'confirmed',
+        )
 
     def validate(self, data):
         """ Basic check to deter spam submissions """
@@ -37,7 +51,9 @@ class ReportObservationSerializer(serializers.ModelSerializer):
         birds_data = validated_data.pop('birds')
 
         contributor = Contributor.objects.create(**contributor_data)
-        sighting = Sighting.objects.create(contributor=contributor, **validated_data)
+        sighting = Sighting.objects.create(
+            contributor=contributor, **validated_data
+        )
 
         for bird_data in birds_data:
             BirdSighting.objects.create(sighting=sighting, **bird_data)

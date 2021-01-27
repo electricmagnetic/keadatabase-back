@@ -3,6 +3,7 @@ from rest_framework_gis.serializers import GeometryField
 
 from .models import GridTile
 
+
 class BaseGridTileSerializer(serializers.Serializer):
     """ Default serializer """
 
@@ -20,6 +21,7 @@ class BaseGridTileSerializer(serializers.Serializer):
 
     hours_total = serializers.ReadOnlyField()
     hours_with_kea = serializers.ReadOnlyField()
+
 
 class GridTileSerializer(BaseGridTileSerializer):
     """ Serializer including polygon field """

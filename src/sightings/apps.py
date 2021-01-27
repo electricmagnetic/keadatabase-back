@@ -3,6 +3,7 @@ from django.db.models.signals import pre_save
 
 from .signals import run_geocode
 
+
 class ObservationsConfig(AppConfig):
     name = 'sightings'
 

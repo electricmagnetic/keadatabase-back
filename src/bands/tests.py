@@ -6,9 +6,9 @@ from django.core.exceptions import ValidationError
 from birds.models import Bird
 from .models import BandCombo
 
+
 class BandComboObjectTests(TestCase):
     """ Tests for main functions of BandCombo objects """
-
     def test_blank(self):
         """ The model should not submit if all fields are left blank """
         with self.assertRaises(ValidationError):

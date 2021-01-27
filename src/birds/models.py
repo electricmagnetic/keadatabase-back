@@ -14,7 +14,7 @@ SEX_CHOICES = (
     ('male', 'Male'),
 )
 
-SEX_CHOICES_UNDETERMINED = SEX_CHOICES + (('undetermined', 'Undetermined'),)
+SEX_CHOICES_UNDETERMINED = SEX_CHOICES + (('undetermined', 'Undetermined'), )
 
 LIFE_STAGE_CHOICES = (
     ('fledgling', 'Fledgling'),
@@ -29,9 +29,11 @@ STATUS_CHOICES = (
     ('dead', 'Dead'),
 )
 
+
 def bird_directory_path(instance, filename):
     """ Helper function for determining upload location for BirdExtended """
     return 'birds/%s/%s' % (instance.bird.slug, filename)
+
 
 class Bird(models.Model):
     """ Basic bird information, designed to be imported from Access """
@@ -39,15 +41,25 @@ class Bird(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, primary_key=True, editable=False)
 
-    sex = models.CharField(max_length=15, blank=True, choices=SEX_CHOICES_UNDETERMINED,
-                           default='undetermined')
-    status = models.CharField(max_length=15, blank=True, choices=STATUS_CHOICES,
-                              default='unknown')
+    sex = models.CharField(
+        max_length=15,
+        blank=True,
+        choices=SEX_CHOICES_UNDETERMINED,
+        default='undetermined'
+    )
+    status = models.CharField(
+        max_length=15, blank=True, choices=STATUS_CHOICES, default='unknown'
+    )
     birthday = models.DateField(blank=True, null=True)
     primary_band = models.CharField(max_length=100, blank=True, null=True)
 
-    study_area = models.ForeignKey(StudyArea, related_name='birds', blank=True, null=True,
-                                   on_delete=models.SET_NULL)
+    study_area = models.ForeignKey(
+        StudyArea,
+        related_name='birds',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL
+    )
 
     # Metadata
     date_modified = models.DateTimeField(auto_now=True)
@@ -96,6 +108,7 @@ class Bird(models.Model):
         else:
             return None
 
+
 class BirdExtended(models.Model):
     """ Extended bird information, designed to be edited on Django """
     bird = models.OneToOneField(
@@ -112,11 +125,16 @@ class BirdExtended(models.Model):
     sponsor_name = models.CharField(max_length=200, null=True, blank=True)
     sponsor_website = models.URLField(max_length=200, null=True, blank=True)
 
-    profile_picture = VersatileImageField(upload_to=bird_directory_path,
-                                          blank=True, null=True,
-                                          ppoi_field='profile_picture_ppoi')
+    profile_picture = VersatileImageField(
+        upload_to=bird_directory_path,
+        blank=True,
+        null=True,
+        ppoi_field='profile_picture_ppoi'
+    )
     profile_picture_ppoi = PPOIField()
-    profile_picture_attribution = models.CharField(max_length=200, null=True, blank=True)
+    profile_picture_attribution = models.CharField(
+        max_length=200, null=True, blank=True
+    )
 
     class Meta:
         ordering = ['bird']
@@ -124,6 +142,7 @@ class BirdExtended(models.Model):
 
     def __str__(self):
         return str(self.bird)
+
 
 @receiver(models.signals.post_save, sender=BirdExtended)
 def warm_BirdExtended_profile_pictures(sender, instance, **kwargs):

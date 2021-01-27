@@ -5,11 +5,20 @@ from .models.surveys import Survey, SurveyHour
 from .models.observers import Observer
 from .serializers import SurveySerializer, SurveyHourSerializer, ObserverSerializer
 
+
 class SurveyHourViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SurveyHourSerializer
     pagination_class = SurveyPagination
-    ordering_fields = ('id', 'survey__date',)
-    filter_fields = ('grid_tile', 'activity', 'kea', 'survey',)
+    ordering_fields = (
+        'id',
+        'survey__date',
+    )
+    filter_fields = (
+        'grid_tile',
+        'activity',
+        'kea',
+        'survey',
+    )
 
     def get_queryset(self):
         queryset = SurveyHour.objects. \
@@ -18,11 +27,15 @@ class SurveyHourViewSet(viewsets.ReadOnlyModelViewSet):
 
         return queryset
 
+
 class SurveyViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SurveySerializer
     pagination_class = SurveyPagination
-    ordering_fields = ('id', 'date',)
-    filter_fields = ('status',)
+    ordering_fields = (
+        'id',
+        'date',
+    )
+    filter_fields = ('status', )
 
     def get_queryset(self):
         queryset = Survey.objects. \
@@ -32,10 +45,11 @@ class SurveyViewSet(viewsets.ReadOnlyModelViewSet):
 
         return queryset
 
+
 class ObserverViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ObserverSerializer
     pagination_class = SurveyPagination
-    ordering_fields = ('name',)
+    ordering_fields = ('name', )
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):

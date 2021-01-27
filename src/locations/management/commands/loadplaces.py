@@ -6,6 +6,7 @@ from django.contrib.gis.utils import LayerMapping
 
 from locations.models import Place
 
+
 class Command(management.BaseCommand):
     help = 'Allows the import of NZ place names'
 
@@ -19,18 +20,21 @@ class Command(management.BaseCommand):
         self.stdout.write(self.style.MIGRATE_HEADING('\nBeginning import:'))
 
         place_mapping = {
-            'name_id' : 'name_id',
-            'name' : 'name',
-            'feat_type' : 'feat_type',
-            'land_district' : 'land_distr',
+            'name_id': 'name_id',
+            'name': 'name',
+            'feat_type': 'feat_type',
+            'land_district': 'land_distr',
             'point': 'POINT'
         }
 
         place_shp = '../data/lds-nz-place-names-nzgb-SHP/nz-place-names-nzgb.shp'
 
         lm = LayerMapping(
-            Place, place_shp, place_mapping,
-            transform=False, encoding='utf-8',
+            Place,
+            place_shp,
+            place_mapping,
+            transform=False,
+            encoding='utf-8',
         )
         lm.save(strict=True, verbose=False)
 

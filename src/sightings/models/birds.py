@@ -14,26 +14,38 @@ BAND_CHOICES = (
     ('unbanded', 'Not banded'),
 )
 
-SEX_CHOICES_UNSURE = (('', 'Unsure'),) + SEX_CHOICES
-LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'),) + LIFE_STAGE_CHOICES
+SEX_CHOICES_UNSURE = (('', 'Unsure'), ) + SEX_CHOICES
+LIFE_STAGE_CHOICES_UNSURE = (('', 'Unsure'), ) + LIFE_STAGE_CHOICES
 
 
 class BirdSighting(models.Model):
     """ Information specific to a bird in a sighting """
-    sighting = models.ForeignKey(Sighting, related_name='birds', on_delete=models.CASCADE)
+    sighting = models.ForeignKey(
+        Sighting, related_name='birds', on_delete=models.CASCADE
+    )
 
     banded = models.CharField(max_length=15, choices=BAND_CHOICES)
 
     # Optional, depends on whether bird was banded or not
     band_combo = models.CharField(max_length=200, blank=True, null=True)
-    sex_guess = models.CharField(max_length=15, choices=SEX_CHOICES_UNSURE, null=True, blank=True)
-    life_stage_guess = models.CharField(max_length=15, choices=LIFE_STAGE_CHOICES_UNSURE,
-                                        null=True, blank=True)
+    sex_guess = models.CharField(
+        max_length=15, choices=SEX_CHOICES_UNSURE, null=True, blank=True
+    )
+    life_stage_guess = models.CharField(
+        max_length=15, choices=LIFE_STAGE_CHOICES_UNSURE, null=True, blank=True
+    )
 
     # Staff only
-    bird = models.ForeignKey(Bird, related_name='sightings', blank=True, null=True,
-                             on_delete=models.SET_NULL)
-    revisit = models.BooleanField(default=False, help_text='Moderator: tick if bird not added yet')
+    bird = models.ForeignKey(
+        Bird,
+        related_name='sightings',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL
+    )
+    revisit = models.BooleanField(
+        default=False, help_text='Moderator: tick if bird not added yet'
+    )
 
     class Meta:
         verbose_name = 'Bird sighting'

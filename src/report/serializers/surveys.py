@@ -3,16 +3,19 @@ from rest_framework import serializers
 from surveys.models.surveys import Survey, SurveyHour
 from surveys.models.observers import Observer
 
+
 # Helpers
 class SurveyHourSerializer(serializers.ModelSerializer):
     class Meta:
         model = SurveyHour
-        exclude = ('survey',)
+        exclude = ('survey', )
+
 
 class ObserverSerializer(serializers.ModelSerializer):
     class Meta:
         model = Observer
         fields = '__all__'
+
 
 # Report serializers
 class ReportSurveySerializer(serializers.ModelSerializer):
@@ -22,12 +25,14 @@ class ReportSurveySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Survey
-        exclude = ('status',)
+        exclude = ('status', )
 
     def to_internal_value(self, data):
         """ Set both empty strings and 0 to null for max_flock_size """
-        if data.get('max_flock_size', None) == '': data.pop('max_flock_size')
-        if data.get('max_flock_size', None) == 0: data.pop('max_flock_size')
+        if data.get('max_flock_size', None) == '':
+            data.pop('max_flock_size')
+        if data.get('max_flock_size', None) == 0:
+            data.pop('max_flock_size')
         return super().to_internal_value(data)
 
     def create(self, validated_data):

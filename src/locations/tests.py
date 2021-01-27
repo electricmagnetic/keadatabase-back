@@ -3,9 +3,9 @@ from django.core.exceptions import ValidationError
 
 from .models import StudyArea
 
+
 class StudyAreaObjectTests(TestCase):
     """ Tests for main functions of StudyArea objects """
-
     def test_blank(self):
         """ The model should not submit if all fields are left blank """
         with self.assertRaises(ValidationError):
@@ -33,5 +33,6 @@ class StudyAreaObjectTests(TestCase):
         study_area.full_clean()
         study_area.save()
         self.assertEqual(study_area.slug, 'christchurch')
+
 
 # TODO: test Region

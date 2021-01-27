@@ -5,6 +5,7 @@ from .models import BandCombo
 from birds.serializers import BirdSerializer
 from birds.models import Bird
 
+
 class BandComboSerializer(serializers.ModelSerializer):
     bird = BirdSerializer(read_only=True, many=False)
 
@@ -14,6 +15,9 @@ class BandComboSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def setup_eager_loading(queryset):
-        queryset = queryset.select_related('bird__bird_extended', 'bird__study_area',)
+        queryset = queryset.select_related(
+            'bird__bird_extended',
+            'bird__study_area',
+        )
 
         return queryset

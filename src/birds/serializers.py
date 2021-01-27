@@ -3,15 +3,21 @@ from versatileimagefield.serializers import VersatileImageFieldSerializer
 
 from .models import Bird, BirdExtended
 
+
 class BirdExtendedSerializer(serializers.ModelSerializer):
-    profile_picture = VersatileImageFieldSerializer(
-        sizes='profile_picture'
-    )
+    profile_picture = VersatileImageFieldSerializer(sizes='profile_picture')
 
     class Meta:
         model = BirdExtended
-        fields = ('description', 'is_featured', 'sponsor_name',
-                  'sponsor_website', 'profile_picture', 'profile_picture_attribution',)
+        fields = (
+            'description',
+            'is_featured',
+            'sponsor_name',
+            'sponsor_website',
+            'profile_picture',
+            'profile_picture_attribution',
+        )
+
 
 class BirdSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')
@@ -31,6 +37,8 @@ class BirdSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def setup_eager_loading(queryset):
-        queryset = queryset.select_related("bird_extended", "study_area", "band_combo")
+        queryset = queryset.select_related(
+            "bird_extended", "study_area", "band_combo"
+        )
 
         return queryset

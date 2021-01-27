@@ -6,6 +6,7 @@ from sightings.models.observations import Sighting
 from sightings.models.birds import BirdSighting
 from sightings.models.contributors import Contributor
 
+
 def createContributor(row):
     contributor_map = {
         'name': row['name'],
@@ -27,7 +28,8 @@ def createObservation(row, contributor):
         'time_sighted': row['time_sighted'],
         'comments': row['comments'],
         'sighting_type': row['sighting_type'],
-        'point_location': ("SRID=4326;POINT (%s %s)" % (row['longitude'], row['latitude'])),
+        'point_location':
+            ("SRID=4326;POINT (%s %s)" % (row['longitude'], row['latitude'])),
         'precision': row['precision'],
         'number': row['number'],
         'location_details': row['location_details'],
@@ -61,7 +63,9 @@ def import_Observation(self, observations_csv):
     if hasattr(self, 'stdout'):
         self.stdout.write(self.style.MIGRATE_LABEL("Observation:"))
 
-    observations_reader = csv.DictReader(observations_csv, delimiter=',', quotechar='"')
+    observations_reader = csv.DictReader(
+        observations_csv, delimiter=',', quotechar='"'
+    )
 
     created_count = 0
 

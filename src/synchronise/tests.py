@@ -6,9 +6,9 @@ from birds.models import Bird
 from .birds import synchronise_Bird
 from .locations import synchronise_StudyArea
 
+
 class LocationsSynchroniseTests(TestCase):
     """ Tests for synchronisation of Location models """
-
     def test_initial_synchronise(self):
         """ Data provided in a CSV should get added (excl. duplicates) to db."""
         self.assertEqual(StudyArea.objects.all().count(), 0)

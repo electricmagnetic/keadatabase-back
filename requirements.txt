@@ -17,3 +17,4 @@ django-leaflet==0.27.1
 django-storage-swift==1.2.19
 environs[django]==7.3.0
 sentry-sdk==0.19.5
+yapf==0.30.0

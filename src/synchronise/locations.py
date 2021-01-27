@@ -5,6 +5,7 @@ from django.utils.text import slugify
 
 from locations.models import StudyArea
 
+
 def synchronise_StudyArea(self, areas_csv):
     """ Imports StudyArea objects from data/tStudyAreas.csv """
 

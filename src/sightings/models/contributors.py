@@ -28,6 +28,7 @@ HEARD_CHOICES = (
     ('other', 'Other'),
 )
 
+
 class Contributor(models.Model):
     """ Contributor details for a particular sighting """
     name = models.CharField(max_length=100)
@@ -36,8 +37,12 @@ class Contributor(models.Model):
     # Optional
     phone = models.CharField(max_length=50, blank=True, null=True)
 
-    activity = models.CharField(max_length=15, blank=True, choices=ACTIVITY_CHOICES, default='')
-    heard = models.CharField(max_length=15, blank=True, choices=HEARD_CHOICES, default='')
+    activity = models.CharField(
+        max_length=15, blank=True, choices=ACTIVITY_CHOICES, default=''
+    )
+    heard = models.CharField(
+        max_length=15, blank=True, choices=HEARD_CHOICES, default=''
+    )
 
     communications = models.BooleanField(default=False)
 
