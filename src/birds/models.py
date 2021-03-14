@@ -38,6 +38,8 @@ def bird_directory_path(instance, filename):
 class Bird(models.Model):
     """ Basic bird information, designed to be imported from Access """
 
+    gid = models.URLField(max_length=200, blank=True, null=True)
+
     name = models.CharField(max_length=100, unique=True)
     slug = models.CharField(max_length=100, primary_key=True, editable=False)
 
