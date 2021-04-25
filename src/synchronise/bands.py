@@ -3,7 +3,6 @@ import datetime
 import re
 
 from django.utils import timezone
-from django.core import management
 from django.utils.text import slugify
 
 from locations.models import StudyArea

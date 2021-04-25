@@ -2,9 +2,7 @@
 
 from django.contrib.gis.db import models
 from django.core.validators import validate_slug
-from versatileimagefield.fields import VersatileImageField
 
-from locations.models import Region
 from .contributors import Contributor
 
 PRECISION_CHOICES = (

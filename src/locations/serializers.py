@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from rest_framework_gis.serializers import GeometryField
 
-from .models import GridTile
-
 
 class BaseGridTileSerializer(serializers.Serializer):
     """ Default serializer """

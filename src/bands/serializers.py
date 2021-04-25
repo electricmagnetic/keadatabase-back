@@ -3,7 +3,6 @@ from rest_framework import serializers
 from .models import BandCombo
 
 from birds.serializers import BirdSerializer
-from birds.models import Bird
 
 
 class BandComboSerializer(serializers.ModelSerializer):

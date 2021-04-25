@@ -1,7 +1,6 @@
-import io, tempfile, csv
+import csv
 
 from django.core import management
-from django.contrib.gis.gdal import DataSource
 from django.contrib.gis.utils import LayerMapping
 
 from locations.models import GridTile

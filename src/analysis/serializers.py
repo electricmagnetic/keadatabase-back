@@ -2,9 +2,6 @@ from django.db.models.functions import TruncQuarter
 from django.db.models import Count, Q
 from rest_framework import serializers
 
-from locations.models import GridTile
-from surveys.models.surveys import Survey
-
 
 class HourSerializer(serializers.Serializer):
     total = serializers.IntegerField()

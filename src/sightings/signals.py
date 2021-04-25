@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.gis.db.models.functions import Distance
 
 

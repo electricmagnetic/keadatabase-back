@@ -1,7 +1,6 @@
 """ Sightings related to a specific bird - must have a parent Sighting object """
 
 from django.contrib.gis.db import models
-from versatileimagefield.fields import VersatileImageField
 
 from birds.models import SEX_CHOICES, LIFE_STAGE_CHOICES
 from birds.models import Bird

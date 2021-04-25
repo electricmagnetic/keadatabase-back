@@ -1,7 +1,5 @@
 import csv
 
-from django.core import management
-
 from sightings.models.observations import Sighting
 from sightings.models.birds import BirdSighting
 from sightings.models.contributors import Contributor

@@ -84,7 +84,7 @@ class Bird(models.Model):
 
         if self.status == 'dead':  # No age if bird is dead
             return None
-        if self.birthday == None:  # No age if no birthday
+        if self.birthday is None:  # No age if no birthday
             return None
 
         difference_in_years = relativedelta(date.today(), self.birthday).years
@@ -95,7 +95,7 @@ class Bird(models.Model):
 
         age = self.get_age()
 
-        if age == None:
+        if age is None:
             return None
 
         # TODO: map to LIFE_STAGE_CHOICES

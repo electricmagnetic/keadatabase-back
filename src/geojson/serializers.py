@@ -1,6 +1,5 @@
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
-from sightings.models.observations import Sighting
 from sightings.serializers.observations import ObservationSerializer
 from sightings.serializers.birds import BirdObservationSerializer
 

@@ -1,6 +1,5 @@
 import csv
 
-from django.core import management
 from django.utils.text import slugify
 
 from locations.models import StudyArea
