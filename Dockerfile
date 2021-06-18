@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.9.5-slim
 
 RUN apt update \
     && apt install -y \
@@ -6,6 +6,7 @@ RUN apt update \
         libproj-dev \
         gdal-bin \
         libmagic-dev \
+        python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt requirements.txt
